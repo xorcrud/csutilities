@@ -1,0 +1,323 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core.dll" #> 
+<#@ assembly name="System.Xml.dll" #> 
+<#@ assembly name="System.Xml.Linq.dll" #> 
+<#@ import namespace="System" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Xml.Linq" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".generated.cs" #>
+//////////////////////////////////////////////////////////////////////
+//
+// Summary:		Represents a T4 text template used for generating strongly-typed
+//				classes for values represented in MetadataDefinitions.xml file for
+//				used by the Commerce Server 2009 Multi-Channel Foundation API
+//
+// Usage:		Copy the MetadataDefinitions.tt file to the class library/project
+//				in which you want to be able to expose the Commerce Server properties.
+//		
+//				Configuration of class visibility, class name, namespace 
+//				and more are done in the last section of this file.
+//
+// Issues:		Changes you make in the MetadataDefinitions.xml file are not automatically
+//				reflected in the generated code. 
+//				But you can just open this file and save it again to run the tool.
+//
+//				Customization tip:
+//				Free edition of T4 editor tool from tangible-engineering
+//				can be used to get syntax highlighting in Visual Studio.
+//
+///////////////////////////////////////////////////////////////////////
+//
+// February/2011 by
+// Brian Holmgård Kristensen
+// blog.brianh.dk / CommerceServerTraining.com
+//
+// All information, source code, and especially tools are 
+// provided as is and on a "use at your own risk" basis.
+//
+///////////////////////////////////////////////////////////////////////
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace <#= GetNamespace() #>
+{
+    <#= CreateClassAsPublic ? "public" : "internal" #> partial class <#= EntryClassName #>
+    {
+<#
+var xDoc = XDocument.Load(MetadataFile);
+var ns = xDoc.Root.GetDefaultNamespace();
+
+var defaultChannel = 
+    xDoc.Root
+        .Element(ns+"DefaultChannel")
+        .Element(ns+"CommerceEntities");
+
+foreach (var entity in GetEntities(ns, defaultChannel))
+{
+#>
+		#region <#= entity.Key #>
+
+		public partial class <#= entity.Key #>
+		{
+<#
+	if (GenerateFieldsAsConstants)
+	{
+#>
+			public const string EntityName = "<#= entity.Key #>";
+<#
+	}
+	else
+	{
+#>
+			public static readonly string EntityName = "<#= entity.Key #>";
+<#
+	}	
+#>	
+			public partial class Properties
+			{
+<#
+	var properties = GetProperties(ns, entity.Value);
+	
+    foreach (var property in properties)
+    {
+			if (GenerateFieldsAsConstants)
+			{
+#>
+				public const string <#= property #> = "<#= property #>";
+<#
+			}
+			else
+			{
+#>
+				public static readonly string <#= property #> = "<#= property #>";
+<#
+			}
+	}
+
+	if (properties.Any())
+	{
+#>
+	
+				public static IEnumerable<string> All
+				{
+					get
+					{
+						var result = new List<string>
+						{
+<#
+		foreach (var property in properties)
+		{
+#>
+							<#= property #>,
+<#
+		}
+#>
+						};
+
+						AddToAll(result.Add);
+
+						return result;
+					}			
+				}
+
+				static partial void AddToAll(Action<string> addProperty);
+<#
+	}
+#>
+			}
+<#
+
+	var relationships = GetRelationships(ns, entity.Value);
+
+	if (relationships.Any())
+	{
+#>
+
+            public partial class Relationships
+            {
+<#
+		foreach (var relationship in relationships)
+		{
+			if (GenerateFieldsAsConstants)
+			{
+#>
+				public const string <#= relationship #> = "<#= relationship #>";
+<#
+			}
+			else
+			{
+#>
+				public static readonly string <#= relationship #> = "<#= relationship #>";
+<#
+			}
+		}
+#>
+			
+				public static IEnumerable<string> All
+				{
+					get
+					{
+						var result = new List<string>
+						{					
+<#
+		foreach (var relationship in relationships)
+		{
+#>
+							<#= relationship #>,
+<#
+		}
+#>						};		
+
+						AddToAll(result.Add);
+
+						return result;						
+					}			
+				}
+					
+				static partial void AddToAll(Action<string> addRelationship);
+            }
+<#
+	}
+#>
+		}
+
+		#endregion
+
+<#
+}
+#>
+	}
+}
+
+<#+
+string GetNamespace()
+{
+	if (String.IsNullOrEmpty(Namespace))
+		return GuessNamespace();
+
+	return Namespace;
+}
+
+string GuessNamespace()
+{
+	throw new NotImplementedException("Feature not implemented.");
+}
+
+static IEnumerable<KeyValuePair<string, XElement>> GetEntities(XNamespace ns, XElement channel)
+{
+    var entities = channel.Elements(ns + "CommerceEntity");
+
+    if (entities != null)
+    {
+        foreach (var entity in entities)
+        {
+            var nameAttribute = entity.Attribute("name");
+
+            if (nameAttribute != null)
+                yield return new KeyValuePair<string, XElement>(nameAttribute.Value, entity);
+        }
+    }
+}
+
+static IEnumerable<string> GetProperties(XNamespace ns, XElement entity)
+{
+    return
+        GetEntityMappingProperties(ns, entity)
+            .Union(GetRegularProperties(ns, entity));
+}
+
+static IEnumerable<string> GetRegularProperties(XNamespace ns, XElement entity)
+{
+    var entityMapping = entity.Element(ns + "Properties");
+
+    if (entityMapping != null)
+    {
+        foreach (var property in
+            entityMapping.Elements(ns + "Property") ?? Enumerable.Empty<XElement>())
+        {
+            var attribute = property.Attribute("name");
+
+            if (attribute != null)
+                yield return attribute.Value;
+        }
+    }
+}
+
+static IEnumerable<string> GetRelationships(XNamespace ns, XElement entity)
+{
+    var entityMapping = entity.Element(ns + "Relationships");
+
+    if (entityMapping != null)
+    {
+        foreach (var property in
+            entityMapping.Elements(ns + "Relationship") ?? Enumerable.Empty<XElement>())
+        {
+            var attribute = property.Attribute("name");
+
+            if (attribute != null)
+                yield return attribute.Value;
+        }
+    }
+}
+
+static IEnumerable<string> GetEntityMappingProperties(XNamespace ns, XElement entity)
+{
+    var entityMappings = entity.Element(ns+"EntityMappings");
+
+    if (entityMappings != null)
+    {
+        var entityMapping = entityMappings.Element(ns + "EntityMapping");
+
+        if (entityMapping != null)
+        {
+            foreach (var property in 
+                entityMapping.Elements(ns + "PropertyMappings") ?? Enumerable.Empty<XElement>())
+            {
+                var attribute = property.Attribute("property");
+
+                if (attribute != null)
+                    yield return attribute.Value;
+            }
+        }
+    }
+}
+
+/***** CONFIGURATION START ******/
+
+string MetadataFile
+{
+	// Relative path from this file to the MetadataDefinitions.xml file - usually located in the web-site project.
+	get { return Host.ResolvePath(@"..\Website\MetadataDefinitions.xml"); }
+}
+
+static string Namespace 
+{ 
+	// Namespace you want the generated class to reside in.
+	get { return "CommerceServer.Extensions"; } 
+}
+
+static string EntryClassName
+{
+	// Name of generated class.
+	get { return "MetadataDefinitions"; }
+}
+
+static bool GenerateFieldsAsConstants
+{
+	// Decides whether to generate fields as constants or static readonly fields
+	// Only constants can be used for e.g. Attribute-parameters
+	// Pros/cons: http://devlicio.us/blogs/joe_niland/archive/2006/09/27/C_2300_-static-readonly-vs-constant-variables_3A00_-when-to-use-each.aspx
+	get { return true; }
+}
+
+static bool CreateClassAsPublic
+{
+	// Decides whether to mark the visibility of the class to public otherwise internal will be used.
+	get { return true; }
+}
+
+/***** CONFIGURATION END ******/
+#>
