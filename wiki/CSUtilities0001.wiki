@@ -20,7 +20,8 @@ You decide whether properties are created as constants or static readonly fields
 
 The code below is an example of a Catalog Query that is not using the T4 template
 
-{{{var query = new CommerceQuery<CommerceEntity>("Product"); 
+{{{
+var query = new CommerceQuery<CommerceEntity>("Product"); 
  
 query.Model.Properties.Add("Id"); 
 query.Model.Properties.Add("DisplayName"); 
@@ -32,7 +33,8 @@ query.SearchCriteria.Model.SetPropertyValue("Id", productId);
 
 When using the strongly-typed code generated MetadataDefinitions class, the code will look like
 
-{{{var query = new CommerceQuery<CommerceEntity>(MetadataDefinitions.Product.EntityName); 
+{{{
+var query = new CommerceQuery<CommerceEntity>(MetadataDefinitions.Product.EntityName); 
  
 query.Model.Properties.Add(MetadataDefinitions.Product.Properties.Id); 
 query.Model.Properties.Add(MetadataDefinitions.Product.Properties.DisplayName); 
