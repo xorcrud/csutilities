@@ -52,9 +52,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommerceServer.Extensions\CommerceServer.Extensions.csproj">
+    <ProjectReference Include="..\CSUtilities\CSUtilities.csproj">
       <Project>{63B88A89-F8C3-483D-81B5-03690BC2CAF2}</Project>
-      <Name>CommerceServer.Extensions</Name>
+      <Name>CSUtilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
