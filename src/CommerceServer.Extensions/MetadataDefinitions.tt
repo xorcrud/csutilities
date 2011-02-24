@@ -296,7 +296,7 @@ string MetadataFile
 static string Namespace 
 { 
 	// Namespace you want the generated class to reside in.
-	get { return "CommerceServer.Extensions"; } 
+	get { return "CSUtilities"; } 
 }
 
 static string EntryClassName
