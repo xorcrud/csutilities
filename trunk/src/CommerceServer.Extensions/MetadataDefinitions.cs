@@ -1,4 +1,4 @@
-namespace CommerceServer.Extensions
+namespace CSUtilities
 {
     /// <summary>
     /// Example on how you can extend the generated class by creating a partial class of name "MetadataDefinitions".
