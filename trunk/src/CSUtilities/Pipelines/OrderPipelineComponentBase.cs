@@ -3,7 +3,6 @@ using Microsoft.CommerceServer.Interop;
 using Microsoft.CommerceServer.Runtime;
 using IDictionary = Microsoft.CommerceServer.Runtime.IDictionary;
 
-
 namespace CSUtilities.Pipelines
 {
     public abstract class OrderPipelineComponentBase : IPipelineComponent
