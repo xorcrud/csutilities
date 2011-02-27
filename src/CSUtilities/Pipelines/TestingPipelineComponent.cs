@@ -7,9 +7,9 @@ namespace CSUtilities.Pipelines
     [ComVisible(true)]
     public class TestingPipelineComponent : OrderPipelineComponentBase
     {
-        protected override PipelineExecutionResult Execute(IDictionary order, object context, int flags)
+        protected override void Execute(OrderAdapter order)
         {
-            return PipelineExecutionResult.Success;
+            //
         }
     }
 }

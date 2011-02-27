@@ -5,14 +5,17 @@ namespace CSUtilities.Pipelines
 {
     public class OrderAdapter : Adapter
     {
-        protected OrderAdapter(IDictionary inner)
+        public OrderAdapter(IDictionary inner)
             : base(inner)
         {
         }
 
-        public ICollection<LineItemAdapter> LineItems
+        public IEnumerable<LineItemAdapter> LineItems
         {
-            get { return new ListAdapter<LineItemAdapter>((ISimpleList)Inner["LineItems"]); }
+            get
+            {
+                return new ListAdapter<LineItemAdapter>((ISimpleList)Inner["items"], x => new LineItemAdapter(x));
+            }
         }
     }
 }

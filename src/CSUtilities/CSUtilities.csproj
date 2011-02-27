@@ -56,6 +56,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OrderPipelineMappings.generated.cs">
+      <DependentUpon>OrderPipelineMappings.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="MetadataDefinitions.cs" />
     <Compile Include="MetadataDefinitions.generated.cs">
       <AutoGen>True</AutoGen>
@@ -72,6 +77,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="OrderPipelineMappings.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>OrderPipelineMappings.generated.cs</LastGenOutput>
+    </None>
     <None Include="MetadataDefinitions.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>MetadataDefinitions.generated.cs</LastGenOutput>

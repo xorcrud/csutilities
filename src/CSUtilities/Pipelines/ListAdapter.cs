@@ -1,23 +1,22 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.CommerceServer.Runtime;
 using IDictionary = Microsoft.CommerceServer.Runtime.IDictionary;
 
 namespace CSUtilities.Pipelines
 {
-    public class ListAdapter<TElementAdapter> : ICollection<TElementAdapter>
+    public class ListAdapter<TElementAdapter> : IEnumerable<TElementAdapter>
         where TElementAdapter : Adapter
     {
-        private readonly ISimpleList _inner;
-        private readonly Func<IDictionary, TElementAdapter> _createItemAdapter;
+        private readonly IList<TElementAdapter> _inner;
 
-        public ListAdapter(ISimpleList inner/*, Func<IDictionary, TElementAdapter> createItemAdapter*/)
+        public ListAdapter(ISimpleList inner, Func<IDictionary, TElementAdapter> createItemAdapter)
         {
             if (inner == null) throw new ArgumentNullException("inner");
 
-            _inner = inner;
-            //_createItemAdapter = createItemAdapter;
+            _inner = inner.OfType<IDictionary>().Select(createItemAdapter).ToList();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -27,42 +26,7 @@ namespace CSUtilities.Pipelines
 
         public IEnumerator<TElementAdapter> GetEnumerator()
         {
-            throw new NotImplementedException();
-        }
-
-        public void Add(TElementAdapter item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Clear()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Contains(TElementAdapter item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CopyTo(TElementAdapter[] array, int arrayIndex)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Remove(TElementAdapter item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int Count
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public bool IsReadOnly
-        {
-            get { throw new NotImplementedException(); }
+            return _inner.GetEnumerator();
         }
     }
 }
