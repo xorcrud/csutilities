@@ -134,6 +134,12 @@
     <None Include="pipelines\recvpo.pcf" />
     <None Include="pipelines\total.pcf" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CSUtilities\CSUtilities.csproj">
+      <Project>{63B88A89-F8C3-483D-81B5-03690BC2CAF2}</Project>
+      <Name>CSUtilities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>
