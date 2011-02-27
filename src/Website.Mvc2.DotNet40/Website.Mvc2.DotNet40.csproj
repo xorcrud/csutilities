@@ -72,6 +72,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\Website\MetadataDefinitions.xml">
+      <Link>MetadataDefinitions.xml</Link>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="OrderObjectMappings.xml" />
     <Content Include="OrderPipelineMappings.xml" />
@@ -134,4 +137,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PreBuildEvent>copy $(ProjectDir)..\Website\MetadataDefinitions.xml $(ProjectDir)\MetadataDefinitions.xml</PreBuildEvent>
+  </PropertyGroup>
 </Project>
