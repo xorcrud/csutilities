@@ -45,7 +45,7 @@ namespace CSUtilities.Pipelines
             if (ex == null) throw new ArgumentNullException("ex");
 
             object errorMessage = ex.Message;
-            ((ISimpleList) order["_Basket_Errors"]).Add(ref errorMessage); // todo: create OrderConstants class
+            ((ISimpleList) order[OrderPipelineMappings.OrderForm.BasketErrors]).Add(ref errorMessage);
         }
 
         public virtual void EnableDesign(int fEnable)
