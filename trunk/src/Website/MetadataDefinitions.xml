@@ -176,47 +176,6 @@ This file contains the Metadata Repository
               </EnumerationEntry>
             </EnumeratedValues>
           </Property>
-
-          <!-- 
-					The following property definitions are examples of some of the
-					metadata features: multilingual values, constraints etc.
-					<Property name="IntroductionDate" dataType="Date">
-						<DisplayName value="Date of Introduction">
-							<LanguageSpecific value="fr: Date of Introduction" language="fr-CA"/>
-						</DisplayName>
-
-						<Description value="Product Introduction Date of Introduction">
-							<LanguageSpecific value="fr: Product Introduction Date of Introduction" language="fr-CA"/>
-						</Description>
-						
-						<Constraints>
-							<Compare operator="LessThan" propertyToCompare="DiscontinueDate">
-								<Message value="Date of Introduction must be less than Discontinue Date.">
-									<LanguageSpecific value="fr: Date of Introduction must be less than Discontinue Date." language="fr-CA"/>
-								</Message>
-							</Compare>
-						</Constraints>
-					</Property>
-					-->
-
-          <!--<Property name="ListPrice" dataType="Decimal" isStronglyTyped="true">
-						<DisplayName value="List Price">
-							<LanguageSpecific value="fr: List Price" language="fr-CA"/>
-						</DisplayName>
-
-						<Description value="Product List Price">
-							<LanguageSpecific value="fr: Product List Price" language="fr-CA"/>
-						</Description>
-						<DefaultValue value="10.5"/>
-						<Format value="0:C" />
-						<Constraints>
-							<Range minValue="0" minBoundaryType="Include" maxValue="10000" maxBoundaryType="Include" >
-								<Message value="List Price must be within the defined range.">
-									<LanguageSpecific value="fr: List Price must be within the defined range." language="fr-CA"/>
-								</Message>
-							</Range>
-						</Constraints>
-					</Property>-->
         </Properties>
 
         <Relationships>
@@ -268,18 +227,6 @@ This file contains the Metadata Repository
               <LanguageSpecific value="fr: Product Variants" language="fr-CA"/>
             </Description>
           </Relationship>
-
-          <!-- 
-					<Relationship name="Reviews" type="CatalogRelationship" modelName="InfoArticle" isMultipleItems="true" >
-						<DisplayName value="Product Reviews">
-							<LanguageSpecific value="fr: Product Reviews" language="fr-CA"/>
-						</DisplayName>
-
-						<Description value="Product Reviews">
-							<LanguageSpecific value="fr: Product Reviews" language="fr-CA"/>
-						</Description>
-					</Relationship>
-					-->
         </Relationships>
 
       </CommerceEntity>
@@ -369,28 +316,6 @@ This file contains the Metadata Repository
               </EnumerationEntry>
             </EnumeratedValues>
           </Property>
-
-          <!-- 
-					The following property definitions are examples of some of the
-					metadata features.
-					<Property name="Size" dataType="String">
-						<DisplayName value="Size">
-							<LanguageSpecific value="fr: Size" language="fr-CA"/>
-						</DisplayName>
-
-						<Description value="Product Size">
-							<LanguageSpecific value="fr: Product Size" language="fr-CA"/>
-						</Description>
-						
-						<Constraints>
-							<Range minValue="4" minBoundaryType="Include" maxValue="4" maxBoundaryType="Include" >
-								<Message value="Product Size must be 4 characters long.">
-									<LanguageSpecific value="fr: Boot Size must be 4 characters long" language="fr-CA"/>
-								</Message>
-							</Range>
-						</Constraints>
-					</Property>
-					-->
         </Properties>
 
         <Relationships>
@@ -638,64 +563,6 @@ This file contains the Metadata Repository
         </EntityMappings>
 
         <Properties>
-          <!-- 
-					The following property definitions are examples of some of the
-					metadata features.
-					<Property name="Email" dataType="String">
-						<DisplayName value="E-mail">
-							<LanguageSpecific value="fr: E-mail" language="fr-CA"/>
-						</DisplayName>
-
-						<Description value="User's e-mail address">
-							<LanguageSpecific value="fr: User's e-mail address" language="fr-CA"/>
-						</Description>
-
-						<Constraints>
-							<RequiredProperty>
-								<Message value="E-mail address is required">
-									<LanguageSpecific value="fr: E-mail address is required" language="fr-CA"/>
-								</Message>
-							</RequiredProperty>
-
-							<RegularExpression>
-								<Message value="E-mail address must follow the format somthing@someserver.com | firstname.lastname@mailserver.domain.com | username-something@some-server.">
-									<LanguageSpecific value="fr: E-mail address must follow the format somthing@someserver.com | firstname.lastname@mailserver.domain.com | username-something@some-server." language="fr-CA"/>
-								</Message>
-								<Pattern value="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"  />
-							</RegularExpression>
-						</Constraints>
-					</Property>
-					
-					<Property name="AccountStatus" dataType="Integer" isMultilingual="true">
-						<DisplayName value="Account Status">
-							<LanguageSpecific value="fr: Account Status" language="fr-CA"/>
-						</DisplayName>
-
-						<Description value="Account Status">
-							<LanguageSpecific value="fr: Account Status" language="fr-CA"/>
-						</Description>
-
-						<DefaultValue value="1" />
-
-						<EnumeratedValues>
-							<EnumerationEntry value="0" >
-								<DisplayName value="Inactive Account">
-									<LanguageSpecific value="fr: Inactive Account" language="fr-CA"/>
-								</DisplayName>
-							</EnumerationEntry>
-							<EnumerationEntry value="1" >
-								<DisplayName value="Active Account">
-									<LanguageSpecific value="fr: Active Account" language="fr-CA"/>
-								</DisplayName>
-							</EnumerationEntry>
-							<EnumerationEntry value="2" >
-								<DisplayName value="Requires Approval">
-									<LanguageSpecific value="fr: Requires Approval" language="fr-CA"/>
-								</DisplayName>
-							</EnumerationEntry>
-						</EnumeratedValues>
-					</Property>
-					-->
         </Properties>
 
         <Relationships>
@@ -1540,53 +1407,5 @@ This file contains the Metadata Repository
 	</DefaultChannel>
 
 	<Channels>
-		<!--<Channel name="TestChannel">
-			<BusinessItems>
-				
-				<CommerceEntity
-					name="Address"
-					type="Microsoft.Commerce.Contracts.CommerceEntities.Address"
-					assembly="Microsoft.Commerce.Contracts">
-
-					<Properties>
-						<Property name="City" dataType="String">
-							<Constraints>
-								<clear/>
-
-								<Range minValue="0" minBoundaryType="Include" maxValue="32" maxBoundaryType="Include">
-								</Range>
-							</Constraints>
-						</Property>
-					</Properties>
-				</CommerceEntity>
-				
-				<CommerceEntity
-					name="UserProfile"
-					type="Microsoft.Commerce.Contracts.CommerceEntities.UserProfile"
-					assembly="Microsoft.Commerce.Contracts">
-
-					<Properties>
-						<remove name="AccountStatus"/>
-						
-						<Property name="AccountStatus" dataType="Integer">
-							<DisplayName value="Status">
-								<LanguageSpecific value="fr: Status" language="fr-CA"/>
-							</DisplayName>
-						</Property>
-
-						<Property name="Email" dataType="String">
-							<Constraints>
-								<Range minValue="5" minBoundaryType="Include" maxValue="50" maxBoundaryType="Include">
-									<Message value="Email address length must be within the defined range.">
-										<LanguageSpecific value="fr: Email address length must be within the defined range." language="fr-CA"/>
-									</Message>
-								</Range>
-							</Constraints>
-						</Property>
-					</Properties>
-				</CommerceEntity>
-
-			</CommerceEntities>
-		</Channel>-->
 	</Channels>
 </MetadataDefinitions>
