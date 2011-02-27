@@ -75,9 +75,13 @@
     <Content Include="..\Website\MetadataDefinitions.xml">
       <Link>MetadataDefinitions.xml</Link>
     </Content>
+    <Content Include="..\Website\OrderObjectMappings.xml">
+      <Link>OrderObjectMappings.xml</Link>
+    </Content>
+    <Content Include="..\Website\OrderPipelineMappings.xml">
+      <Link>OrderPipelineMappings.xml</Link>
+    </Content>
     <Content Include="Global.asax" />
-    <Content Include="OrderObjectMappings.xml" />
-    <Content Include="OrderPipelineMappings.xml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -98,7 +102,9 @@
     <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ChannelConfiguration.config" />
+    <Content Include="..\Website\ChannelConfiguration.config">
+      <Link>ChannelConfiguration.config</Link>
+    </Content>
     <None Include="pipelines\Advertising.PCF" />
     <None Include="pipelines\basket.pcf" />
     <None Include="pipelines\checkout.pcf" />
@@ -138,6 +144,9 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PreBuildEvent>copy $(ProjectDir)..\Website\MetadataDefinitions.xml $(ProjectDir)\MetadataDefinitions.xml</PreBuildEvent>
+    <PreBuildEvent>copy $(ProjectDir)..\Website\MetadataDefinitions.xml $(ProjectDir)\MetadataDefinitions.xml
+copy $(ProjectDir)..\Website\ChannelConfiguration.config $(ProjectDir)\ChannelConfiguration.config
+copy $(ProjectDir)..\Website\OrderObjectMappings.xml $(ProjectDir)\OrderObjectMappings.xml
+copy $(ProjectDir)..\Website\OrderPipelineMappings.xml $(ProjectDir)\OrderPipelineMappings.xml</PreBuildEvent>
   </PropertyGroup>
 </Project>
