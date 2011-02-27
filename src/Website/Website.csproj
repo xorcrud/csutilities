@@ -64,7 +64,9 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="OrderObjectMappings.xml" />
+    <Content Include="OrderObjectMappings.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="OrderPipelineMappings.xml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

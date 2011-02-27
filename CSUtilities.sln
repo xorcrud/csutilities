@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSUtilities", "src\CSUtilit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmokeTester", "src\SmokeTester\SmokeTester.csproj", "{4120CBB5-4E49-459B-B98E-1A62AC65529B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet20Temp", "src\DotNet20Temp\DotNet20Temp.csproj", "{6813A366-D2F5-4FB3-904A-0C1EBE590E3C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "@Docs", "@Docs", "{77692DC1-F29E-4A4A-8335-FA3C450BFF76}"
 	ProjectSection(SolutionItems) = preProject
 		docs\Notes.txt = docs\Notes.txt
@@ -64,16 +62,6 @@ Global
 		{4120CBB5-4E49-459B-B98E-1A62AC65529B}.Release|Mixed Platforms.Build.0 = Release|x86
 		{4120CBB5-4E49-459B-B98E-1A62AC65529B}.Release|x86.ActiveCfg = Release|x86
 		{4120CBB5-4E49-459B-B98E-1A62AC65529B}.Release|x86.Build.0 = Release|x86
-		{6813A366-D2F5-4FB3-904A-0C1EBE590E3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6813A366-D2F5-4FB3-904A-0C1EBE590E3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6813A366-D2F5-4FB3-904A-0C1EBE590E3C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{6813A366-D2F5-4FB3-904A-0C1EBE590E3C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{6813A366-D2F5-4FB3-904A-0C1EBE590E3C}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{6813A366-D2F5-4FB3-904A-0C1EBE590E3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6813A366-D2F5-4FB3-904A-0C1EBE590E3C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6813A366-D2F5-4FB3-904A-0C1EBE590E3C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{6813A366-D2F5-4FB3-904A-0C1EBE590E3C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{6813A366-D2F5-4FB3-904A-0C1EBE590E3C}.Release|x86.ActiveCfg = Release|Any CPU
 		{E808D2D5-6A57-4AE9-AB3B-57CFA3B6FE2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E808D2D5-6A57-4AE9-AB3B-57CFA3B6FE2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E808D2D5-6A57-4AE9-AB3B-57CFA3B6FE2E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
