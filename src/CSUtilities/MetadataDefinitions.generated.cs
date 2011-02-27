@@ -25,6 +25,7 @@
 //
 // February/2011 by
 // Brian Holmgård Kristensen
+// (author of CSUtilities)
 // blog.brianh.dk / CommerceServerTraining.com
 //
 // All information, source code, and especially tools are 

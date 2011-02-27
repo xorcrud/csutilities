@@ -71,6 +71,8 @@
     <Compile Include="Pipelines\LineItemAdapter.cs" />
     <Compile Include="Pipelines\ListAdapter.cs" />
     <Compile Include="Pipelines\OrderAdapter.cs" />
+    <Compile Include="Pipelines\PaymentAdapter.cs" />
+    <Compile Include="Pipelines\ShipmentAdapter.cs" />
     <Compile Include="Pipelines\TestingPipelineComponent.cs" />
     <Compile Include="Pipelines\OrderPipelineComponentBase.cs" />
     <Compile Include="Pipelines\PipelineExecutionResult.cs" />
