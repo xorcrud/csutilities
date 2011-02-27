@@ -19,10 +19,24 @@ namespace CSUtilities.Pipelines
                 throw new InvalidOperationException(
                     String.Format("pdispOrder argument is not an IDictionary. Type is '{0}'", pdispOrder.GetType().FullName));
 
-            return (int)SafeExecute(order, pdispContext, lFlags);
+            return (int)Execute(order, pdispContext, lFlags);
         }
 
-        public virtual void EnableDesign(int fEnable)
+        protected virtual PipelineExecutionResult Execute(IDictionary order, object context, int flags)
+        {
+            try
+            {
+                Execute(new OrderAdapter(order));
+                return PipelineExecutionResult.Success;
+            }
+            catch (Exception ex)
+            {
+                AddExceptionDetails(order, ex);
+                return PipelineExecutionResult.Error;
+            }
+        }
+
+        protected virtual void Execute(OrderAdapter order)
         {
         }
 
@@ -35,19 +49,8 @@ namespace CSUtilities.Pipelines
             ((ISimpleList) order["_Basket_Errors"]).Add(ref errorMessage); // todo: create OrderConstants class
         }
 
-        protected virtual PipelineExecutionResult SafeExecute(IDictionary order, object context, int flags)
+        public virtual void EnableDesign(int fEnable)
         {
-            try
-            {
-                return Execute(order, context, flags);
-            }
-            catch (Exception ex)
-            {
-                AddExceptionDetails(order, ex);
-                return PipelineExecutionResult.Error;
-            }
         }
-
-        protected abstract PipelineExecutionResult Execute(IDictionary order, object context, int flags);
     }
 }
