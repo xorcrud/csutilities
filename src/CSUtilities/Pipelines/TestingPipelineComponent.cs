@@ -14,12 +14,10 @@ namespace CSUtilities.Pipelines
 
             foreach (var shipment in order.Shipments)
             {
-                
             }
 
             foreach (var payment in order.Payments)
             {
-                
             }
         }
     }
