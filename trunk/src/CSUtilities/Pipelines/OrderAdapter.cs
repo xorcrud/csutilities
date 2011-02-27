@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.CommerceServer.Runtime;
+using IDictionary = Microsoft.CommerceServer.Runtime.IDictionary;
 
 namespace CSUtilities.Pipelines
 {
@@ -14,7 +15,32 @@ namespace CSUtilities.Pipelines
         {
             get
             {
-                return new ListAdapter<LineItemAdapter>((ISimpleList)Inner["items"], x => new LineItemAdapter(x));
+                return 
+                    new ListAdapter<LineItemAdapter>(
+                        GetValue<ISimpleList>(OrderPipelineMappings.OrderForm.LineItems),
+                        x => new LineItemAdapter(x));
+            }
+        }
+
+        public IEnumerable<ShipmentAdapter> Shipments
+        {
+            get
+            {
+                return
+                    new ListAdapter<ShipmentAdapter>(
+                        GetValue<ISimpleList>(OrderPipelineMappings.OrderForm.Shipments),
+                        x => new ShipmentAdapter(x));
+            }
+        }
+
+        public IEnumerable<PaymentAdapter> Payments
+        {
+            get
+            {
+                return
+                    new ListAdapter<PaymentAdapter>(
+                        GetValue<ISimpleList>(OrderPipelineMappings.OrderForm.Payments),
+                        x => new PaymentAdapter(x));
             }
         }
     }

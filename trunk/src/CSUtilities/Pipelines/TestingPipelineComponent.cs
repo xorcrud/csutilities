@@ -1,5 +1,4 @@
 using System.Runtime.InteropServices;
-using Microsoft.CommerceServer.Runtime;
 
 namespace CSUtilities.Pipelines
 {
@@ -9,7 +8,21 @@ namespace CSUtilities.Pipelines
     {
         protected override void Execute(OrderAdapter order)
         {
-            //
+            foreach (var lineItem in order.LineItems)
+            {
+                lineItem["TestTest"] =
+                    lineItem.GetProductProperty(MetadataDefinitions.Product.Properties.Description);
+            }
+
+            foreach (var shipment in order.Shipments)
+            {
+                
+            }
+
+            foreach (var payment in order.Payments)
+            {
+                
+            }
         }
     }
 }

@@ -30,7 +30,8 @@
 ///////////////////////////////////////////////////////////////////////
 //
 // February/2011 by
-// Brian Holmgård Kristensen, author of CSUtilities
+// Brian Holmgård Kristensen 
+// (author of CSUtilities)
 // blog.brianh.dk / CommerceServerTraining.com
 //
 // All information, source code, and especially tools are 
@@ -48,137 +49,29 @@ namespace <#= GetNamespace() #>
     {
 <#
 var xDoc = XDocument.Load(OrderPipelineMappingsFile);
-var ns = xDoc.Root.GetDefaultNamespace();
 
-var defaultChannel = 
-    xDoc.Root
-        .Element(ns+"PipelineAdapterMap");
-
-foreach (var entity in GetEntities(ns, defaultChannel))
+foreach (var classEntity in GetClasses(xDoc))
 {
 #>
-		#region <#= entity.Key #>
+		#region <#= classEntity.Key #>
 
-		public partial class <#= entity.Key #>
+		public partial class <#= classEntity.Key #>
 		{
 <#
-	if (GenerateFieldsAsConstants)
-	{
-#>
-			public const string EntityName = "<#= entity.Key #>";
-<#
-	}
-	else
-	{
-#>
-			public static readonly string EntityName = "<#= entity.Key #>";
-<#
-	}	
-#>	
-			public partial class Properties
-			{
-<#
-	var properties = GetProperties(ns, entity.Value);
-	
-    foreach (var property in properties)
+    foreach (var property in GetPropertiesAndCollections(classEntity.Value))
     {
-			if (GenerateFieldsAsConstants)
-			{
-#>
-				public const string <#= property #> = "<#= property #>";
-<#
-			}
-			else
-			{
-#>
-				public static readonly string <#= property #> = "<#= property #>";
-<#
-			}
-	}
-
-	if (properties.Any())
-	{
-#>
-	
-				public static IEnumerable<string> All
-				{
-					get
-					{
-						var result = new List<string>
-						{
-<#
-		foreach (var property in properties)
+		if (GenerateFieldsAsConstants)
 		{
 #>
-							<#= property #>,
+			public const string <#= property.Key #> = "<#= property.Value #>";
 <#
 		}
-#>
-						};
-
-						AddToAll(result.Add);
-
-						return result;
-					}			
-				}
-
-				static partial void AddToAll(Action<string> addProperty);
-<#
-	}
-#>
-			}
-<#
-
-	var relationships = GetRelationships(ns, entity.Value);
-
-	if (relationships.Any())
-	{
-#>
-
-            public partial class Relationships
-            {
-<#
-		foreach (var relationship in relationships)
-		{
-			if (GenerateFieldsAsConstants)
-			{
-#>
-				public const string <#= relationship #> = "<#= relationship #>";
-<#
-			}
-			else
-			{
-#>
-				public static readonly string <#= relationship #> = "<#= relationship #>";
-<#
-			}
-		}
-#>
-			
-				public static IEnumerable<string> All
-				{
-					get
-					{
-						var result = new List<string>
-						{					
-<#
-		foreach (var relationship in relationships)
+		else
 		{
 #>
-							<#= relationship #>,
+			public static readonly string <#= property.Key #> = "<#= property.Value #>";
 <#
 		}
-#>						};		
-
-						AddToAll(result.Add);
-
-						return result;						
-					}			
-				}
-					
-				static partial void AddToAll(Action<string> addRelationship);
-            }
-<#
 	}
 #>
 		}
@@ -187,9 +80,9 @@ foreach (var entity in GetEntities(ns, defaultChannel))
 
 <#
 }
-#>
+#>	
 	}
-}
+}	
 
 <#+
 string GetNamespace()
@@ -205,82 +98,34 @@ string GuessNamespace()
 	throw new NotImplementedException("Feature not implemented.");
 }
 
-static IEnumerable<KeyValuePair<string, XElement>> GetEntities(XNamespace ns, XElement channel)
+static IEnumerable<KeyValuePair<string, XElement>> GetClasses(XDocument document)
 {
-    var entities = channel.Elements(ns + "Class");
+    var classes = document.Root.Elements("Class");
 
-    if (entities != null)
+    if (classes != null)
     {
-        foreach (var entity in entities)
+        foreach (var classEntity in classes)
         {
-            var nameAttribute = entity.Attribute("name");
+            var nameAttribute = classEntity.Attribute("Name");
 
             if (nameAttribute != null)
-                yield return new KeyValuePair<string, XElement>(nameAttribute.Value, entity);
+                yield return new KeyValuePair<string, XElement>(nameAttribute.Value, classEntity);
         }
     }
 }
 
-static IEnumerable<string> GetProperties(XNamespace ns, XElement entity)
+static IEnumerable<KeyValuePair<string, string>> GetPropertiesAndCollections(XElement entity)
 {
-    return
-        GetEntityMappingProperties(ns, entity)
-            .Union(GetRegularProperties(ns, entity));
-}
+    var propertiesAndCollections = 
+		(entity.Elements("Property") ?? Enumerable.Empty<XElement>())
+			.Union(entity.Elements("Collection") ?? Enumerable.Empty<XElement>());
 
-static IEnumerable<string> GetRegularProperties(XNamespace ns, XElement entity)
-{
-    var entityMapping = entity.Element(ns + "Properties");
-
-    if (entityMapping != null)
+    foreach (var property in propertiesAndCollections)
     {
-        foreach (var property in
-            entityMapping.Elements(ns + "Property") ?? Enumerable.Empty<XElement>())
-        {
-            var attribute = property.Attribute("name");
+		var name = property.Attribute("Name");
+        var dictionaryKey = property.Attribute("DictionaryKey");
 
-            if (attribute != null)
-                yield return attribute.Value;
-        }
-    }
-}
-
-static IEnumerable<string> GetRelationships(XNamespace ns, XElement entity)
-{
-    var entityMapping = entity.Element(ns + "Relationships");
-
-    if (entityMapping != null)
-    {
-        foreach (var property in
-            entityMapping.Elements(ns + "Relationship") ?? Enumerable.Empty<XElement>())
-        {
-            var attribute = property.Attribute("name");
-
-            if (attribute != null)
-                yield return attribute.Value;
-        }
-    }
-}
-
-static IEnumerable<string> GetEntityMappingProperties(XNamespace ns, XElement entity)
-{
-    var entityMappings = entity.Element(ns+"EntityMappings");
-
-    if (entityMappings != null)
-    {
-        var entityMapping = entityMappings.Element(ns + "EntityMapping");
-
-        if (entityMapping != null)
-        {
-            foreach (var property in 
-                entityMapping.Elements(ns + "PropertyMappings") ?? Enumerable.Empty<XElement>())
-            {
-                var attribute = property.Attribute("property");
-
-                if (attribute != null)
-                    yield return attribute.Value;
-            }
-        }
+        yield return new KeyValuePair<string, string>(name.Value, dictionaryKey.Value);
     }
 }
 
@@ -309,7 +154,7 @@ static bool GenerateFieldsAsConstants
 	// Decides whether to generate fields as constants or static readonly fields
 	// Only constants can be used for e.g. Attribute-parameters
 	// Pros/cons: http://devlicio.us/blogs/joe_niland/archive/2006/09/27/C_2300_-static-readonly-vs-constant-variables_3A00_-when-to-use-each.aspx
-	get { return true; }
+	get { return false; }
 }
 
 static bool CreateClassAsPublic

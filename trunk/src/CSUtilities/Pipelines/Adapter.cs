@@ -50,7 +50,7 @@ namespace CSUtilities.Pipelines
             return value;
         }
 
-        public IDictionary Inner
+        public IDictionary Entity
         {
             get { return _inner; }
         }
