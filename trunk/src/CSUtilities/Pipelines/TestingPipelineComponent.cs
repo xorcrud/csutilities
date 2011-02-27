@@ -10,8 +10,6 @@ namespace CSUtilities.Pipelines
         {
             foreach (var lineItem in order.LineItems)
             {
-                lineItem["TestTest"] =
-                    lineItem.GetProductProperty(MetadataDefinitions.Product.Properties.Description);
             }
 
             foreach (var shipment in order.Shipments)

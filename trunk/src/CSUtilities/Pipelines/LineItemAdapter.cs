@@ -27,9 +27,9 @@ namespace CSUtilities.Pipelines
             get { return GetValue<string>(OrderPipelineMappings.LineItem.ProductVariantId); }
         }
 
-        public decimal Quantity
+        public int Quantity
         {
-            get { return GetValue<decimal>(OrderPipelineMappings.LineItem.Quantity); }
+            get { return GetValue<int>(OrderPipelineMappings.LineItem.Quantity); }
         }
 
         public object GetProductProperty(string propertyName)
