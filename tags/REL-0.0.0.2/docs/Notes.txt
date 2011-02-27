@@ -1,0 +1,2 @@
+Fully Qualified Name (FQN):
+CSUtilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06dc92500529a411
