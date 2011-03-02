@@ -1,0 +1,2214 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Commerce.Application.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.BaseChannel">
+            <summary>
+            Represent base class for Channel ConfigurationElement.  Default channels and Proper channels will inherit from this class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.BaseChannel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Application.Common.Configuration.BaseChannel"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.BaseChannel.SiteName">
+            <summary>
+            Gets or sets the name of the Commerce Server site used by a given channel.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.BaseChannel.MessageHandlers">
+            <summary>
+            Gets the collection of ServiceProviders available to a given channel.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.BaseChannel.Translators">
+            <summary>
+            Gets the translators.
+            </summary>
+            <value>The translators.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.Channel">
+            <summary>
+            Represents the Channel configuration element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.Channel.Name">
+            <summary>
+            Gets or sets the name of the channel. 
+            </summary>
+            <remarks>
+            This DefaultValue is a bit of a hack, it seems there is a bug in System.Configuration with regards to
+            StringValidator, if a MinLength is specified without a DefaultValue, an exception is always thrown.  Seems
+            that the validation is applied before the properties are populated.  Anyway there is no danger here since the 
+            attribute in question IsRequired, the default should never persist
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.Channel.SiteName">
+            <summary>
+            Gets or sets the site name associated with the Channel. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.ChannelCollection">
+            <summary>
+            Represents a collection of Channel configuration elements.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ChannelCollection.Add(Microsoft.Commerce.Application.Common.Configuration.Channel)">
+            <summary>
+            Allows you to add a Provider to the collection. 
+            </summary>
+            <param name="channel">Channel to be added to the collection.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ChannelCollection.GetChannelByKey(System.String)">
+            <summary>
+            Returns the provider with a given key.  The name is the key attribute.
+            </summary>
+            <param name="key">String key.</param>
+            <returns>Provider with the given key.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ChannelCollection.CreateNewElement">
+            <summary>
+            Allows the creation of a new Configuration Element of type Channel. 
+            </summary>
+            <returns>A new Channel object.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ChannelCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Retrieves the key (name) of the Configuration element of type Channel passed. 
+            </summary>
+            <param name="element">ConfigurationElement of type Provider.</param>
+            <returns>Object representation of the key (name) of the configuration element.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ChannelCollection.BaseAdd(System.Configuration.ConfigurationElement)">
+            <summary>
+            Allows you to add a ConfigurationElement to the collection.
+            </summary>
+            <param name="element">ConfigurationElement to be added to the collection.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.AddressMapCollection">
+            <summary>
+            Provides access to the AddressMapCollection element of the Orders configuration. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.AddressMapCollection.#ctor">
+            <summary>
+            Initializes a new instance of the AddressMapCollection class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.AddressMapCollection.GetPropertyByKey(System.String)">
+            <summary>
+            Returns the AddressProperty with a given key.  The name is the key attribute.
+            </summary>
+            <param name="key">String key.</param>
+            <returns>AddressProperty with the given key.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.AddressMapCollection.Add(Microsoft.Commerce.Application.Common.Configuration.CommerceSite.AddressProperty)">
+            <summary>
+            Allows you to add a Provider to the collection. 
+            </summary>
+            <param name="addressProperty">Site to be added to the collection.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.AddressMapCollection.CreateNewElement">
+            <summary>
+            Allows the creation of a new Configuration Element of type Site. 
+            </summary>
+            <returns>Address Property</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.AddressMapCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Retrieves the key (name) of the Configuration element of type Site passed. 
+            </summary>
+            <param name="element">ConfigurationElement of type Site.</param>
+            <returns>Object representation of the key (name) of the configuration element.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.AddressMapCollection.BaseAdd(System.Configuration.ConfigurationElement)">
+            <summary>
+            Allows you to add a ConfigurationElement to the collection.
+            </summary>
+            <param name="element">ConfigurationElement to be added to the collection.</param>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.AddressMapCollection.Name">
+            <summary>
+            Gets or sets the name of the address Map.  Is a key and unique. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.AddressProperty">
+            <summary>
+            Provides access to an Address Property. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.AddressProperty.#ctor">
+            <summary>
+            Initializes a new instance of the AddressProperty class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.AddressProperty.From">
+            <summary>
+            Gets or sets the From attribute of an Address property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.AddressProperty.To">
+            <summary>
+            Gets or sets the To attribute of an Address property. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerAuthentication">
+            <summary>
+            Configuration class which allows access to the Commerce Server Authorization Configuration element.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerAuthentication.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceServerAuthentication class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerAuthentication.DetectCookies">
+            <summary>
+            Gets or sets a value indicating whether cookies should be detected or not.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CatalogCache">
+            <summary>
+            Provides access to the CatalogCache of the Commerce Server Catalog configuration. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CatalogCache.#ctor">
+            <summary>
+            Initializes a new instance of the CatalogCache class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CatalogCache.Enable">
+            <summary>
+            Gets or sets a value indicating whether data sets in the catalog system should be cached.
+            The time interval for each of these data set types is controlled by the corresponding 
+            timeout attribute. If caching is enabled but the timeOut attribute is missing, the dataset will be 
+            cached for 5 minutes on the server.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CatalogCache.SchemaTimeout">
+            <summary>
+            Gets or sets the time (in minutes) for which the data sets pertaining to the catalog schema are cached.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CatalogCache.ItemInformationCacheTimeout">
+            <summary>
+            Gets or sets the time (in minutes) for which the Item.Information data sets are cached. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CatalogCache.ItemHierarchyCacheTimeout">
+            <summary>
+            Gets or sets the time (in minutes) for which the parent and child hierarchy information data sets are cached.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CatalogCache.ItemRelationshipsCacheTimeout">
+            <summary>
+            Gets or sets the time (in minutes) for which the product and category relationships data sets are cached.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CatalogCache.ItemAssociationsCacheTimeout">
+            <summary>
+            Gets or sets the time (in minutes) for which the inventory product catalog associations data sets are cached.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CatalogCache.CatalogCollectionCacheTimeout">
+            <summary>
+            Gets or sets the time (in minutes) for which the catalogs, catalog sets, and inventory catalogs 
+            collection datasets are cached.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CatalogConfiguration">
+            <summary>
+            Provides access to the Catalog element of the Commerce Server configuration.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CatalogConfiguration.#ctor">
+            <summary>
+            Initializes a new instance of the CatalogConfiguration class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CatalogConfiguration.EnableInventorySystem">
+            <summary>
+            Gets or sets a value indicating whether the inventory system is enabled or not.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CatalogConfiguration.CatalogSets">
+            <summary>
+            Gets the CatalogSets element of the Catalog configuration element for Commerce Server. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CatalogConfiguration.JoinTable">
+            <summary>
+            Gets the JoinTable element of the Catalog element of Commerce Server configuration. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CatalogConfiguration.Cache">
+            <summary>
+            Gets the CatalogCache element of the Catalog element of the Commerce Server configuration. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CatalogSets">
+            <summary>
+            Provides access to the CatalogSet Commerce Server configuration element. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CatalogSets.#ctor">
+            <summary>
+            Initializes a new instance of the CatalogSets class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CatalogSets.DefaultAuthenticated">
+            <summary>
+            Gets or sets the defaultAuthenticated attribute of a CatalogSet element. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CatalogSets.DefaultAnonymous">
+            <summary>
+            Gets or sets the defaultAnonymous attribute of a CatalogSet element. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceEventCollection">
+            <summary>
+            Provides access to the Commerce Event element of configuration. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceEventCollection.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceEventCollection class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceEventCollection.Add(Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceEventItem)">
+            <summary>
+            Allows you to add a CommerceEventItem to the collection. 
+            </summary>
+            <param name="commerceEventItem">CommerceEventItem to be added to the collection.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceEventCollection.GetCommerceEventItemByKey(System.String)">
+            <summary>
+            Returns the site with a given key.  The name is the key attribute.
+            </summary>
+            <param name="key">String key.</param>
+            <returns>Site with the given key.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceEventCollection.CreateNewElement">
+            <summary>
+            Allows the creation of a new Configuration Element of type CommerceEventItem. 
+            </summary>
+            <returns>A new <see cref="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceEventItem"/> object.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceEventCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Retrieves the key (name) of the Configuration element of type CommerceEventItem passed. 
+            </summary>
+            <param name="element">ConfigurationElement of type CommerceEventItem.</param>
+            <returns>Object representation of the key (name) of the configuration element.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceEventCollection.BaseAdd(System.Configuration.ConfigurationElement)">
+            <summary>
+            Allows you to add a ConfigurationElement to the collection.
+            </summary>
+            <param name="element">ConfigurationElement to be added to the collection.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceEventItem">
+            <summary>
+            Allows access to commerce event add items.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceEventItem.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceEventItem class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceEventItem.ClassName">
+            <summary>
+            Gets or sets the Class name attribute.
+            </summary>
+            <value>The name of the class.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceEventItem.Id">
+            <summary>
+            Gets or sets the Id attribute.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceEventItem.LoggingEnabled">
+            <summary>
+            Gets or sets a value indicating whether logging is enabled. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceMarketing">
+            <summary>
+            Provides access to the marketing element of the configuration file.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceMarketing.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceMarketing"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceMarketing.SqlLongRunningCommandTimeoutSeconds">
+            <summary>
+            Gets or sets the SQL long running command timeout seconds.
+            </summary>
+            <value>The SQL long running command timeout seconds.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceMarketing.SqlCommandTimeoutSeconds">
+            <summary>
+            Gets or sets the SQL command timeout seconds.
+            </summary>
+            <value>The SQL command timeout seconds.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCache">
+            <summary>
+            Provides access to the configuration for a CommerceServerCache element.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCache.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceServerCache class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCache.PostDeserialize">
+            <summary>
+            Called after deserialization.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCache.Name">
+            <summary>
+            Gets or sets the name of the cache.  This property is required and unique. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCache.ObjectType">
+            <summary>
+            Gets or sets the type of cache you want to configure. Valid values are:
+            <list type="bullet">
+                <item><term>Advertising</term></item>
+                <item><term>Custom</term></item>
+                <item><term>Discounts</term></item>
+                <item><term>MarketingDiscounts</term></item>
+                <item><term>OrdersConfiguration</term></item>
+                <item><term>Payment</term></item>
+                <item><term>Shipping</term></item>
+                <item><term>Tax</term></item>
+            </list>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCache.LoaderProgId">
+            <summary>
+            Gets or sets the COM ProgID of the object used for seeding the cache.
+            This attribute is required if the cache type is set to Custom. Otherwise, it is optional.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCache.WriterProgId">
+            <summary>
+            Gets or sets the COM ProgID of the object used for writing cache changes to an external source. 
+            This attribute is optional.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCache.CacheObjectProgId">
+            <summary>
+            Gets or sets the COM ProgId of the object to use as transient storage for cached data. The default value is "Commerce.Dictionary".
+            This attribute is optional.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCache.RefreshInterval">
+            <summary>
+            Gets or sets the number of seconds until the cache expires and the loader is invoked to refill the cache. 
+            The value of this attribute must represent an integer.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCache.RetryInterval">
+            <summary>
+            Gets or sets the number of seconds the cache manager will wait before attempting to refill the cache if an error is encountered. 
+            The value of this attribute must represent an integer. The default value is 60. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCache.MaxSize">
+            <summary>
+            Gets or sets the maximum size, in bytes, of the cache.
+            You should specify this attribute only when the value of the type attribute is "Custom". 
+            The value of the CacheSize key of the cache configuration dictionary is set to the value of this attribute. The cache loader component uses this value as specified by the loaderProgId attribute.
+            The value of this attribute must represent an integer.
+            This attribute is optional.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCache.Configuration">
+            <summary>
+            Gets the cache collection in the Commerce Server configuration. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCacheCollection">
+            <summary>
+            Provides access to Commerce Server Cache Collection. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCacheCollection.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceServerCacheCollection class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCacheCollection.GetCommerceServerCacheByKey(System.String)">
+            <summary>
+            Returns the CommerceServerCache with a given key.  The name is the key attribute.
+            </summary>
+            <param name="key">String key.</param>
+            <returns>CommerceServerCache with the given key.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCacheCollection.Add(Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCache)">
+            <summary>
+            Allows you to add a Provider to the collection. 
+            </summary>
+            <param name="commerceServerCache">Site to be added to the collection.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCacheCollection.CreateNewElement">
+            <summary>
+            Allows the creation of a new <see cref="T:System.Configuration.ConfigurationElement"/> of type <see cref="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCache"/>. 
+            </summary>
+            <returns>A new <see cref="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCache"/> object.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCacheCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Retrieves the key (name) of the Configuration element of type CommerceServerCache passed. 
+            </summary>
+            <param name="element">ConfigurationElement of type CommerceServerCache.</param>
+            <returns>Object representation of the key (name) of the configuration element.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCacheCollection.BaseAdd(System.Configuration.ConfigurationElement)">
+            <summary>
+            Allows you to add a ConfigurationElement to the collection.
+            </summary>
+            <param name="element">ConfigurationElement to be added to the collection.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCacheConfiguration">
+            <summary>
+            Provides access to a "config" element of a Commerce Server Cache configuration element.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCacheConfiguration.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceServerCacheConfiguration class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCacheConfiguration.Key">
+            <summary>
+            Gets or sets the "config" key.  Required and unique.
+            </summary>
+            <value>The configuration element key.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCacheConfiguration.Value">
+            <summary>
+            Gets or sets the value of the key-value pair "config".  Required. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCacheConfigurationCollection">
+            <summary>
+            Provides access cache collection in configuration file. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCacheConfigurationCollection.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceServerCacheConfigurationCollection class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCacheConfigurationCollection.GetCommerceServerCacheConfigurationByKey(System.String)">
+            <summary>
+            Returns the CommerceServerCacheConfiguration with a given key.  The name is the key attribute.
+            </summary>
+            <param name="key">String key.</param>
+            <returns>CommerceServerCacheConfiguration with the given key.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCacheConfigurationCollection.Add(Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCacheConfiguration)">
+            <summary>
+            Allows you to add a CommerceServerCacheConfiguration to the collection. 
+            </summary>
+            <param name="commerceServerCacheConfiguration">Site to be added to the collection.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCacheConfigurationCollection.CreateNewElement">
+            <summary>
+            Allows the creation of a new Configuration Element of type Site. 
+            </summary>
+            <returns>A new <see cref="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCacheConfiguration"/> object.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCacheConfigurationCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Retrieves the key (name) of the Configuration element of type CommerceServerCacheConfiguration passed. 
+            </summary>
+            <param name="element">ConfigurationElement of type CommerceServerCacheConfiguration.</param>
+            <returns>Object representation of the key (name) of the configuration element.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCacheConfigurationCollection.BaseAdd(System.Configuration.ConfigurationElement)">
+            <summary>
+            Allows you to add a ConfigurationElement to the collection.
+            </summary>
+            <param name="element">ConfigurationElement to be added to the collection.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCulture">
+            <summary>
+            Provides access to a "culture" in the Commerce Server MessageManager configuration element. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCulture.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceServerCulture class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCulture.Id">
+            <summary>
+            Gets or sets the id attribute of a culture.  Required and unique. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCultureCollection">
+            <summary>
+            Provides access to the Culture Collection in the Commerece server MessageManager configuration. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCultureCollection.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceServerCultureCollection class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCultureCollection.GetCultureByKey(System.String)">
+            <summary>
+            Returns the Culture with a given key.  The name is the key attribute.
+            </summary>
+            <param name="key">String key.</param>
+            <returns>Culture with the given key.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCultureCollection.Add(Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCulture)">
+            <summary>
+            Allows you to add a Culture to the collection. 
+            </summary>
+            <param name="culture">Culture to be added to the collection.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCultureCollection.CreateNewElement">
+            <summary>
+            Allows the creation of a new Configuration Element of type Culture. 
+            </summary>
+            <returns>Commerce Server Culture</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCultureCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Retrieves the key (name) of the Configuration element of type Culture passed. 
+            </summary>
+            <param name="element">ConfigurationElement of type Culture.</param>
+            <returns>Object representation of the key (name) of the configuration element.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCultureCollection.BaseAdd(System.Configuration.ConfigurationElement)">
+            <summary>
+            Allows you to add a ConfigurationElement to the collection.
+            </summary>
+            <param name="element">ConfigurationElement to be added to the collection.</param>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCultureCollection.Default">
+            <summary>
+            Gets or sets the default Culture.  Required.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCultureCollection.BaseName">
+            <summary>
+            Gets or sets the resource name.  Required. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerCultureCollection.Assembly">
+            <summary>
+            Gets or sets the satelite assembly.  Required.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerPipeline">
+            <summary>
+            Provides a means to access Pipeline configuration from Commerce Server configuration. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerPipeline.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceServerPipeline class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerPipeline.Name">
+            <summary>
+            Gets or sets the name of the Pipeline.  Unique value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerPipeline.Path">
+            <summary>
+            Gets or sets the path of the .pcf component. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerPipeline.Transacted">
+            <summary>
+            Gets or sets a value indicating whether the pipline can be transacted or not.  This attribute is optional for order pipelines, 
+            but for CSF pipelines the value cannot be set to true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerPipeline.ObjectType">
+            <summary>
+            Gets or sets the role of the pipeline in the application. 
+            Valid values of this attribute are "CSFPipeline" and "OrderPipeline". 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerPipeline.LoggingEnabled">
+            <summary>
+            Gets or sets a value indicating whether pipeline logging will be performed.
+            If true, a pipeline log is created in the relative path "pipelines\log".
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerPipelineCollection">
+            <summary>
+            Provides access to the configuration for a Commerce Server Pipeline Collection.  
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerPipelineCollection.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceServerPipelineCollection class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerPipelineCollection.GetPipelineByKey(System.String)">
+            <summary>
+            Returns the Pipeline with a given key.  The name is the key attribute.
+            </summary>
+            <param name="key">String key.</param>
+            <returns>Pipeline with the given key.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerPipelineCollection.Add(Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerPipeline)">
+            <summary>
+            Allows you to add a Pipeline to the collection. 
+            </summary>
+            <param name="pipeline">Pipeline to be added to the collection.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerPipelineCollection.CreateNewElement">
+            <summary>
+            Allows the creation of a new Configuration Element of type Site. 
+            </summary>
+            <returns>Commerce Server Pipeline</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerPipelineCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Retrieves the key (name) of the Configuration element of type Site passed. 
+            </summary>
+            <param name="element">ConfigurationElement of type Pipeline.</param>
+            <returns>Object representation of the key (name) of the configuration element.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CommerceServerPipelineCollection.BaseAdd(System.Configuration.ConfigurationElement)">
+            <summary>
+            Allows you to add a ConfigurationElement to the collection.
+            </summary>
+            <param name="element">ConfigurationElement to be added to the collection.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.ContentSelectionCollection">
+            <summary>
+            Provides access to the Content Selection configuration element. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.ContentSelectionCollection.#ctor">
+            <summary>
+            Initializes a new instance of the ContentSelectionCollection class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.ContentSelectionCollection.GetContentSelectionItemByKey(System.String)">
+            <summary>
+            Returns the ContentSelectionItem with a given key.  The name is the key attribute.
+            </summary>
+            <param name="key">String key.</param>
+            <returns>ContentSelectionItem with the given key.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.ContentSelectionCollection.Add(Microsoft.Commerce.Application.Common.Configuration.CommerceSite.ContentSelectionItem)">
+            <summary>
+            Allows you to add a Site to the collection. 
+            </summary>
+            <param name="contentSelectionItem">Site to be added to the collection.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.ContentSelectionCollection.CreateNewElement">
+            <summary>
+            Allows the creation of a new Configuration Element of type ContentSelectionItem. 
+            </summary>
+            <returns>Content Selection Item</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.ContentSelectionCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Retrieves the key (name) of the Configuration element of type Site passed. 
+            </summary>
+            <param name="element">ConfigurationElement of type ContentSelectionItem.</param>
+            <returns>Object representation of the key (name) of the configuration element.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.ContentSelectionCollection.BaseAdd(System.Configuration.ConfigurationElement)">
+            <summary>
+            Allows you to add a ConfigurationElement to the collection.
+            </summary>
+            <param name="element">ConfigurationElement to be added to the collection.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.ContentSelectionItem">
+            <summary>
+            Provides access to a single Content Selection Item 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.ContentSelectionItem.#ctor">
+            <summary>
+            Initializes a new instance of the ContentSelectionItem class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.ContentSelectionItem.Name">
+            <summary>
+            Gets or sets the of the content selector.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.ContentSelectionItem.CacheName">
+            <summary>
+            Gets or sets the name of the cache from which the content selector will select content.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.ContentSelectionItem.SelectionPipeline">
+            <summary>
+            Gets or sets the name of the pipeline that will be used to select content.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.ContentSelectionItem.EventPipeline">
+            <summary>
+            Gets or sets the name of the pipeline that will be used to record content selection events.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.ContentSelectionItem.PreloadCache">
+            <summary>
+            Gets or sets a value indicating whether the configured cache should be preloaded or delay loaded.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.ContentSelectionItem.RedirectUrl">
+            <summary>
+            Gets or sets the URL that will be injected into the selected content's display template so that content selection events can be recorded by the presentation layer.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CultureConfigElement">
+            <summary>
+            Provides acces to the cultureConfig element of the configuration file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CultureConfigElement.FilePath">
+            <summary>
+            Gets or sets the path to the culture-specific presentation information XML file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.CultureConfigElement.IsDefault">
+            <summary>
+            Gets or sets a value indicating whether this element represents the default culture configuration.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Encryption">
+            <summary>
+            Provides access to the Encryption element of the Commerce Server configuration. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Encryption.#ctor">
+            <summary>
+            Initializes a new instance of the Encryption class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Encryption.KeyIndex">
+            <summary>
+            Gets or sets the key index of private key that will be used to encrypt asymmetrically encrypted profile property values.  If the key index is 1, privateKey1 will be used.  If the key index is 2, privateKey2 is used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Encryption.PublicKey">
+            <summary>
+            Gets or sets the public key. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Encryption.PrivateKey1">
+            <summary>
+            Gets or sets the first private key. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Encryption.PrivateKey2">
+            <summary>
+            Gets or sets the second private key. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Expressions">
+            <summary>
+            Provides access to the Expressions element of the Commerce Server configuration.  
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Expressions.#ctor">
+            <summary>
+            Initializes a new instance of the Expressions class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Expressions.Schema">
+            <summary>
+            Gets or sets the Schema of the Expression element. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.JoinTable">
+            <summary>
+            Provides access to the JoinTable element of the Catalog Element of the Commerce Server configuration. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.JoinTable.#ctor">
+            <summary>
+            Initializes a new instance of the JoinTable class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.JoinTable.TargetTableName">
+            <summary>
+            Gets or sets the name of the target table.
+            </summary>
+            <value>The name of the target table.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.JoinTable.TargetJoinKey">
+            <summary>
+            Gets or sets the target join key.
+            </summary>
+            <value>The target join key.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.JoinTable.SourceJoinKey">
+            <summary>
+            Gets or sets the source join key.
+            </summary>
+            <value>The source join key.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.JoinTable.JoinType">
+            <summary>
+            Gets or sets the type of the join.
+            </summary>
+            <value>The type of the join.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Limits">
+            <summary>
+            Provides access to the Limits.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Limits.#ctor">
+            <summary>
+            Initializes a new instance of the Limits class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Limits.OrderFormsPerOrderGroup">
+            <summary>
+            Gets or sets the maximum number of OrderForms that an OrderGroup can contain.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Limits.PromoCodeRecordsPerOrderForm">
+            <summary>
+            Gets or sets the maximum number of PromoCodeRecords that a PromoCodeRecordCollection can contain.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Limits.PromoCodesPerOrderForm">
+            <summary>
+            Gets or sets the maximum number of PromoCodeRecords that a PromoCodeCollection can contain.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Limits.LineItemsPerOrderForm">
+            <summary>
+            Gets or sets the maximum number of LineItems that a LineItemCollection can contain.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Limits.OrderTemplatesPerUser">
+            <summary>
+            Gets or sets the maximum number of OrderTemplates that an OrderGroup can contain.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Limits.PaymentsPerOrderForm">
+            <summary>
+            Gets or sets the maximum number of OrderForms that an OrderGroup can contain.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Limits.ShipmentsPerOrderForm">
+            <summary>
+            Gets or sets the maximum number of Shipments that a ShipmentCollection can contain.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Limits.BasketsPerUser">
+            <summary>
+            Gets or sets the maximum number of Baskets that an OrderGroup can contain. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Limits.OrderAddressesPerOrderGroup">
+            <summary>
+            Gets or sets the maximum number of OrderAddresses that an OrderGroup can contain.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.MappingFiles">
+            <summary>
+            Provides access to the MappingFiles element of the Orders configuration. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.MappingFiles.#ctor">
+            <summary>
+            Initializes a new instance of the MappingFiles class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.MappingFiles.PipelineMappingFileName">
+            <summary>
+            Gets or sets the PipelineMappingFileName attribute of the MappingFiles element of the Orders Configuration. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.MappingFiles.StorageMappingFileName">
+            <summary>
+            Gets or sets the StorageMappingFileName attribute of the MappingFiles element of the Orders Configuration.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.MessageManager">
+            <summary>
+            Provides access to the MessageManager Commerce Server Configuration Element. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.MessageManager.#ctor">
+            <summary>
+            Initializes a new instance of the MessageManager class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.MessageManager.Cultures">
+            <summary>
+            Gets the Cultures collection.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.MessageManager.Resources">
+            <summary>
+            Gets the Resources collection.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Orders">
+            <summary>
+            Provides access to the Orders configuration element of the Commerce Server configuration. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Orders.#ctor">
+            <summary>
+            Initializes a new instance of the Orders class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Orders.HonorStatus">
+            <summary>
+            Gets or sets a value indicating whether Commerce Server will control when orders can be modified.
+            
+            The value of this attribute must represent a boolean. The default value is "false".
+            
+            This attribute is optional.
+            
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Orders.NewOrderStatus">
+            <summary>
+            Gets or sets the status that Commerce Server should give to a newly created order.
+            
+            The default value is "NewOrder".
+            
+            This attribute is optional.
+            
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Orders.SqlCommandTimeoutSeconds">
+            <summary>
+            Gets or sets time, in seconds, after which most orders system APIs that access the database will time out.
+            See the description of the sqlLongRunningCommandTimeoutSeconds attribute for the orders system 
+            APIs that use a different time-out value.
+            
+            The default value is "60".
+            
+            This attribute is optional.
+            
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Orders.SqlLongRunningCommandTimeoutSeconds">
+            <summary>
+            Gets or sets the time, in seconds, after which the following orders system APIs will time out:
+            <list type="bullet">
+                <item><term>GetPurchaseOrdersAsXml</term></item>
+                <item><term>DeletePurchaseOrders</term></item>
+                <item><term>DeleteBaskets</term></item>
+                <item><term>SearchPurchaseOrder</term></item>
+                <item><term>SearchBaskets</term></item>
+            </list>
+            
+            The default value is "28800".
+            
+            This attribute is optional.
+            
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Orders.AddressMap">
+            <summary>
+            Gets the AddressMapCollection collection or the Orders configuration. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Orders.Types">
+            <summary>
+            Gets the ObjectType Collection of the Orders configuration. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Orders.Limits">
+            <summary>
+            Gets the Limits element of the Orders configuration. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Orders.MappingFiles">
+            <summary>
+            Gets the MappingFiles element of the Orders configuration.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Orders.SerializationBindings">
+            <summary>
+            Gets the SerializationBindings of the Orders configuration. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Orders.PresentationConfiguration">
+            <summary>
+            Gets the PresentationConfiguration element of the Orders configuration.  
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.OrganizationProfile">
+            <summary>
+            Provides access to the organizationProfile element of the profiles configuration. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.OrganizationProfile.#ctor">
+            <summary>
+            Initializes a new instance of the OrganizationProfile class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.OrganizationProfile.ProfileDefinition">
+            <summary>
+            Gets or sets the profileDefinition attribute of the organizationProfile element of the 
+            Profile configuration. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.OrganizationProfile.OrganizationIdProperty">
+            <summary>
+            Gets or sets the organizationIdProperty attribute of the organizationProfile element of 
+            the Profile configuration. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.OrganizationProfile.CatalogSetIdProperty">
+            <summary>
+            Gets or sets the catalogSetIdProperty attribute of the organizationProfile element of the 
+            Profile configuration. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.PresentationConfigurationCollection">
+            <summary>
+            Provides access to the presentationConfiguration element of the configuration file.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.PresentationConfigurationCollection.CreateNewElement">
+            <summary>
+            Creates a new <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </summary>
+            <returns>
+            A new <see cref="T:System.Configuration.ConfigurationElement"/> object.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.PresentationConfigurationCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the element key for a specified configuration element when overridden in a derived class.
+            </summary>
+            <param name="element">The <see cref="T:System.Configuration.ConfigurationElement"/> to return the key for.</param>
+            <returns>
+            An <see cref="T:System.Object"/> that acts as the key for the specified <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.PresentationConfigurationCollection.CollectionType">
+            <summary>
+            Gets the type of the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <value></value>
+            <returns>The <see cref="T:System.Configuration.ConfigurationElementCollectionType"/> of this collection.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.PresentationConfigurationCollection.ElementName">
+            <summary>
+            Gets the name used to identify this collection of elements in the configuration file when overridden in a derived class.
+            </summary>
+            <value></value>
+            <returns>The name of the collection; otherwise, an empty string. The default is an empty string.</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Profiles">
+            <summary>
+            Provides access to the Profiles element of Commerce Server configuration. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Profiles.#ctor">
+            <summary>
+            Initializes a new instance of the Profiles class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Profiles.UserProfile">
+            <summary>
+            Gets the UserProfile.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Profiles.StoreProfile">
+            <summary>
+            Gets the StoreProfile.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Profiles.OrganizationProfile">
+            <summary>
+            Gets the OrganizationProfile Element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Profiles.Encryption">
+            <summary>
+            Gets the Encryption element of the profile system.  
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Profiles.PresentationConfiguration">
+            <summary>
+            Gets the PresentationConfiguration element of the profile system.  
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Resource">
+            <summary>
+            Provides access to a "resource" in the Commerce Server MessageManager configuration element.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Resource.#ctor">
+            <summary>
+            Initializes a new instance of the Resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Resource.Id">
+            <summary>
+            Gets or sets the id attribute of a resource.  Required and unique. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.ResourceCollection">
+            <summary>
+            Provides access to a Resource Collection in the Commerece Server MessageManager configuration element. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.ResourceCollection.#ctor">
+            <summary>
+            Initializes a new instance of the ResourceCollection class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.ResourceCollection.GetResourceByKey(System.String)">
+            <summary>
+            Returns the Resource with a given key.  The name is the key attribute.
+            </summary>
+            <param name="key">String key.</param>
+            <returns>Resource with the given key.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.ResourceCollection.Add(Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Resource)">
+            <summary>
+            Allows you to add a Resource to the collection. 
+            </summary>
+            <param name="resource">Resource to be added to the collection.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.ResourceCollection.CreateNewElement">
+            <summary>
+            Allows the creation of a new Configuration Element of type Site.
+            </summary>
+            <returns>
+            A new <see cref="T:System.Configuration.ConfigurationElement"/> object.
+            </returns>        
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.ResourceCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Retrieves the key (name) of the Configuration element of type Resource passed. 
+            </summary>
+            <param name="element">ConfigurationElement of type Resource.</param>
+            <returns>Object representation of the key (name) of the configuration element.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.ResourceCollection.BaseAdd(System.Configuration.ConfigurationElement)">
+            <summary>
+            Allows you to add a ConfigurationElement to the collection.
+            </summary>
+            <param name="element">ConfigurationElement to be added to the collection.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.SerializationBinding">
+            <summary>
+            Provides access to a Serialization Binding in the Orders Configuration of Commerce Server.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.SerializationBinding.#ctor">
+            <summary>
+            Initializes a new instance of the SerializationBinding class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.SerializationBinding.OldType">
+            <summary>
+            Gets or sets fully qualified name of the class to replace, including the assembly.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.SerializationBinding.NewType">
+            <summary>
+            Gets or sets fully qualified name of the class that replaces the old class, including the assembly.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.SerializationBindingCollection">
+            <summary>
+            Provides access to The SerializationBindings collection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.SerializationBindingCollection.#ctor">
+            <summary>
+            Initializes a new instance of the SerializationBindingCollection class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.SerializationBindingCollection.Add(Microsoft.Commerce.Application.Common.Configuration.CommerceSite.SerializationBinding)">
+            <summary>
+            Allows you to add a SerializationBinding to the collection. 
+            </summary>
+            <param name="serializationBinding">SerializationBinding to be added to the collection.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.SerializationBindingCollection.GetSerializationBindingByKey(System.String)">
+            <summary>
+            Returns the SerializationBinding with a given key.  The name is the key attribute.
+            </summary>
+            <param name="key">String key.</param>
+            <returns>SerializationBinding with the given key.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.SerializationBindingCollection.BaseAdd(System.Configuration.ConfigurationElement)">
+            <summary>
+            Allows you to add a ConfigurationElement to the collection.
+            </summary>
+            <param name="element">ConfigurationElement to be added to the collection.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.SerializationBindingCollection.CreateNewElement">
+            <summary>
+            Creates a new <see cref="T:System.Configuration.ConfigurationElement"/> of type <see cref="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.SerializationBinding"/>.
+            </summary>
+            <returns>A new <see cref="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.SerializationBinding"/> object.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.SerializationBindingCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Retrieves the key (name) of the Configuration element of type SerializationBinding passed. 
+            </summary>
+            <param name="element">ConfigurationElement of type SerializationBinding.</param>
+            <returns>Object representation of the key (name) of the configuration element.</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Site">
+            <summary>
+            Provides a mean to configure a Commerce Server site. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Site.#ctor">
+            <summary>
+            Initializes a new instance of the Site class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Site.SiteName">
+            <summary>
+            Gets or sets the name of the Commerce Server site used by a given channel.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Site.MetadataRepositoryPath">
+            <summary>
+            Gets or sets the path to the metadata repository XML file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Site.DisableProductVersionHttpHeader">
+            <summary>
+            Gets or sets a value indicating whether the product version HTTP header should be disabled.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Site.Authentication">
+            <summary>
+            Gets the authentication element. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Site.Pipelines">
+            <summary>
+            Gets the Pipeline collection in the Commerece Server configuration. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Site.Caches">
+            <summary>
+            Gets the cache config collection in the Commerce Server configuration. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Site.MessageManager">
+            <summary>
+            Gets the MessageManager element. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Site.Catalog">
+            <summary>
+            Gets the Catalog element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Site.CommerceEvent">
+            <summary>
+            Gets the commerceEvent configuration item. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Site.ContentSelection">
+            <summary>
+            Gets the contentSelection configuration item. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Site.Orders">
+            <summary>
+            Gets the orders element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Site.Profiles">
+            <summary>
+            Gets the profiles element. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Site.Expressions">
+            <summary>
+            Gets the expressions element. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Site.Marketing">
+            <summary>
+            Gets the marketing element.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.SiteCollection">
+            <summary>
+            A collection of Site ConfigurationElements.  Allows for the configuration of more than Commerce Server site.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.SiteCollection.#ctor">
+            <summary>
+            Initializes a new instance of the SiteCollection class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.SiteCollection.Add(Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Site)">
+            <summary>
+            Allows you to add a Site to the collection. 
+            </summary>
+            <param name="site">Site to be added to the collection.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.SiteCollection.GetSiteByKey(System.String)">
+            <summary>
+            Returns the site with a given key.  The name is the key attribute.
+            </summary>
+            <param name="key">String key.</param>
+            <returns>Site with the given key.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.SiteCollection.CreateNewElement">
+            <summary>
+            Allows the creation of a new <see cref="T:System.Configuration.ConfigurationElement"/> of type <see cref="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Site"/>. 
+            </summary>
+            <returns>A new <see cref="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.Site"/> object.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.SiteCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Retrieves the key (name) of the Configuration element of type Site passed. 
+            </summary>
+            <param name="element">ConfigurationElement of type Site.</param>
+            <returns>Object representation of the key (name) of the configuration element.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.SiteCollection.BaseAdd(System.Configuration.ConfigurationElement)">
+            <summary>
+            Allows you to add a ConfigurationElement to the collection.
+            </summary>
+            <param name="element">ConfigurationElement to be added to the collection.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.StoreProfile">
+            <summary>
+            Provides access to the StoreProfile element of the Profiles element in CS configuration.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.StoreProfile.#ctor">
+            <summary>
+            Initializes a new instance of the StoreProfile class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.StoreProfile.ProfileDefinition">
+            <summary>
+            Gets or sets the profileDefinition attribute fo the storeProfile.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.StoreProfile.StoreIdProperty">
+            <summary>
+            Gets or sets the userIdProperty attribute fo the userProfile.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.StoreProfile.StoreIdKey">
+            <summary>
+            Gets or sets the storeIdKey attribute fo the storeProfile.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.OrderType">
+            <summary>
+            Provides access to a ObjectType in the Order Configuration of Commerce Server.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.OrderType.#ctor">
+            <summary>
+            Initializes a new instance of the OrderType class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.OrderType.Key">
+            <summary>
+            Gets or sets the order type key.
+            If your new class replaces a core Orders class that is not an abstract class, this attribute is 
+            the name of the core Orders class that it replaces. If your new class does not replace a core 
+            Orders class, or if it replaces a core Orders class that is abstract, then this attribute is the 
+            name of your new class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.OrderType.UserTypeName">
+            <summary>
+            Gets or sets the name of your new class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.OrderType.AssemblyType">
+            <summary>
+            Gets or sets the location of the assembly. Valid values are "Local" and "GAC". If the value is "GAC", the 
+            assembly is stored in the Global Assembly Cache (GAC). If the value is "Local", the assembly is 
+            not stored in the GAC.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.OrderType.NameSpace">
+            <summary>
+            Gets or sets namespace that contains the derived class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.OrderType.Assembly">
+            <summary>
+            Gets or sets fully qualified name of the assembly that contains the derived class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.TypeCollection">
+            <summary>
+            Provides access to the collection of Types in the Order system. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.TypeCollection.#ctor">
+            <summary>
+            Initializes a new instance of the TypeCollection class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.TypeCollection.GetTypeByKey(System.String)">
+            <summary>
+            Returns the ObjectType with a given key.  The name is the key attribute.
+            </summary>
+            <param name="key">String key.</param>
+            <returns>ObjectType with the given key.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.TypeCollection.Add(Microsoft.Commerce.Application.Common.Configuration.CommerceSite.OrderType)">
+            <summary>
+            Allows you to add a Provider to the collection. 
+            </summary>
+            <param name="type">ObjectType to be added to the collection.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.TypeCollection.CreateNewElement">
+            <summary>
+            Allows the creation of a new Configuration Element of type ObjectType. 
+            </summary>
+            <returns>Order ObjectType</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.TypeCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Retrieves the key (name) of the Configuration element of type ObjectType passed. 
+            </summary>
+            <param name="element">ConfigurationElement of type ObjectType.</param>
+            <returns>Object representation of the key (name) of the configuration element.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.TypeCollection.BaseAdd(System.Configuration.ConfigurationElement)">
+            <summary>
+            Allows you to add a ConfigurationElement to the collection.
+            </summary>
+            <param name="element">ConfigurationElement to be added to the collection.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.UserProfile">
+            <summary>
+            Provides access to the UserProfile element of the Profiles element in CS configuration.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.UserProfile.#ctor">
+            <summary>
+            Initializes a new instance of the UserProfile class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.UserProfile.ProfileDefinition">
+            <summary>
+            Gets or sets the profileDefinition attribute fo the userProfile.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.UserProfile.UserIdProperty">
+            <summary>
+            Gets or sets the userIdProperty attribute fo the userProfile.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.UserProfile.OrganizationIdProperty">
+            <summary>
+            Gets or sets the organizationIdProperty attribute fo the userProfile.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.UserProfile.CatalogSetIdProperty">
+            <summary>
+            Gets or sets the catalogSetIdProperty attribute fo the userProfile.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.UserProfile.UserIdSource">
+            <summary>
+            Gets or sets the userIdSource attribute fo the userProfile.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.UserProfile.UserIdKey">
+            <summary>
+            Gets or sets the userIdKey attribute fo the userProfile.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CommerceSite.UserProfile.UserIdTarget">
+            <summary>
+            Gets or sets the userIdTarget attribute fo the userProfile.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.TranslatorsElement">
+            <summary>
+            Class used to handle the Translators element of the channel configuration file.
+            This node can be found within the DefaultChannel and Channel nodes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.TranslatorsElement.#ctor">
+            <summary>
+            Initializes a new instance of the TranslatorsElement class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.TranslatorsElement.ToCommerceEntities">
+            <summary>
+            Gets the collection of the ToCommerceEntities node from the configuration file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.TranslatorsElement.ToExternalEntities">
+            <summary>
+            Gets the collection of the ToExternalEntities node from the configuration file.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.IConfigurable">
+            <summary>
+            Implement this interface in cases where automatic configuration is possible
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.IConfigurable.Configure(System.Configuration.ConfigurationElement)">
+            <summary>
+            This method is called once after the initialization, in order to set known configuration (or null)
+            </summary>
+            <param name="configuration">The configuration for the instance or null</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.CustomConfigurationContainerElement">
+            <summary>
+            Handles the parsing of an operation sequence Component's Configuration element
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Application.Common.Configuration.CustomConfigurationContainerElement.DefaultElementName">
+            <summary>
+            Contains the default name of the inner element
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CustomConfigurationContainerElement.SetConfiguration(System.Configuration.NameValueConfigurationCollection)">
+            <summary>
+            Use this method to set the child configuration object to the default NameValueConfigurationCollection.
+            The element name will be assumed to be "NameValueConfigurationCollection
+            </summary>
+            <param name="nameValueConfiguration">The child configuration</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CustomConfigurationContainerElement.SetConfiguration(System.Configuration.ConfigurationElement,System.String)">
+            <summary>
+            Use this method to set the child configuration object and it's element name
+            </summary>
+            <param name="configurationElement">The child configuration</param>
+            <param name="elementName">Element name to use</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.CustomConfigurationContainerElement.DeserializeElement(System.Xml.XmlReader,System.Boolean)">
+            <summary>
+            Perform the deserialization of this element. Adds another config property representing 
+            the single inner node by looking at the customElementType and customElementName attributes
+            </summary>
+            <param name="reader">Reader representing the current xml node</param>
+            <param name="serializeCollectionKey">Set true to deserialize only the item keys</param>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CustomConfigurationContainerElement.DefaultElementType">
+            <summary>
+            Gets the type that is used for the inner child if no other is used
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CustomConfigurationContainerElement.CustomElementType">
+            <summary>
+            Gets the type of the custom element. The default is System.Configuration.NameValueConfigurationCollection
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CustomConfigurationContainerElement.CustomElementName">
+            <summary>
+            Gets the name of the custom element. The default is "NameValueConfigurationCollection"
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.CustomConfigurationContainerElement.Configuration">
+            <summary>
+            Gets the custom inner configuration (default is a NameValueConfigurationCollection)
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceTransactionOptions">
+            <summary>
+                Transaction options
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceTransactionOptions.GetTransactionOptions(Microsoft.Commerce.Application.Common.Configuration.OperationSequenceElement)">
+            <summary>
+                Gets the transaction options for the operation sequence
+            </summary>
+            <param name="operationSequence">The operation sequence</param>
+            <returns>An OperationSequenceTransactionOptions which contains the transaction options.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceTransactionOptions.TransactionScopeOption">
+            <summary>
+              Gets or sets the transaction scope option for the operation sequence's transaction
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceTransactionOptions.TransactionTimeout">
+            <summary>
+               Gets or sets the transaction timeout for the operation sequence's transaction
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceTransactionOptions.IsolationLevel">
+            <summary>
+               Gets or sets the isolation level for operation sequence's transaction
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.ToCommerceEntityCollection">
+            <summary>
+            Represents a collection of ToCommerceEntityElement objects.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ToCommerceEntityCollection.CreateNewElement">
+            <summary>
+            Creates the new element.
+            </summary>
+            <returns>Returns a new instance of a ToCommerceEntityTranslatorElement class.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ToCommerceEntityCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the element key.
+            </summary>
+            <param name="element">The element.</param>
+            <returns>Returns the key of the giev ConfigurationElement.  Must be of type ToCommerceEntityTranslatorElement.</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.ToCommerceEntityTranslatorElement">
+            <summary>
+            Represents a ToCommerceEntity node of the ToCommerceEntityCollection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ToCommerceEntityTranslatorElement.#ctor">
+            <summary>
+            Initializes a new instance of the ToCommerceEntityTranslatorElement class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.ToCommerceEntityTranslatorElement.SourceType">
+            <summary>
+            Gets or sets the type of the source.
+            </summary>
+            <value>The type of the source.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.ToCommerceEntityTranslatorElement.DestinationModelName">
+            <summary>
+            Gets or sets the name of the destination model.
+            </summary>
+            <value>The name of the destination model.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.ToCommerceEntityTranslatorElement.ObjectType">
+            <summary>
+            Gets or sets the type of the object.
+            </summary>
+            <value>The type of the object.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.ToCommerceEntityTranslatorElement.Key">
+            <summary>
+            Gets the key for the current TranslatorElement.
+            </summary>
+            <value>The key for the current TranslatorElement.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.ToExternalEntityCollection">
+            <summary>
+            Represents a collection of ToExternalEntityElement objects.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ToExternalEntityCollection.CreateNewElement">
+            <summary>
+            Creates the new element.
+            </summary>
+            <returns>Returns a ConfigurationElement of type ToExternalEntityTranslatorElement</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ToExternalEntityCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the element key.
+            </summary>
+            <param name="element">The element.</param>
+            <returns>Returns the key of the given ToExternalEntityTranslatorElement.</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.ToExternalEntityTranslatorElement">
+            <summary>
+            Represents a ToCommerceEntity node of the ToCommerceEntityCollection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ToExternalEntityTranslatorElement.#ctor">
+            <summary>
+            Initializes a new instance of the ToExternalEntityTranslatorElement class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.ToExternalEntityTranslatorElement.DestinationType">
+            <summary>
+            Gets or sets the type of the source.
+            </summary>
+            <value>The type of the source.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.ToExternalEntityTranslatorElement.SourceModelName">
+            <summary>
+            Gets or sets the name of the destination model.
+            </summary>
+            <value>The name of the destination model.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.ToExternalEntityTranslatorElement.ObjectType">
+            <summary>
+            Gets or sets the type of the object.
+            </summary>
+            <value>The type of the object.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.ToExternalEntityTranslatorElement.Key">
+            <summary>
+            Gets the key for the current TranslatorElement.
+            </summary>
+            <value>The key for the current TranslatorElement.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.TransactionalComponentOptions">
+            <summary>
+            Aggregate transaction options
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.TransactionalComponentOptions.#ctor(System.Transactions.TransactionScopeOption,System.TimeSpan,System.Transactions.IsolationLevel)">
+            <summary>
+            Initializes a new instance of the TransactionalComponentOptions class.
+            </summary>
+            <param name="scopeOption">Scope option for the transaction.</param>
+            <param name="timeout">The amount of time to elapse before the transaction is aborted if not committed.</param>
+            <param name="isolationLevel">The isolation level of the transaction.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.TransactionalComponentOptions.Clone">
+            <summary>
+               Create a copy of this TransactionalComponentOptions object
+            </summary>
+            <returns>A clone of this object</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.TransactionalComponentOptions.IsolationLevel">
+            <summary>
+              Gets the transaction isolation level of this component
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.TransactionalComponentOptions.Timeout">
+            <summary>
+              Gets the transaction timeout of this component
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.TransactionalComponentOptions.ScopeOption">
+            <summary>
+              Gets the transaction scope option of this component
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.ServiceConfiguration">
+            <summary>
+             This class provides a means to access configuration data through an optimized interface.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ServiceConfiguration.#ctor">
+            <summary>
+            Initializes a new instance of the ServiceConfiguration class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ServiceConfiguration.GetConfiguration(System.String)">
+            <summary>
+            Retrieves a value for a given key or retuns null of key does not exist.  
+            </summary>
+            <param name="key">String key of value channel{d}entitytype{d}configuraitonItem where d is the delimiter; currently :</param>
+            <returns>String configuration value of null</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ServiceConfiguration.GetSiteName(System.String)">
+            <summary>
+            Allows quick access to the siteName of a given channel.  If channel does not exist it is created with default values. 
+            </summary>
+            <param name="channel">String channel.  Ex. webchannel</param>
+            <returns>Returns the siteName attribute of the channel.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ServiceConfiguration.GetMessageHandler(System.String,System.String)">
+            <summary>
+            Gets the service provider.
+            </summary>
+            <param name="messageHandlerName">Name of the message handler.</param>
+            <param name="channelName">Name of the channel.</param>
+            <returns>Service Provider</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ServiceConfiguration.GetToCommerceTranslator(System.String,System.String,System.String)">
+            <summary>
+            Gets to commerce translator.
+            </summary>
+            <param name="sourceTypeName">Name of the source type.</param>
+            <param name="destinationModelName">Name of the destination model.</param>
+            <param name="channelName">Name of the channel.</param>
+            <returns>Returns the ToCommerceEntity translator node from the configuration file for the given channel.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ServiceConfiguration.GetToExternalTranslator(System.String,System.String,System.String)">
+            <summary>
+            Gets to external translator.
+            </summary>
+            <param name="sourceModelName">Name of the source model.</param>
+            <param name="destinationTypeName">Name of the destination type.</param>
+            <param name="channelName">Name of the channel.</param>
+            <returns>Returns the ToExternalEntity translator node from the configuration file for the given channel.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ServiceConfiguration.CompositeKeyMaker(System.String[])">
+            <summary>
+            Generates a composite key for use in the Configuration Dictionary via String.Join.  
+            </summary>
+            <param name="listOfValues">list Of Values</param>
+            <returns>Composite Key</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ServiceConfiguration.GetChannelFromKey(System.String)">
+            <summary>
+            Tokenizes a fully qualified key to return a channel from the beginning.
+            </summary>
+            <param name="key">The fully qualified key.  Ex. Webchannel:BusinessEntities:Category</param>
+            <returns>The first token of the key which represents the channel.  Ex.  Webchannel</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ServiceConfiguration.PostDeserialize">
+            <summary>
+            This method is used to fill the data structure which stores the configuration data. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ServiceConfiguration.CreateDictionary(System.String)">
+            <summary>
+            Creates a copy of the Default configuration items in the configuration Dictionary using the provided channel name.  If the provided channel name is empty it creates the default catalog.
+            </summary>
+            <param name="channelName">Channel Name</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ServiceConfiguration.GetConfigValue(System.String)">
+            <summary>
+            Returns the string value for any configuration key specified.  If the key does not exist it returns null.
+            </summary>
+            <param name="key">Fully qualifed configuration key.  Ex. webchannel:BusinessEntities:Product</param>
+            <returns>String value of configuration item or null if not found. </returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ServiceConfiguration.GetExistingMessageHandler(System.String,System.String)">
+            <summary>
+            Returns the ObjectType of a service provider requested.
+            </summary>
+            <param name="messageHandlerName">Name of the message handler.</param>
+            <param name="channelName">Name of the channel.</param>
+            <returns>Message Handler</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ServiceConfiguration.GetExistingToCommerceTranslator(System.String,System.String,System.String)">
+            <summary>
+            Gets the existing to commerce translator.
+            </summary>
+            <param name="sourceTypeName">Name of the source type.</param>
+            <param name="destinationModelName">Name of the destination model.</param>
+            <param name="channelName">Name of the channel.</param>
+            <returns>Returns the translator information in the form of a ToCommerceEntityTranslatorElement object.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ServiceConfiguration.GetExistingToExternalTranslator(System.String,System.String,System.String)">
+            <summary>
+            Gets the existing to external translator.
+            </summary>
+            <param name="sourceModelName">Name of the source model.</param>
+            <param name="destinationTypeName">Name of the destination type.</param>
+            <param name="channelName">Name of the channel.</param>
+            <returns>Returns the translator information in the form of a ToExternalEntityTranslatorElement object.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.ServiceConfiguration.CompareAndAdd(System.String,System.Object)">
+            <summary>
+            Method checks if a given item exist, if it does it replaces it if not it adds it to the configuration dictionary.
+            </summary>
+            <param name="key">The configuration key name.</param>
+            <param name="value">The configuration key value.</param>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.ServiceConfiguration.Current">
+            <summary>
+            Gets the current configuration instance.
+            </summary>
+            <value>The current ServiceConfiguration instance.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.ServiceConfiguration.ChannelNames">
+            <summary>
+            Gets the channel names.
+            </summary>
+            <value>The channel names.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.ServiceConfiguration.Sites">
+            <summary>
+            Gets the Sites collection. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.ServiceConfiguration.UseSharedCommerceContexts">
+            <summary>
+            Gets a value indicating whether shared commerce contexts should be used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.ServiceConfiguration.ServiceConfigurationNamespace">
+            <summary>
+            Gets a value indicating whether shared commerce contexts should be used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.ServiceConfiguration.DefaultChannel">
+            <summary>
+            Gets the default channel.
+            </summary>
+            <value>The default channel.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.DefaultChannel">
+            <summary>
+            Represents the default channel configuration.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.MessageHandler">
+            <summary>
+            Handles the MessageHandler element of the configuration file
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.MessageHandler.Name">
+            <summary>
+            Gets or sets the name of the Provider.  The name is also the key. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.MessageHandler.ResponseType">
+            <summary>
+            Gets or sets the type of the response.
+            </summary>
+            <value>The type of the response.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.MessageHandler.OperationSequence">
+            <summary>
+            Gets the operation sequence.
+            </summary>
+            <value>The operation sequence.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.MessageHandlerCollection">
+            <summary>
+            Represents the collection of ServiceProviders.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.MessageHandlerCollection.#ctor">
+            <summary>
+            Initializes a new instance of the MessageHandlerCollection class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.MessageHandlerCollection.Add(Microsoft.Commerce.Application.Common.Configuration.MessageHandler)">
+            <summary>
+            Allows you to add a Provider to the collection. 
+            </summary>
+            <param name="messageHandler">Provider to be added to the collection.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.MessageHandlerCollection.GetProviderByKey(System.String)">
+            <summary>
+            Returns the provider with a given key.  The name is the key attribute.
+            </summary>
+            <param name="key">String key.</param>
+            <returns>Provider with the given key.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.MessageHandlerCollection.CreateNewElement">
+            <summary>
+            Allows the creation of a new Configuration Element of type Provider. 
+            </summary>
+            <returns>Message Handler</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.MessageHandlerCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Retrieves the key (name) of the Configuration element of type Provider passed. 
+            </summary>
+            <param name="element">ConfigurationElement of type Provider.</param>
+            <returns>Object representation of the key (name) of the configuration element.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.MessageHandlerCollection.BaseAdd(System.Configuration.ConfigurationElement)">
+            <summary>
+            Allows you to add a ConfigurationElement to the collection.
+            </summary>
+            <param name="element">ConfigurationElement to be added to the collection.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceComponentElement">
+            <summary>
+            Handles the Component element of the configuration file.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceComponentElement.PostDeserialize">
+            <summary>
+            Checks that configuration has not been supplied for a non-configurable component
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceComponentElement.Name">
+            <summary>
+            Gets or sets the operation operation sequence component friendly name.
+            </summary>
+            <value>The operation operation sequence component friendly name.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceComponentElement.ObjectType">
+            <summary>
+            Gets or sets the operation operation sequence component type.  This type should derive from IOperationSequenceComponent.
+            </summary>
+            <value>The operation operation sequence component type.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceComponentElement.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceComponentElement.TransactionScopeOption">
+            <summary>
+            Gets or sets the transaction scope option. It defines wether there is a transactional context.
+              For transactional contexts other than None, it controls the creation criterion for transactions.
+            </summary>
+            <value>A string value representing a TransactionScopeOption.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceComponentElement.TransactionIsolationLevel">
+            <summary>
+              Gets or sets the initial transaction isolation level. The levels determine how data accessibility is 
+                handled for different transactions.
+            </summary>
+            <value>A System.Transactions.IsolationLevel.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceComponentElement.TransactionTimeout">
+            <summary>
+              Gets or sets the transaction timeout. 
+                It is the amount of time ellapsed that aborts the transaction if not committed.
+            </summary>
+            <value>A string value representing the timeout TimeSpan.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceComponentElement.CustomConfigurationContainer">
+            <summary>
+            Gets or sets the Configuration container
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceComponentElement.Components">
+            <summary>
+            Gets the components.
+            </summary>
+            <value>The components.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceComponentElementCollection">
+            <summary>
+            Provides access to a collection of Component elements in the the configuration file.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceComponentElementCollection.CreateNewElement">
+            <summary>
+            Allows for the creation of a <see cref="T:System.Configuration.ConfigurationElement"/> of type <see cref="T:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceComponentElement"/>.
+            </summary>
+            <returns>
+            A new <see cref="T:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceComponentElement"/> object.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceComponentElementCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the element key for a specified configuration element when overridden in a derived class.
+            </summary>
+            <param name="element">The <see cref="T:System.Configuration.ConfigurationElement"/> to return the key for.</param>
+            <returns>
+            An <see cref="T:System.Object"/> that acts as the key for the specified <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceComponentElementCollection.CollectionType">
+            <summary>
+            Gets the type of the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <value></value>
+            <returns>The <see cref="T:System.Configuration.ConfigurationElementCollectionType"/> of this collection.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceComponentElementCollection.ElementName">
+            <summary>
+            Gets the name used to identify this collection of elements in the configuration file when overridden in a derived class.
+            </summary>
+            <value></value>
+            <returns>The name of the collection; otherwise, an empty string. The default is an empty string.</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceElement">
+            <summary>
+            Provides access to the OperationSequence element of the configuration file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceElement.Components">
+            <summary>
+            Gets the child Component elements of this element.
+            </summary>
+            <value>The child Component elements of this element.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceElement.Transactional">
+            <summary>
+            Gets or sets a value indicating whether the operation operation sequence is transactional.
+            </summary>
+            <value>A boolean value.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceElement.TransactionIsolationLevel">
+            <summary>
+              Gets or sets the initial transaction isolation level. The levels determine how data accessibility is 
+                handled for different transactions.
+            </summary>
+            <value>A System.Transactions.IsolationLevel.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Application.Common.Configuration.OperationSequenceElement.TransactionTimeout">
+            <summary>
+              Gets or sets the transaction timeout. 
+                It is the amount of time ellapsed that aborts the transaction if not committed.
+            </summary>
+            <value>A string value representing the timeout TimeSpan.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.CreateInstance`2">
+            <summary>
+            Factory method used to create new instances requested by the caller.
+            </summary>
+            <typeparam name="TKey">The type of the keys used to retreive items from the factory.</typeparam>
+            <typeparam name="TValue">The type of the values created by the factory.</typeparam>
+            <param name="key">The key that identifies the item to be created.</param>
+            <returns>A new value corresponding to the provided key.</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Application.Common.CachedFactory`2">
+            <summary>
+            Thread-safe factory class that performs caching of instances created.
+            </summary>
+            <typeparam name="TKey">The type of the keys used to retreive items from the factory.</typeparam>
+            <typeparam name="TValue">The type of the values created by the factory.</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.CachedFactory`2.#ctor">
+            <summary>
+            Initializes a new instance of the CachedFactory class that uses the default equality comparer for the key type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.CachedFactory`2.#ctor(System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>
+            Initializes a new instance of the CachedFactory class that uses the specified IEqualityComparer.
+            </summary>
+            <param name="comparer">The equality comparer implementation to use when comparing keys, or null to use the default equality comparer for the key type.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.CachedFactory`2.GetOrCreate(`0,Microsoft.Commerce.Application.Common.CreateInstance{`0,`1})">
+            <summary>
+            Gets an item from the factory.
+            </summary>
+            <param name="key">The key that identifies the item to retreive.</param>
+            <param name="factory">A factory method that will be used to create the requested item if it does not exist in the cache.</param>
+            <returns>The requested item.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.CachedFactory`2.ExpireEntry(`0)">
+            <summary>
+            Creates the new item from the factory.
+            </summary>
+            <param name="key">The key that identifies the item to retreive.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.CachedFactory`2.Dispose">
+            <summary>
+            Disposes resources managed by the class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.CachedFactory`2.Dispose(System.Boolean)">
+            <summary>
+            Disposes resources managed by the class.
+            </summary>
+            <param name="disposing">If true, managed resources should be disposed, otherwise only unmanaged resources should be disposed.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Application.Common.CachedFactory`2.CheckState">
+            <summary>
+            Verifies that the class is currently in a valid state.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Application.Common.ExceptionMessageConstants.MissingBusinessEntity">
+            <summary>
+            Entity type not found in the config file.  Name={0}
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Application.Common.ExceptionMessageConstants.OperationSequenceComponentHasConfigurationButIsNotConfigurable">
+            <summary>
+            The operation sequence component {0} does not implement IConfigurable and so it cannot have configuration specified. Remove the Configuration node or implement IConfigurable.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,2949 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Commerce.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceBasketUpdateOptionsBuilder">
+            <summary>
+            Builder used to help construct a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceBasketUpdateOptions"/> object.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceOptionsBuilder`1">
+            <summary>
+            Base class for builders that construct an <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceOptions"/> object.
+            </summary>
+            <typeparam name="TOptions">The type of <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceOptions"/> object to construct.</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceOptionsBuilder`1.ToOptions">
+            <summary>
+            Converts the builder to a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceOptions"/> object.
+            </summary>
+            <returns>A new <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceOptions"/> object.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceBasketUpdateOptionsBuilder.ToOptions">
+            <summary>
+            Converts the builder to a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceUpdateOptions"/> object.
+            </summary>
+            <returns>A new <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceUpdateOptions"/> object.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceBasketUpdateOptionsBuilder.RefreshBasket">
+            <summary>
+            Gets or sets a value indicating whether the basket should be refreshed when processing a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceUpdateOperation"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceBaseBuilder`1">
+            <summary>
+            Base class for operation message builders.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceBaseBuilder">
+            <summary>
+            Base class of all message builders.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceBaseBuilder.ToRequest">
+            <summary>
+            Converts this builder into a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceRequest"/>
+            </summary>
+            <returns>A new <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceRequest"/> object.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceBaseBuilder.ToOperation">
+            <summary>
+            Converts this builder into an <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceOperation"/>.
+            </summary>
+            <returns>A new <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceOperation"/> object.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceBaseBuilder.RelatedOperations">
+            <summary>
+            Gets or sets the related items.
+            </summary>
+            <value>The related items.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceBaseBuilder`1.Model">
+            <summary>
+            Gets or sets the model.
+            </summary>
+            <value>The model.</value>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.MessageBuilders.CommerceDelete`3._deleteOptionsBuilder">
+            <summary>
+            The query options associated with this query
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.MessageBuilders.CommerceDelete`3._searchCriteria">
+            <summary>
+            The SearchCriteria associated with this Query
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceDelete`3.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceDelete class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceDelete`3.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceDelete class.
+            </summary>
+            <param name="modelName">Name of the model.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceDelete`3.ToOperation">
+            <summary>
+            Converts this builder into an <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceOperation"/>.
+            </summary>
+            <returns>
+            A new <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceOperation"/> object.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceDelete`3.SearchCriteria">
+            <summary>
+            Gets or sets the search criteria.
+            </summary>
+            <value>The search criteria.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceDelete`3.DeleteOptions">
+            <summary>
+            Gets or sets the options.
+            </summary>
+            <value>The options.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceCreateOptionsBuilder`1">
+            <summary>
+            Builder used to help construct a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceCreateOptions"/> object.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceCreateOptionsBuilder`1.ToOptions">
+            <summary>
+            Converts the builder to a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceOptions"/> object.
+            </summary>
+            <returns>
+            A new <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceOptions"/> object.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceCreateOptionsBuilder`1.ReturnModel">
+            <summary>
+            Gets or sets the return model.
+            </summary>
+            <value>The return model.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceCreateOptionsBuilder`1.ReturnModelQueries">
+            <summary>
+            Gets or sets the related QueryRelatedItem operations that will be used to populate
+            relationships in the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntity"/> returned in the operation response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceCreateOptionsBuilder`1.HasReturnModel">
+            <summary>
+            Gets a value indicating whether this instance has return model.
+            </summary>
+            <value>
+                <c>true</c> if this instance has return model; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceCreateOptionsBuilder`1.Options">
+            <summary>
+            Gets or sets the options.
+            </summary>
+            <value>The options.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceBasketQueryOptionsBuilder">
+            <summary>
+            Builder used to help construct a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceBasketQueryOptions"/> object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceBasketQueryOptionsBuilder.ToOptions">
+            <summary>
+            Converts the builder to a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceQueryOptions"/> object.
+            </summary>
+            <returns>A new <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceQueryOptions"/> object.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceBasketQueryOptionsBuilder.RefreshBasket">
+            <summary>
+            Gets or sets a value indicating whether the basket should be refreshed when processing a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceQueryOperation"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceBasketQueryOptionsBuilder.IsRecursive">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceQueryOptions"/> is recurse.
+            </summary>
+            <value><c>true</c> if recurse; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceCopyRelatedItem`1">
+            <summary>
+            Message build used to help construct a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceCopyRelatedItem"/> operation.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceRelatedOperation`3">
+            <summary>
+            Base class for all related operation message builders that require search criteria.
+            </summary>
+            <typeparam name="TRelatedOperation">The type of the related item.</typeparam>
+            <typeparam name="TItem">The type of the item.</typeparam>
+            <typeparam name="TSearch">The type of the search.</typeparam>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceRelatedOperation`2">
+            <summary>
+            Base class for all related operation message builders.
+            </summary>
+            <typeparam name="TRelatedOperation">The type of the related item.</typeparam>
+            <typeparam name="TItem">The type of the item.</typeparam>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceBaseRelatedOperation">
+            <summary>
+            Base class for all related operation message builders.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceBaseRelatedOperation.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Common.MessageBuilders.CommerceBaseRelatedOperation"/> class.
+            </summary>
+            <param name="name">The name of the relationship this related operation will target.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceBaseRelatedOperation.ToRelatedOperation">
+            <summary>
+            Converts related items to the message specific format.
+            </summary>
+            <returns>A new <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceRelatedOperation"/> object.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceBaseRelatedOperation.RelationshipName">
+            <summary>
+            Gets or sets the relationship name.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceRelatedOperation`2.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceRelatedOperation class.
+            </summary>
+            <param name="name">The name of the relationship this related operation will target.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceRelatedOperation`2.ToRelatedOperation">
+            <summary>
+            Toes the related item.
+            </summary>
+            <returns>Related Item</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceRelatedOperation`2.Model">
+            <summary>
+            Gets or sets the related operation model.
+            </summary>
+            <value>The related operation model.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceRelatedOperation`2.RelatedOperations">
+            <summary>
+            Gets or sets the related items.
+            </summary>
+            <value>The related items.</value>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceRelatedOperation`3.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceRelatedOperation class.
+            </summary>
+            <param name="name">The name of the relationship this related operation will target.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceRelatedOperation`3.ToRelatedOperation">
+            <summary>
+            Toes the related item.
+            </summary>
+            <returns>Related Item</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceRelatedOperation`3.SearchCriteria">
+            <summary>
+            Gets or sets the search criteria.
+            </summary>
+            <value>The search criteria.</value>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceCopyRelatedItem`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceCopyRelatedItem class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceCopyRelatedItem`1.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the CommerceCopyRelatedItem class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+            <param name="modelName">Name of the model.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceCopyRelatedItem`1.ToRelatedOperation">
+            <summary>
+            Converts the related item into a related item operation.
+            </summary>
+            <returns>Related Item</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceBaseRelationshipRelatedOperation`3">
+            <summary>
+            Builder base generic class used to manipulate the relationship element of the operation RelatedOperations collection.
+            </summary>
+            <typeparam name="TRelatedOperation">The type of the related item.</typeparam>
+            <typeparam name="TItem">The type of the item.</typeparam>
+            <typeparam name="TRelationship">The type of the relationship.</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceBaseRelationshipRelatedOperation`3.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceBaseRelationshipRelatedOperation class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceBaseRelationshipRelatedOperation`3.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the CommerceBaseRelationshipRelatedOperation class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+            <param name="targetModelName">Name of the target model.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceBaseRelationshipRelatedOperation`3.ToRelatedOperation">
+            <summary>
+            Converts related items to the message specific format.
+            </summary>
+            <returns>Related Item</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceBaseRelationshipRelatedOperation`3.Model">
+            <summary>
+            Gets the model.
+            </summary>
+            <value>The model.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceBaseRelationshipRelatedOperation`3.SearchCriteria">
+            <summary>
+            Gets or sets the search criteria.
+            </summary>
+            <value>The search criteria.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceCreateRelationship`2">
+            <summary>
+            Builder used to create a related item "CreateRelationship" entry used to indicate that a new relationship
+            is being created between 2 existing commerce entities.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+            <typeparam name="TRelationship">The type of the relationship.</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceCreateRelationship`2.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceCreateRelationship class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceCreateRelationship`2.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the CommerceCreateRelationship class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+            <param name="targetModelName">Name of the target model.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceCreateRelationship`2.ToRelatedOperation">
+            <summary>
+            Converts related items to the message specific format.
+            </summary>
+            <returns>Related Item</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceDeleteRelationship`2">
+            <summary>
+            Builder used to create a related item "CreateRelationship" entry used to indicate that a new relationship
+            is being created between 2 existing commerce entities.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+            <typeparam name="TRelationship">The type of the relationship.</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceDeleteRelationship`2.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceDeleteRelationship class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceDeleteRelationship`2.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the CommerceDeleteRelationship class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+            <param name="targetModelName">Name of the target model.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceDeleteRelationship`2.ToRelatedOperation">
+            <summary>
+            Converts related items to the message specific format.
+            </summary>
+            <returns>Related Item</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceQueryRelationship`2">
+            <summary>
+            Builder used to create a related item "CreateRelationship" entry used to indicate that a new relationship
+            is being created between 2 existing commerce entities.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+            <typeparam name="TRelationship">The type of the relationship.</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceQueryRelationship`2.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceQueryRelationship class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceQueryRelationship`2.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the CommerceQueryRelationship class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+            <param name="targetModelName">Name of the target model.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceQueryRelationship`2.ToRelatedOperation">
+            <summary>
+            Converts related items to the message specific format.
+            </summary>
+            <returns>Related Item</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceUpdateRelationship`2">
+            <summary>
+            Builder used to create a related item "CreateRelationship" entry used to indicate that a new relationship
+            is being created between 2 existing commerce entities.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+            <typeparam name="TRelationship">The type of the relationship.</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceUpdateRelationship`2.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceUpdateRelationship class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceUpdateRelationship`2.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the CommerceUpdateRelationship class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+            <param name="targetModelName">Name of the target model.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.Advanced.CommerceUpdateRelationship`2.ToRelatedOperation">
+            <summary>
+            Converts related items to the message specific format.
+            </summary>
+            <returns>Related Item</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceCreateRelatedItem`1">
+            <summary>
+            Message builder used to help construct a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceCreateRelatedItem"/> operation.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceCreateRelatedItem`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceCreateRelatedItem class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceCreateRelatedItem`1.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the CommerceCreateRelatedItem class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+            <param name="modelName">Name of the model.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceCreateRelatedItem`1.ToRelatedOperation">
+            <summary>
+            Returns the RelatedOperation message based on the content of the object.
+            </summary>
+            <returns>Related Item</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceCreateRelationship`1">
+            <summary>
+            Builder used to create a related item "CreateRelationship" entry used to indicate that a new relationship
+            is being created between 2 existing commerce entities.
+            
+            This version defaults to a relationship type of <see cref="T:Microsoft.Commerce.Contracts.CommerceRelationship"/>.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceCreateRelationship`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceCreateRelationship class.
+            </summary>
+            <param name="relationshipName">The name of the relationship to create.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceCreateRelationship`1.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the CommerceCreateRelationship class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+            <param name="targetModelName">Name of the target model.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceCreate`2">
+            <summary>
+            Create Builder helper class
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+            <typeparam name="TOption">The type of the option.</typeparam>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.MessageBuilders.CommerceCreate`2._createOptionsBuilder">
+            <summary>
+            The query options associated with this query
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.MessageBuilders.CommerceCreate`2._typelessModelName">
+            <summary>
+            Set when calling the API in a typeless manner and is given a model name in the constructor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceCreate`2.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceCreate class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceCreate`2.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceCreate class.
+            </summary>
+            <param name="modelName">Name of the model.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceCreate`2.ToOperation">
+            <summary>
+            Converts this builder into an <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceOperation"/>.
+            </summary>
+            <returns>
+            A new <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceOperation"/> object.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceCreate`2.CreateOptions">
+            <summary>
+            Gets or sets the options.
+            </summary>
+            <value>The options.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceDeleteOptionsBuilder">
+            <summary>
+            Builder used to help construct a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceDeleteOptions"/> object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceDeleteOptionsBuilder.ToOptions">
+            <summary>
+            Converts the builder to a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceQueryOptions"/> object.
+            </summary>
+            <returns>A new <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceQueryOptions"/> object.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceDeleteOptionsBuilder.ReturnDeletedCount">
+            <summary>
+            Gets or sets a value indicating whether the delete operation must return the deleted item count.
+            </summary>
+            <value>
+            'true' if the deleted item count must be returned as part of the operation.
+            </value>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceDeleteRelatedItem`1">
+            <summary>
+            Message builder used to help construct a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceQueryRelatedItem"/> operation.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceDeleteRelatedItem`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceDeleteRelatedItem class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceDeleteRelatedItem`1.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the CommerceDeleteRelatedItem class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+            <param name="modelName">Name of the model.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceDeleteRelatedItem`1.ToRelatedOperation">
+            <summary>
+            Returns the RelatedOperation message based on the content of the object.
+            </summary>
+            <returns>Related Item</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceDeleteRelationship`1">
+            <summary>
+            Builder used to create a related item "CreateRelationship" entry used to indicate that a new relationship
+            is being created between 2 existing commerce entities.
+            
+            This version defaults to a relationship type of <see cref="T:Microsoft.Commerce.Contracts.CommerceRelationship"/>.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceDeleteRelationship`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceDeleteRelationship class.
+            </summary>
+            <param name="relationshipName">The name of the relationship to create.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceDeleteRelationship`1.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the CommerceDeleteRelationship class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+            <param name="targetModelName">Name of the target model.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceDelete`1">
+            <summary>
+            Query builder that defaults to a using a model search on the provided TItem.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceDelete`2">
+            <summary>
+            Delete Builder helper class
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+            <typeparam name="TSearch">The type of the search.</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceDelete`2.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceDelete class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceDelete`2.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceDelete class.
+            </summary>
+            <param name="modelName">Name of the model.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceDelete`1.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceDelete class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceDelete`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceDelete class.
+            </summary>
+            <param name="modelName">Name of the model.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceCatalogFullTextSearchBuilder">
+            <summary>
+            A catalog specific search criteria builder for CatalogFullTextSearch
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceSearchCriteriaBuilder">
+            <summary>
+            Base class for builders that construct a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceSearchCriteria"/> object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceSearchCriteriaBuilder.ToSearchCriteria">
+            <summary>
+            Converts the builder to a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceSearchCriteria"/> object.
+            </summary>
+            <returns>A new <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceSearchCriteria"/> object.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceCatalogFullTextSearchBuilder.ToSearchCriteria">
+            <summary>
+            Toes the search criteria.
+            </summary>
+            <returns>The CatalogFullTextSearch</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceCatalogFullTextSearchBuilder.Phrase">
+            <summary>
+            Gets or sets the search.
+            </summary>
+            <value>The search.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceCatalogFullTextSearchBuilder.Catalogs">
+            <summary>
+            Gets or sets the scope.
+            </summary>
+            <value>The scope.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceCatalogFullTextSearchBuilder.FirstItemIndex">
+            <summary>
+            Gets or sets the first index of the item.
+            </summary>
+            <value>The first index of the item.  This is a 0 based index.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceCatalogFullTextSearchBuilder.NumberOfItemsToReturn">
+            <summary>
+            Gets or sets the number of items to return.
+            </summary>
+            <value>The number of items to return.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceCatalogFullTextSearchBuilder.ReturnTotalItemCount">
+            <summary>
+            Gets or sets a value indicating whether [return total item count].
+            </summary>
+            <value>
+                <c>true</c> if [return total item count]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceCatalogFullTextSearchBuilder.SortProperties">
+            <summary>
+            Gets or sets the sort properties.
+            </summary>
+            <value>The sort properties.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceCatalogFullTextSearchBuilder.TypesToSearch">
+            <summary>
+            Gets or sets the TypesToSearch.
+            </summary>
+            <value>CatalogEntityType, a flag representing the types of CatalogEntities to be searched for</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceCatalogFullTextSearchBuilder.FullTextSearchType">
+            <summary>
+            Gets or sets the FullTextSearchType.
+            </summary>
+            <value>The FullTextSearchType representing the type of full text search to be preformed.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceCatalogFullTextSearchBuilder.InventoryFilters">
+            <summary>
+            Gets or sets the InventoryFilter.
+            </summary>
+            <value>The InventoryFilter representing the type of inventory filters to be done on this full text search.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceCatalogFullTextSearchBuilder.WhereClause">
+            <summary>
+            Gets or sets the where clause.
+            </summary>
+            <value>The where clause.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceCatalogFullTextSearchBuilder.CategoriesClause">
+            <summary>
+            Gets or sets the categories clause.
+            </summary>
+            <value>The category(s) search clause.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceCreate`1">
+            <summary>
+            Create Builder helper class
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceCreate`1.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceCreate class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceCreate`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceCreate class.
+            </summary>
+            <param name="modelName">Name of the model.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceMultiOperation">
+            <summary>
+            Allows to build a request composed of multiple operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceMultiOperation.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Common.MessageBuilders.CommerceMultiOperation"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceMultiOperation.Add(Microsoft.Commerce.Common.MessageBuilders.CommerceBaseBuilder)">
+            <summary>
+            Adds the specified builder.
+            </summary>
+            <param name="builder">The builder.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceMultiOperation.ToRequest">
+            <summary>
+            Converts this object to a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceRequest"/>.
+            </summary>
+            <returns>A new <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceRequest"/> object</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceQueryOptionsBuilder">
+            <summary>
+            Builder used to help construct a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceQueryOptions"/> object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceQueryOptionsBuilder.ToOptions">
+            <summary>
+            Converts the builder to a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceQueryOptions"/> object.
+            </summary>
+            <returns>A new <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceQueryOptions"/> object.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceQueryOptionsBuilder.IsRecursive">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceQueryOptions"/> is recurse.
+            </summary>
+            <value><c>true</c> if recurse; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceQueryRelatedItem`1">
+            <summary>
+            Message builder used to help construct a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceQueryRelatedItem"/> operation.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceQueryRelatedItem`2">
+            <summary>
+            Message builder used to help construct a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceQueryRelatedItem"/> operation.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+            <typeparam name="TSearch">The type of the search.</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceQueryRelatedItem`2.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceQueryRelatedItem class.
+            </summary>
+            <param name="name">The name of the relationship this related operation will target.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceQueryRelatedItem`2.ToRelatedOperation">
+            <summary>
+            Toes the related item.
+            </summary>
+            <returns>Related Item</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceQueryRelatedItem`2.QueryOptions">
+            <summary>
+            Gets or sets the options.
+            </summary>
+            <value>The options.</value>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceQueryRelatedItem`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceQueryRelatedItem class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceQueryRelatedItem`1.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the CommerceQueryRelatedItem class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+            <param name="modelName">Name of the model.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceQueryRelationship`1">
+            <summary>
+            Builder used to create a related item "CreateRelationship" entry used to indicate that a new relationship
+            is being created between 2 existing commerce entities.
+            
+            This version defaults to a relationship type of <see cref="T:Microsoft.Commerce.Contracts.CommerceRelationship"/>.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceQueryRelationship`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceQueryRelationship class.
+            </summary>
+            <param name="relationshipName">The name of the relationship to create.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceQueryRelationship`1.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the CommerceQueryRelationship class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+            <param name="targetModelName">Name of the target model.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceQuery`2">
+            <summary>
+            Query Builder helper class
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+            <typeparam name="TSearch">The type of the search.</typeparam>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceQuery`3">
+            <summary>
+            Query Builder helper class
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+            <typeparam name="TSearch">The type of the search.</typeparam>
+            <typeparam name="TOption">The type of the option.</typeparam>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.MessageBuilders.CommerceQuery`3._searchCriteria">
+            <summary>
+            The search criteria associated with this query
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.MessageBuilders.CommerceQuery`3._queryOptionsBuilder">
+            <summary>
+            The query options associated with this query
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceQuery`3.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceQuery class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceQuery`3.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceQuery class.
+            </summary>
+            <param name="modelName">Name of the model.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceQuery`3.ToOperation">
+            <summary>
+            To the operation.
+            </summary>
+            <returns>an operation</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceQuery`3.SearchCriteria">
+            <summary>
+            Gets or sets the search criteria.
+            </summary>
+            <value>The search criteria.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceQuery`3.QueryOptions">
+            <summary>
+            Gets or sets the options.
+            </summary>
+            <value>The options.</value>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceQuery`2.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceQuery class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceQuery`2.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceQuery class.
+            </summary>
+            <param name="modelName">Name of the model.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceModelSearch`1">
+            <summary>
+            Builder class used to construct a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceModelSearch"/> object.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceModelSearch`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceModelSearch class.
+            </summary>
+            <param name="modelName">Name of the model.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceModelSearch`1.ToSearchCriteria">
+            <summary>
+            Converts this class into a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceModelSearch"/> object.
+            </summary>
+            <returns>A new <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceModelSearch"/> object.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceModelSearch`1.Model">
+            <summary>
+            Gets or sets the model.
+            </summary>
+            <value>The model.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceModelSearch`1.FirstItemIndex">
+            <summary>
+            Gets or sets the first index of the item.
+            </summary>
+            <value>The first index of the item. This is a 0 based index.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceModelSearch`1.NumberOfItemsToReturn">
+            <summary>
+            Gets or sets the number of items to return.
+            </summary>
+            <value>The number of items to return.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceModelSearch`1.ReturnTotalItemCount">
+            <summary>
+            Gets or sets a value indicating whether [return total item count].
+            </summary>
+            <value>
+               <c>true</c> if [return total item count]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceModelSearch`1.SortProperties">
+            <summary>
+            Gets or sets the sort properties.
+            </summary>
+            <value>The sort properties.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceModelSearch`1.WhereClause">
+            <summary>
+            Gets or sets the where clause.
+            </summary>
+            <value>The where clause.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceQuery`1">
+            <summary>
+            Query builder that defaults to a using a model search on the provided TItem.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceQuery`1.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceQuery class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceQuery`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceQuery class.
+            </summary>
+            <param name="modelName">Name of the model.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceSiteContentSearchBuilder">
+            <summary>
+            A class for building static site content searches.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.MessageBuilders.CommerceSiteContentSearchBuilder.siteContentSearch">
+            <summary>
+            The SiteContentSearch
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceSiteContentSearchBuilder.ToSearchCriteria">
+            <summary>
+            Toes the search criteria.
+            </summary>
+            <returns>The SiteContentSearch</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceSiteContentSearchBuilder.SiteUrl">
+            <summary>
+            Gets or sets the site url for the search.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceSiteContentSearchBuilder.Scopes">
+            <summary>
+            Gets or sets the scopes of the search.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceSiteContentSearchBuilder.SearchPhrase">
+            <summary>
+            Gets or sets the search phrase.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceSiteContentSearchBuilder.FirstItemIndex">
+            <summary>
+            Gets or sets the first index of the item.
+            </summary>
+            <value>The first index of the item.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceSiteContentSearchBuilder.NumberOfItemsToReturn">
+            <summary>
+            Gets or sets the number of items to return.
+            </summary>
+            <value>The number of items to return.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceSiteContentSearchBuilder.ReturnTotalItemCount">
+            <summary>
+            Gets or sets a value indicating whether [return total item count].
+            </summary>
+            <value><c>true</c> if [return total item count]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceSiteContentSearchBuilder.SortProperties">
+            <summary>
+            Gets or sets the sort properties.
+            </summary>
+            <value>The sort properties.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceSiteContentSearchBuilder.SearchPredicate">
+            <summary>
+            Gets or sets the search predicate.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceSiteContentSearchBuilder.QueryType">
+            <summary>
+            Gets or sets the type of query.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceSiteContentSearchBuilder.TrimDuplicates">
+            <summary>
+            Gets or sets a value indicating whether to trim duplicates
+            from the search.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceSiteContentSearchBuilder.IgnoreAllNoiseQuery">
+            <summary>
+            Gets or sets a value indicating whether to ignore all noise queries.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceSiteContentSearchBuilder.PassThroughFullTextSqlQuery">
+            <summary>
+            Gets or sets the PassThroughFullTextSqlQuery.
+            Setting this field bypasses the automatic fulltextsql expression generation
+            and submits this directly to sharepoint as the query text.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdateOptionsBuilder`1">
+            <summary>
+            Builder used to help construct a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceUpdateOptions"/> object.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdateOptionsBuilder`1.ToOptions">
+            <summary>
+            Converts the builder to a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceOptions"/> object.
+            </summary>
+            <returns>
+            A new <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceOptions"/> object.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdateOptionsBuilder`1.ReturnModel">
+            <summary>
+            Gets or sets the return model.
+            </summary>
+            <value>The return model.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdateOptionsBuilder`1.ReturnModelQueries">
+            <summary>
+            Gets or sets the related QueryRelatedItem operations that will be used to populate
+            relationships in the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntity"/> returned in the operation response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdateOptionsBuilder`1.HasReturnModel">
+            <summary>
+            Gets a value indicating whether this instance has return model.
+            </summary>
+            <value>
+                <c>true</c> if this instance has return model; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdateOptionsBuilder`1.Options">
+            <summary>
+            Gets or sets the options.
+            </summary>
+            <value>The options.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdateRelatedItem`1">
+            <summary>
+            Message builder used to help construct a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceQueryRelatedItem"/> operation.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdateRelatedItem`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceUpdateRelatedItem class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdateRelatedItem`1.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the CommerceUpdateRelatedItem class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+            <param name="modelName">Name of the model.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdateRelatedItem`1.ToRelatedOperation">
+            <summary>
+            Returns the RelatedOperation message based on the content of the object.
+            </summary>
+            <returns>Related Item</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdateRelationship`1">
+            <summary>
+            Builder used to create a related item "CreateRelationship" entry used to indicate that a new relationship
+            is being created between 2 existing commerce entities.
+            
+            This version defaults to a relationship type of <see cref="T:Microsoft.Commerce.Contracts.CommerceRelationship"/>.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdateRelationship`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceUpdateRelationship class.
+            </summary>
+            <param name="relationshipName">The name of the relationship to create.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdateRelationship`1.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the CommerceUpdateRelationship class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+            <param name="targetModelName">Name of the target model.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdate`1">
+            <summary>
+            Query builder that defaults to a using a model search on the provided TItem.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdate`2">
+            <summary>
+            Query Builder helper class
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+            <typeparam name="TSearch">The type of the search.</typeparam>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdate`3">
+            <summary>
+            Helper used to create a CommerceUpdate operation.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+            <typeparam name="TSearch">The type of the search.</typeparam>
+            <typeparam name="TOption">The type of the option.</typeparam>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdate`3._updateOptionsBuilder">
+            <summary>
+            The query options associated with this query
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdate`3._typelessModelName">
+            <summary>
+            Set when calling the API in a typeless manner and is given a model name in the constructor.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdate`3._searchCriteria">
+            <summary>
+            The SearchCriteria associated with this Query
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdate`3.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceUpdate class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdate`3.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceUpdate class.
+            </summary>
+            <param name="modelName">Name of the model.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdate`3.ToOperation">
+            <summary>
+            Converts this builder into an <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceOperation"/>.
+            </summary>
+            <returns>
+            A new <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceOperation"/> object.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdate`3.SearchCriteria">
+            <summary>
+            Gets or sets the search criteria.
+            </summary>
+            <value>The search criteria.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdate`3.UpdateOptions">
+            <summary>
+            Gets or sets the options.
+            </summary>
+            <value>The options.</value>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdate`2.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceUpdate class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdate`2.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceUpdate class.
+            </summary>
+            <param name="modelName">Name of the model.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdate`1.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceUpdate class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceUpdate`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceUpdate class.
+            </summary>
+            <param name="modelName">Name of the model.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceCopyRelatedItem`2">
+            <summary>
+            Message build used to help construct a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceCopyRelatedItem"/> operation.
+            </summary>
+            <typeparam name="TItem">The type of the item to copy.</typeparam>
+            <typeparam name="TParent">The type of the Parent of the item to copy.</typeparam>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.MessageBuilders.CommerceCopyRelatedItem`2.parentSearchCriteria">
+            <summary>
+            Search Criteria for the Parent
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceCopyRelatedItem`2.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CommerceCopyRelatedItem class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceCopyRelatedItem`2.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the CommerceCopyRelatedItem class.
+            </summary>
+            <param name="relationshipName">Name of the relationship.</param>
+            <param name="modelName">Name of the model.</param>
+            <param name="parentModelName">Name of the parent model.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceCopyRelatedItem`2.ToRelatedOperation">
+            <summary>
+            Converts the related item into a related item operation.
+            </summary>
+            <returns>Related Item</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceCopyRelatedItem`2.ParentSearchCriteria">
+            <summary>
+            Gets or sets the RelatedItem Search Criteria.
+            </summary>
+            <value>The search criteria.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceVEClientTokenSearchBuilder">
+            <summary>
+            A Virtual Earth ClientToken specific search criteria builder for CommerceVEClientTokenSearch
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceVEClientTokenSearchBuilder.ToSearchCriteria">
+            <summary>
+            Convert to the search criteria.
+            </summary>
+            <returns>The CommerceVEClientTokenSearch</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceVEClientTokenSearchBuilder.PlatformEnvironment">
+            <summary>
+            Gets or sets the PlatformEnvironment.
+            </summary>
+            <value>The PlatformEnvironment.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceVEClientTokenSearchBuilder.ClientIPAddress">
+            <summary>
+            Gets or sets the IP address of the calling client.
+            </summary>
+            <value>The Client IP Address.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceVEClientTokenSearchBuilder.TokenTimeout">
+            <summary>
+            Gets or sets the number of minutes that the Client Token will be valid for.
+            </summary>
+            <value>The token timeout minutes.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.MessageBuilders.CommerceVENearbyStoreSearchBuilder">
+            <summary>
+            A Virtual Earth FindNearby specific search criteria builder for CommerceVENearbyStoreSearch
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.MessageBuilders.CommerceVENearbyStoreSearchBuilder.ToSearchCriteria">
+            <summary>
+            Convert to the search criteria.
+            </summary>
+            <returns>The CommerceVENearbyStoreSearch</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceVENearbyStoreSearchBuilder.PlatformEnvironment">
+            <summary>
+            Gets or sets the PlatformEnvironment.
+            </summary>
+            <value>The PlatformEnvironment.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceVENearbyStoreSearchBuilder.Latitude">
+            <summary>
+            Gets or sets the latitude used to retrieve nearby stores.
+            </summary>
+            <value>The latitude.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceVENearbyStoreSearchBuilder.Longitude">
+            <summary>
+            Gets or sets the longitude used to retrieve nearby stores.
+            </summary>
+            <value>The longitude.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceVENearbyStoreSearchBuilder.DistanceUnit">
+            <summary>
+            Gets or sets the distance unit used to retrieve nearby stores.
+            </summary>
+            <value>The distance unit.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.MessageBuilders.CommerceVENearbyStoreSearchBuilder.Distance">
+            <summary>
+            Gets or sets the distance used to find nearby stores.
+            </summary>
+            <value>The Distance.</value>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.ExceptionMessageConstants.ExceptionEmptyArray">
+            <summary>
+            The array parameter '{0}' must contain at least one item.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.ExceptionMessageConstants.ExceptionParameterTypeIncorrect">
+            <summary>
+            The parameter '{0}' must be of one of the following types:  {1}.  The type provided was '{2}'.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.ExceptionMessageConstants.ValidatorValueTypeInvalid">
+            <summary>
+            The supplied value is not of type which the validator can process.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.ExceptionMessageConstants.StrongNameValidatorErrorInvalidString">
+            <summary>
+            The string provided '{0}' must represent a signed assembly.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.ExceptionMessageConstants.StrongNameValidatorErrorInvalidType">
+            <summary>
+            The type '{0}' must be defined in a signed assembly.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.ExceptionFormatter">
+            <summary>
+            Represents the base class from which all implementations of exception formatters must derive. The formatter provides functionality for formatting <see cref="P:Microsoft.Commerce.Common.ExceptionFormatter.Exception"/> objects.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ExceptionFormatter.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Common.ExceptionFormatter"/> class with an <see cref="P:Microsoft.Commerce.Common.ExceptionFormatter.Exception"/> to format.
+            </summary>
+            <param name="exception">The <see cref="P:Microsoft.Commerce.Common.ExceptionFormatter.Exception"/> object to format.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ExceptionFormatter.Format">
+            <summary>
+            Formats the <see cref="P:Microsoft.Commerce.Common.ExceptionFormatter.Exception"/> into the underlying stream.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ExceptionFormatter.WriteException(System.Exception,System.Exception)">
+            <summary>
+            Formats the exception and all nested inner exceptions.
+            </summary>
+            <param name="exceptionToFormat">The exception to format.</param>
+            <param name="outerException">The outer exception. This 
+            value will be null when writing the outer-most exception.</param>
+            <remarks>
+            <para>This method calls itself recursively until it reaches
+            an exception that does not have an inner exception.</para>
+            <para>
+            This is a template method which calls the following
+            methods in order
+            <list type="number">
+            <item>
+            <description><see cref="M:Microsoft.Commerce.Common.ExceptionFormatter.WriteExceptionType(System.Type)"/></description>
+            </item>
+            <item>
+            <description><see cref="M:Microsoft.Commerce.Common.ExceptionFormatter.WriteMessage(System.String)"/></description>
+            </item>
+            <item>
+            <description><see cref="M:Microsoft.Commerce.Common.ExceptionFormatter.WriteSource(System.String)"/></description>
+            </item>
+            <item>
+            <description><see cref="M:Microsoft.Commerce.Common.ExceptionFormatter.WriteHelpLink(System.String)"/></description>
+            </item>
+            <item>
+            <description><see cref="M:Microsoft.Commerce.Common.ExceptionFormatter.WriteReflectionInfo(System.Object,System.Boolean)"/></description>
+            </item>
+            <item>
+            <description><see cref="M:Microsoft.Commerce.Common.ExceptionFormatter.WriteStackTrace(System.String)"/></description>
+            </item>
+            <item>
+            <description>If the specified exception has an inner exception
+            then it makes a recursive call. <see cref="M:Microsoft.Commerce.Common.ExceptionFormatter.WriteException(System.Exception,System.Exception)"/></description>
+            </item>
+            </list>
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ExceptionFormatter.WriteReflectionInfo(System.Object,System.Boolean)">
+            <summary>
+            Formats an <see cref="P:Microsoft.Commerce.Common.ExceptionFormatter.Exception"/> using reflection to get the information.
+            </summary>
+            <param name="exceptionToFormat">
+            The <see cref="P:Microsoft.Commerce.Common.ExceptionFormatter.Exception"/> to be formatted.
+            </param>
+            <param name="recurse">Specifies whether child properties of the <paramref name="exceptionToFormat"/> should be written.</param>
+            <remarks>
+            <para>This method reflects over the public, instance properties 
+            and public, instance fields
+            of the specified exception and prints them to the formatter.  
+            Certain property names are ignored
+            because they are handled explicitly in other places.</para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ExceptionFormatter.WriteDescription">
+            <summary>
+            When overridden by a class, writes a description of the caught exception.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ExceptionFormatter.WriteDateTime(System.DateTime)">
+            <summary>
+            When overridden by a class, writes the current time.
+            </summary>
+            <param name="utcNow">The current time.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ExceptionFormatter.WriteExceptionType(System.Type)">
+            <summary>
+            When overridden by a class, writes the <see cref="T:System.Type"/> of the current exception.
+            </summary>
+            <param name="exceptionType">The <see cref="T:System.Type"/> of the exception.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ExceptionFormatter.WriteMessage(System.String)">
+            <summary>
+            When overridden by a class, writes the <see cref="P:System.Exception.Message"/>.
+            </summary>
+            <param name="message">The message to write.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ExceptionFormatter.WriteSource(System.String)">
+            <summary>
+            When overridden by a class, writes the value of the <see cref="P:System.Exception.Source"/> property.
+            </summary>
+            <param name="source">The source of the exception.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ExceptionFormatter.WriteHelpLink(System.String)">
+            <summary>
+            When overridden by a class, writes the value of the <see cref="P:System.Exception.HelpLink"/> property.
+            </summary>
+            <param name="helpLink">The help link for the exception.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ExceptionFormatter.WriteStackTrace(System.String)">
+            <summary>
+            When overridden by a class, writes the value of the <see cref="P:System.Exception.StackTrace"/> property.
+            </summary>
+            <param name="stackTrace">The stack trace of the exception.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ExceptionFormatter.WritePropertyInfo(System.Reflection.PropertyInfo,System.Object)">
+            <summary>
+            When overridden by a class, writes the value of a <see cref="T:System.Reflection.PropertyInfo"/> object.
+            </summary>
+            <param name="propertyInfo">The reflected <see cref="T:System.Reflection.PropertyInfo"/> object.</param>
+            <param name="value">The value of the <see cref="T:System.Reflection.PropertyInfo"/> object.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ExceptionFormatter.WriteFieldInfo(System.Reflection.FieldInfo,System.Object)">
+            <summary>
+            When overridden by a class, writes the value of a <see cref="T:System.Reflection.FieldInfo"/> object.
+            </summary>
+            <param name="fieldInfo">The reflected <see cref="T:System.Reflection.FieldInfo"/> object.</param>
+            <param name="value">The value of the <see cref="T:System.Reflection.FieldInfo"/> object.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ExceptionFormatter.WriteAdditionalInfo(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            When overridden by a class, writes additional properties if available.
+            </summary>
+            <param name="additionalInformation">Additional information to be included with the exception report</param>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ExceptionFormatter.Exception">
+            <summary>
+            Gets the <see cref="P:Microsoft.Commerce.Common.ExceptionFormatter.Exception"/> to format.
+            </summary>
+            <value>
+            The <see cref="P:Microsoft.Commerce.Common.ExceptionFormatter.Exception"/> to format.
+            </value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ExceptionFormatter.AdditionalInfo">
+            <summary>
+            Gets additional information related to the <see cref="P:Microsoft.Commerce.Common.ExceptionFormatter.Exception"/> but not
+            stored in the exception (eg: the time in which the <see cref="P:Microsoft.Commerce.Common.ExceptionFormatter.Exception"/> was 
+            thrown).
+            </summary>
+            <value>
+            Additional information related to the <see cref="P:Microsoft.Commerce.Common.ExceptionFormatter.Exception"/> but not
+            stored in the exception (for example, the time when the <see cref="P:Microsoft.Commerce.Common.ExceptionFormatter.Exception"/> was 
+            thrown).
+            </value>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.ExceptionHandlerConfigurationCollection">
+            <summary>
+            Handles the commerceExceptionHandling section of the configuration file.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ExceptionHandlerConfigurationCollection.CreateNewElement">
+            <summary>
+            When overridden in a derived class, creates a new <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </summary>
+            <returns>A new <see cref="T:System.Configuration.ConfigurationElement"/> instance.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ExceptionHandlerConfigurationCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the element key for a specified configuration element when overridden in a derived class.
+            </summary>
+            <param name="element">The <see cref="T:System.Configuration.ConfigurationElement"/> to return the key for.</param>
+            <returns>
+            An <see cref="T:System.Object"/> that acts as the key for the specified <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ExceptionHandlerConfigurationCollection.CollectionType">
+            <summary>
+            Gets the type of the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <value></value>
+            <returns>The <see cref="T:System.Configuration.ConfigurationElementCollectionType"/> of this collection.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ExceptionHandlerConfigurationCollection.ElementName">
+            <summary>
+            Gets the name used to identify this collection of elements in the configuration file when overridden in a derived class.
+            </summary>
+            <value></value>
+            <returns>The name of the collection; otherwise, an empty string. The default is an empty string.</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.ExceptionHandlerConfigurationElement">
+            <summary>
+            Handles the exceptionHandler element of the configuration file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ExceptionHandlerConfigurationElement.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The exception handler name.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ExceptionHandlerConfigurationElement.HandlerType">
+            <summary>
+            Gets or sets the type.
+            </summary>
+            <value>The exception handler type.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ExceptionHandlerConfigurationElement.InitializationData">
+            <summary>
+            Gets or sets the initialization data.
+            </summary>
+            <value>The exception handler initialization data.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.ExceptionHandlerConfigurationElement.Attributes">
+            <summary>
+            Class that holds constants identifying the names XML attributes used by this configuration element.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.ExceptionHandlerConfigurationElement.Attributes.Name">
+            <summary>
+            The Name attribute name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.ExceptionHandlerConfigurationElement.Attributes.HandlerType">
+            <summary>
+            The HandlerType attribute name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.ExceptionHandlerConfigurationElement.Attributes.InitializationData">
+            <summary>
+            The initializeData attribute name.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.ExceptionHandlingConfigurationSection">
+            <summary>
+            configuration section handler for exception handlers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ExceptionHandlingConfigurationSection.DefaultPolicyName">
+            <summary>
+            Gets or sets the default policy name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ExceptionHandlingConfigurationSection.ExceptionPolicies">
+            <summary>
+            Gets the processor.
+            </summary>
+            <value>The processor.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.ExceptionManager">
+            <summary>
+            Class that determines how to report unhandled exceptions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ExceptionManager.HandleException(System.Exception)">
+            <summary>
+            Handles an exception using the default policy.
+            </summary>
+            <param name="exception">The Exception to handle.</param>
+            <returns>The exception the specified policy has processed.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ExceptionManager.HandleException(System.String,System.Exception)">
+            <summary>
+            Handles an exception using the specified policy.
+            </summary>
+            <param name="policyName">The name of the exception handler policy.</param>
+            <param name="exception">The Exception to handle</param>
+            <returns>The exception the specified policy has processed.</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.ExceptionPolicyConfigurationCollection">
+            <summary>
+            Represents the a collection of exceptionPolicy configuration elements.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ExceptionPolicyConfigurationCollection.CreateNewElement">
+            <summary>
+            When overridden in a derived class, creates a new <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </summary>
+            <returns>A new <see cref="T:System.Configuration.ConfigurationElement"/> instance.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ExceptionPolicyConfigurationCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the element key for a specified configuration element when overridden in a derived class.
+            </summary>
+            <param name="element">The <see cref="T:System.Configuration.ConfigurationElement"/> to return the key for.</param>
+            <returns>
+            An <see cref="T:System.Object"/> that acts as the key for the specified <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ExceptionPolicyConfigurationCollection.CollectionType">
+            <summary>
+            Gets the type of the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <value></value>
+            <returns>The <see cref="T:System.Configuration.ConfigurationElementCollectionType"/> of this collection.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ExceptionPolicyConfigurationCollection.ElementName">
+            <summary>
+            Gets the name used to identify this collection of elements in the configuration file when overridden in a derived class.
+            </summary>
+            <value></value>
+            <returns>The name of the collection; otherwise, an empty string. The default is an empty string.</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.ExceptionPolicyConfigurationElement">
+            <summary>
+            Represents the exceptonPolicy section of the configuration file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ExceptionPolicyConfigurationElement.Name">
+            <summary>
+            Gets or sets the name of the exception policy.
+            </summary>
+            <value>The name of the exception policy.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ExceptionPolicyConfigurationElement.ExceptionHandlers">
+            <summary>
+            Gets the exception handlers used under this policy.
+            </summary>
+            <value>The exception handlers used under this policy.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.IExceptionHandler">
+            <summary>
+            Defines the contract for an ExceptionHandler. An ExceptionHandler contains specific handling 
+            logic (i.e. logging the exception, replacing the exception, etc.) that is executed in a chain 
+            of multiple ExceptionHandlers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.IExceptionHandler.HandleException(System.Exception)">
+            <summary>
+            When implemented by a class, handles an Exception.
+            </summary>
+            <param name="exception">The exception to handle.</param>
+            <returns>Modified exception to pass to the next exception handler in the chain.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.IExceptionHandler.InitializationData">
+            <summary>
+            Gets or sets optional initialization data that will be provided to the handler.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.LoggingExceptionHandler">
+            <summary>
+            IExceptionHandler implementation that logs exceptions to the configured trace source.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.LoggingExceptionHandler.HandleException(System.Exception)">
+            <summary>
+            Logs the provided exception to the configured trace source specified in the <see cref="P:Microsoft.Commerce.Common.LoggingExceptionHandler.InitializationData"/>.
+            </summary>
+            <param name="exception">The exception to log.</param>
+            <returns>The same instance exception as <paramref name="exception"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.LoggingExceptionHandler.FormatException(System.Exception)">
+            <summary>
+            Formats the provided exception into the form that will be logged.
+            </summary>
+            <param name="exception">The eception to format.</param>
+            <returns>The formatted exception.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.LoggingExceptionHandler.InitializationData">
+            <summary>
+            Gets or sets the initialization data specified in configuration.  This value must be the name of a configured trace source.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.TextLoggingExceptionHandler">
+            <summary>
+            Exception handler that logs exceptions using a <see cref="T:Microsoft.Commerce.Common.TextExceptionFormatter"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.TextLoggingExceptionHandler.FormatException(System.Exception)">
+            <summary>
+            Formats the provided exception into the form that will be logged.
+            </summary>
+            <param name="exception">The eception to format.</param>
+            <returns>The formatted exception.</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.TextExceptionFormatter">
+            <summary>
+            Represents an exception formatter that formats exception objects as text.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.TextExceptionFormatter.#ctor(System.IO.TextWriter,System.Exception)">
+            <summary>
+            Initializes a new instance of the TextExceptionFormatter class.
+            </summary>
+            <param name="writer">The stream to write formatting information to.</param>
+            <param name="exception">The exception to format.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.TextExceptionFormatter.WriteDescription">
+            <summary>
+            Writes a generic description to the underlying text stream.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.TextExceptionFormatter.WriteException(System.Exception,System.Exception)">
+            <summary>
+            Writes and formats the exception and all nested inner exceptions to the <see cref="T:System.IO.TextWriter"/>.
+            </summary>
+            <param name="exceptionToFormat">The exception to format.</param>
+            <param name="outerException">The outer exception. This 
+            value will be null when writing the outer-most exception.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.TextExceptionFormatter.WriteDateTime(System.DateTime)">
+            <summary>
+            Writes the current date and time to the <see cref="T:System.IO.TextWriter"/>.
+            </summary>
+            <param name="utcNow">The current time.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.TextExceptionFormatter.WriteExceptionType(System.Type)">
+            <summary>
+            Writes the value of the <see cref="P:System.Type.AssemblyQualifiedName"/>
+            property for the specified exception type to the <see cref="T:System.IO.TextWriter"/>.
+            </summary>
+            <param name="exceptionType">The <see cref="T:System.Type"/> of the exception.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.TextExceptionFormatter.WriteMessage(System.String)">
+            <summary>
+            Writes the value of the <see cref="P:System.Exception.Message"/>
+            property to the underyling <see cref="T:System.IO.TextWriter"/>.
+            </summary>
+            <param name="message">The message to write.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.TextExceptionFormatter.WriteSource(System.String)">
+            <summary>
+            Writes the value of the specified source taken
+            from the value of the <see cref="P:System.Exception.Source"/>
+            property to the <see cref="T:System.IO.TextWriter"/>.
+            </summary>
+            <param name="source">The source of the exception.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.TextExceptionFormatter.WriteHelpLink(System.String)">
+            <summary>
+            Writes the value of the specified help link taken
+            from the value of the <see cref="P:System.Exception.HelpLink"/>
+            property to the <see cref="T:System.IO.TextWriter"/>.
+            </summary>
+            <param name="helpLink">The exception's help link.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.TextExceptionFormatter.WritePropertyInfo(System.Reflection.PropertyInfo,System.Object)">
+            <summary>
+            Writes the name and value of the specified property to the <see cref="T:System.IO.TextWriter"/>.
+            </summary>
+            <param name="propertyInfo">The reflected <see cref="T:System.Reflection.PropertyInfo"/> object.</param>
+            <param name="value">The value of the <see cref="T:System.Reflection.PropertyInfo"/> object.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.TextExceptionFormatter.WriteFieldInfo(System.Reflection.FieldInfo,System.Object)">
+            <summary>
+            Writes the name and value of the specified field to the <see cref="T:System.IO.TextWriter"/>.
+            </summary>
+            <param name="fieldInfo">The reflected <see cref="T:System.Reflection.FieldInfo"/> object.</param>
+            <param name="value">The value of the <see cref="T:System.Reflection.FieldInfo"/> object.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.TextExceptionFormatter.WriteStackTrace(System.String)">
+            <summary>
+            Writes the value of the <see cref="P:System.Exception.StackTrace"/> property to the <see cref="T:System.IO.TextWriter"/>.
+            </summary>
+            <param name="stackTrace">The stack trace of the exception.</param>
+            <remarks>
+            If there is no stack trace available, an appropriate message will be displayed.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.TextExceptionFormatter.WriteAdditionalInfo(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Writes the additional properties to the <see cref="T:System.IO.TextWriter"/>.
+            </summary>
+            <param name="additionalInformation">Additional information to be included with the exception report</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.TextExceptionFormatter.Indent">
+            <summary>
+            Indents the <see cref="T:System.IO.TextWriter"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.TextExceptionFormatter.Writer">
+            <summary>
+            Gets the underlying <see cref="T:System.IO.TextWriter"/>
+            that the current formatter is writing to.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.XmlExceptionFormatter">
+            <summary>
+            Represents an exception formatter that formats exception objects as XML.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.XmlExceptionFormatter.#ctor(System.Xml.XmlWriter,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Common.XmlExceptionFormatter"/> class using the specified <see cref="T:System.Xml.XmlWriter"/> and <see cref="T:System.Exception"/> objects.
+            </summary>
+            <param name="xmlWriter">The <see cref="T:System.Xml.XmlWriter"/> in which to write the XML.</param>
+            <param name="exception">The <see cref="T:System.Exception"/> to format.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.XmlExceptionFormatter.#ctor(System.IO.TextWriter,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Common.XmlExceptionFormatter"/> class using the specified <see cref="T:System.IO.TextWriter"/> and <see cref="T:System.Exception"/> objects.
+            </summary>
+            <param name="writer">The <see cref="T:System.IO.TextWriter"/> in which to write the XML.</param>
+            <param name="exception">The <see cref="T:System.Exception"/> to format.</param>
+            <remarks>
+            An <see cref="T:System.Xml.XmlTextWriter"/> with indented formatting is created from the  specified <see cref="T:System.IO.TextWriter"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.XmlExceptionFormatter.Format">
+            <summary>
+            Formats the <see cref="T:System.Exception"/> into the underlying stream.
+            </summary>       
+        </member>
+        <member name="M:Microsoft.Commerce.Common.XmlExceptionFormatter.WriteDateTime(System.DateTime)">
+            <summary>
+            Writes the current date and time to the <see cref="T:System.Xml.XmlWriter"/>.
+            </summary>
+            <param name="utcNow">The current time.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.XmlExceptionFormatter.WriteMessage(System.String)">
+            <summary>
+            Writes the value of the <see cref="P:System.Exception.Message"/> property to the <see cref="T:System.Xml.XmlWriter"/>.
+            </summary>
+            <param name="message">The message to write.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.XmlExceptionFormatter.WriteDescription">
+            <summary>
+            Writes a generic description to the <see cref="T:System.Xml.XmlWriter"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.XmlExceptionFormatter.WriteHelpLink(System.String)">
+            <summary>
+            Writes the value of the specified help link taken
+            from the value of the <see cref="P:System.Exception.HelpLink"/>
+            property to the <see cref="T:System.Xml.XmlWriter"/>.
+            </summary>
+            <param name="helpLink">The exception's help link.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.XmlExceptionFormatter.WriteStackTrace(System.String)">
+            <summary>
+            Writes the value of the specified stack trace taken from the value of the <see cref="P:System.Exception.StackTrace"/> property to the <see cref="T:System.Xml.XmlWriter"/>.
+            </summary>
+            <param name="stackTrace">The stack trace of the exception.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.XmlExceptionFormatter.WriteSource(System.String)">
+            <summary>
+            Writes the value of the specified source taken from the value of the <see cref="P:System.Exception.Source"/> property to the <see cref="T:System.Xml.XmlWriter"/>.
+            </summary>
+            <param name="source">The source of the exception.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.XmlExceptionFormatter.WriteExceptionType(System.Type)">
+            <summary>
+            Writes the value of the <see cref="P:System.Type.AssemblyQualifiedName"/>
+            property for the specified exception type to the <see cref="T:System.Xml.XmlWriter"/>.
+            </summary>
+            <param name="exceptionType">The <see cref="T:System.Type"/> of the exception.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.XmlExceptionFormatter.WriteException(System.Exception,System.Exception)">
+            <summary>
+            Writes and formats the exception and all nested inner exceptions to the <see cref="T:System.Xml.XmlWriter"/>.
+            </summary>
+            <param name="exceptionToFormat">The exception to format.</param>
+            <param name="outerException">The outer exception. This value will be null when writing the outer-most exception.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.XmlExceptionFormatter.WritePropertyInfo(System.Reflection.PropertyInfo,System.Object)">
+            <summary>
+            Writes the name and value of the specified property to the <see cref="T:System.Xml.XmlWriter"/>.
+            </summary>
+            <param name="propertyInfo">The reflected <see cref="T:System.Reflection.PropertyInfo"/> object.</param>
+            <param name="value">The value of the <see cref="T:System.Reflection.PropertyInfo"/> object.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.XmlExceptionFormatter.WriteFieldInfo(System.Reflection.FieldInfo,System.Object)">
+            <summary>
+            Writes the name and value of the <see cref="T:System.Reflection.FieldInfo"/> object to the <see cref="T:System.Xml.XmlWriter"/>.
+            </summary>
+            <param name="fieldInfo">The reflected <see cref="T:System.Reflection.FieldInfo"/> object.</param>
+            <param name="value">The value of the <see cref="T:System.Reflection.FieldInfo"/> object.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.XmlExceptionFormatter.WriteAdditionalInfo(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Writes additional information to the <see cref="T:System.Xml.XmlWriter"/>.
+            </summary>
+            <param name="additionalInformation">Additional information to be included with the exception report</param>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.XmlExceptionFormatter.Writer">
+            <summary>
+            Gets the underlying <see cref="T:System.Xml.XmlWriter"/> that the formatted exception is written to.
+            </summary>
+            <value>
+            The underlying <see cref="T:System.Xml.XmlWriter"/> that the formatted exception is written to.
+            </value>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.XmlLoggingExceptionHandler">
+            <summary>
+            Exception handler that logs exceptions using a <see cref="T:Microsoft.Commerce.Common.XmlExceptionFormatter"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.XmlLoggingExceptionHandler.FormatException(System.Exception)">
+            <summary>
+            Formats the provided exception into the form that will be logged.
+            </summary>
+            <param name="exception">The eception to format.</param>
+            <returns>The formatted exception.</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.IOperationServiceAgent">
+            <summary>
+            Interface that defines a Commerce WCF service agent.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.IOperationServiceAgent.ProcessRequest(Microsoft.Commerce.Contracts.Messages.CommerceRequestContext,Microsoft.Commerce.Contracts.Messages.CommerceRequest)">
+            <summary>
+            Processes a Comerce operation request.
+            </summary>
+            <param name="requestContext">The RequestContext for the current request.</param>
+            <param name="request">The request to process.</param>
+            <returns>A <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceResponse"/> object that contains the results of the processed operation.</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.EtwStructSizes">
+            <summary>
+            Enumeration that defines the size of common field types.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.EtwStructSizes.SizeofMofField">
+            <summary>
+            The size of a MOF field.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.EtwStructSizes.SizeofGuid">
+            <summary>
+            The size of a Guid.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.EtwStructSizes.SizeofEventHeader">
+            <summary>
+            The size of an event header.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.EtwStructSizes.SizeofBaseEvent">
+            <summary>
+            The size of a base event.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.EtwTraceType">
+            <summary>
+            Attempt to be consistent with generic event types from EvnTrace.h
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.EtwTraceType.Trace">
+            <summary>
+            Equivalent to TraceEventType.Transfer diagnostic trace type
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.EtwTraceType.Start">
+            <summary>
+            Equivalent to TraceEventType.Start diagnostic trace type
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.EtwTraceType.Stop">
+            <summary>
+            Equivalent to TraceEventType.Stop diagnostic trace type
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.EtwTraceType.Transfer">
+            <summary>
+            Equivalent to TraceEventType.Transfer diagnostic trace type
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.EtwTraceType.Suspend">
+            <summary>
+            Equivalent to TraceEventType.Suspend diagnostic trace type
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.EtwTraceType.Resume">
+            <summary>
+            Equivalent to TraceEventType.Resume diagnostic trace type
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.EtwTraceListener">
+            <summary>
+            EtwTraceListener class and the helper classes contained in this file implement a trace 
+            listener that uses Event Tracing for Windows (ETW) API to log trace messages using standard
+            System.Diagnostics tracing infrastructure.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwTraceListener.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Common.EtwTraceListener"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwTraceListener.Close">
+            <summary>
+            When overridden in a derived class, closes the output stream so it no longer receives tracing or debugging output.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwTraceListener.TraceEvent(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.String,System.Object[])">
+            <summary>
+            Traces the event.
+            </summary>
+            <param name="eventCache">The event cache.</param>
+            <param name="source">The event source.</param>
+            <param name="eventType">The event type.</param>
+            <param name="id">The event id.</param>
+            <param name="format">The event format string.</param>
+            <param name="args">The event format string arguments.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwTraceListener.TraceEvent(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.String)">
+            <summary>
+            Traces the event.
+            </summary>
+            <param name="eventCache">The event cache.</param>
+            <param name="source">The event source.</param>
+            <param name="eventType">The event type.</param>
+            <param name="id">The event id.</param>
+            <param name="message">The evebt message.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwTraceListener.TraceData(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.Object)">
+            <summary>
+            Traces the data.
+            </summary>
+            <param name="eventCache">The event cache.</param>
+            <param name="source">The event source.</param>
+            <param name="eventType">The event type.</param>
+            <param name="id">The event id.</param>
+            <param name="data">The event data.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwTraceListener.TraceData(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.Object[])">
+            <summary>
+            Traces the data.
+            </summary>
+            <param name="eventCache">The event cache.</param>
+            <param name="source">The event source.</param>
+            <param name="eventType">The event type.</param>
+            <param name="id">The event id.</param>
+            <param name="data">The event data.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwTraceListener.TraceTransfer(System.Diagnostics.TraceEventCache,System.String,System.Int32,System.String,System.Guid)">
+            <summary>
+            Writes trace information, a message, a related activity identity and event information to the listener specific output.
+            </summary>
+            <param name="eventCache">A <see cref="T:System.Diagnostics.TraceEventCache"/> object that contains the current process ID, thread ID, and stack trace information.</param>
+            <param name="source">A name used to identify the output, typically the name of the application that generated the trace event.</param>
+            <param name="id">A numeric identifier for the event.</param>
+            <param name="message">A message to write.</param>
+            <param name="relatedActivityId">A <see cref="T:System.Guid"/>  object identifying a related activity.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwTraceListener.Write(System.String)">
+            <summary>
+            Writes the specified message.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwTraceListener.WriteLine(System.String)">
+            <summary>
+            Writes the line.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwTraceListener.Dispose(System.Boolean)">
+            <summary>
+            Releases the unmanaged resources used by the <see cref="T:System.Diagnostics.TraceListener"/> and optionally releases the managed resources.
+            </summary>
+            <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwTraceListener.ExitOrUnloadEventHandler(System.Object,System.EventArgs)">
+            <summary>
+            Exits the or unload event handler.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwTraceListener.UnhandledExceptionHandler(System.Object,System.UnhandledExceptionEventArgs)">
+            <summary>
+            Unhandleds the exception handler.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="args">The <see cref="T:System.UnhandledExceptionEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.ObjectBuilder.GlobalServiceCollection">
+            <summary>
+            Minimalist collection holding individual "Service" entries, within the "Services" tags, within the "GlobalServiceConfiguration" block.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ObjectBuilder.GlobalServiceCollection.#ctor">
+            <summary>
+            Initializes a new instance of the GlobalServiceCollection class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ObjectBuilder.GlobalServiceCollection.CreateNewElement">
+            <summary>
+            Creates a new <see cref="T:System.Configuration.ConfigurationElement"/> object.
+            </summary>
+            <returns>
+            A new <see cref="T:System.Configuration.ConfigurationElement"/> object.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ObjectBuilder.GlobalServiceCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the element key for a specified configuration element when overridden in a derived class.
+            </summary>
+            <param name="element">The <see cref="T:System.Configuration.ConfigurationElement"/> to return the key for.</param>
+            <returns>
+            An <see cref="T:System.Object"/> that acts as the key for the specified <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ObjectBuilder.GlobalServiceCollection.BaseAdd(System.Configuration.ConfigurationElement)">
+            <summary>
+            Adds a configuration element to the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <param name="element">The <see cref="T:System.Configuration.ConfigurationElement"/> to add.</param>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ObjectBuilder.GlobalServiceCollection.Item(System.Int32)">
+            <summary>
+            Gets the <see cref="T:Microsoft.Commerce.Common.ObjectBuilder.GlobalServiceElement"/> at the specified index.
+            </summary>
+            <param name="index">The index of the item to get.</param>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ObjectBuilder.GlobalServiceCollection.Item(System.String)">
+            <summary>
+            Gets the <see cref="T:Microsoft.Commerce.Common.ObjectBuilder.GlobalServiceElement"/> with the specified contract.
+            </summary>
+            <param name="contract">The name of the contract of the item to get.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.ObjectBuilder.GlobalServiceConfiguration">
+            <summary>
+            Definition for the "GlobalServiceConfiguration" configuration block.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ObjectBuilder.GlobalServiceConfiguration.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Common.ObjectBuilder.GlobalServiceConfiguration"/> class.
+            </summary>
+            <remarks>There are no attributes used with the root tags in this block.</remarks>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ObjectBuilder.GlobalServiceConfiguration.Services">
+            <summary>
+            Gets the definition of the "Service" block, which defines both <i>contract</i> and <i>implementation</i> attributes for services managed by the ServiceLocator.
+            </summary>
+            <remarks>The "Service" block simply declares the contract and implmentation particulars for each of the basic services by indicating the fully-qualified namespaces and class names of each.  The ServiceLocator uses these systemically to invoke the logic of individual services on a demand basis, thus efficiently managing the process of loading elements when and where they're needed.</remarks>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ObjectBuilder.GlobalServiceConfiguration.EnableTracing">
+            <summary>
+            Gets or sets a value indicating whether tracing is enabled.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.ObjectBuilder.GlobalServiceElement">
+            <summary>
+            Implementation of the "Service" element within the "GlobalServiceConfiguration" configuration block.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ObjectBuilder.GlobalServiceElement.#ctor">
+            <summary>
+            Initializes a new instance of the GlobalServiceElement class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ObjectBuilder.GlobalServiceElement.Contract">
+            <summary>
+            Gets or sets Type of a contract used by WCF to communciate service data between different parts of the application, followed by a comma, and the fully-qualified namespace of the containing project for the contract.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ObjectBuilder.GlobalServiceElement.Implementation">
+            <summary>
+            Gets or sets the Type of the class encapsulating implementation logic for the service, followed by a comma, and the fully-qualified namespace of the containing project for the implementation class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.ObjectBuilder.ServiceConfiguration">
+            <summary>
+            Service configuration behaviours class.
+            </summary>
+            <remarks>
+            <para></para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ObjectBuilder.ServiceConfiguration.#ctor">
+            <summary>
+            Initializes a new instance of the ServiceConfiguration class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ObjectBuilder.ServiceConfiguration.Configure(System.Type,System.Type)">
+            <summary>
+            Creates a dictionary entry containing both the contract and implementation details of the service being instantiated.
+            </summary>
+            <param name="type">The fully-qualified namespace and class name of the contract.</param>
+            <param name="implementation">The fully-qualified namespace and class name of the implementation.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ObjectBuilder.ServiceConfiguration.Contains``1">
+            <summary>
+            Checks if the configuration contains a value for the specified service type.
+            </summary>
+            <typeparam name="TService">The type of the service.</typeparam>
+            <returns>
+                <c>true</c> if [contains]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ObjectBuilder.ServiceConfiguration.Get``1">
+            <summary>
+            Returns the service implementation given the service type.
+            </summary>
+            <typeparam name="TContract">The service type associated with the desired service.</typeparam>
+            <returns>service Type</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ObjectBuilder.ServiceConfiguration.IsTracingEnabled">
+            <summary>
+            Gets a value indicating whether tracing is enabled in the configured services.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.ObjectBuilder.ServiceContainer">
+            <summary>
+            Service hosting class for 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ObjectBuilder.ServiceContainer.#ctor">
+            <summary>
+            Prevents a default instance of the ServiceContainer class from being created.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ObjectBuilder.ServiceContainer.HasService``1">
+            <summary>
+            Returns true, if the service "T" has been instantiated and exists in the ServiceConfiguration dictioanry.
+            </summary>
+            <typeparam name="T">A service object type.</typeparam>
+            <returns>True, if the service object type exists in the ServiceConfiguraion dictionary.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ObjectBuilder.ServiceContainer.GetService``1">
+            <summary>
+            Returns a service (T), leveraging an in-process invocation method rather than through WCF.
+            </summary>
+            <typeparam name="T">The service type being instantiated.</typeparam>
+            <returns>An instantiated service.</returns>
+            <example><see cref="T:Microsoft.Commerce.Contracts.IOperationService"/> instance. </example>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ObjectBuilder.ServiceContainer.Instance">
+            <summary>
+            Gets the instance.
+            </summary>
+            <value>The instance.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ObjectBuilder.ServiceContainer.IsTracingEnabled">
+            <summary>
+            Gets a value indicating whether tracing is enabled in the configured services.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.OperationServiceAgent">
+            <summary>
+            <see cref="T:Microsoft.Commerce.Common.IOperationServiceAgent"/> implementation for the Commerce service agent.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.OperationServiceAgent.ProcessRequest(Microsoft.Commerce.Contracts.Messages.CommerceRequestContext,Microsoft.Commerce.Contracts.Messages.CommerceRequest)">
+            <summary>
+            Process message operation.
+            </summary>
+            <param name="requestContext">The RequestContext for the current request.</param>
+            <param name="request">The request to process.</param>
+            <returns>A <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceResponse"/> that contains the results of the proccessed request.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.OperationServiceAgent.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.OperationServiceAgent.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.ResourceManagerExtensions">
+            <summary>
+            Provides a means to retrieve localized runtime messages.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ResourceManagerExtensions.GetMessage(System.Resources.ResourceManager,System.String,System.Object[])">
+            <summary>
+            Returns the localized and formatted string for the given key. 
+            </summary>
+            <param name="resourceManager">Required parameter for the extension method.</param>
+            <param name="key">Resource key.</param>
+            <param name="list">List of string paramters to be subsituted into the string via StringFormatter.</param>
+            <returns>Localized and formatted string.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ResourceManagerExtensions.GetMessage(System.Resources.ResourceManager,System.String,System.Globalization.CultureInfo,System.Object[])">
+            <summary>
+            Returns the localized and formatted string for the given key.
+            </summary>
+            <param name="resourceManager">Required parameter for the extension method.</param>
+            <param name="key">Resource key.</param>
+            <param name="currentCulture">The culture in which to localize the resource.</param>
+            <param name="list">List of string paramters to be subsituted into the string via StringFormatter.</param>
+            <returns>Localized and formatted string.</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.ServiceLocator`1">
+            <summary>
+            Class used to locate a service.
+            </summary>
+            <typeparam name="T">The type of service to locate.</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ServiceLocator`1.#ctor">
+            <summary>
+            Initializes a new instance of the ServiceLocator class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ServiceLocator`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ServiceLocator class.
+            </summary>
+            <param name="connectionName">Name of the connection.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ServiceLocator`1.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ServiceLocator`1._service_Closing(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Closing event of the _service control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ServiceLocator`1.Dispose(System.Boolean)">
+            <summary>
+            Disposes the specified disposed.
+            </summary>
+            <param name="disposing">if set to <c>true</c> [disposing].</param>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ServiceLocator`1.Service">
+            <summary>
+            Gets the service.
+            </summary>
+            <value>The service.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.ServiceProxy`1">
+            <summary>
+            Provides the implementation used to create Windows Communication Foundation (WCF) client objects that can call services.
+            </summary>
+            <typeparam name="T">The channel to be used to connect to the service.</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ServiceProxy`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ServiceProxy class.
+            </summary>
+            <param name="connectionName">Name of the connection.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ServiceProxy`1.ChannelFactory_Faulted(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Faulted event of the ChannelFactory control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ServiceProxy`1.ChannelFactory_Closing(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Closing event of the ChannelFactory control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="E:Microsoft.Commerce.Common.ServiceProxy`1.Closing">
+            <summary>
+            Occurs when the communication object first enters the closing state.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.ServiceProxy`1.Service">
+            <summary>
+            Gets the service.
+            </summary>
+            <value>The service.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.EtwNativeMethods">
+            <summary>
+            Helper class used to call ETW native methods.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwNativeMethods.GetTraceEnableFlags(System.UInt64)">
+            <summary>
+            Gets the trace enable flags.
+            </summary>
+            <param name="traceHandle">The trace handle.</param>
+            <returns>The trace enable flags.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwNativeMethods.GetTraceEnableLevel(System.UInt64)">
+            <summary>
+            Gets the trace enable level.
+            </summary>
+            <param name="traceHandle">The trace handle.</param>
+            <returns>The trace enable level.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwNativeMethods.TraceEvent(System.UInt64,System.Char*)">
+            <summary>
+            Traces the event.
+            </summary>
+            <param name="traceHandle">The trace handle.</param>
+            <param name="header">The header.</param>
+            <returns>A status code.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwNativeMethods.RegisterTraceGuids(Microsoft.Commerce.Common.EtwTraceCallback,System.Void*,System.Guid@,System.UInt32,Microsoft.Commerce.Common.TraceGuidRegistration@,System.String,System.String,System.UInt64@)">
+            <summary>
+            Registers the trace guids.
+            </summary>
+            <param name="cbFunc">The cb func.</param>
+            <param name="context">The context.</param>
+            <param name="controlGuid">The control GUID.</param>
+            <param name="guidCount">The GUID count.</param>
+            <param name="guidReg">The GUID reg.</param>
+            <param name="mofImagePath">The mof image path.</param>
+            <param name="mofResourceName">Name of the mof resource.</param>
+            <param name="regHandle">The reg handle.</param>
+            <returns>A status code.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwNativeMethods.UnregisterTraceGuids(System.UInt64)">
+            <summary>
+            Unregisters the trace guids.
+            </summary>
+            <param name="regHandle">The reg handle.</param>
+            <returns>A status code.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwTrace.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwTrace.Trace(System.String,Microsoft.Commerce.Common.EtwTraceType)">
+            <summary>
+            Traces the specified XML.
+            </summary>
+            <param name="xml">The XML to trace.</param>
+            <param name="type">The ETW trace type.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwTrace.TraceTransfer(System.Guid)">
+            <summary>
+            Traces the transfer.
+            </summary>
+            <param name="relatedId">The related id.</param>
+            <returns>a status code.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwTrace.GetActivityId">
+            <summary>
+            Gets the activity id.
+            </summary>
+            <returns>The activity id.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwTrace.TraceTransfer(System.Guid,System.Guid)">
+            <summary>
+            Traces the transfer.
+            </summary>
+            <param name="activityId">The activity id.</param>
+            <param name="relatedId">The related id.</param>
+            <returns>A status code.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.EtwTrace.Provider">
+            <summary>
+            Gets the provider.
+            </summary>
+            <value>The provider.</value>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwTraceProvider.#ctor(System.Guid)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Common.EtwTraceProvider"/> class.
+            </summary>
+            <param name="guid">The ETW control GUID.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwTraceProvider.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwTraceProvider.System#IDisposable#Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwTraceProvider.Trace(Microsoft.Commerce.Common.MofEvent*)">
+            <summary>
+            Traces the specified MOF event.
+            </summary>
+            <param name="evt">The MOF event to trace.</param>
+            <returns>A status code.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwTraceProvider.Initialize(System.Guid)">
+            <summary>
+            Initializes the specified GUID.
+            </summary>
+            <param name="guid">The ETW control GUID.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.EtwTraceProvider.EtwNotificationCallback(System.UInt32,System.IntPtr,System.IntPtr,System.Byte*)">
+            <summary>
+            Etws the notification callback.
+            </summary>
+            <param name="requestCode">The request code.</param>
+            <param name="context">The context.</param>
+            <param name="bufferSize">Size of the buffer.</param>
+            <param name="buffer">The buffer.</param>
+            <returns>A status code.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.EtwTraceProvider.ShouldTrace">
+            <summary>
+            Gets a value indicating whether [should trace].
+            </summary>
+            <value><c>true</c> if [should trace]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.Tracer">
+            <summary>
+            Tracer class helps to implement performance tracing. It is mostly used to log method 
+            entry/exit and duration. Lifetime of the Tracer object will determine the beginning and 
+            the end of the trace. The trace message will include, method being traced, start time, 
+            end time and duration.
+            
+            To instrument a method for the performance tracing  wrap the whole method body into the 
+            using statement like this
+            
+            void Foo()
+            {
+                using (new Tracer(TraceLayer.Provider))
+                {
+                    // Method implementation goes here.
+                }
+            }
+            
+            This class uses TraceManager to log the trace messages.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.Tracer.#ctor(Microsoft.Commerce.Common.TraceLayer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Common.Tracer"/> class.
+            </summary>
+            <param name="traceLayer">The trace layer.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.Tracer.#ctor(Microsoft.Commerce.Common.TraceLayer,System.Object,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Common.Tracer"/> class.
+            </summary>
+            <param name="traceLayer">The trace layer.</param>
+            <param name="caller">The object that is requesting the trace.</param>
+            <param name="method">The name of the method that is requesting the trace.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.Tracer.#ctor(Microsoft.Commerce.Common.TraceLayer,System.Object,System.String,System.Guid)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Common.Tracer"/> class.
+            </summary>
+            <param name="traceLayer">The trace layer.</param>
+            <param name="caller">The object that is requesting the trace.</param>
+            <param name="method">The name of the method that is requesting the trace.</param>
+            <param name="activityId">The activity id.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.Tracer.#ctor(Microsoft.Commerce.Common.TraceLayer,System.Guid)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Common.Tracer"/> class.
+            </summary>
+            <param name="traceLayer">The trace layer.</param>
+            <param name="activityId">The activity id.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.Tracer.Finalize">
+            <summary>
+            Finalizes an instance of the Tracer class and releases unmanaged resources and performs other cleanup operations before the
+            <see cref="T:Microsoft.Commerce.Common.Tracer"/> is reclaimed by garbage collection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.Tracer.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.Tracer.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.Tracer.GetSecondsElapsed(System.Int64)">
+            <summary>
+            Gets the seconds elapsed.
+            </summary>
+            <param name="milliseconds">The milliseconds.</param>
+            <returns>Seconds Elapsed</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.Tracer.Initialize(Microsoft.Commerce.Common.TraceLayer,System.Object,System.String,System.Guid)">
+            <summary>
+            Initializes the specified trace layer.
+            </summary>
+            <param name="traceLayer">The trace layer.</param>
+            <param name="caller">The object that is requesting the trace.</param>
+            <param name="method">The name of the method that is requesting the trace.</param>
+            <param name="activityId">The activity id.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.Tracer.WriteTraceStartMessage">
+            <summary>
+            Writes the trace start message.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.Tracer.WriteTraceEndMessage">
+            <summary>
+            Writes the trace end message.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.Tracer.GetExecutingMethodName">
+            <summary>
+            Gets the name of the executing method.
+            </summary>
+            <returns>The name of the executing method.</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.TraceLayer">
+            <summary>
+            Intended to indicate the application layer at which the current Logger.LogTrace./> 
+            operation is occurring.
+            </summary>
+            <remarks>
+            <list type="bullet">
+            <listheader>
+            <term>Trace Layer Enumerations</term>
+            </listheader>
+            <item>
+            <term>Presentation</term>
+            <description>The presentation layer represents the user interface or target Channel>
+            Presentation Channel for the current application instance.</description>
+            </item>
+            <item>
+            <term>Broker</term>
+            <description>A "thin" layer used to determine the service to use in processing an individaul 
+            request object.  (For example; the two main services employed by the 
+            application are the ConfigurationService and the OperationService.
+            </description>
+            </item>
+            <item>Provider</item>
+            <description>Providers are discrete units of loosely-coupled logic responsible for very specific 
+            operations within the application, typically accessed either in-process or via the Windows 
+            Communication Foundation (WCF).</description>
+            </list>
+            <para>This list is not comprehensive; but the type selected should accurately reflect the layer 
+            wherein the traced operation occurs.</para>
+            </remarks>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.TraceLayer.Presentation">
+            <summary>
+            Indicates that the trace message originates from the presentation application level
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.TraceLayer.Broker">
+            <summary>
+            Inticates that the trace message originates from the broker application level
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.TraceLayer.Provider">
+            <summary>
+            Inticates that the trace message originates from the provider application level
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.TraceLayer.CommerceServer">
+            <summary>
+            Inticates that the trace message originates from the Commerce Server application level
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.TraceLayer.Custom">
+            <summary>
+            Inticates that the trace message originates from a custom application level
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.Logger">
+            <summary>
+            Logger should be used for logging information within the Multi-channel Commerce Foundation project.
+            It is a thin wrapper around the System.Diagnostics.TraceSource functionality.
+            It maps a TraceLayer value to one of the TraceSource objects that should be
+            configured in the application's configuration file:
+            
+            Microsoft.Commerce.Trace.Presentation
+            Microsoft.Commerce.Trace.Broker
+            Microsoft.Commerce.Trace.Provider
+            Microsoft.Commerce.Trace.CommerceServer
+            Microsoft.Commerce.Trace.Custom
+            Microsoft.Commerce.Trace.Messages
+            
+            For example:
+            
+            <system.diagnostics>
+                <sources>
+                    <source name="Microsoft.Commerce.Trace.Presentation" switchName="MojaveSwitch">
+                        <listeners>
+                            <add name="MojaveXmlTraceListener"/>
+                            <add name="MojaveEtwListener" />
+                        </listeners>
+                    </source>
+                </sources>
+            </system.diagnostics>
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.Logger.PresentationTraceSource">
+            <summary>
+            Identifies a trace source in the system.diagnostics section of the 
+            configuration file used to log traces for the presentation layer components.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.Logger.BrokerTraceSource">
+            <summary>
+            Identifies a trace source in the system.diagnostics section of the 
+            configuration file used to log traces for the broker layer components.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.Logger.ProviderTraceSource">
+            <summary>
+            Identifies a trace source in the system.diagnostics section of the 
+            configuration file used to log traces for the provider layer components.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.Logger.CommerceServerTraceSource">
+            <summary>
+            Identifies a trace source in the system.diagnostics section of the 
+            configuration file used to log traces for the components that call the Commerce Server API directly.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.Logger.CustomTraceSource">
+            <summary>
+            Identifies a trace source in the system.diagnostics section of the 
+            configuration file used to log traces for the custom components.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Common.Logger.MessagesTraceSource">
+            <summary>
+            Identifies a trace source in the system.diagnostics section of the 
+            configuration file used to log all messages except for the traces.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.Logger.LogMessage(System.String,System.Object[])">
+            <summary>
+            Writes a message to the trace listener identified by the Logger.MessagesTraceSource name
+            in the system.diagnostics section of the configuration file.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="args">Message formatting arguments.</param>
+            <remarks>The message is logged as the TraceEventType.Information message with the eventId equal 0.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.Logger.LogMessage(System.Diagnostics.TraceEventType,System.String,System.Object[])">
+            <summary>
+            Writes a message to the trace listener identified by the Logger.MessagesTraceSource name
+            in the system.diagnostics section of the configuration file.
+            </summary>
+            <param name="traceEvent">Type of the event.</param>
+            <param name="message">The message.</param>
+            <param name="args">Message formatting arguments.</param>
+            <remarks>The message is logged with the eventId equal 0.</remarks>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.Logger.LogMessage(System.Diagnostics.TraceEventType,System.Int32,System.String,System.Object[])">
+            <summary>
+            Writes a message to the trace listener identified by the Logger.MessagesTraceSource name
+            in the system.diagnostics section of the configuration file.
+            </summary>
+            <param name="eventType">Type of the event.</param>
+            <param name="eventId">The event id.</param>
+            <param name="message">The message.</param>
+            <param name="args">Message formatting arguments.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.Logger.LogTrace(Microsoft.Commerce.Common.TraceLayer,System.String,System.Object[])">
+            <summary>
+            Writes a trace event message to the trace listeners configured for the specified application level
+            </summary>
+            <param name="traceLayer">The trace application level</param>
+            <param name="message">The message.</param>        
+            <param name="args">Message formatting arguments.</param>
+            <remarks>The message is logged as the TraceEventType.Information message with the eventId equal 0.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.Logger.LogTrace(Microsoft.Commerce.Common.TraceLayer,System.Diagnostics.TraceEventType,System.String,System.Object[])">
+            <summary>
+            Writes a trace event message to the trace listeners configured for the specified application level
+            </summary>
+            <param name="traceLayer">The trace layer.</param>
+            <param name="eventType">The trace event type.</param>
+            <param name="message">The trace message.</param>
+            <param name="args">Message formatting arguments.</param>
+            <remarks>The message is logged with the eventId equal 0.</remarks>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.Logger.LogTrace(Microsoft.Commerce.Common.TraceLayer,System.Diagnostics.TraceEventType,System.Int32,System.String,System.Object[])">
+            <summary>
+            Writes a trace event message to the trace listeners configured for the specified application level
+            </summary>
+            <param name="traceLayer">The trace application level</param>
+            <param name="eventType">Type of the event.</param>
+            <param name="eventId">The event id.</param>
+            <param name="message">The message.</param>
+            <param name="args">Message formatting arguments.</param>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.Logger.RequestId">
+            <summary>
+            Gets or sets the current request ID. Setting this property ensures that all
+            the trace messages written by the Logger will belong to the same activity.
+            This helps to track and analyze trace messages in the log file.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.WnodeFlags">
+            <summary>
+            Defines the Wnode flags for use with ETW trace event headers.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.ParameterChecker">
+            <summary>
+            Helper class used to verify the correctness of method parameters.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ParameterChecker.CheckForNull(System.Object,System.String)">
+            <summary>
+            Checks if the provided parameter is null.
+            </summary>
+            <param name="parameter">The parameter value.</param>
+            <param name="name">The name of the parameter.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ParameterChecker.CheckForNullOrEmpty(System.String,System.String)">
+            <summary>
+            Checks if the provided string parameter is null or empty.
+            </summary>
+            <param name="parameter">The parameter value.</param>
+            <param name="name">The name of the parameter.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ParameterChecker.CheckForNullOrEmptyArray(System.Array,System.String)">
+            <summary>
+            Checks for a null or empty Array parameter
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <param name="name">The name of the paremeter.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.ParameterChecker.CheckIsInstanceOfType(System.Object,System.String,System.Type[])">
+            <summary>
+            Checks if a parameter is assignable to one or more types.
+            </summary>
+            <param name="parameter">The paremeter</param>
+            <param name="name">The name of the parameter.</param>
+            <param name="supportedTypes">The types that are allowed for the parameter.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.SignedAssemblySubclassTypeValidator">
+            <summary>
+            Validates that an object is a derived class of a specified type and is defined in a signed assembly.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.SignedAssemblySubclassTypeValidator.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Common.SignedAssemblySubclassTypeValidator"/> class.
+            </summary>
+            <param name="baseClass">The base class to validate against.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.SignedAssemblySubclassTypeValidator.CanValidate(System.Type)">
+            <summary>
+            Determines whether an object can be validated based on type.
+            </summary>
+            <param name="type">The object type.</param>
+            <returns>true if the type parameter matches a type that can be validated; otherwise, false.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.SignedAssemblySubclassTypeValidator.Validate(System.Object)">
+            <summary>
+            Determines whether the value of an object is valid. 
+            </summary>
+            <param name="value">The object value.</param>
+            <exception cref="T:System.ArgumentException">The value does not represent a type defined in a signed assembly.</exception>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.SignedAssemblySubclassTypeValidatorAttribute">
+            <summary>
+            Validates that an object is a derived class of a specified type and is defined in a signed assembly.
+            </summary>
+            <summary>
+            Declaratively instructs the .NET Framework to validate that a configuation property represents a type that is derived from a specific type and is defined in a signed assembly.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.SignedAssemblySubclassTypeValidatorAttribute.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Common.SignedAssemblySubclassTypeValidatorAttribute"/> class.
+            </summary>
+            <param name="baseClass">The base class type.</param>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.SignedAssemblySubclassTypeValidatorAttribute.BaseClass">
+            <summary>
+            Gets the base type of the object being validated.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.SignedAssemblySubclassTypeValidatorAttribute.ValidatorInstance">
+            <summary>
+            Gets the instance of the ConfigurationValidatorBase that will perform the configuration property validation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.SignedAssemblyValidator">
+            <summary>
+            Validates that a value represents a signed assembly, or a Type is defined in a signed assembly.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.SignedAssemblyValidator.CanValidate(System.Type)">
+            <summary>
+            Determines whether an object can be validated based on type.
+            </summary>
+            <param name="type">The object type.</param>
+            <returns>true if the type parameter matches a type that can be validated; otherwise, false.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Common.SignedAssemblyValidator.Validate(System.Object)">
+            <summary>
+            Determines whether the value of an object is valid. 
+            </summary>
+            <param name="value">The object value.</param>
+            <exception cref="T:System.ArgumentException">The value does not represent a signed assembly.</exception>
+        </member>
+        <member name="T:Microsoft.Commerce.Common.SignedAssemblyValidatorAttribute">
+            <summary>
+            Declaratively instructs the .NET Framework to validate that a configuation property represents a signed assembly
+            or a type that is defined in a signed assembly.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Common.SignedAssemblyValidatorAttribute.ValidatorInstance">
+            <summary>
+            Gets the instance of the ConfigurationValidatorBase that will perform the configuration property validation.
+            </summary>
+        </member>
+    </members>
+</doc>

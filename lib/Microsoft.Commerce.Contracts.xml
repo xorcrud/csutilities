@@ -1,0 +1,2858 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Commerce.Contracts</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.StringPairCollection">
+            <summary>
+            This class is a keyed collection of StringPair objects.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.StringPairCollection.Add(System.String,System.String)">
+            <summary>
+            Adds a new key/value string pair, or replaces the existing one.
+            </summary>
+            <param name="key">The key of the element to add.</param>
+            <param name="value">The element to add.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.StringPairCollection.ContainsKey(System.String)">
+            <summary>
+            Determines whether the collection contains an element with the specified key.
+            </summary>
+            <param name="key">The key to lookup.</param>
+            <returns>True if the collection contains an element with the specified key, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.StringPairCollection.ContainsValue(System.String)">
+            <summary>
+            Determines whether the collection contains an element with the specified value.
+            </summary>
+            <param name="value">The value to lookup.</param>
+            <returns>True if the collection contains an element with the specified value, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.StringPairCollection.TryGetValue(System.String,System.String@)">
+            <summary>
+            Gets the value associated with the specified key.
+            </summary>
+            <param name="key">The key of the element to get.</param>
+            <param name="value">Receives the element with the specified key, or null if an element could not be found with the provided key.</param>
+            <returns>True if an element was found with the specified key, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.StringPairCollection.GetKeyForItem(Microsoft.Commerce.Contracts.CommerceEntities.Metadata.StringPair)">
+            <summary>
+            extracts the key from the specified element.
+            </summary>
+            <param name="item">The element from which to extract the key.</param>
+            <returns>The key for the specified element.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.StringPairCollection.Item(System.String)">
+            <summary>
+            Gets and sets a value for the specified key.
+            </summary>
+            <param name="key">The key of the element to get.</param>
+            <returns>The element with the specified key. If an element with the specified key is not found, null is returned.</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.StringPair">
+            <summary>
+            This class represents a pair of strings.
+            </summary>
+            <remarks>
+            The eaquality comparison is based on the pair's key only.</remarks>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.StringPair.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.StringPair"/> class.
+            </summary>
+            <param name="key">The key of the StringPair object instance.</param>
+            <param name="value">The value of the StringPair object instance..</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.StringPair.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have the same Key.
+            </summary>
+            <param name="obj">The object to compare.</param>
+            <returns>True if the object is equal to this instance, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.StringPair.GetHashCode">
+            <summary>
+            Returns the hash code for the key.
+            </summary>
+            <returns>A hash code for this object.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.StringPair.Key">
+            <summary>
+            Gets or sets the pair's key.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.StringPair.Value">
+            <summary>
+            Gets or sets the pair's value.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.ReadOnlyConstraint">
+            <summary>
+            This class defines a constraint that requires the property to be read-only.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.ConstraintBase">
+            <summary>
+            Abstract class defines contraint properties.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntity">
+            <summary>
+            The base model for all commerce entities.
+            Defines the generic commerce entity format sent across the wire.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.ICommerceEntity">
+            <summary>
+            The interface required for Multi-channel Commerce Foundation's builders
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.ICommerceEntity.ToCommerceEntity">
+            <summary>
+            Required so that the Builders can convert to the Multi-channel Commerce Foundation CommerceEntity base type using <see cref="P:Microsoft.Commerce.Contracts.ICommerceEntity.ModelName"/>
+            </summary>
+            <returns>This instances base type</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.ICommerceEntity.Id">
+            <summary>
+            Gets or sets the id of the commerce entity object.
+            </summary>
+            <value>The id of the commerce entity object instance.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.ICommerceEntity.ModelName">
+            <summary>
+            Gets or sets the type name of this object instance
+            <remarks>Required so that the Builders can convert to the Multi-channel Commerce Foundation CommerceEntity base type</remarks>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.ICommerceEntity.Properties">
+            <summary>
+            Gets or sets this objects collection of Properties and their corresponding values
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntity.ModelNameDefinition">
+            <summary>
+            defines the model name for this commerce entity
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntity.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntity"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntity.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntity"/> class.
+            </summary>
+            <param name="modelName">the name of this type of CommerceEntity</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntity.ToCommerceEntity">
+            <summary>
+            Gets the base instance of this object;
+            </summary>
+            <returns>
+            this CommerceEntity, a ModelName and PropertyCollection
+            </returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntity.SetPropertyValue(System.String,System.Object)">
+            <summary>
+            Sets the property value.
+            </summary>
+            <param name="key">The key to access the property value.</param>
+            <param name="value">The property value.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntity.SetPropertyValue(System.String)">
+            <summary>
+            Sets the property value.
+            </summary>
+            <param name="key">The key value to add to list of CommerceEntity properties.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntity.GetPropertyValue(System.String)">
+            <summary>
+            Gets the property value.
+            </summary>
+            <param name="key">The key value for the CommerceEntity property.</param>
+            <returns>CommerceEntity property value.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntity.ModelName">
+            <summary>
+            Gets or sets the model name of this instance
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntity.Properties">
+            <summary>
+            Gets or sets the dictionary used to hold all of the simple properties
+            (i.e. strings, int, etc…) associated with the commerce entity.
+            </summary>
+            <value>The properties.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntity.Id">
+            <summary>
+            Gets or sets the unique identifier of the commerce entity
+            </summary>
+            <value>The CommerceEntity property id.</value>
+            <remarks>This is a required property.</remarks>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntity.ParentId">
+            <summary>
+            Gets or sets the unique identifier of the parent of the commerce entity
+            </summary>
+            <value>The parent id.</value>
+            <remarks>This is optional and will only present if the parent supports this property.</remarks>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntity.DateCreated">
+            <summary>
+            Gets or sets the date the commerce entity was created.
+            </summary>
+            <value>The date created.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntity.DateModified">
+            <summary>
+            Gets or sets the date the commerce entity was modified.
+            </summary>
+            <value>The date modified.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntity.ModifiedBy">
+            <summary>
+            Gets or sets the modified by user.
+            </summary>
+            <value>The user that last modfied the commerce entity.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntity.PropertyName">
+            <summary>
+            Describes the internally availble strongly typed properties.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntity.PropertyName.DateCreated">
+            <summary>
+            The name of the DateCreated property for a CommerceEntity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntity.PropertyName.DateModified">
+            <summary>
+            The name of the DateModified property for a CommerceEntity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntity.PropertyName.Id">
+            <summary>
+            The name of the Id property for a CommerceEntity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntity.PropertyName.ModifiedBy">
+            <summary>
+            The name of the ModifiedBy property for a CommerceEntity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntity.PropertyName.ParentId">
+            <summary>
+            The name of the ParentId property for a CommerceEntity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.ConstraintBase.ModelNameDefinition">
+            <summary>
+            defines the model name for this commerce entity
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.ConstraintBase.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.ConstraintBase"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.ConstraintBase.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.ConstraintBase"/> class.
+            </summary>
+            <param name="modelName">this instances full model name</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.ConstraintBase.Equals(System.Object)">
+            <summary>
+            This method is overridden to ensure that objects are compared using the referential 
+            equality regardless if the base class overrides this method.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object"/> to compare with the current <see cref="T:System.Object"/>.</param>
+            <returns>
+            true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
+            </returns>
+            <remarks>ConstraintBase equality operator is used in collections, where two constraints are considered equal if 
+            they are of the same type.</remarks>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.ConstraintBase.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <returns>
+            A hash code for the current <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.ConstraintBase.Negated">
+            <summary>
+            Gets or sets a value indicating whether the validation logic is negated.
+            </summary>
+            <value>
+            True if the default validation logic should be used; False othwerise.
+            </value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.ConstraintBase.ValidationMessage">
+            <summary>
+            Gets or sets the validation message.
+            </summary>
+            <value>The validation message.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.ConstraintBase.PropertyName">
+            <summary>
+            Class defines Properties for ConstraintBase.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.ReadOnlyConstraint.ModelNameDefinition">
+            <summary>
+            defines the model name for this commerce entity
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.ReadOnlyConstraint.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.ReadOnlyConstraint"/> class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.JoinKeyConstraint">
+            <summary>
+            This class defines a constraint that marks the property as the join
+            key. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.JoinKeyConstraint.ModelNameDefinition">
+            <summary>
+            defines the model name for this commerce entity
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.JoinKeyConstraint.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.JoinKeyConstraint"/> class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PrimaryKeyConstraint">
+            <summary>
+            This class defines a constraint that marks the property as the primary
+            key. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PrimaryKeyConstraint.ModelNameDefinition">
+            <summary>
+            defines the model name for this commerce entity
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PrimaryKeyConstraint.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PrimaryKeyConstraint"/> class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.UniqueKeyConstraint">
+            <summary>
+            This class defines a constraint that requires the property to have unique values.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.UniqueKeyConstraint.ModelNameDefinition">
+            <summary>
+            defines the model name for this commerce entity
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.UniqueKeyConstraint.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.UniqueKeyConstraint"/> class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionMapping">
+            <summary>
+            Class that represents the metadata that describes how a commerce entity maps to Commerce Server
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionMapping.ModelNameDefinition">
+            <summary>
+            defines the model name for this commerce entity
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionMapping.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionMapping"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionMapping.Equals(System.Object)">
+            <summary>
+            This method is overridden to ensure that objects are compared using the referential 
+            equality regardless if the base class overrides this method.
+            </summary>
+            <param name="obj">The object to compare with the current object</param>
+            <returns>True if the objects are equal, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionMapping.GetHashCode">
+            <summary>
+            Gets the hash code for this object.
+            </summary>
+            <returns>A hash code for this object.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionMapping.DefinitionName">
+            <summary>
+            Gets or sets the name of the Definition.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionMapping.CommerceServerDefinitionName">
+            <summary>
+            Gets or sets the name of the Commerce Server Definition.
+            </summary>
+            <remarks>
+            The Definition name in Commerce Server applies to a Profile or a Catalog Definition name
+            (UserObject, Address etc.).
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionMapping.PropertyMappings">
+            <summary>
+            Gets or sets the PropertyMappings dictionary which maps the source entity properties 
+            to the target entity properties.
+            </summary>
+            <value>The property mapping.</value>
+            <remarks>The key of the dictionary is the source property name (belongs to the CommerceEntity 
+            class), the value is the target property name (belongs to the Commerece Server class).</remarks>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionMapping.PropertyName">
+            <summary>
+            Class defines Properties for a DefinitionMapping
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionBase.PropertyName">
+            <summary>
+            Class defines Properties for a Definition base
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionBase">
+            <summary>
+            This is a base class for all metadata definitions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionBase.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionBase"/> class.
+            </summary>
+            <param name="modelName">this instances full model name</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionBase.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object"/> to compare with the current <see cref="T:System.Object"/>.</param>
+            <returns>
+            true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionBase.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <returns>
+            A hash code for the current <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionBase.Name">
+            <summary>
+            Gets or sets the programatic name of the definition.
+            </summary>
+            <value>The Definition name.</value>
+            <remarks>Name has to be unique globally.</remarks>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionBase.DisplayName">
+            <summary>
+            Gets or sets the human readable name of the definition.
+            </summary>
+            <value>The display name.</value>
+            <remarks>A definition can have different DisplayName
+            for different languages if the definition is multilingual.</remarks>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionBase.Description">
+            <summary>
+            Gets or sets the human readable description of the definition.
+            </summary>
+            <value>The description.</value>
+            <remarks>A definition can have different Description
+            for different languages if the definition is multilingual.</remarks>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionBase.PropertyName">
+            <summary>
+            Class defines Properties for a Definition base
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionMapping.PropertyName.DefinitionName">
+            <summary>
+            Key for the <see cref="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionMapping.DefinitionName"/> property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionMapping.PropertyName.CommerceServerDefinitionName">
+            <summary>
+            Key for the <see cref="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionMapping.CommerceServerDefinitionName"/> property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionMapping.PropertyName.PropertyMappings">
+            <summary>
+            Key for the <see cref="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.DefinitionMapping.PropertyMappings"/> property.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EnumerationEntry">
+            <summary>
+            Class defines an entry in a collection of Property Enumerations
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EnumerationEntry.ModelNameDefinition">
+            <summary>
+            defines the model name for this commerce entity
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EnumerationEntry.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EnumerationEntry"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EnumerationEntry.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object"/> to compare with the current <see cref="T:System.Object"/>.</param>
+            <returns>
+            true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EnumerationEntry.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <returns>
+            A hash code for the current <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EnumerationEntry.Value">
+            <summary>
+            Gets or sets the Enumeration entry value.
+            </summary>
+            <value>The value.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EnumerationEntry.DisplayName">
+            <summary>
+            Gets or sets the Multilingual value display name.
+            </summary>
+            <value>The display name.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EnumerationEntry.PropertyName">
+            <summary>
+            This class defines property name for the EnumerationEntry.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RelationshipTypeDefinition">
+            <summary>
+            This class represents the metadata that defines a type of the CommerceEntity relationship.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RelationshipTypeDefinition.ModelNameDefinition">
+            <summary>
+            defines the model name for this commerce entity
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RelationshipTypeDefinition.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RelationshipTypeDefinition"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RelationshipTypeDefinition.PropertyDefinitions">
+            <summary>
+            Gets or sets the propertyDefinitions collection. This is metadata for all the properties of the corresponding relationship type.
+            </summary>
+            <value>The property defintions.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RelationshipTypeDefinition.PropertyName">
+            <summary>
+            Class defines Properties for a RelationshipType.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RelationshipTypeDefinition.RelationshipName">
+            <summary>
+            Class defines Related Item for a RelationshipType.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RequiredPropertyConstraint">
+            <summary>
+            Class defines constraints for required Property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RequiredPropertyConstraint.ModelNameDefinition">
+            <summary>
+            defines the model name for this commerce entity
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RequiredPropertyConstraint.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RequiredPropertyConstraint"/> class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RegularExpressionConstraint">
+            <summary>
+            Class defines constraints for RegularExpression.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RegularExpressionConstraint.ModelNameDefinition">
+            <summary>
+            defines the model name for this commerce entity
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RegularExpressionConstraint.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RegularExpressionConstraint"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RegularExpressionConstraint.Pattern">
+            <summary>
+            Gets or sets the pattern.
+            </summary>
+            <value>The pattern.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RegularExpressionConstraint.PropertyName">
+            <summary>
+            Class defines Properties for a Regular Expression Contraint.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.BoundaryType">
+            <summary>
+            Specifies how the boundary value (min or max) is treated by the Range validator
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.BoundaryType.Ignore">
+            <summary>
+            Boundary value will be ignored.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.BoundaryType.Include">
+            <summary>
+            Boundary value will be included in range.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.BoundaryType.Exclude">
+            <summary>
+            Boundary value will be excluded from range.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RangeConstraint">
+            <summary>
+            Class defines constraints on a Range of values.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RangeConstraint.ModelNameDefinition">
+            <summary>
+            defines the model name for this commerce entity
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RangeConstraint.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RangeConstraint"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RangeConstraint.MinValue">
+            <summary>
+            Gets or sets the min value.
+            </summary>
+            <value>The min value.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RangeConstraint.MaxValue">
+            <summary>
+            Gets or sets the max value.
+            </summary>
+            <value>The max value.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RangeConstraint.MinBoundaryType">
+            <summary>
+            Gets or sets the type of the min boundary.
+            </summary>
+            <value>The type of the min boundary.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RangeConstraint.MaxBoundaryType">
+            <summary>
+            Gets or sets the type of the max boundary.
+            </summary>
+            <value>The type of the max boundary.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RangeConstraint.PropertyName">
+            <summary>
+            Class defines Properties for a Range Constraint.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Faults.InvalidSearchErrorType">
+            <summary>
+            An enum that represents the possible types of errors for the InvalidSearchQueryFault.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Faults.InvalidSearchErrorType.MalformedQuery">
+            <summary>
+            The enum value that represents an error that occurred due to a malformed query.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Faults.InvalidSearchErrorType.AllNoiseQuery">
+            <summary>
+            The enum value that represents an error that occurred due to the query 
+            containing all noise words.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Faults.InvalidSearchQueryFault">
+            <summary>
+            Class defines exception to be expected from an search query attempt where the form of the query was invalid.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Faults.GeneralOperationFault">
+            <summary>
+            Class defines a general operation fault.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Faults.GeneralOperationFault.Action">
+            <summary>
+            String returns Action URL for the fault.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.Faults.GeneralOperationFault.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.Faults.GeneralOperationFault"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.Faults.GeneralOperationFault.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.Faults.GeneralOperationFault"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Faults.GeneralOperationFault.Message">
+            <summary>
+            Gets or sets the message.
+            </summary>
+            <value>The message.</value>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Faults.InvalidSearchQueryFault.Action">
+            <summary>
+            String returns Action URL for the fault.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Faults.InvalidSearchQueryFault.searchErrorType">
+            <summary>
+            The <see cref="T:Microsoft.Commerce.Contracts.Faults.InvalidSearchErrorType"/> that represents the type of search query error.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.Faults.InvalidSearchQueryFault.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.Faults.InvalidSearchQueryFault"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.Faults.InvalidSearchQueryFault.#ctor(System.String,Microsoft.Commerce.Contracts.Faults.InvalidSearchErrorType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.Faults.InvalidSearchQueryFault"/> class.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="searchErrorType">The search error type.</param>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Faults.InvalidSearchQueryFault.SearchErrorType">
+            <summary>
+            Gets or sets the search error type.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceBasketUpdateOptions">
+            <summary>
+            Class defines options on an Update for entities that map to a Commerce Server basket.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceUpdateOptions">
+            <summary>
+            Class defines Update Options that may be specified to Update operations such as <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceUpdateOperation"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceOptions">
+            <summary>
+            Base class for all operation options classes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceUpdateOptions.ReturnModel">
+            <summary>
+            Gets or sets the return model indentifying if the updated commerce entity is returned to
+            the caller along with the properties to return..
+            </summary>
+            <value>The return model.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceUpdateOptions.ReturnModelQueries">
+            <summary>
+            Gets or sets the related QueryRelatedItem operations that will be used to populate
+            relationships in the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntity"/> returned in the operation response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceBasketUpdateOptions.RefreshBasket">
+            <summary>
+            Gets or sets a value indicating whether the basket should be refreshed when processing a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceUpdateOperation"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceQueryOperationResponseSPList">
+            <summary>
+            Class defines the Response message returned from a QueryOperation request.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceQueryOperationResponse">
+            <summary>
+            Class defines the Response message returned from a QueryOperation request.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceOperationResponse">
+            <summary>
+            Class defines the Response message returned from an Operation request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceQueryOperationResponse.FirstItemIndex">
+            <summary>
+            Gets or sets the current page returned.
+            </summary>
+            <value>The current page.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceQueryOperationResponse.TotalItemCount">
+            <summary>
+            Gets or sets the total number of commerce entities satisfying the search criteria.
+            </summary>
+            <value>The total numberof commerce entities.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceQueryOperationResponse.CommerceEntities">
+            <summary>
+            Gets or sets the commerce entity list.
+            </summary>
+            <value>The commerce entity list.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceQueryOperationResponse.Count">
+            <summary>
+            Gets the count which represents the number of items that are found in the Items collection.
+            
+            This value should be checked prior to aqccessing the Items collection.
+            </summary>
+            <value>The count.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceQueryOperationResponseSPList.NextPageToken">
+            <summary>
+            Gets or sets the Next Page Token for sharepoint pagination.
+            </summary>
+            <value>The next page token</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceBasketQueryOptions">
+            <summary>
+            Class defines options on a Query for entities that map to a Commerce Server basket.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceQueryOptions">
+            <summary>
+            Class defines options on a Query.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceQueryOptions.IsRecursive">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceQueryOptions"/> is recurse.
+            </summary>
+            <value><c>true</c> if recurse; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceBasketQueryOptions.RefreshBasket">
+            <summary>
+            Gets or sets a value indicating whether the basket should be refreshed when processing a <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceQueryOperation"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceRelationship">
+            <summary>
+            Represents a single relationship to a target object.  Relationship properties are found in thge PropertyCollection of
+            the CommerceEntity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceRelationship.ModelNameDefinition">
+            <summary>
+            defines the model name for this commerce entity
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceRelationship._target">
+            <summary>
+            Target of the relationship.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationship.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceRelationship"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationship.#ctor(Microsoft.Commerce.Contracts.CommerceEntity)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceRelationship"/> class.
+            </summary>
+            <param name="item">The item for which to create a relationship.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationship.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceRelationship"/> class.
+            </summary>
+            <param name="modelName">the full model name for this type of relationship</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationship.#ctor(Microsoft.Commerce.Contracts.CommerceEntity,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceRelationship"/> class.
+            </summary>
+            <param name="item">The item for which to create a relationship.</param>
+            <param name="modelName">this type of relationship</param>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceRelationship.Target">
+            <summary>
+            Gets or sets the target.
+            </summary>
+            <value>The target.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceRelationshipList">
+            <summary>
+            Represents a list of relationships associated with a CommerceEntity.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationshipList.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceRelationshipList"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationshipList.AddRange(System.Collections.Generic.IEnumerable{Microsoft.Commerce.Contracts.CommerceRelationship})">
+            <summary>
+            Adds the range.
+            </summary>
+            <param name="collection">The collection.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationshipList.IndexOf(Microsoft.Commerce.Contracts.CommerceRelationship)">
+            <summary>
+            Determines the index of a specific item in the <see cref="T:System.Collections.Generic.IList`1"/>.
+            </summary>
+            <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.IList`1"/>.</param>
+            <returns>
+            The index of <paramref name="item"/> if found in the list; otherwise, -1.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationshipList.Insert(System.Int32,Microsoft.Commerce.Contracts.CommerceRelationship)">
+            <summary>
+            Inserts an item to the <see cref="T:System.Collections.Generic.IList`1"/> at the specified index.
+            </summary>
+            <param name="index">The zero-based index at which <paramref name="item"/> should be inserted.</param>
+            <param name="item">The object to insert into the <see cref="T:System.Collections.Generic.IList`1"/>.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="index"/> is not a valid index in the <see cref="T:System.Collections.Generic.IList`1"/>.</exception>
+            <exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.IList`1"/> is read-only.</exception>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationshipList.RemoveAt(System.Int32)">
+            <summary>
+            Removes the <see cref="T:System.Collections.Generic.IList`1"/> item at the specified index.
+            </summary>
+            <param name="index">The zero-based index of the item to remove.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="index"/> is not a valid index in the <see cref="T:System.Collections.Generic.IList`1"/>.</exception>
+            <exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.IList`1"/> is read-only.</exception>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationshipList.Add(Microsoft.Commerce.Contracts.CommerceRelationship)">
+            <summary>
+            Adds an item to the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+            <param name="item">The object to add to the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
+            <exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only.</exception>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationshipList.Clear">
+            <summary>
+            Removes all items from the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+            <exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only. </exception>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationshipList.Contains(Microsoft.Commerce.Contracts.CommerceRelationship)">
+            <summary>
+            Determines whether the <see cref="T:System.Collections.Generic.ICollection`1"/> contains a specific value.
+            </summary>
+            <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
+            <returns>
+            true if <paramref name="item"/> is found in the <see cref="T:System.Collections.Generic.ICollection`1"/>; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationshipList.CopyTo(Microsoft.Commerce.Contracts.CommerceRelationship[],System.Int32)">
+            <summary>
+            Copies the elements of the <see cref="T:System.Collections.Generic.ICollection`1"/> to an <see cref="T:System.Array"/>, starting at a particular <see cref="T:System.Array"/> index.
+            </summary>
+            <param name="array">The one-dimensional <see cref="T:System.Array"/> that is the destination of the elements copied from <see cref="T:System.Collections.Generic.ICollection`1"/>. The <see cref="T:System.Array"/> must have zero-based indexing.</param>
+            <param name="arrayIndex">The zero-based index in <paramref name="array"/> at which copying begins.</param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="array"/> is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="arrayIndex"/> is less than 0.</exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="array"/> is multidimensional.-or-<paramref name="arrayIndex"/> is equal to or greater than the length of <paramref name="array"/>.-or-The number of elements in the source <see cref="T:System.Collections.Generic.ICollection`1"/> is greater than the available space from <paramref name="arrayIndex"/> to the end of the destination <paramref name="array"/>.-or-Type <paramref name="T"/> cannot be cast automatically to the type of the destination <paramref name="array"/>.</exception>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationshipList.Remove(Microsoft.Commerce.Contracts.CommerceRelationship)">
+            <summary>
+            Removes the first occurrence of a specific object from the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+            <param name="item">The object to remove from the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
+            <returns>
+            true if <paramref name="item"/> was successfully removed from the <see cref="T:System.Collections.Generic.ICollection`1"/>; otherwise, false. This method also returns false if <paramref name="item"/> is not found in the original <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </returns>
+            <exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only.</exception>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationshipList.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>
+            A <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationshipList.CopyTo(System.Array,System.Int32)">
+            <summary>
+            Copies the elements of the <see cref="T:System.Collections.ICollection"/> to an <see cref="T:System.Array"/>, starting at a particular <see cref="T:System.Array"/> index.
+            </summary>
+            <param name="array">The one-dimensional <see cref="T:System.Array"/> that is the destination of the elements copied from <see cref="T:System.Collections.ICollection"/>. The <see cref="T:System.Array"/> must have zero-based indexing.</param>
+            <param name="index">The zero-based index in <paramref name="array"/> at which copying begins.</param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="array"/> is null. </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="index"/> is less than zero. </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="array"/> is multidimensional.-or- <paramref name="index"/> is equal to or greater than the length of <paramref name="array"/>.-or- The number of elements in the source <see cref="T:System.Collections.ICollection"/> is greater than the available space from <paramref name="index"/> to the end of the destination <paramref name="array"/>. </exception>
+            <exception cref="T:System.ArgumentException">The type of the source <see cref="T:System.Collections.ICollection"/> cannot be cast automatically to the type of the destination <paramref name="array"/>. </exception>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationshipList.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationshipList.System#Collections#IList#Add(System.Object)">
+            <summary>
+            Adds an item to the <see cref="T:System.Collections.IList"/>.
+            </summary>
+            <param name="value">The <see cref="T:System.Object"/> to add to the <see cref="T:System.Collections.IList"/>.</param>
+            <returns>
+            The position into which the new element was inserted.
+            </returns>
+            <exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.IList"/> is read-only.-or- The <see cref="T:System.Collections.IList"/> has a fixed size. </exception>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationshipList.System#Collections#IList#Clear">
+            <summary>
+            Removes all items from the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+            <exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only. </exception>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationshipList.System#Collections#IList#Contains(System.Object)">
+            <summary>
+            Determines whether the <see cref="T:System.Collections.IList"/> contains a specific value.
+            </summary>
+            <param name="value">The <see cref="T:System.Object"/> to locate in the <see cref="T:System.Collections.IList"/>.</param>
+            <returns>
+            true if the <see cref="T:System.Object"/> is found in the <see cref="T:System.Collections.IList"/>; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationshipList.System#Collections#IList#IndexOf(System.Object)">
+            <summary>
+            Determines the index of a specific item in the <see cref="T:System.Collections.IList"/>.
+            </summary>
+            <param name="value">The <see cref="T:System.Object"/> to locate in the <see cref="T:System.Collections.IList"/>.</param>
+            <returns>
+            The index of <paramref name="value"/> if found in the list; otherwise, -1.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationshipList.System#Collections#IList#Insert(System.Int32,System.Object)">
+            <summary>
+            Inserts an item to the <see cref="T:System.Collections.IList"/> at the specified index.
+            </summary>
+            <param name="index">The zero-based index at which <paramref name="value"/> should be inserted.</param>
+            <param name="value">The <see cref="T:System.Object"/> to insert into the <see cref="T:System.Collections.IList"/>.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="index"/> is not a valid index in the <see cref="T:System.Collections.IList"/>. </exception>
+            <exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.IList"/> is read-only.-or- The <see cref="T:System.Collections.IList"/> has a fixed size. </exception>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationshipList.System#Collections#IList#Remove(System.Object)">
+            <summary>
+            Removes the first occurrence of a specific object from the <see cref="T:System.Collections.IList"/>.
+            </summary>
+            <param name="value">The <see cref="T:System.Object"/> to remove from the <see cref="T:System.Collections.IList"/>.</param>
+            <exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.IList"/> is read-only.-or- The <see cref="T:System.Collections.IList"/> has a fixed size. </exception>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceRelationshipList.System#Collections#IList#RemoveAt(System.Int32)">
+            <summary>
+            Removes the <see cref="T:System.Collections.Generic.IList`1"/> item at the specified index.
+            </summary>
+            <param name="index">The zero-based index of the item to remove.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="index"/> is not a valid index in the <see cref="T:System.Collections.Generic.IList`1"/>.</exception>
+            <exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.IList`1"/> is read-only.</exception>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceRelationshipList.FirstItemIndex">
+            <summary>
+            Gets or sets the current page returned.
+            </summary>
+            <value>The current page.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceRelationshipList.TotalItemCount">
+            <summary>
+            Gets or sets the total number of products satisfying the search criteria.  This is returned only when the
+            consumer of the service indicated this value needed to be returned.
+            </summary>
+            <value>The total numberof products.  Null if not returned.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceRelationshipList.Count">
+            <summary>
+            Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+            <value></value>
+            <returns>The number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceRelationshipList.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only.
+            </summary>
+            <value></value>
+            <returns>true if the <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only; otherwise, false.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceRelationshipList.IsFixedSize">
+            <summary>
+            Gets a value indicating whether the <see cref="T:System.Collections.IList"/> has a fixed size.
+            </summary>
+            <value></value>
+            <returns>true if the <see cref="T:System.Collections.IList"/> has a fixed size; otherwise, false.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceRelationshipList.IsSynchronized">
+            <summary>
+            Gets a value indicating whether access to the <see cref="T:System.Collections.ICollection"/> is synchronized (thread safe).
+            </summary>
+            <value></value>
+            <returns>true if access to the <see cref="T:System.Collections.ICollection"/> is synchronized (thread safe); otherwise, false.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceRelationshipList.SyncRoot">
+            <summary>
+            Gets an object that can be used to synchronize access to the <see cref="T:System.Collections.ICollection"/>.
+            </summary>
+            <value></value>
+            <returns>An object that can be used to synchronize access to the <see cref="T:System.Collections.ICollection"/>.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceRelationshipList.System#Collections#IList#IsReadOnly">
+            <summary>
+            Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only.
+            </summary>
+            <value></value>
+            <returns>true if the <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only; otherwise, false.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceRelationshipList.Relationships">
+            <summary>
+            Gets or sets the relationship collection.
+            
+            This is "private" on purpose.  Needs to be present for web service consumers.
+            </summary>
+            <value>The relationship collection.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceRelationshipList.Item(System.Int32)">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.Commerce.Contracts.CommerceRelationship"/> at the specified index.
+            </summary>
+            <param name="index">The collection index.</param>
+            <value></value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceRelationshipList.System#Collections#IList#Item(System.Int32)">
+            <summary>
+            Gets or sets the <see cref="T:System.Object"/> at the specified index.
+            </summary>
+            <param name="index">The zero-based index for the property indexer.</param>
+            <value></value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentSearchPredicate">
+            <summary>
+            The search predicates for SiteContentSearch.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentSearchPredicate.FreeText">
+            <summary>
+            Indicates a free text search predicate.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentSearchPredicate.Contains">
+            <summary>
+            Indicates a contains search predicate.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentQueryType">
+            <summary>
+            The search types available for SiteContentSearch.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentQueryType.Keyword">
+            <summary>
+            Indicates a keyword  query
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentQueryType.FullTextSql">
+            <summary>
+            Indicates a full-text sql query
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentSearchCriteria">
+            <summary>
+            Represents a static site content search to be executed
+            against MOSS Enterprise Search or Search Server 2008
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceSearchCriteria">
+            <summary>
+            Abstract class defines properties for search criteria.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceSearchCriteria.FirstItemIndex">
+            <summary>
+            Gets or sets the starting record from which results will be returned.
+            </summary>
+            <value>The starting record.  If null, the default is 1.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceSearchCriteria.NumberOfItemsToReturn">
+            <summary>
+            Gets or sets the number of records to retrieve.
+            </summary>
+            <value>
+            The number of records to retrieve.  If null, all records are retrieved.
+            </value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceSearchCriteria.ReturnTotalItemCount">
+            <summary>
+            Gets or sets a value indicating whether the total number of existing items is to be returned
+            as part of the response to the query.
+            </summary>
+            <value>
+                <c>true</c> if the total number of items is to be returned; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceSearchCriteria.SortProperties">
+            <summary>
+            Gets or sets sort properties.
+            </summary>
+            <value>The sort properties.  Can be null if no sorting is required.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceSearchCriteria.WhereClause">
+            <summary>
+            Gets or sets the where clause.
+            </summary>
+            <value>The where clause.</value>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentSearchCriteria.searchPhrase">
+            <summary>
+            The search phrase
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentSearchCriteria.siteUrl">
+            <summary>
+            The site url.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentSearchCriteria.scopes">
+            <summary>
+            The scopes to apply for the search.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentSearchCriteria.searchPredicate">
+            <summary>
+            The search predicate.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentSearchCriteria.queryType">
+            <summary>
+            The query type.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentSearchCriteria.trimDuplicates">
+            <summary>
+            A value that indicates whether duplicates should be trimmed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentSearchCriteria.ignoreAllNoiseQuery">
+            <summary>
+            A value that indicates whether all noise queries should be ignored.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentSearchCriteria.passThroughFullTextSqlQuery">
+            <summary>
+            A string representing a fully formed FullTextSqlQuery expression.
+            Setting this field bypasses the automatic fulltextsql expression generation
+            and submits this directly to sharepoint as the query text.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentSearchCriteria.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentSearchCriteria"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentSearchCriteria.SearchPhrase">
+            <summary>
+            Gets or sets the search phrase.
+            </summary>
+            <value>The search phrase.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentSearchCriteria.SiteUrl">
+            <summary>
+            Gets or sets url of the site to search.
+            </summary>
+            <value>The url of the site to search.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentSearchCriteria.Scopes">
+            <summary>
+            Gets or sets url of the site to search.
+            </summary>
+            <value>The url of the site to search.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentSearchCriteria.SearchPredicate">
+            <summary>
+            Gets or sets the search predicate to be used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentSearchCriteria.QueryType">
+            <summary>
+            Gets or sets the query type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentSearchCriteria.TrimDuplicates">
+            <summary>
+            Gets or sets a value indicating whether duplicates should be trimmed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentSearchCriteria.IgnoreAllNoiseQuery">
+            <summary>
+            Gets or sets a value indicating whether all noise queries should be ignored.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceSiteContentSearchCriteria.PassThroughFullTextSqlQuery">
+            <summary>
+            Gets or sets the PassThroughFullTextSqlQuery.
+            When this property is not set, Multi-channel Commerce Foundation will generate the full text sql
+            query text from the provided, scopes, search phrase, search predicate, etc.
+            Setting this property bypasses the automatic fulltextsql expression generation
+            and submits this directly to sharepoint as the query text.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CommerceEntityDefinition">
+            <summary>
+            This class represents the metadata that defines a CommerceEntity class.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CommerceEntityDefinition.ModelNameDefinition">
+            <summary>
+            defines the model name for this commerce entity
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CommerceEntityDefinition.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CommerceEntityDefinition"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CommerceEntityDefinition.PropertyDefinitions">
+            <summary>
+            Gets or sets the property definitions. This is metadata for all the properties of the corresponding CommerceEntity.
+            </summary>
+            <value>The property defintions.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CommerceEntityDefinition.EntityMetadata">
+            <summary>
+            Gets or sets the EntityMetadata properties. This is metadata for the CommerceEntity.
+            </summary>
+            <value>The Metadata.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CommerceEntityDefinition.RelationshipDefinitions">
+            <summary>
+            Gets or sets the relationship definitions. This is metadata for all the relationships of the corresponding CommerceEntity.
+            </summary>
+            <value>The relationship defintions.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CommerceEntityDefinition.EntityMappings">
+            <summary>
+            Gets or sets the entity mappings. This property defines a mapping between the CommerceEntity and the corresponding Commerce
+            Server class properties.
+            </summary>
+            <value>The entity mappings.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CommerceEntityDefinition.PropertyName">
+            <summary>
+            Class defines Properties for a CommerceEntity definition.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CommerceEntityDefinition.RelationshipName">
+            <summary>
+            Class defines Related Item for CommerceEntity metadata.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CommerceServerArea">
+            <summary>
+            Defines the area of Commerce Server to which a commerce entity maps.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CommerceServerArea.Catalog">
+            <summary>
+            Indicates the commerce entity maps to the Commerce Server Catalog feature.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CommerceServerArea.Profiles">
+            <summary>
+            Indicates the commerce entity maps to the Commerce Server Profiles feature.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CommerceServerArea.Orders">
+            <summary>
+            Indicates the commerce entity maps to the Commerce Server Orders feature.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CommerceServerArea.Marketing">
+            <summary>
+            Indicates the commerce entity maps to the Commerce Server Marketing feature.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EntityMapping">
+            <summary>
+            This class defines property mapping between a BusinesItem and a Commerce Server class.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EntityMapping.ModelNameDefinition">
+            <summary>
+            defines the model name for this commerce entity
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EntityMapping.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EntityMapping"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EntityMapping.Equals(System.Object)">
+            <summary>
+            This method is overridden to ensure that objects are compared using the referential 
+            equality regardless if the base class overrides this method.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object"/> to compare with the current <see cref="T:System.Object"/>.</param>
+            <returns>
+            true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EntityMapping.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <returns>
+            A hash code for the current <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EntityMapping.CommerceEntityName">
+            <summary>
+            Gets or sets the fully qualified name of the CommerceEntity class that is the source 
+            of the property mapping. 
+            
+            For example, Microsoft.Commerce.Contracts.CommerceEntities. Address.
+            </summary>
+            <remarks>
+            This name is the short name of the CommerceEntity that corresponds to the 
+            CommerceEntityDefinition.Name property - Product, Address etc.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EntityMapping.CommerceServerClass">
+            <summary>
+            Gets or sets the name of the Commerce Server class that is used as the target for property mapping.
+            </summary>
+            <value>The commerce server class.</value>
+            <remarks>This is fully qualified name of the Commerce Server class.
+            For example, Microsoft.CommerceServer.Runtime.Orders.OrderAddress</remarks>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EntityMapping.CommerceServerDefinitionName">
+            <summary>
+            Gets or sets the an optional name of the Commerce Server Definition.
+            </summary>
+            <remarks>
+            The Definition name in Commerce Server applies to a Profile or a Catalog Definition name
+            (UserObject, Address etc.).
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EntityMapping.CommerceServerAssembly">
+            <summary>
+            Gets or sets the full name of the assembly containing the Commerce Server class.
+            </summary>
+            <remarks>
+            For example, 
+            "Microsoft.CommerceServer.Catalog, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EntityMapping.CommerceServerArea">
+            <summary>
+            Gets or sets the CommerceServerArea property specifies which area of the Commerce Server functionality
+            this entity mapping belongs to.
+            </summary>
+            <remarks>This optional property should be used for the CommerceEntityDefinition's that
+            contain more than one EntityMapping to distinguish one entity mapping from another. A 
+            CommerceEntityDefinition can contain no more than one EntityMapping with the same value
+            of the CommerceServerArea.</remarks>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EntityMapping.PropertyMappings">
+            <summary>
+            Gets or sets the PropertyMappings collection which maps the source entity properties 
+            to the target entity properties
+            </summary>
+            <value>The property mapping.</value>
+            <remarks>The key of the dictionary is the source property name (belongs to the CommerceEntity 
+            class), the value is the target property name (belongs to the Commerece Server class).</remarks>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EntityMapping.DefinitionMappings">
+            <summary>
+            Gets or sets the definition mappings. 
+            </summary>
+            <value>The definition mappings.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EntityMapping.PropertyName">
+            <summary>
+            Class defines the Properties for an EntityMapping
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EntityMapping.RelationshipName">
+            <summary>
+            Class defines Related Item for CommerceEntity metadata.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EnumeratedPropertyDefinition">
+            <summary>
+            This class represents the metadata that defines a multi-choice CommerceEntity property.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDefinition">
+            <summary>
+            This class represents the metadata that defines a CommerceEntity property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDefinition.ModelNameDefinition">
+            <summary>
+            defines the model name for this commerce entity
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDefinition.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDefinition"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDefinition.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDefinition"/> class.
+            </summary>
+            <param name="modelName">this instances full model name</param>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDefinition.PropertyType">
+            <summary>
+            Gets or sets the property type. This property defines the data type of the CommerceEntity property.
+            </summary>
+            <value>The type of the property.</value>
+            <remarks>This is a required property.</remarks>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDefinition.CommerceEntityName">
+            <summary>
+            Gets or sets the CommerceEntity name. This is the name of the CommerceEntity class that this property belongs to. 
+            </summary>
+            <remarks>
+            This name is the short name of the CommerceEntity that corresponds to the 
+            CommerceEntityDefinition.Name property - Product, Address etc.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDefinition.Format">
+            <summary>
+            Gets or sets the multilingual value Format. This is a string that defines the CommerceEntity property formatting.
+            </summary>
+            <value>The format.</value>
+            <remarks>
+            This string corresponds to the format parameter in the String.Format
+            method. Format can be different for different languages.
+            This is an optional property.
+            </remarks>
+            <example>
+            For example, "{0,10:F4}" - this format string specifies that the output of the
+            property value will occupy 10 positions and will be formatted as a fixed point
+            number with 4 digits after the decimal point.
+            </example>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDefinition.Constraints">
+            <summary>
+            Gets or sets the relationship list Constraints. This is a list of the Constraint objects associated with the CommerceEntity property.
+            </summary>
+            <value>The constraints.</value>
+            <remarks>
+            Each constraint defines a validation rule.
+            The validation rules are combined using logical "AND" operator, which means that the
+            property is valid if none of the constraints is brokean; the property is invalid if any
+            of the constraints is brokean.
+            This is an optional property.
+            TODO: VK. Should we consider "AND" Constraint Container and "OR" Constraint Container
+            similar to the EntLib Validation framework?
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDefinition.DefaultValue">
+            <summary>
+            Gets or sets the multilingual Default value. This is the CommerceEntity property's default value.
+            </summary>
+            <value>The default value.</value>
+            <remarks>This is an optional property.</remarks>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDefinition.IsMultilingual">
+            <summary>
+            Gets or sets a value indicating whether the CommerceEntity's property can contain language (culture)
+            specific values.
+            </summary>
+            <value>
+                <c>true</c> if this instance is multilingual property; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDefinition.IsStronglyTyped">
+            <summary>
+            Gets or sets a value indicating whether the CommerceEntity's property is a strongly typed one in the Commerce
+            Server object model.
+            </summary>
+            <value>
+                <c>true</c> if this instance is strongly typed property; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDefinition.PropertyName">
+            <summary>
+            Class defines properties for a Property's metatdata.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDefinition.RelationshipName">
+            <summary>
+            Class defining a RelatedOperation for a Property.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EnumeratedPropertyDefinition.ModelNameDefinition">
+            <summary>
+            defines the model name for this commerce entity
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EnumeratedPropertyDefinition.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EnumeratedPropertyDefinition"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EnumeratedPropertyDefinition.EnumeratedValues">
+            <summary>
+            Gets or sets the relationship list EnumerateValues. It lists all the values of a multi choice property.
+            </summary>
+            <value>The enumerated values.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.EnumeratedPropertyDefinition.RelationshipName">
+            <summary>
+            Class defining a RelatedOperation for the EnumeratedPropertyDefinition.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.MultilingualValue`1">
+            <summary>
+            This class represents a multilingual value.
+            </summary>
+            <typeparam name="T">Class type which may be multilingual</typeparam>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.MultilingualValue`1.Add(System.String,`0)">
+            <summary>
+            Adds a new lanuage specific value, or replaces the existing one. 
+            </summary>
+            <param name="language">The language in which the <paramref name="value"/> is localized.</param>
+            <param name="value">The localized value.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.MultilingualValue`1.GetKeyForItem(Microsoft.Commerce.Contracts.CommerceEntities.Metadata.MultilingualValue{`0}.LanguageValuePair)">
+            <summary>
+            extracts the key from the specified element.
+            </summary>
+            <param name="item">The element from which to extract the key.</param>
+            <returns>The key for the specified element.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.MultilingualValue`1.CurrentValue">
+            <summary>
+            Gets the current value. This is a value that corresponds to the current
+            language (Thread.CurrentThread.CurrentUICulture.Name).
+            </summary>
+            <value>The current value.</value>
+            <remarks>
+            If there is no langauge specific value defined, then
+            the language neutral value is used.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.MultilingualValue`1.Item(System.String)">
+            <summary>
+            Returns value for the given language
+            </summary>
+            <param name="language">The format of the language is identical
+            to the CultureInfo.Name in the .NET Framework, which is "languagecode2-country/regioncode2",
+            where "languagecode2" is a lowercase two-letter code derived from ISO 639-1 and
+            "country/regioncode2" is an uppercase two-letter code derived from ISO 3166.
+            The language neutral value is represented by the CultureInfo.InvariantCulture.Name.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.MultilingualValue`1.LanguageValuePair">
+            <summary>
+            Class that defines a mapping from a language to a localized value.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.MultilingualValue`1.LanguageValuePair.#ctor(System.String,`0)">
+            <summary>
+            Initializes a new instance of the LanguageValuePair class.
+            </summary>
+            <param name="language">The language in which the <paramref name="value"/> is localized.</param>
+            <param name="value">The localized value.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.MultilingualValue`1.LanguageValuePair.Equals(System.Object)">
+            <summary>
+            Compares the provided object and the current instance for equality.
+            </summary>
+            <param name="obj">The object to compare to this instance.</param>
+            <returns>True if the object is equal to this instance, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.MultilingualValue`1.LanguageValuePair.GetHashCode">
+            <summary>
+            Gets a hash code for the current instance.
+            </summary>
+            <returns>A hash code for the current instance.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.MultilingualValue`1.LanguageValuePair.Language">
+            <summary>
+            Gets or sets the langage in which the <see cref="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.MultilingualValue`1.LanguageValuePair.Value"/> is localized.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.MultilingualValue`1.LanguageValuePair.Value">
+            <summary>
+            Gets or sets the localized value.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDataType">
+            <summary>
+            This enum defines all possible data types of the CommerceEntity properties.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDataType.Array">
+            <summary>
+            Property data type Array
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDataType.BigInteger">
+            <summary>
+            Property data type BigInteger
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDataType.Binary">
+            <summary>
+            Property data type Binary
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDataType.Boolean">
+            <summary>
+            Property data type Boolean
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDataType.Decimal">
+            <summary>
+            Property data type Decimal
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDataType.Date">
+            <summary>
+            Property data type Date
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDataType.DateTime">
+            <summary>
+            Property data type DateTime
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDataType.Double">
+            <summary>
+            Property data type Double
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDataType.Email">
+            <summary>
+            Property data type Email
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDataType.Float">
+            <summary>
+            Property data type Float
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDataType.Integer">
+            <summary>
+            Property data type Integer
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDataType.Password">
+            <summary>
+            Property data type Password
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDataType.RichText">
+            <summary>
+            Property data type RichText
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDataType.String">
+            <summary>
+            Property data type String
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDataType.Time">
+            <summary>
+            Property data type Time
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDataType.UniqueIdentifier">
+            <summary>
+            Property data type UniqueIdentifier
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDataType.Url">
+            <summary>
+            Property data type Url
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDataTypeExtensions">
+            <summary>
+            This class contains extension methods for the PropertyDataType enum.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDataTypeExtensions.IsStringType(Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDataType)">
+            <summary>
+            Checks if the PropertyDataType provided is of a string type.
+            </summary>
+            <param name="type">PropertyDataType to check</param>
+            <returns>true if the type is one of the PropertyDataType values 
+            that is a string; false otherwise</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDataTypeExtensions.IsStringType(System.Nullable{Microsoft.Commerce.Contracts.CommerceEntities.Metadata.PropertyDataType})">
+            <summary>
+            Checks if the PropertyDataType provided is of a string type.
+            </summary>
+            <param name="type">PropertyDataType to check</param>
+            <returns>true if the type is one of the PropertyDataType values 
+            that is a string; false otherwise</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RelationshipDefinition">
+            <summary>
+            This class represents the metadata that defines a CommerceEntity relationship.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RelationshipDefinition.ModelNameDefinition">
+            <summary>
+            defines the model name for this commerce entity
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RelationshipDefinition.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RelationshipDefinition"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RelationshipDefinition.SourceCommerceEntity">
+            <summary>
+            Gets or sets the Source CommerceEntity. This is the name of the CommerceEntity that this relationship belongs to. 
+            </summary>
+            <remarks>
+            This name is the short name of the CommerceEntity that corresponds to the 
+            CommerceEntityDefinition.Name property - Product, Address etc.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RelationshipDefinition.RelationshipType">
+            <summary>
+            Gets or sets the RelationshipType. 
+            </summary>
+            <remarks>
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RelationshipDefinition.IsMultipleItems">
+            <summary>
+            Gets or sets a value indicating whether IsMultipleItems is true or false. This property defines the multiplicity of the relationship.
+            </summary>
+            <remarks>When IsMultipleItems is True then the relationship is one-to-many;
+            otherwise it is one-to-one relationship.</remarks>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RelationshipDefinition.PropertyName">
+            <summary>
+            Class defines Properties for a RelationshipDefinition.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.RelationshipDefinition.RelationshipName">
+            <summary>
+            Class defines Related Item for a RelationshipDefinition.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CompareOperator">
+            <summary>
+            Enum defines comparison operator enumerators (e.g. Equal, NotEqual, etc.)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CompareOperator.Equal">
+            <summary>
+            Comparison operator type Equal
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CompareOperator.NotEqual">
+            <summary>
+            Comparison operator type Not Equal
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CompareOperator.GreaterThan">
+            <summary>
+            Comparison operator type Greater Than
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CompareOperator.GreaterThanEqual">
+            <summary>
+            Comparison operator type Greater Than or Equal To
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CompareOperator.LessThan">
+            <summary>
+            Comparison operator type Less Than
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CompareOperator.LessThanEqual">
+            <summary>
+            Comparison operator type Less Than or Equal To
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CompareConstraint">
+            <summary>
+            Class defines Comparison operator constraints
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CompareConstraint.ModelNameDefinition">
+            <summary>
+            defines the model name for this commerce entity
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CompareConstraint.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CompareConstraint"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CompareConstraint.Equals(System.Object)">
+            <summary>
+            This method is overridden to ensure that objects are compared using the referential 
+            equality regardless if the base class overrides this method.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object"/> to compare with the current <see cref="T:System.Object"/>.</param>
+            <returns>
+            true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
+            </returns>
+            <remarks>CompareConstraint equality operator compares two properties - PropertyToCompare and Operator.</remarks>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CompareConstraint.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <returns>
+            A hash code for the current <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CompareConstraint.PropertyToCompare">
+            <summary>
+            Gets or sets the property to compare.
+            </summary>
+            <value>The property to compare.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CompareConstraint.Operator">
+            <summary>
+            Gets or sets the operator.
+            </summary>
+            <value>The operator.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommerceEntities.Metadata.CompareConstraint.PropertyName">
+            <summary>
+            Class defines Properties for CompareOoperator constraints.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.ContractNamespaces">
+            <summary>
+            Class defines static Namespace names for data contracts and service contracts.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.ContractNamespaces.DataContractNamespace">
+            <summary>
+            String returns a URL for the Data Contract Namespace.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.ContractNamespaces.ServiceContractNamespace">
+            <summary>
+            String returns a URL for the Service Contract Namespace.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Faults.AuthorizationFault">
+            <summary>
+            Class defines exception to be expected from a failed authorization.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Faults.AuthorizationFault.Action">
+            <summary>
+            String returns Action URL for the fault.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.Faults.AuthorizationFault.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.Faults.AuthorizationFault"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.Faults.AuthorizationFault.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.Faults.AuthorizationFault"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Faults.ItemAlreadyExistsFault">
+            <summary>
+            Class defines exception to be expected from an operation attempt in which an item with the provided Id already exists.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Faults.ItemAlreadyExistsFault.Action">
+            <summary>
+            String returns Action URL for the fault.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.Faults.ItemAlreadyExistsFault.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.Faults.ItemAlreadyExistsFault"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.Faults.ItemAlreadyExistsFault.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.Faults.ItemAlreadyExistsFault"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.Faults.ItemAlreadyExistsFault.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.Faults.ItemAlreadyExistsFault"/> class.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="commerceEntityName">The type of <see cref="T:Microsoft.Commerce.Contracts.CommerceEntity"/> that generated the fault.</param>
+            <param name="commerceEntityId">The Id of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntity"/> that generated the fault.</param>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Faults.ItemAlreadyExistsFault.CommerceEntityName">
+            <summary>
+            Gets or sets the type name of the commerce entity that caused the fault.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Faults.ItemAlreadyExistsFault.CommerceEntityId">
+            <summary>
+            Gets or sets the Id of the comerce entity that cuased the fault.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Faults.ItemDoesNotExistFault">
+            <summary>
+            Class defines exception to be expected from an operation attempt in which the item specified does not exist.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Faults.ItemDoesNotExistFault.Action">
+            <summary>
+            String returns Action URL for the fault.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.Faults.ItemDoesNotExistFault.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.Faults.ItemDoesNotExistFault"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.Faults.ItemDoesNotExistFault.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.Faults.ItemDoesNotExistFault"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.Faults.ItemDoesNotExistFault.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.Faults.ItemDoesNotExistFault"/> class.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="commerceEntityName">The type of <see cref="T:Microsoft.Commerce.Contracts.CommerceEntity"/> that generated the fault.</param>
+            <param name="commerceEntityId">The Id of the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntity"/> that generated the fault.</param>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Faults.ItemDoesNotExistFault.CommerceEntityName">
+            <summary>
+            Gets or sets the type name of the commerce entity that caused the fault.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Faults.ItemDoesNotExistFault.CommerceEntityId">
+            <summary>
+            Gets or sets the Id of the commerce entity that cuased the fault.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Faults.ValidationError">
+            <summary>
+            Represents information on a specific validation error.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.Faults.ValidationError.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.Faults.ValidationError"/> class.
+            </summary>
+            <param name="property">The property.</param>
+            <param name="errorMessage">The error message.</param>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Faults.ValidationError.Property">
+            <summary>
+            Gets or sets the property.
+            </summary>
+            <value>The property.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Faults.ValidationError.ErrorMessage">
+            <summary>
+            Gets or sets the error message.
+            </summary>
+            <value>The error message.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Faults.ValidationFault">
+            <summary>
+            Class defines exception to be expected from a data validation failure.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Faults.ValidationFault.Action">
+            <summary>
+            String returns Action URL for the fault.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.Faults.ValidationFault.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.Faults.ValidationFault"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.Faults.ValidationFault.#ctor(System.Collections.Generic.List{Microsoft.Commerce.Contracts.Faults.ValidationError})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.Faults.ValidationFault"/> class.
+            </summary>
+            <param name="validationErrorList">The validation error list.</param>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Faults.ValidationFault.ValidationErrors">
+            <summary>
+            Gets or sets the validation errors.
+            </summary>
+            <value>The validation error.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.KnownTypesProvider">
+            <summary>
+            Provides WCF type information for all of the supported data contracts.  This menthod is meant as a replacement for the KnownType() 
+            WCF attribute.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.KnownTypesProvider.GetKnownTypes(System.Reflection.ICustomAttributeProvider)">
+            <summary>
+            Gets the known types.
+            </summary>
+            <param name="knownTypeAttributeTarget">The known type attribute target.</param>
+            <returns>Returns a list of all of the supported data types.</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceUpdateRelationship">
+            <summary>
+            Indicates that relationship content is being updated.
+            This is specified in the RelatedOperations collection of the UpdateOperation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceRelatedOperation">
+            <summary>
+            Class defines a base for every type of supported RelatedOperation. RelatedOperations provide the ability to specify relationships between commerce entities.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceRelatedOperation.RelationshipName">
+            <summary>
+            Gets or sets the name of the relationship.
+            </summary>
+            <value>The name of the relationship.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceRelatedOperation.Model">
+            <summary>
+            Gets or sets the model.
+            </summary>
+            <value>The model.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceRelatedOperation.SearchCriteria">
+            <summary>
+            Gets or sets the search criteria.
+            </summary>
+            <value>The search criteria.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceRelatedOperation.RelatedOperations">
+            <summary>
+            Gets or sets the related items.
+            </summary>
+            <value>The related items.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceQueryRelationship">
+            <summary>
+            Indicates that a query on commerce entity relationships needs to be performed.
+            This is specified in the RelatedOperations collection of the QueryOperation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceDeleteRelationship">
+            <summary>
+            Indicates that a relationship with an existing commerce entity is to be deleted.
+            This is specified in the RelatedOperations collection of the UpdateOperation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceCreateRelationship">
+            <summary>
+            Indicates that a relationship between 2 commerce entities is to be created.
+            This is specified in the RelatedOperations collection of the UpdateOperation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceCopyRelatedItem">
+            <summary>
+            Class defines a related commerce entity which is being copied.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceCopyRelatedItem.parentSearchCriteria">
+            <summary>
+            The SearchCriteria for the Parent
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.Messages.CommerceCopyRelatedItem.GetParentSearchModel(System.String)">
+            <summary>
+            Retreives the Parent Search Model
+            </summary>
+            <param name="modelName">Name of the model.</param>
+            <returns>The Parent Search Model</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceCopyRelatedItem.ParentSearchCriteria">
+            <summary>
+            Gets or sets the related item search criteria.
+            </summary>
+            <value>The search criteria.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceCreateOptions">
+            <summary>
+            This class allows to specify what the CreateOperation options are.
+            These options appear on the following classes:
+            <list type="bullet">
+              <item><see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceCreateOperation"/></item>
+            </list>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceCreateOptions.ReturnModel">
+            <summary>
+            Gets or sets the return model indentifying if the created commerce entity is returned to
+            the caller along with the properties to return..
+            </summary>
+            <value>The return model.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceCreateOptions.ReturnModelQueries">
+            <summary>
+            Gets or sets the related QueryRelatedItem operations that will be used to populate
+            relationships in the <see cref="T:Microsoft.Commerce.Contracts.CommerceEntity"/> returned in the operation response.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceCreateRelatedItem">
+            <summary>
+            Indicates that a related commerce entity is to be created.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceCreateOperation">
+            <summary>
+            Represents a Create operation.
+            The Create operation can:
+            1.  Create new commerce entities
+            2.  Create new commerce entities related to the model
+            3.  Create new relationships between a new source commerce entity and existing commerce entities.
+            When then intent is to create a related item or relationship to an existing commerce entity,
+            use the update operation on that existing commerce entity.  As an example, if an address is
+            to be added to an extsting UserProfile, then Update 'UserProfile' must be used.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceOperation">
+            <summary>
+            Class defines Operation request message. This is a base for higher order operations such as Create, Query, Update and Delete operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceOperation.Model">
+            <summary>
+            Gets or sets the model.
+            </summary>
+            <value>The model.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceOperation.RelatedOperations">
+            <summary>
+            Gets or sets the related items.
+            </summary>
+            <value>The related items.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceCreateOperation.Options">
+            <summary>
+            Gets or sets the options on the Create operation.
+            </summary>
+            <value>The options.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceCreateOperationResponse">
+            <summary>
+            Class defines the Response message returned from a CreateOperation request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceCreateOperationResponse.CommerceEntity">
+            <summary>
+            Gets or sets the created commerce entity if a ReturnModel has been specified in the create options.
+            </summary>
+            <value>The product list.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceDeleteOptions">
+            <summary>
+            Class used to specify Delete options.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceDeleteOptions.ReturnDeletedCount">
+            <summary>
+            Gets or sets a value indicating whether the delete operation must return the deleted item count.
+            </summary>
+            <value>
+            'true' if the deleted item count must be returned as part of the operation.
+            </value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceDeleteRelatedItem">
+            <summary>
+            Indicates that a related commerce entity is to be deleted.
+            This is specified in the RelatedOperations collection of the UpdateOperation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceDeleteOperation">
+            <summary>
+            Represents a Delete operation.
+            The Delete operation can:
+            1. Delete existing commerce entities
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceDeleteOperation.SearchCriteria">
+            <summary>
+            Gets or sets the search criteria.
+            </summary>
+            <value>The search criteria.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceDeleteOperation.Options">
+            <summary>
+            Gets or sets the options on the Delete operation.
+            </summary>
+            <value>The options.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceDeleteOperationResponse">
+            <summary>
+            Class defines the Response message returned from a DeleteOperation request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceDeleteOperationResponse.Count">
+            <summary>
+            Gets or sets the count representing the number of items that were deleted by
+            the operation.
+            </summary>
+            <value>The count.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceCatalogEntityTypes">
+            <summary>
+            Type of catalog entity(s).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceCatalogEntityTypes.None">
+            <summary>
+            Value not set
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceCatalogEntityTypes.Category">
+            <summary>
+            Catalog entity represents a category
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceCatalogEntityTypes.Product">
+            <summary>
+            Catalog entity represents a product
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceCatalogEntityTypes.Variant">
+            <summary>
+            Catalog entity represents a variant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceCatalogEntityTypes.All">
+            <summary>
+            Catalog entity represents all CatalogEntity types, category, product and variant
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceInventoryFilters">
+            <summary>
+            Options to filter results via Inventory Information.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceInventoryFilters.None">
+            <summary>
+            Value not set
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceInventoryFilters.OutOfStock">
+            <summary>
+            Filter out of stock 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceInventoryFilters.BackOrderable">
+            <summary>
+            Filter BackOrderable
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceInventoryFilters.PreOrderable">
+            <summary>
+            Filter PreOrderable 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceInventoryFilters.All">
+            <summary>
+            Filter OutOfStock, BackOrderable and PreOrderable
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceFullTextSearchType">
+            <summary>
+            Type of FullTextSearchType.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceFullTextSearchType.FreeText">
+            <summary>
+            a free text type full text search query
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.CommerceFullTextSearchType.Contains">
+            <summary>
+            a contains type full text search query
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceCatalogFullTextSearch">
+            <summary>
+            Provides full text search capabilities to an operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.Messages.CommerceCatalogFullTextSearch.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceCatalogFullTextSearch"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceCatalogFullTextSearch.Phrase">
+            <summary>
+            Gets or sets the search phrase.
+            </summary>
+            <value>The search phrase.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceCatalogFullTextSearch.Catalogs">
+            <summary>
+            Gets or sets the catalogs.
+            </summary>
+            <value>The catalogs.  No catalog means all catalogs will be searched.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceCatalogFullTextSearch.TypesToSearch">
+            <summary>
+            Gets or sets the TypesToSearch.
+            </summary>
+            <value>The types of commerce entities that should be searched.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceCatalogFullTextSearch.FullTextSearchType">
+            <summary>
+            Gets or sets the FullTextSearchType.
+            </summary>
+            <value>The type of full text search to be performed.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceCatalogFullTextSearch.InventoryFilters">
+            <summary>
+            Gets or sets the InventoryFilters.
+            </summary>
+            <value>The Inventory conditions to be filtered out.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceCatalogFullTextSearch.CategoriesClause">
+            <summary>
+            Gets or sets the categories clause.
+            </summary>
+            <value>The category(s) search clause.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceModelSearch">
+            <summary>
+            Class defines a search type to execute simple queries based on a CommerceEntity type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceModelSearch.Model">
+            <summary>
+            Gets or sets the model.
+            </summary>
+            <value>The model.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceQueryRelatedItem">
+            <summary>
+            Indicates that a query on related commerce entities needs to be performed.
+            This is specified in the RelatedOperations collection of the QueryOperation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceQueryRelatedItem.Options">
+            <summary>
+            Gets or sets the query options.
+            </summary>
+            <value>The query options.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.SortDirection">
+            <summary>
+            Type defines options for sorting on properties in Search results.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.SortDirection.Default">
+            <summary>
+            SortType value None (Commerce Server 2007 default order).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.SortDirection.Ascending">
+            <summary>
+            Order search results on a property in ascending order.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.SortDirection.Descending">
+            <summary>
+            Order search results on a property in descending order.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceSortProperty">
+            <summary>
+            Class allows for definition of Properties on which to sort the results of a Search. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.Messages.CommerceSortProperty.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceSortProperty"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.Messages.CommerceSortProperty.#ctor(System.String,System.String,Microsoft.Commerce.Contracts.Messages.SortDirection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceSortProperty"/> class.
+            </summary>
+            <param name="modelName">Name of the model.</param>
+            <param name="property">The property.</param>
+            <param name="sortDirection">Direction of the sort.</param>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceSortProperty.SortDirection">
+            <summary>
+            Gets or sets the type of the <see cref="P:Microsoft.Commerce.Contracts.Messages.CommerceSortProperty.SortDirection"/>.
+            </summary>
+            <value>The direction of the sort.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceSortProperty.Property">
+            <summary>
+            Gets or sets the property name to be sorted.
+            </summary>
+            <value>The property name.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceSortProperty.CommerceEntityModelName">
+            <summary>
+            Gets or sets the CommerceEntity model name which contains the <see cref="P:Microsoft.Commerce.Contracts.Messages.CommerceSortProperty.Property"/> to be sorted on.
+            </summary>
+            <value>the short type name of the sort property specified.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceUpdateRelatedItem">
+            <summary>
+            Indicates that an update on a related commerce entities needs to be performed.
+            This is specified in the RelatedOperations collection of the UpdateOperation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceUpdateOperation">
+            <summary>
+            Class defining Update Operation request message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceUpdateOperation.SearchCriteria">
+            <summary>
+            Gets or sets the search criteria.
+            </summary>
+            <value>The search criteria.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceUpdateOperation.Options">
+            <summary>
+            Gets or sets the options.
+            </summary>
+            <value>The options.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceUpdateOperationResponse">
+            <summary>
+            Class defines the Response message returned from an UpdateOperation request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceUpdateOperationResponse.CommerceEntities">
+            <summary>
+            Gets or sets the commerce entity list.
+            </summary>
+            <value>The commerce entity list.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceUpdateOperationResponse.Count">
+            <summary>
+            Gets the count which represents the number of items that are found in the Items collection.
+            
+            This value should be checked prior to aqccessing the Items collection.
+            </summary>
+            <value>The count.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceRequest">
+            <summary>
+            Class defining base Message Request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceRequest.RequestContext">
+            <summary>
+            Gets or sets the request context.
+            </summary>
+            <value>The request context.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceRequest.Operations">
+            <summary>
+            Gets or sets the operations.
+            </summary>
+            <value>The operations.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceRequest.Response">
+            <summary>
+            Gets or sets the response.
+            NOTE:  This is not a serialized data member on purpose.  It is simply a helper that associates
+            the request to the response being returned by the service.  This association is created in the
+            service agent.
+            </summary>
+            <value>The response.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceResponse">
+            <summary>
+            Class defining base Message Response, returned from Operation requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceResponse.OperationResponses">
+            <summary>
+            Gets or sets the operation responses.
+            </summary>
+            <value>The operation responses.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.EnvironmentType">
+            <summary>
+            Type of Virtual Earth Platform Environment.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.EnvironmentType.Staging">
+            <summary>
+            Staging environment.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.EnvironmentType.Production">
+            <summary>
+            Production environment.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceVEClientTokenSearch">
+            <summary>
+            Set parameters needed to retrieve a Virtual Client Token.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.Messages.CommerceVEClientTokenSearch.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceVEClientTokenSearch class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceVEClientTokenSearch.PlatformEnvironment">
+            <summary>
+            Gets or sets Virtual Earth Platform environment to use.
+            </summary>
+            <value>The Virtual Earth Platform environment.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceVEClientTokenSearch.ClientIPAddress">
+            <summary>
+            Gets or sets the client IP address used to retrieve client token.
+            </summary>
+            <value>The client IP address.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceVEClientTokenSearch.TokenTimeout">
+            <summary>
+            Gets or sets the number of minutes the client token would be valid for.
+            </summary>
+            <value>The number of minutes before timeout.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.DistanceUnitType">
+            <summary>
+            Type of distance unit.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.DistanceUnitType.Mile">
+            <summary>
+            Distance units in mile.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Contracts.Messages.DistanceUnitType.Kilometer">
+            <summary>
+            Distance units in kilometer.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceVENearbyStoreSearch">
+            <summary>
+            Set parameters needed to retrieve a Virtual Client Token.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.Messages.CommerceVENearbyStoreSearch.#ctor">
+            <summary>
+            Initializes a new instance of the CommerceVENearbyStoreSearch class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceVENearbyStoreSearch.PlatformEnvironment">
+            <summary>
+            Gets or sets Virtual Earth Platform environment to use.
+            </summary>
+            <value>The Virtual Earth Platform environment.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceVENearbyStoreSearch.Latitude">
+            <summary>
+            Gets or sets the latitude used to retrieve nearby stores.
+            </summary>
+            <value>The latitude.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceVENearbyStoreSearch.Longitude">
+            <summary>
+            Gets or sets the longitude used to retrieve nearby stores.
+            </summary>
+            <value>The longitude.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceVENearbyStoreSearch.DistanceUnit">
+            <summary>
+            Gets or sets the distance unit used to retrieve nearby stores.
+            </summary>
+            <value>The distance unit.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceVENearbyStoreSearch.Distance">
+            <summary>
+            Gets or sets the distance used to find nearby stores.
+            </summary>
+            <value>The Distance.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommercePropertyCollection">
+            <summary>
+            Represents a list of properties organized as key/value pairs.
+            
+            NOTE:  KeyedCollection is used as it will serialize as an array in the WSDL.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommercePropertyCollection.Add(System.String)">
+            <summary>
+            Adds the specified key.
+            </summary>
+            <param name="key">The property key.</param>
+            <exception cref="T:System.ArgumentNullException">key is null</exception>
+            <exception cref="T:System.ArgumentException">an element with the same key already exists</exception>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommercePropertyCollection.Add(System.String[])">
+            <summary>
+            Adds the specified keys.
+            </summary>
+            <param name="keys">An array of keys.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommercePropertyCollection.Add(System.String,System.Object)">
+            <summary>
+            Adds the specified key.
+            </summary>
+            <param name="key">The property key.</param>
+            <param name="value">The property value.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommercePropertyCollection.ContainsProperty(System.String)">
+            <summary>
+            Determines whether the specified key contains the given property.
+            </summary>
+            <param name="key">The property key.</param>
+            <returns>
+                <c>true</c> if the specified key contains property; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.CommercePropertyCollection.GetKeyForItem(Microsoft.Commerce.Contracts.CommercePropertyItem)">
+            <summary>
+            When implemented in a derived class, extracts the key from the specified element.
+            </summary>
+            <param name="item">The element from which to extract the key.</param>
+            <returns>The key for the specified element.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommercePropertyCollection.Keys">
+            <summary>
+            Gets the enumerator that permits the iteration through the list.
+            </summary>
+            <value>The 'keys' enumerator.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommercePropertyCollection.Item(System.String)">
+            <summary>
+            Gets or sets the <see cref="T:System.Object"/> with the specified key.
+            </summary>
+            <param name="key">The key to be used to access a particular property.</param>
+            <value></value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceQueryOperation">
+            <summary>
+            Class defining Query Operation request message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceQueryOperation.SearchCriteria">
+            <summary>
+            Gets or sets the search criteria.
+            </summary>
+            <value>The search criteria.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceQueryOperation.Options">
+            <summary>
+            Gets or sets the options.
+            </summary>
+            <value>The options.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.Messages.CommerceRequestContext">
+            <summary>
+            Represents the context of the session for each call made to services.  This context is part of each service
+            request message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceRequestContext.UserLocale">
+            <summary>
+            Gets or sets the current presentation user locale.
+            </summary>
+            <value>The user locale.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceRequestContext.UserUILocale">
+            <summary>
+            Gets or sets the current presentation user UI locale.
+            </summary>
+            <value>The user UI locale.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceRequestContext.Channel">
+            <summary>
+            Gets or sets the channel being served by the request.
+            </summary>
+            <value>The channel.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceRequestContext.UserId">
+            <summary>
+            Gets or sets the user id.
+            </summary>
+            <value>The user id.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.Messages.CommerceRequestContext.RequestId">
+            <summary>
+            Gets or sets the request id.
+            </summary>
+            <value>The request id.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.IOperationService">
+            <summary>
+            Interface to the generic operations service
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Contracts.IOperationService.ProcessRequest(Microsoft.Commerce.Contracts.Messages.CommerceRequest)">
+            <summary>
+            Process message operation.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>Process request's Response.</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Contracts.CommercePropertyItem">
+            <summary>
+            Represents an entry in the PropertyCollection
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommercePropertyItem.Key">
+            <summary>
+            Gets or sets the key.
+            </summary>
+            <value>The property key.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Contracts.CommercePropertyItem.Value">
+            <summary>
+            Gets or sets the value.
+            </summary>
+            <value>The value.</value>
+        </member>
+    </members>
+</doc>
