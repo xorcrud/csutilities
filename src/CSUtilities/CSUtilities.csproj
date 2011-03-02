@@ -43,12 +43,33 @@
     <AssemblyOriginatorKeyFile>..\..\CSUtilities.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Commerce.Application.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Microsoft.Commerce.Application.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Commerce.Broker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Microsoft.Commerce.Broker.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Commerce.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Microsoft.Commerce.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Commerce.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Microsoft.Commerce.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Commerce.Providers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Microsoft.Commerce.Providers.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CommerceServer.Interop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>..\..\lib\Microsoft.CommerceServer.Interop.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -56,17 +77,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OrderPipelineMappings.cs" />
-    <Compile Include="OrderPipelineMappings.generated.cs">
-      <DependentUpon>OrderPipelineMappings.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="MetadataDefinitions.cs" />
+    <Compile Include="Infrastructure\IServiceContainer.cs" />
+    <Compile Include="Infrastructure\ServiceContainerAdapter.cs" />
     <Compile Include="MetadataDefinitions.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MetadataDefinitions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderPipelineMappings.cs" />
+    <Compile Include="MetadataDefinitions.cs" />
+    <Compile Include="OrderPipelineMappings.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderPipelineMappings.tt</DependentUpon>
     </Compile>
     <Compile Include="Pipelines\Adapter.cs" />
     <Compile Include="Pipelines\LineItemAdapter.cs" />
@@ -78,19 +101,39 @@
     <Compile Include="Pipelines\OrderPipelineComponentBase.cs" />
     <Compile Include="Pipelines\PipelineExecutionResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\Components\FullTextSearch\BeginLogging.cs" />
+    <Compile Include="Providers\Components\FullTextSearch\EndLogging.cs" />
+    <Compile Include="Providers\Components\FullTextSearch\ILoggingStorageProvider.cs" />
+    <Compile Include="Providers\Components\FullTextSearch\LoggingConfigurationElement.cs" />
+    <Compile Include="Providers\Components\FullTextSearch\ILoggingConfiguration.cs" />
+    <Compile Include="Providers\Components\FullTextSearch\LoggingFileStorageProvider.cs" />
+    <Compile Include="Providers\Components\FullTextSearch\LoggingResult.cs" />
+    <Compile Include="Providers\Components\FullTextSearch\LoggingShared.cs" />
+    <Compile Include="Providers\Components\FullTextSearch\SkipLoggingRelatedOperation.cs" />
+    <Compile Include="Resources\Exceptions.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Exceptions.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="OrderPipelineMappings.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>OrderPipelineMappings.generated.cs</LastGenOutput>
-    </None>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Exceptions.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Exceptions.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="MetadataDefinitions.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>MetadataDefinitions.generated.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <None Include="OrderPipelineMappings.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>OrderPipelineMappings.generated.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
