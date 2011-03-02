@@ -1,0 +1,451 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Commerce.Broker</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Commerce.Broker.ComponentTree">
+            <summary>
+            Represents the component tree of a specific operation message handler section.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.ComponentTree.#ctor(Microsoft.Commerce.Application.Common.Configuration.OperationSequenceComponentElementCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Broker.ComponentTree"/> class.
+            </summary>
+            <param name="componentConfigCollection">The component config collection enumerating the operation sequence
+            components.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.ComponentTree.CreateExecutionTree">
+            <summary>
+            Creates the execution tree.
+            </summary>
+            <returns>A list of <see cref="T:Microsoft.Commerce.Broker.ExecutionTreeItem"/> objects.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.ComponentTree.BuildExecutionTree(System.Collections.Generic.List{Microsoft.Commerce.Broker.ComponentTreeItem})">
+            <summary>
+            Builds the execution tree.
+            </summary>
+            <param name="componentTreeList">The component tree list.</param>
+            <returns>A list of <see cref="T:Microsoft.Commerce.Broker.ExecutionTreeItem"/> objects</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.ComponentTree.BuildComponentTree(Microsoft.Commerce.Application.Common.Configuration.OperationSequenceComponentElementCollection,System.Collections.Generic.List{Microsoft.Commerce.Broker.ComponentTreeItem})">
+            <summary>
+            Builds the component tree.
+            </summary>
+            <param name="componentConfigCollection">The component config collection.</param>
+            <param name="componentTreeList">The component tree list.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Broker.ComponentTreeItem">
+            <summary>
+            Class used to maintain the type definition of a single operation sequence component along with
+            its dependant operation sequence components.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.ComponentTreeItem.#ctor(System.Type,System.Configuration.ConfigurationElement)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Broker.ComponentTreeItem"/> class.
+            </summary>
+            <param name="type">The tree item's operation sequence component type.</param>
+            <param name="configuration">The tree item's configuration.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.ComponentTreeItem.GetOperationSequenceComponent">
+            <summary>
+            Gets the operation sequence component.
+            </summary>
+            <returns>A new instance of this tree item's <see cref="T:Microsoft.Commerce.Broker.IOperationSequenceComponent"/> object.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Broker.ComponentTreeItem.SubComponentTreeList">
+            <summary>
+            Gets the sub component list.
+            </summary>
+            <value>The sub component list.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Broker.TransactionalExecutionTreeItem">
+            <summary>
+            Class represents an instantiated transactional operation sequence component along with its instatiated children pipeline 
+            components.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Broker.ExecutionTreeItem">
+            <summary>
+            Class represents an instantiated operation sequence component along with its instatiated children pipeline 
+            components.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.ExecutionTreeItem.#ctor(Microsoft.Commerce.Broker.IOperationSequenceComponent)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Broker.ExecutionTreeItem"/> class.
+            </summary>
+            <param name="component">The component.</param>
+        </member>
+        <member name="P:Microsoft.Commerce.Broker.ExecutionTreeItem.Component">
+            <summary>
+            Gets the operation sequence component implementation.
+            </summary>
+            <value>The component.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Broker.ExecutionTreeItem.HasSubComponents">
+            <summary>
+            Gets a value indicating whether children operation sequence components exist.
+            </summary>
+            <returns>
+                true if sub components are present; otherwise false is returned.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Broker.ExecutionTreeItem.SubExecutionTreeList">
+            <summary>
+            Gets or sets the sub execution tree list.
+            </summary>
+            <value>The sub execution tree list.</value>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.TransactionalExecutionTreeItem.#ctor(Microsoft.Commerce.Broker.IOperationSequenceComponent,Microsoft.Commerce.Application.Common.Configuration.TransactionalComponentOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Broker.TransactionalExecutionTreeItem"/> class.
+            </summary>
+            <param name="component">The component.</param>
+            <param name="transactionOptions">Transaction options for this execution tree.</param>
+        </member>
+        <member name="P:Microsoft.Commerce.Broker.TransactionalExecutionTreeItem.TransactionOptions">
+            <summary>
+            Gets the transaction options
+            </summary>
+            <returns>
+            <see cref="T:Microsoft.Commerce.Application.Common.Configuration.TransactionalComponentOptions"/>
+            </returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Broker.TransactionalComponentTreeItem">
+            <summary>
+            Class used to maintain the type definition of a single transactional operation sequence component along with
+            its dependant operation sequence components.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.TransactionalComponentTreeItem.#ctor(System.Type,System.Configuration.ConfigurationElement,Microsoft.Commerce.Application.Common.Configuration.TransactionalComponentOptions)">
+            <summary>
+            Initializes a new instance of the TransactionalComponentTreeItem class.
+            </summary>
+            <param name="type">The tree item's operation sequence component type.</param>
+            <param name="configuration">The custom configuration or null</param>
+            <param name="transactionOptions">The transaction options for this tree of components.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Broker.TransactionalOperationSequence">
+            <summary>
+            Class responsible for the execution of the transactional operation sequence components accroding to the given component tree.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Broker.OperationSequence">
+            <summary>
+            Class responsible for the execution of the operation sequence components accroding to the given component tree.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.OperationSequence.#ctor(Microsoft.Commerce.Broker.ComponentTree,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Broker.OperationSequence"/> class.
+            </summary>
+            <param name="componentTree">The component tree.</param>
+            <param name="responseType">Type of the response.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.OperationSequence.Execute(Microsoft.Commerce.Contracts.Messages.CommerceOperation)">
+            <summary>
+            Executes the specified operation.
+            </summary>
+            <param name="operation">The operation.</param>
+            <returns>The <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceOperationResponse"/> object resulting from execution of the <paramref name="operation"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.OperationSequence.ExecuteComponentTree(System.Collections.Generic.List{Microsoft.Commerce.Broker.ExecutionTreeItem},Microsoft.Commerce.Contracts.Messages.CommerceOperation,Microsoft.Commerce.Broker.OperationCacheDictionary,Microsoft.Commerce.Contracts.Messages.CommerceOperationResponse)">
+            <summary>
+            Executes the component tree.
+            </summary>
+            <param name="executionTreeList">The execution tree list.</param>
+            <param name="operation">The operation.</param>
+            <param name="operationCache">The operation cache.</param>
+            <param name="response">The response.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.TransactionalOperationSequence.#ctor(Microsoft.Commerce.Broker.ComponentTree,System.Type,Microsoft.Commerce.Application.Common.Configuration.OperationSequenceTransactionOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Broker.TransactionalOperationSequence"/> class.
+            </summary>
+            <param name="componentTree">The component tree.</param>
+            <param name="responseType">Type of the response.</param>
+            <param name="transactionOptions">Transaction options for execution.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.TransactionalOperationSequence.Execute(Microsoft.Commerce.Contracts.Messages.CommerceOperation)">
+            <summary>
+            Executes the specified operation.
+            </summary>
+            <param name="operation">The operation.</param>
+            <returns>An operation response encapsulating the response</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Broker.OperationCacheDictionary">
+            <summary>
+            Dictionary class used to cache data between pipeleine components in a single operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.OperationCacheDictionary.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Broker.OperationCacheDictionary"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.OperationCacheDictionary.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Broker.OperationCacheDictionary"/> class.
+            </summary>
+            <param name="info">A <see cref="T:System.Runtime.Serialization.SerializationInfo"/> object containing the information required to serialize the <see cref="T:System.Collections.Generic.Dictionary`2"/>.</param>
+            <param name="context">A <see cref="T:System.Runtime.Serialization.StreamingContext"/> structure containing the source and destination of the serialized stream associated with the <see cref="T:System.Collections.Generic.Dictionary`2"/>.</param>
+        </member>
+        <member name="T:Microsoft.Commerce.Broker.OperationSequenceFactory">
+            <summary>
+            OperationSequenceFactory internal class. Used to create stack of Operation 
+            preprocessors and processors
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.OperationSequenceFactory.#ctor(Microsoft.Commerce.Broker.ComponentTree,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Broker.OperationSequenceFactory"/> class.
+            </summary>
+            <param name="componentTree">The component tree list.</param>
+            <param name="responseType">Type of the response.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.OperationSequenceFactory.#ctor(Microsoft.Commerce.Broker.ComponentTree,System.Type,Microsoft.Commerce.Application.Common.Configuration.OperationSequenceTransactionOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Broker.OperationSequenceFactory"/> class.
+            </summary>
+            <param name="componentTree">The component tree list.</param>
+            <param name="responseType">Type of the response.</param>
+            <param name="transactionOptions">Transaction options for this operation sequence.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.OperationSequenceFactory.CreateOperationSequence">
+            <summary>
+            Creates an OperationSequence object for a request operation.
+            </summary>
+            <returns>OperationSequence object</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Broker.MessageHandler">
+            <summary>
+            Message Handler internal class; includes methods for processing message requests.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Broker.MessageHandler._operationSequenceFactories">
+            <summary>
+            Dictionary of Operation Stack Factories.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.MessageHandler.ProcessMessage(System.String,Microsoft.Commerce.Contracts.Messages.CommerceOperation)">
+            <summary>
+            Process a message request.
+            </summary>
+            <param name="messageHandlerName">Name of the message handler.</param>
+            <param name="operation">The request operation.</param>
+            <returns>Operation response object.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.MessageHandler.GetOperationSequence(System.String,System.String)">
+            <summary>
+            Gets an Operation Stack.
+            </summary>
+            <param name="messageHandlerName">Name of the message handler.</param>
+            <param name="channel">Channel for the request.</param>
+            <returns>Operation Stack</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.MessageHandler.GetFactoryKey(System.String,System.String)">
+            <summary>
+            Creates a Factory key given message handler name and channel.
+            </summary>
+            <param name="messageHandlerName">Name of the message handler.</param>
+            <param name="channel">The channel.</param>
+            <returns>Factory key</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.MessageHandler.CreateOperationSequenceFactory(System.String,System.String)">
+            <summary>
+            Creates an Operation stack factory.
+            </summary>
+            <param name="messageHandlerName">Name of the message handler.</param>
+            <param name="channel">The channel.</param>
+            <returns>Factory to create an Operation Stack</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Broker.OperationContext">
+            <summary>
+            Class that provides contextual information about an executing <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceOperation"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.OperationContext.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Broker.OperationContext"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.OperationContext.Save">
+            <summary>
+            Saves this instance.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Commerce.Broker.OperationContext.CurrentInstance">
+            <summary>
+            Gets the current instance.
+            </summary>
+            <value>The current instance.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Broker.OperationContext.RequestContext">
+            <summary>
+            Gets the request context.
+            </summary>
+            <value>The request context.</value>
+        </member>
+        <member name="P:Microsoft.Commerce.Broker.OperationContext.SiteName">
+            <summary>
+            Gets the name of the site.
+            </summary>
+            <value>The name of the site.</value>
+        </member>
+        <member name="T:Microsoft.Commerce.Broker.OperationErrorHandler">
+            <summary>
+            Service behavior extension that handles operation errors according to the configured default <see cref="T:Microsoft.Commerce.Common.IExceptionHandler"/> error handling policy.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Broker.OperationErrorHandler.ErrorHandlingPolicyName">
+            <summary>
+            ErrorHandlingPolicyName should match the configuration file setting
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.OperationErrorHandler.HandleError(System.Exception)">
+            <summary>
+            Enables error-related processing and returns a value that indicates whether subsequent HandleError implementations are called.
+            </summary>
+            <param name="error">The exception thrown during processing.</param>
+            <returns>
+            true if subsequent <see cref="T:System.ServiceModel.Dispatcher.IErrorHandler"/> implementations must not be called; otherwise, false. The default is false.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.OperationErrorHandler.ProvideFault(System.Exception,System.ServiceModel.Channels.MessageVersion,System.ServiceModel.Channels.Message@)">
+            <summary>
+            Enables the creation of a custom <see cref="T:System.ServiceModel.FaultException`1"/> that is returned from an exception in the course of a service method.
+            </summary>
+            <param name="error">The <see cref="T:System.Exception"/> object thrown in the course of the service operation.</param>
+            <param name="version">The SOAP version of the message.</param>
+            <param name="fault">The <see cref="T:System.ServiceModel.Channels.Message"/> object that is returned to the client, or service, in the duplex case.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.OperationErrorHandler.AddBindingParameters(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase,System.Collections.ObjectModel.Collection{System.ServiceModel.Description.ServiceEndpoint},System.ServiceModel.Channels.BindingParameterCollection)">
+            <summary>
+            Provides the ability to pass custom data to binding elements to support the contract implementation.
+            This behavior modifies no binding parameters.
+            </summary>
+            <param name="serviceDescription">The service description of the service.</param>
+            <param name="serviceHostBase">The host of the service.</param>
+            <param name="endpoints">The service endpoints.</param>
+            <param name="bindingParameters">Custom objects to which binding elements have access.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.OperationErrorHandler.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)">
+            <summary>
+            Provides the ability to change run-time property values or insert custom extension objects such as error handlers, message or parameter interceptors, security extensions, and other custom extension objects.
+            This behavior is an IErrorHandler implementation and 
+            must be applied to each ChannelDispatcher.
+            </summary>
+            <param name="serviceDescription">The service description.</param>
+            <param name="serviceHostBase">The host that is currently being built.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.OperationErrorHandler.Validate(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)">
+            <summary>
+            Provides the ability to inspect the service host and the service description to confirm that the service can run successfully.
+            TODO: VK. Validation needs to be implemented
+            </summary>
+            <param name="serviceDescription">The service description.</param>
+            <param name="serviceHostBase">The service host that is currently being constructed.</param>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.OperationErrorHandler.CreateBehavior">
+            <summary>
+            Creates a behavior extension based on the current configuration settings.
+            </summary>
+            <returns>The behavior extension.</returns>
+        </member>
+        <member name="P:Microsoft.Commerce.Broker.OperationErrorHandler.BehaviorType">
+            <summary>
+            Gets the type of behavior.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Commerce.Broker.OperationService">
+            <summary>
+            Broker implementation of the generic CRUD operations service.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Broker.OperationService.CtpExpiryDate">
+            <summary>
+            Defines the date when the time bomb becomes active for builds where PreRelease_Build is defined
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.OperationService.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Commerce.Broker.OperationService"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.OperationService.InternalProcessRequest(Microsoft.Commerce.Contracts.Messages.CommerceRequest)">
+            <summary>
+            Processes the request without the creation/initialization of the OperationContext.
+            
+            This is a service only method.  It is meant for Providers/Operation sequence Components that need to 
+            perform internal request calls.  This method must never be called directly by the presentation
+            tier and instead calls must be done using the <see cref="T:Microsoft.Commerce.Contracts.IOperationService"/> interface.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>The response of the request.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.OperationService.ProcessRequest(Microsoft.Commerce.Contracts.Messages.CommerceRequest)">
+            <summary>
+            Processes all of the request operations.
+            
+            This method will initialize the <see cref="T:Microsoft.Commerce.Broker.OperationContext"/>.
+            </summary>
+            <param name="request">The request to process.</param>
+            <returns>A <see cref="T:Microsoft.Commerce.Contracts.Messages.CommerceResponse"/> object that contains the result of the processed operation.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.OperationService.InitializeOperationContext(Microsoft.Commerce.Contracts.Messages.CommerceRequest)">
+            <summary>
+            Initializes the operation context.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>A new <see cref="T:Microsoft.Commerce.Broker.OperationContext"/> object appropriate for the current request.</returns>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.OperationService.GetMessageHandlerName(Microsoft.Commerce.Contracts.Messages.CommerceOperation)">
+            <summary>
+            Gets the name of the message handler.
+            </summary>
+            <param name="operation">The operation.</param>
+            <returns>The name of the message handler for the specified <paramref name="operation"/>.</returns>
+        </member>
+        <member name="T:Microsoft.Commerce.Broker.IOperationSequenceComponent">
+            <summary>
+            Operation sequence component interface.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Commerce.Broker.IOperationSequenceComponent.Execute(Microsoft.Commerce.Contracts.Messages.CommerceOperation,Microsoft.Commerce.Broker.OperationCacheDictionary,Microsoft.Commerce.Contracts.Messages.CommerceOperationResponse)">
+            <summary>
+            Execute method of the operation sequence component.
+            </summary>
+            <param name="operation">The operation.</param>
+            <param name="operationCache">The operation cache.</param>
+            <param name="response">The response.</param>
+        </member>
+        <member name="F:Microsoft.Commerce.Broker.Resources.ExceptionMessageConstants.MissingMessageHandler">
+            <summary>
+            Failed to locate message handler '{0}' configuration section for  channel {1}.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Broker.Resources.ExceptionMessageConstants.NullComponentTree">
+            <summary>
+            Failed to initialize pipeline factory due to empty component tree for response type {0}.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Broker.Resources.ExceptionMessageConstants.ComponentNotAssignableFromType">
+            <summary>
+            The configured Component type '{0}' must be assignable from the type '{1}'
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Broker.Resources.ExceptionMessageConstants.ProviderFault">
+            <summary>
+            The operation service has encountered an error while processing the request.  The error details have been logged by the service.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Commerce.Broker.Resources.ExceptionMessageConstants.CTPExpiryFault">
+            <summary>
+            The operation service has received a request after the expiry date.  Please contact Microsoft Support for a release version of this API.  The error details have been logged by the service.
+            </summary>
+        </member>
+    </members>
+</doc>
