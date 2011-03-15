@@ -71,12 +71,15 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\ActualFaultExceptionHandlerHack.cs" />
     <Compile Include="Infrastructure\IServiceContainer.cs" />
     <Compile Include="Infrastructure\ServiceContainerAdapter.cs" />
     <Compile Include="MetadataDefinitions.generated.cs">
@@ -115,6 +118,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Exceptions.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\ActualExceptionThrowingOperationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

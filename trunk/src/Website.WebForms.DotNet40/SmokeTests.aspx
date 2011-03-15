@@ -15,4 +15,10 @@
         <h3>Full Text Search</h3>
         <asp:Button runat="server" Text="Execute" OnClick="FullTextSearch_Execute" />
     </asp:Panel>
+
+    <asp:Panel runat="server">
+        <h3>Query that throws</h3>
+        <asp:Button runat="server" Text="Execute" OnClick="QueryThatThrows_Execute" />
+        <asp:CheckBox runat="server" ID="QueryThatThrowsCatchException" Text="Catch exception?" />
+    </asp:Panel>
 </asp:Content>
