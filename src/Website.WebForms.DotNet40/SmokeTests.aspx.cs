@@ -61,5 +61,22 @@ namespace Website.WebForms.DotNet40
 
             var queryResponse = response.OperationResponses[0] as CommerceQueryOperationResponse;
         }
+
+        protected void QueryThatThrows_Execute(object sender, EventArgs e)
+        {
+            var query = new CommerceQuery<CommerceEntity>("NonExistingModel");
+            var serviceAgent = new OperationServiceAgent();
+
+            var context = new CommerceRequestContext
+            {
+                Channel = "DefaultChannel",
+                RequestId = Guid.NewGuid().ToString(),
+                UserId = Guid.NewGuid().ToString("b"),
+                UserLocale = CultureInfo.CurrentCulture.ToString(),
+                UserUILocale = CultureInfo.CurrentUICulture.ToString()
+            };
+
+            serviceAgent.ProcessRequest(context, query.ToRequest());
+        }
     }
 }

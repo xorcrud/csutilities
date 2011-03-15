@@ -3,7 +3,7 @@ using NUnit.Framework;
 namespace CSUtilities.Test.Pipelines
 {
     [TestFixture]
-    public class OrderAdapterTest
+    public class OrderAdapterTests
     {
     }
 }
