@@ -43,5 +43,47 @@ namespace CSUtilities.Pipelines
                         x => new PaymentAdapter(x));
             }
         }
+
+        public decimal SubTotal
+        {
+            get { return GetValue<decimal>(OrderPipelineMappings.OrderForm.SubTotal); }
+            set { this[OrderPipelineMappings.OrderForm.SubTotal] = value; }
+        }
+
+        public decimal ShippingTotal
+        {
+            get { return GetValue<decimal>(OrderPipelineMappings.OrderForm.ShippingTotal); }
+            set { this[OrderPipelineMappings.OrderForm.ShippingTotal] = value; }
+        }
+
+        public decimal HandlingTotal
+        {
+            get { return GetValue<decimal>(OrderPipelineMappings.OrderForm.HandlingTotal); }
+            set { this[OrderPipelineMappings.OrderForm.HandlingTotal] = value; }
+        }
+
+        public decimal TaxTotal
+        {
+            get { return GetValue<decimal>(OrderPipelineMappings.OrderForm.TaxTotal); }
+            set { this[OrderPipelineMappings.OrderForm.TaxTotal] = value; }
+        }
+
+        public decimal Total
+        {
+            get { return GetValue<decimal>(OrderPipelineMappings.OrderForm.Total); }
+            set { this[OrderPipelineMappings.OrderForm.Total] = value; }
+        }
+
+        public string Status
+        {
+            get { return GetValue<string>(OrderPipelineMappings.OrderForm.Status); }
+            set { this[OrderPipelineMappings.OrderForm.Status] = value; }
+        }
+
+        public string TrackingNumber
+        {
+            get { return GetValue<string>(OrderPipelineMappings.OrderForm.TrackingNumber); }
+            set { this[OrderPipelineMappings.OrderForm.TrackingNumber] = value; }
+        }
     }
 }
