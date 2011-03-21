@@ -20,6 +20,9 @@ namespace CSUtilities.Pipelines
             {
             }
 
+            foreach (var address in order.Addresses)
+            {
+            }
         }
     }
 }
