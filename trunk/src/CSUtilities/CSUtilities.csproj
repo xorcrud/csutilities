@@ -95,9 +95,11 @@
       <DependentUpon>OrderPipelineMappings.tt</DependentUpon>
     </Compile>
     <Compile Include="Pipelines\Adapter.cs" />
+    <Compile Include="Pipelines\AddressAdapter.cs" />
     <Compile Include="Pipelines\LineItemAdapter.cs" />
     <Compile Include="Pipelines\ListAdapter.cs" />
     <Compile Include="Pipelines\OrderAdapter.cs" />
+    <Compile Include="Pipelines\AddressListAdapter.cs" />
     <Compile Include="Pipelines\PaymentAdapter.cs" />
     <Compile Include="Pipelines\ShipmentAdapter.cs" />
     <Compile Include="Pipelines\TestingPipelineComponent.cs" />

@@ -11,6 +11,16 @@ namespace CSUtilities.Pipelines
         {
         }
 
+        public AddressListAdapter Addresses
+        {
+            get
+            {
+                return 
+                    new AddressListAdapter(
+                        GetValue<IDictionary>(OrderPipelineMappings.OrderForm.Addresses));
+            }
+        }
+
         public IEnumerable<LineItemAdapter> LineItems
         {
             get

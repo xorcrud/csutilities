@@ -23,6 +23,9 @@ namespace Website.WebForms.DotNet40
             basket.OrderForms[0].LineItems.Add(new LineItem("TestCatalog", "1-1", null, 5));
             basket.OrderForms[0].LineItems.Add(new LineItem("TestCatalog", "1-2", null, 5));
 
+            basket.Addresses.Add(new OrderAddress("AddressName", Guid.NewGuid().ToString()) {City = "My City"});
+            basket.Addresses.Add(new OrderAddress("AddressName2", Guid.NewGuid().ToString()) { City = "My City2" });
+
             using (var pipeline = new PipelineInfo("Basket", OrderPipelineType.Basket))
             {
                 basket.RunPipeline(pipeline);
