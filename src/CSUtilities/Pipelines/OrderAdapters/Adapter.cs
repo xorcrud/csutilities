@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.CommerceServer.Runtime;
 
-namespace CSUtilities.Pipelines
+namespace CSUtilities.Pipelines.OrderAdapters
 {
     public abstract class Adapter
     {
@@ -22,17 +22,24 @@ namespace CSUtilities.Pipelines
 
         public TType GetValue<TType>(string name)
         {
-            object value = this[name];
-
-            if (value is TType)
-                return (TType)value;
-
-            return default(TType);
+            return GetValue<TType>(Entity, name);
         }
 
         public IDictionary Entity
         {
             get { return _inner; }
+        }
+
+        internal static TType GetValue<TType>(IDictionary entity, string name)
+        {
+            if (entity == null) throw new ArgumentNullException("entity");
+
+            object value = entity[name];
+
+            if (value is TType)
+                return (TType)value;
+
+            return default(TType);            
         }
     }
 }

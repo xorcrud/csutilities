@@ -20,13 +20,21 @@ namespace Website.WebForms.DotNet40
 
             basket.OrderForms.Add(new OrderForm());
 
-            basket.OrderForms[0].LineItems.Add(new LineItem("TestCatalog", "1-1", null, 5));
-            basket.OrderForms[0].LineItems.Add(new LineItem("TestCatalog", "1-2", null, 5));
+            basket.OrderForms[0].LineItems.Add(new LineItem("TestCatalog", "1-1", null, 5) { ShippingMethodId = new Guid("8BCC52CA-E72A-4223-BD8F-040E5F417FA5") });
+            basket.OrderForms[0].LineItems.Add(new LineItem("TestCatalog", "1-2", null, 5) { ShippingMethodId = new Guid("8BCC52CA-E72A-4223-BD8F-040E5F417FA5") });
 
             basket.Addresses.Add(new OrderAddress("AddressName", Guid.NewGuid().ToString()) {City = "My City"});
             basket.Addresses.Add(new OrderAddress("AddressName2", Guid.NewGuid().ToString()) { City = "My City2" });
 
+            basket.OrderForms[0].Payments.Add(
+                new CashCardPayment(basket.Addresses[0].OrderAddressId, new Guid("0FF6B52B-F59A-414D-A64C-FD49A9B01FD3")) { Pin = "PinCode", Amount = 300m });
+
             using (var pipeline = new PipelineInfo("Basket", OrderPipelineType.Basket))
+            {
+                basket.RunPipeline(pipeline);
+            }
+
+            using (var pipeline = new PipelineInfo("Total", OrderPipelineType.Total))
             {
                 basket.RunPipeline(pipeline);
             }

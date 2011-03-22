@@ -5,7 +5,7 @@ using System.Linq;
 using Microsoft.CommerceServer.Runtime;
 using IDictionary = Microsoft.CommerceServer.Runtime.IDictionary;
 
-namespace CSUtilities.Pipelines
+namespace CSUtilities.Pipelines.OrderAdapters
 {
     public class ListAdapter<TElementAdapter> : IEnumerable<TElementAdapter>
         where TElementAdapter : Adapter

@@ -94,14 +94,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OrderPipelineMappings.tt</DependentUpon>
     </Compile>
-    <Compile Include="Pipelines\Adapter.cs" />
-    <Compile Include="Pipelines\AddressAdapter.cs" />
-    <Compile Include="Pipelines\LineItemAdapter.cs" />
-    <Compile Include="Pipelines\ListAdapter.cs" />
-    <Compile Include="Pipelines\OrderAdapter.cs" />
-    <Compile Include="Pipelines\AddressListAdapter.cs" />
-    <Compile Include="Pipelines\PaymentAdapter.cs" />
-    <Compile Include="Pipelines\ShipmentAdapter.cs" />
+    <Compile Include="Pipelines\OrderAdapters\Adapter.cs" />
+    <Compile Include="Pipelines\OrderAdapters\AddressAdapter.cs" />
+    <Compile Include="Pipelines\OrderAdapters\CashCardPaymentAdapter.cs" />
+    <Compile Include="Pipelines\OrderAdapters\CreditCardPaymentAdapter.cs" />
+    <Compile Include="Pipelines\OrderAdapters\GiftCertificatePaymentAdapter.cs" />
+    <Compile Include="Pipelines\OrderAdapters\LineItemAdapter.cs" />
+    <Compile Include="Pipelines\OrderAdapters\ListAdapter.cs" />
+    <Compile Include="Pipelines\OrderAdapters\OrderAdapter.cs" />
+    <Compile Include="Pipelines\OrderAdapters\AddressListAdapter.cs" />
+    <Compile Include="Pipelines\OrderAdapters\PaymentAdapter.cs" />
+    <Compile Include="Pipelines\OrderAdapters\PurchaseOrderPaymentAdapter.cs" />
+    <Compile Include="Pipelines\OrderAdapters\ShipmentAdapter.cs" />
     <Compile Include="Pipelines\TestingPipelineComponent.cs" />
     <Compile Include="Pipelines\OrderPipelineComponentBase.cs" />
     <Compile Include="Pipelines\PipelineExecutionResult.cs" />

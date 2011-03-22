@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.CommerceServer.Runtime;
-using IDictionary = Microsoft.CommerceServer.Runtime.IDictionary;
 
-namespace CSUtilities.Pipelines
+namespace CSUtilities.Pipelines.OrderAdapters
 {
     public class OrderAdapter : Adapter
     {
@@ -50,7 +49,7 @@ namespace CSUtilities.Pipelines
                 return
                     new ListAdapter<PaymentAdapter>(
                         GetValue<ISimpleList>(OrderPipelineMappings.OrderForm.Payments),
-                        x => new PaymentAdapter(x));
+                        x => PaymentAdapter.Create(x));
             }
         }
 

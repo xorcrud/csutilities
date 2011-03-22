@@ -1,6 +1,6 @@
 ﻿using Microsoft.CommerceServer.Runtime;
 
-namespace CSUtilities.Pipelines
+namespace CSUtilities.Pipelines.OrderAdapters
 {
     public class ShipmentAdapter : Adapter
     {
