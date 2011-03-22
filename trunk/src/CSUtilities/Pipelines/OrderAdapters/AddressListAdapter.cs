@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using IDictionary = Microsoft.CommerceServer.Runtime.IDictionary;
 
-namespace CSUtilities.Pipelines
+namespace CSUtilities.Pipelines.OrderAdapters
 {
     public class AddressListAdapter : IEnumerable<AddressAdapter>
     {
