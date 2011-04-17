@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Diagnostics;
 using System.Globalization;
 using System.Threading;
@@ -8,6 +9,7 @@ using Microsoft.Commerce.Common;
 using Microsoft.Commerce.Common.MessageBuilders;
 using Microsoft.Commerce.Contracts;
 using Microsoft.Commerce.Contracts.Messages;
+using Microsoft.CommerceServer.Orders;
 using Microsoft.CommerceServer.Runtime;
 using Microsoft.CommerceServer.Runtime.Orders;
 
@@ -25,14 +27,22 @@ namespace Website.WebForms.DotNet40
             basket.OrderForms.Add(new OrderForm());
             basket.OrderForms[0]["BillingCurrency"] = basket.BillingCurrency = "USD";
 
-            basket.OrderForms[0].LineItems.Add(new LineItem("TestCatalog", "1-1", null, 1) { ShippingMethodId = new Guid("0b8e0b7e-f69e-421a-b0d8-49f6b44d2a8d") });
-            basket.OrderForms[0].LineItems.Add(new LineItem("TestCatalog", "1-2", null, 1) { ShippingMethodId = new Guid("0b8e0b7e-f69e-421a-b0d8-49f6b44d2a8d") });
+            Guid shipping = GetFirstShippingMethod();
 
-            basket.Addresses.Add(new OrderAddress("AddressName", Guid.NewGuid().ToString()) {City = "My City"});
-            basket.Addresses.Add(new OrderAddress("AddressName2", Guid.NewGuid().ToString()) { City = "My City2" });
+            basket.OrderForms[0].LineItems.Add(
+                new LineItem("TestCatalog", "1-1", null, 1) { ShippingMethodId = shipping });
 
-            basket.OrderForms[0].Payments.Add(
-                new CashCardPayment(basket.Addresses[0].OrderAddressId, new Guid("2D36BB9A-BE5F-46AB-AF2C-FB8DC160D9DA")) { Pin = "PinCode", Amount = 300m });
+            basket.OrderForms[0].LineItems.Add(
+                new LineItem("TestCatalog", "1-2", null, 1) { ShippingMethodId = shipping });
+
+            basket.Addresses.Add(
+                new OrderAddress("AddressName", Guid.NewGuid().ToString()) { City = "My City" });
+
+            basket.Addresses.Add(
+                new OrderAddress("AddressName2", Guid.NewGuid().ToString()) { City = "My City2" });
+
+            basket.SetBillingAddress(basket.Addresses[0].OrderAddressId);
+            basket.SetShippingAddress(basket.Addresses[1].OrderAddressId);
 
             using (var pipeline = new PipelineInfo("Basket", OrderPipelineType.Basket))
             {
@@ -44,12 +54,46 @@ namespace Website.WebForms.DotNet40
                 basket.RunPipeline(pipeline);
             }
 
+            basket.OrderForms[0].Payments.Add(
+                new CashCardPayment(
+                    basket.Addresses[0].OrderAddressId, 
+                    GetFirstCashCardPaymentMethod())
+                    {
+                        Pin = "PinCode", 
+                        Amount = basket.Total
+                    });
+
             using (var pipeline = new PipelineInfo("Checkout", OrderPipelineType.Checkout))
             {
                 basket.RunPipeline(pipeline);
             }
 
             basket.SaveAsOrder();
+        }
+
+        protected Guid GetFirstCashCardPaymentMethod()
+        {
+            var methods = CommerceContext.Current.OrderSystem.GetPaymentMethods();
+
+            foreach (DataRow method in methods.Tables[0].Rows)
+            {
+                if ((int)method["PaymentType"] == (int)PaymentMethodTypes.CashCard);
+                    return new Guid(method["PaymentMethodId"].ToString());
+            }
+
+            throw new InvalidOperationException(
+                "No CashCard payment configured. Create a CashCard Payment Method in Customer and Orders Manager.");
+        }
+
+        protected Guid GetFirstShippingMethod()
+        {
+            var methods = CommerceContext.Current.OrderSystem.GetShippingMethods();
+
+            foreach (DataRow method in methods.Tables[0].Rows)
+                return new Guid(method["ShippingMethodId"].ToString());
+
+            throw new InvalidOperationException(
+                "No shipping configured. Create a Shipping Method in Customer and Orders Manager.");
         }
 
         protected void FullTextSearch_Execute(object sender, EventArgs e)

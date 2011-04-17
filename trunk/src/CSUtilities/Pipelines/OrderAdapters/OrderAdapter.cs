@@ -96,7 +96,9 @@ namespace CSUtilities.Pipelines.OrderAdapters
             set { this[OrderPipelineMappings.OrderForm.TrackingNumber] = value; }
         }
 
-        [Obsolete("Not supported. Property is not mapped by the Order Pipeline system. Solution: Map to custom property on Order Form.")]
+        [Obsolete(
+            "Not supported. Property is not mapped by the Order Pipeline system. " +
+            "Solution: Map to custom property on Order Form.")]
         public string BillingCurrency { get { return null; } }
     }
 }
