@@ -142,6 +142,7 @@
     <None Include="pipelines\checkout.pcf" />
     <None Include="pipelines\CreditCard.pcf" />
     <None Include="pipelines\Discounts.PCF" />
+    <None Include="pipelines\Empty.PCF" />
     <None Include="pipelines\product.pcf" />
     <None Include="pipelines\RecordEvent.pcf" />
     <None Include="pipelines\recvpo.pcf" />

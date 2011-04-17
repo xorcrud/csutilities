@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.InteropServices;
 using CSUtilities.Pipelines.OrderAdapters;
 
@@ -9,8 +10,14 @@ namespace CSUtilities.Pipelines
     {
         protected override void Execute(OrderAdapter order)
         {
+            string currency = order.GetValue<string>("BillingCurrency");
+
             foreach (var lineItem in order.LineItems)
             {
+                string currencyProperty = String.Format("{0}_Price", currency);
+
+                lineItem.ListPrice = lineItem.GetProductProperty<decimal>(currencyProperty);
+                lineItem.PersistProductProperty("Product", "Description");
             }
 
             foreach (var shipment in order.Shipments)
@@ -23,6 +30,18 @@ namespace CSUtilities.Pipelines
 
             foreach (var address in order.Addresses)
             {
+            }
+        }
+
+        private object TryGetProperty(OrderAdapter order, string name)
+        {
+            try
+            {
+                return order[name];
+            }
+            catch
+            {
+                return "n/a";
             }
         }
     }
