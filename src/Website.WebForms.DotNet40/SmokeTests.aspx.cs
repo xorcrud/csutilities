@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.Threading;
 using System.Web.UI;
 using CSUtilities.Providers.Components.FullTextSearch;
 using Microsoft.Commerce.Common;
@@ -16,18 +17,22 @@ namespace Website.WebForms.DotNet40
     {
         protected void Pipeline_Execute(object sender, EventArgs e)
         {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("da-DK");
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("da-DK");
+
             var basket = CommerceContext.Current.OrderSystem.GetBasket(Guid.NewGuid(), "Default2007");
 
             basket.OrderForms.Add(new OrderForm());
+            basket.OrderForms[0]["BillingCurrency"] = basket.BillingCurrency = "USD";
 
-            basket.OrderForms[0].LineItems.Add(new LineItem("TestCatalog", "1-1", null, 5) { ShippingMethodId = new Guid("8BCC52CA-E72A-4223-BD8F-040E5F417FA5") });
-            basket.OrderForms[0].LineItems.Add(new LineItem("TestCatalog", "1-2", null, 5) { ShippingMethodId = new Guid("8BCC52CA-E72A-4223-BD8F-040E5F417FA5") });
+            basket.OrderForms[0].LineItems.Add(new LineItem("TestCatalog", "1-1", null, 1) { ShippingMethodId = new Guid("0b8e0b7e-f69e-421a-b0d8-49f6b44d2a8d") });
+            basket.OrderForms[0].LineItems.Add(new LineItem("TestCatalog", "1-2", null, 1) { ShippingMethodId = new Guid("0b8e0b7e-f69e-421a-b0d8-49f6b44d2a8d") });
 
             basket.Addresses.Add(new OrderAddress("AddressName", Guid.NewGuid().ToString()) {City = "My City"});
             basket.Addresses.Add(new OrderAddress("AddressName2", Guid.NewGuid().ToString()) { City = "My City2" });
 
             basket.OrderForms[0].Payments.Add(
-                new CashCardPayment(basket.Addresses[0].OrderAddressId, new Guid("0FF6B52B-F59A-414D-A64C-FD49A9B01FD3")) { Pin = "PinCode", Amount = 300m });
+                new CashCardPayment(basket.Addresses[0].OrderAddressId, new Guid("2D36BB9A-BE5F-46AB-AF2C-FB8DC160D9DA")) { Pin = "PinCode", Amount = 300m });
 
             using (var pipeline = new PipelineInfo("Basket", OrderPipelineType.Basket))
             {
@@ -38,6 +43,13 @@ namespace Website.WebForms.DotNet40
             {
                 basket.RunPipeline(pipeline);
             }
+
+            using (var pipeline = new PipelineInfo("Checkout", OrderPipelineType.Checkout))
+            {
+                basket.RunPipeline(pipeline);
+            }
+
+            basket.SaveAsOrder();
         }
 
         protected void FullTextSearch_Execute(object sender, EventArgs e)

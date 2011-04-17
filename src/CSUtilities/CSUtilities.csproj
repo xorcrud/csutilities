@@ -106,6 +106,7 @@
     <Compile Include="Pipelines\OrderAdapters\PaymentAdapter.cs" />
     <Compile Include="Pipelines\OrderAdapters\PurchaseOrderPaymentAdapter.cs" />
     <Compile Include="Pipelines\OrderAdapters\ShipmentAdapter.cs" />
+    <Compile Include="Pipelines\PropertyPersistingComponent.cs" />
     <Compile Include="Pipelines\TestingPipelineComponent.cs" />
     <Compile Include="Pipelines\OrderPipelineComponentBase.cs" />
     <Compile Include="Pipelines\PipelineExecutionResult.cs" />

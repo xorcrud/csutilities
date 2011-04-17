@@ -7,6 +7,11 @@ namespace CSUtilities
             public static readonly string BasketErrors = "_Basket_Errors";
         }
 
+        public partial class LineItem
+        {
+            public static readonly string ProductListPrice = "_product_cy_list_price";
+        }
+
         public class Payment
         {
             public static readonly string ClassName = "derived_class_name";
