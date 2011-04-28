@@ -1,0 +1,1411 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+This file contains the Metadata Repository
+-->
+<MetadataDefinitions xmlns="urn:schemas-microsoft-multi-channel-commerce-foundation-metadata">
+	<DefaultChannel>
+		<CommerceEntities>
+			<!-- Site Start -->
+			<CommerceEntity
+				name="Site">
+
+				<DisplayName value="Site" />
+
+				<Properties>
+					<Property name="Id"	dataType="String" />
+				</Properties>
+
+				<Relationships>
+					<Relationship name="Catalogs" type="CatalogRelationship" modelName="Site" isMultipleItems="true" >
+						<DisplayName value="Catalogs" />
+					</Relationship>
+				</Relationships>
+			</CommerceEntity>
+			<!-- Site End -->
+
+
+			<!-- Catalog Start -->
+      <CommerceEntity
+					name="Catalog">
+
+        <DisplayName value="Catalog" />
+        <EntityMappings>
+          <EntityMapping
+						csType="Microsoft.CommerceServer.Catalog.ProductCatalog"
+						csAssembly="Microsoft.CommerceServer.Catalog" >
+
+            <PropertyMappings>
+              <PropertyMapping property="Id" csProperty="CatalogName"/>
+              <PropertyMapping property="ActiveLanguage" csProperty="ActiveLanguage"/>
+              <PropertyMapping property="IsVirtualCatalog" csProperty="IsVirtualCatalog"/>
+              <PropertyMapping property="DisplayName" csProperty="DisplayName" />
+              <PropertyMapping property="DefaultLanguage" csProperty="DefaultLanguage" />
+              <PropertyMapping property="Currency" csProperty="Currency" />
+              <PropertyMapping property="EndDate" csProperty="EndDate" />
+              <PropertyMapping property="StartDate" csProperty="StartDate" />
+              <PropertyMapping property="IdentifyingProductProperty" csProperty="ProductId" />
+              <PropertyMapping property="IdentifyingVariantProperty" csProperty="VariantId" />
+              <PropertyMapping property="WeightMeasure" csProperty="WeightMeasure" />
+              <PropertyMapping property="InternalId" csProperty="CatalogId" />
+              <PropertyMapping property="Languages" csProperty="Languages" />
+            </PropertyMappings>
+          </EntityMapping>
+        </EntityMappings>
+        <Properties>
+          <remove name="Locale"/>
+          <remove name="VariantId"/>
+          <remove name="ProductId"/>
+          <remove name="CatalogFlags"/>
+          <remove name="ProductTableUpdated"/>
+          <remove name="ReportingLanguage"/>
+          <remove name="VirtualCatalogStatus"/>
+
+          <Property name="IsVirtualCatalog" dataType="Boolean" isStronglyTyped="true"/>
+          <Property name="ActiveLanguage" dataType="String" isStronglyTyped="true"/>
+          <Property name="DisplayName" dataType="String" />
+          <Property name="Id"	dataType="String"/>
+          <Property name="DefaultLanguage" dataType="String" />
+          <Property name="Currency" dataType="String" />
+          <Property name="EndDate" dataType="Date" />
+          <Property name="StartDate" dataType="Date" />
+          <Property name="WeightMeasure" dataType="String" />
+          <Property name="InternalId" dataType="Integer" />
+          <Property name="Languages" dataType="Array"  isStronglyTyped="true"/>
+          <Property name="IdentifyingProductProperty" dataType="String" />
+          <Property name="IdentifyingVariantProperty" dataType="String" />
+        </Properties>
+      </CommerceEntity>
+			<!-- Catalog End -->
+
+
+			<!-- Product Start -->
+      <CommerceEntity
+					  name="Product">
+
+        <DisplayName value="Product">
+          <LanguageSpecific value="fr: Product" language="fr-CA"/>
+        </DisplayName>
+
+        <Description value="Product">
+          <LanguageSpecific value="fr: Product" language="fr-CA"/>
+        </Description>
+
+        <EntityMappings>
+          <EntityMapping
+								  csType="Microsoft.CommerceServer.Catalog.Product"
+								  csAssembly="Microsoft.CommerceServer.Catalog, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+
+            <PropertyMappings>
+              <!-- 
+							The following mappings are required here to ensure that all
+							the product common properties are represented in the  
+							metadata. These are not returned by the Commerce Server
+							metadata automatically as the common properties.
+							-->
+              <PropertyMapping property="BaseCatalogName"
+														   csProperty="BaseCatalogName" />
+              <PropertyMapping property="CatalogId"
+														   csProperty="CatalogName" />
+              <PropertyMapping property="ListPrice"
+														   csProperty="cy_list_price" />
+              <!-- Property name override -->
+              <PropertyMapping property="DefinitionName"
+														   csProperty="DefinitionName" />
+              <PropertyMapping property="DisplayName"
+														   csProperty="DisplayName" />
+              <PropertyMapping property="Id"
+														   csProperty="ProductId" />
+              <!-- Property name override -->
+              <PropertyMapping property="UseCategoryPricing"
+														   csProperty="UseCategoryPricing" />
+              <PropertyMapping property="InventoryCondition" csProperty="InventoryCondition"/>
+              <PropertyMapping property="Image_FileName" csProperty="Image_FileName" />
+              <PropertyMapping property="Description" csProperty="Description" />
+            </PropertyMappings>
+
+            <!-- 
+						The following are just examples of how to override the definition names and
+						definition specific property name.
+						<DefinitionMappings>
+							<DefinitionMapping definitionName="Rock-Shoes" 
+											   csDefinitionName="Rockshoes" />
+							
+							<DefinitionMapping csDefinitionName="Boots">
+								<PropertyMappings>
+									<PropertyMapping property="Sole"		
+													 csProperty="SoleMaterial" />
+								</PropertyMappings>
+							</DefinitionMapping>
+							
+						</DefinitionMappings>
+						-->
+          </EntityMapping>
+        </EntityMappings>
+
+        <Properties>
+          <!-- 
+					The following property definitions are required here to ensure that all
+					the product common properties are represented in the  
+					metadata. These are not returned by the Commerce Server
+					metadata automatically as the common properties.
+					-->
+          <Property name="BaseCatalogName"		dataType="String" />
+          <Property name="CatalogId"			dataType="String" />
+          <Property name="CatalogName"			dataType="String" />
+          <Property name="DefinitionName"			dataType="String" />
+          <Property name="DisplayName"			dataType="String" />
+          <Property name="Id"						dataType="String" />
+          <Property name="ListPrice"				dataType="Decimal" />
+          <Property name="UseCategoryPricing"		dataType="Boolean" />
+          <Property name="Image_FileName" dataType="String" />
+          <Property name="Description" dataType="String" />
+
+          <Property name="InventoryCondition" dataType="Integer" isStronglyTyped="true">
+            <EnumeratedValues>
+              <EnumerationEntry value="0">
+                <DisplayName value="In Stock"/>
+              </EnumerationEntry>
+              <EnumerationEntry value="1">
+                <DisplayName value="Pre Ordered"/>
+              </EnumerationEntry>
+              <EnumerationEntry value="2">
+                <DisplayName value="Back Ordered"/>
+              </EnumerationEntry>
+              <EnumerationEntry value="3">
+                <DisplayName value="Out of Stock"/>
+              </EnumerationEntry>
+            </EnumeratedValues>
+          </Property>
+        </Properties>
+
+        <Relationships>
+          <!-- Catalog entity relationships -->
+          <Relationship name="BaseCatalog" type="Relationship" modelName="Catalog" isMultipleItems="false">
+
+          </Relationship>
+
+          <Relationship name="PrimaryParentCategory" type="Relationship" modelName="Category" isMultipleItems="false">
+
+          </Relationship>
+
+          <!-- Hierarchical business item relationships -->
+          <Relationship name="AncestorCategories" type="Relationship" modelName="Category" isMultipleItems="true">
+
+          </Relationship>
+          <Relationship name="CanonicalCategories" type="Relationship" modelName="Category" isMultipleItems="true">
+
+          </Relationship>
+
+          <Relationship name="ParentCategories" type="Relationship" modelName="Category" isMultipleItems="true">
+
+          </Relationship>
+          <Relationship name="RelatedCategories" type="Relationship" modelName="Category" isMultipleItems="true">
+
+          </Relationship>
+          <Relationship name="RelatedProducts" type="Relationship" modelName="Product" isMultipleItems="true">
+
+          </Relationship>
+
+          <Relationship name="Discounts" type="Relationship" modelName="DiscountDefinition" isMultipleItems="true"/>
+
+          <Relationship name="CrossSells" type="CatalogRelationship" modelName="HierarchicalCatalogEntity" isMultipleItems="true" >
+            <DisplayName value="Cross-Sell Products">
+              <LanguageSpecific value="fr: Cross-Sell Products" language="fr-CA"/>
+            </DisplayName>
+
+            <Description value="Cross-Sell Products">
+              <LanguageSpecific value="fr: Cross-Sell Products" language="fr-CA"/>
+            </Description>
+          </Relationship>
+
+          <Relationship name="Variants" type="Relationship" modelName="Variant" isMultipleItems="true" >
+            <DisplayName value="Variants">
+              <LanguageSpecific value="fr: Variants" language="fr-CA"/>
+            </DisplayName>
+
+            <Description value="Product Variants">
+              <LanguageSpecific value="fr: Product Variants" language="fr-CA"/>
+            </Description>
+          </Relationship>
+        </Relationships>
+
+      </CommerceEntity>
+			<!-- Product End -->
+
+			<!-- Variant Start -->
+      <CommerceEntity
+					  name="Variant">
+
+        <DisplayName value="Variant">
+          <LanguageSpecific value="fr: Product" language="fr-CA"/>
+        </DisplayName>
+
+        <Description value="Product Variant">
+          <LanguageSpecific value="fr: Product Variant" language="fr-CA"/>
+        </Description>
+
+        <EntityMappings>
+          <EntityMapping
+								  csType="Microsoft.CommerceServer.Catalog.Variant"
+								  csAssembly="Microsoft.CommerceServer.Catalog, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+
+            <PropertyMappings>
+              <!-- 
+							The following mappings are required here to ensure that all
+							the product common properties are represented in the 
+							metadata. These are not returned by the Commerce Server
+							metadata automatically as the common properties.
+							-->
+              <PropertyMapping property="Id"
+														   csProperty="VariantId" />
+              <!-- Property name override -->
+              <PropertyMapping property="BaseCatalogName"
+														   csProperty="BaseCatalogName" />
+              <PropertyMapping property="CatalogId"
+														   csProperty="CatalogName" />
+              <PropertyMapping property="DefinitionName"
+														   csProperty="DefinitionName" />
+              <PropertyMapping property="DisplayName"
+														   csProperty="DisplayName" />
+              <PropertyMapping property="ListPrice"
+														   csProperty="cy_list_price" />
+              <!-- Property name override -->
+              <PropertyMapping property="OriginalProductId"
+														   csProperty="OriginalProductId" />
+              <PropertyMapping property="OriginalVariantId"
+														   csProperty="OriginalVariantId" />
+              <PropertyMapping property="ProductId"
+														   csProperty="ProductId" />
+              <PropertyMapping property="InventoryCondition" csProperty="InventoryCondition"/>
+            </PropertyMappings>
+           
+          </EntityMapping>
+        </EntityMappings>
+
+
+        <Properties>
+          <!-- 
+					The following property definitions are required here to ensure that all
+					the variant common properties are represented in the  
+					metadata. These are not returned by the Commerce Server
+					metadata automatically as the common properties.
+					-->
+          <Property name="BaseCatalogName"		dataType="String" />
+          <Property name="CatalogId"			dataType="String" />
+          <Property name="DefinitionName"			dataType="String" />
+          <Property name="DisplayName"			dataType="String" />
+          <Property name="Id"						dataType="String" />
+          <Property name="ListPrice"				dataType="Decimal" />
+          <Property name="OriginalProductId"		dataType="String" isStronglyTyped="true"/>
+          <Property name="OriginalVariantId"		dataType="String" isStronglyTyped="true"/>
+          <Property name="ProductId"				dataType="String" />
+
+          <Property name="InventoryCondition" dataType="Integer" isStronglyTyped="true">
+            <EnumeratedValues>
+              <EnumerationEntry value="0">
+                <DisplayName value="In Stock"/>
+              </EnumerationEntry>
+              <EnumerationEntry value="1">
+                <DisplayName value="Pre Ordered"/>
+              </EnumerationEntry>
+              <EnumerationEntry value="2">
+                <DisplayName value="Back Ordered"/>
+              </EnumerationEntry>
+              <EnumerationEntry value="3">
+                <DisplayName value="Out of Stock"/>
+              </EnumerationEntry>
+            </EnumeratedValues>
+          </Property>
+        </Properties>
+
+        <Relationships>
+          <!-- Catalog entity relationships -->
+          <Relationship name="BaseCatalog" type="Relationship" modelName="Catalog" isMultipleItems="false">
+
+          </Relationship>
+
+          <Relationship name="PrimaryParentCategory" type="Relationship" modelName="Category" isMultipleItems="false">
+
+          </Relationship>
+
+          <!-- Variant specific relationships -->
+          <Relationship name="InventoryItems" type="Relationship" modelName="InventoryItem" isMultipleItems="true">
+
+          </Relationship>
+
+          <Relationship name="PricingCategory" type="Relationship" modelName="Category" isMultipleItems="false">
+
+          </Relationship>
+
+          <Relationship name="Product" type="Relationship" modelName="Product" isMultipleItems="false">
+
+          </Relationship>
+
+        </Relationships>
+      </CommerceEntity>
+			<!-- Variant End -->
+
+			<!-- InventoryItem Start -->
+      <CommerceEntity name="InventoryItem">
+        <DisplayName value="InventoryItem"/>
+
+        <EntityMappings>
+          <EntityMapping csType="Microsoft.CommerceServer.Inventory.InventorySku"
+											 csAssembly="Microsoft.CommerceServer.Inventory">
+            <PropertyMappings>
+              <PropertyMapping property="Id" csProperty="SkuOid"/>
+              <PropertyMapping property="Backorderable" csProperty="Backorderable"/>
+              <PropertyMapping property="BackorderAvailabilityDate" csProperty="BackorderAvailabilityDate"/>
+              <PropertyMapping property="BackorderedQuantity" csProperty="BackorderedQuantity"/>
+              <PropertyMapping property="BackorderLimit" csProperty="BackorderLimit"/>
+              <PropertyMapping property="DateModified" csProperty="SkuLastModified"/>
+              <PropertyMapping property="ExcessOnHandQuantity" csProperty="ExcessOnHandQuantity"/>
+              <PropertyMapping property="InventoryCatalogName" csProperty="InventoryCatalogName"/>
+              <PropertyMapping property="LastRestocked" csProperty="LastRestocked"/>
+              <PropertyMapping property="Memo" csProperty="Memo"/>
+              <PropertyMapping property="Preorderable" csProperty="Preorderable"/>
+              <PropertyMapping property="PreorderAvailabilityDate" csProperty="PreorderAvailabilityDate"/>
+              <PropertyMapping property="PreorderedQuantity" csProperty="PreorderedQuantity"/>
+              <PropertyMapping property="PreorderLimit" csProperty="PreorderLimit"/>
+              <PropertyMapping property="ProductId" csProperty="SkuId"/>
+              <PropertyMapping property="ProductCatalogName" csProperty="ProductCatalogName"/>
+              <PropertyMapping property="Quantity" csProperty="OnHandQuantity"/>
+              <PropertyMapping property="ReorderPoint" csProperty="ReorderPoint"/>
+              <PropertyMapping property="StockStatus" csProperty="Status"/>
+              <PropertyMapping property="StockOutThreshold" csProperty="StockOutThreshold"/>
+              <PropertyMapping property="TargetQuantity" csProperty="TargetQuantity"/>
+              <PropertyMapping property="UnitOfMeasure" csProperty="UnitOfMeasure"/>
+              <PropertyMapping property="VariantId" csProperty="SkuVariantId"/>
+            </PropertyMappings>
+          </EntityMapping>
+        </EntityMappings>
+
+        <Properties>
+          <Property name="Id" dataType="String"/>
+          <Property name="Backorderable" dataType="Boolean"/>
+          <Property name="BackorderAvailabilityDate" dataType="DateTime"/>
+          <Property name="BackorderedQuantity" dataType="Decimal"/>
+          <Property name="BackorderLimit" dataType="Decimal"/>
+          <Property name="DateModified" dataType="DateTime"/>
+          <Property name="ExcessOnHandQuantity" dataType="Decimal"/>
+          <Property name="InventoryCatalogName" dataType="String"/>
+          <Property name="LastRestocked" dataType="DateTime"/>
+          <Property name="Memo" dataType="String"/>
+          <Property name="Preorderable" dataType="Boolean"/>
+          <Property name="PreorderAvailabilityDate" dataType="DateTime"/>
+          <Property name="PreorderedQuantity" dataType="Decimal"/>
+          <Property name="PreorderLimit" dataType="Decimal"/>
+          <Property name="ProductId" dataType="String"/>
+          <Property name="ProductCatalogName" dataType="String"/>
+          <Property name="Quantity" dataType="Decimal"/>
+          <Property name="ReorderPoint" dataType="Decimal"/>
+          <Property name="StockStatus" dataType="Integer">
+            <EnumeratedValues>
+              <EnumerationEntry value ="0">
+                <DisplayName value="Disabled">
+                </DisplayName>
+              </EnumerationEntry>
+            </EnumeratedValues>
+          </Property>
+          <Property name="StockOutThreshold" dataType="Decimal"/>
+          <Property name="TargetQuantity" dataType="Decimal"/>
+          <Property name="UnitOfMeasure" dataType="String"/>
+          <Property name="VariantId" dataType="String"/>
+        </Properties>
+      </CommerceEntity>
+			<!-- InventoryItem End -->
+
+      <CommerceEntity
+							name="Category">
+
+        <EntityMappings>
+          <EntityMapping
+								  csType="Microsoft.CommerceServer.Catalog.Category"
+								  csAssembly="Microsoft.CommerceServer.Catalog, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+
+            <PropertyMappings>
+              <!-- 
+							The following mappings are required here to ensure that all
+							the product common properties are represented in the  
+							metadata. These are not returned by the Commerce Server
+							metadata automatically as the common properties.
+							-->
+              <PropertyMapping property="BaseCatalogName"
+														   csProperty="BaseCatalogName" />
+              <PropertyMapping property="CatalogId"
+														   csProperty="CatalogName" />
+              <PropertyMapping property="DefinitionName"
+														   csProperty="DefinitionName" />
+              <PropertyMapping property="DisplayName"
+														   csProperty="DisplayName" />
+              <PropertyMapping property="Id"
+														   csProperty="CategoryName" />
+              <PropertyMapping property="IsVirtualCatalog"
+														   csProperty="IsVirtualCatalog" />
+              <PropertyMapping property="ListPrice"
+														   csProperty="cy_list_price" />
+              <PropertyMapping property="UseCategoryPricing"
+														   csProperty="UseCategoryPricing" />
+              <PropertyMapping property="IsSearchable" csProperty="IsSearchable"/>
+            </PropertyMappings>
+
+          </EntityMapping>
+        </EntityMappings>
+
+        <Properties>
+          <!-- 
+					The following property definitions are required here to ensure that all
+					the product common properties are represented in the  
+					metadata. These are not returned by the Commerce Server
+					metadata automatically as the common properties.
+					-->
+          <Property name="BaseCatalogName"		dataType="String" />
+          <Property name="CatalogId"			dataType="String" />
+          <Property name="DefinitionName"			dataType="String" />
+          <Property name="DisplayName"			dataType="String" />
+          <Property name="Id"						dataType="String" />
+          <Property name="IsVirtualCatalog"		dataType="Boolean" isStronglyTyped="true" />
+          <Property name="ListPrice"				dataType="Decimal" />
+          <Property name="UseCategoryPricing"		dataType="Boolean" />
+          <Property name="IsSearchable" dataType="Boolean"/>
+
+        </Properties>
+
+        <Relationships>
+          <!-- Catalog entity relationships -->
+          <Relationship name="BaseCatalog" type="Relationship" modelName="Catalog" isMultipleItems="false">
+          </Relationship>
+
+          <Relationship name="PrimaryParentCategory" type="Relationship" modelName="Category" isMultipleItems="false">
+          </Relationship>
+
+          <!-- Hierarchical commerce entity relationships -->
+          <Relationship name="AncestorCategories" type="Relationship" modelName="Category" isMultipleItems="true">
+          </Relationship>
+
+          <Relationship name="CanonicalCategories" type="Relationship" modelName="Category" isMultipleItems="true">
+          </Relationship>
+
+          <Relationship name="Discounts" type="Relationship" modelName="DiscountDefinition" isMultipleItems="true">
+          </Relationship>
+
+          <Relationship name="ParentCategories" type="Relationship" modelName="Category" isMultipleItems="true">
+          </Relationship>
+
+          <Relationship name="RelatedCategories" type="Relationship" modelName="Category" isMultipleItems="true">
+          </Relationship>
+
+          <Relationship name="RelatedProducts" type="Relationship" modelName="Product" isMultipleItems="true">
+          </Relationship>
+
+          <Relationship name="CrossSells" type="CatalogRelationship" modelName="HierarchicalCatalogEntity" isMultipleItems="true" >
+            <DisplayName value="Cross-Sell Products">
+              <LanguageSpecific value="fr: Cross-Sell Products" language="fr-CA"/>
+            </DisplayName>
+
+            <Description value="Cross-Sell Products">
+              <LanguageSpecific value="fr: Cross-Sell Products" language="fr-CA"/>
+            </Description>
+          </Relationship>
+
+
+          <!-- Category specific relationships -->
+          <Relationship name="ChildCategories" type="Relationship" modelName="Category" isMultipleItems="true">
+
+          </Relationship>
+
+          <Relationship name="ChildProducts" type="Relationship" modelName="Product" isMultipleItems="true">
+
+          </Relationship>
+        </Relationships>
+
+      </CommerceEntity>
+			<!-- Category End -->
+
+			<!-- UserProfile Start -->
+      <CommerceEntity
+					  name="UserProfile">
+
+        <DisplayName value="User Profile">
+          <LanguageSpecific value="fr: User Profile" language="fr-CA"/>
+        </DisplayName>
+
+        <Description value="Business Item that defines the User Profile">
+          <LanguageSpecific value="fr: Business Item that defines the User Profile"
+												language="fr-CA"/>
+        </Description>
+
+        <EntityMappings>
+          <EntityMapping
+								  csType="Microsoft.CommerceServer.Runtime.Profiles.Profile"
+								  csAssembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+								  csDefinitionName="UserObject">
+
+            <!-- Examples of the Property Mappings -->
+            <PropertyMappings>
+              <PropertyMapping property="Id"						csProperty="GeneralInfo.user_id" />
+              <PropertyMapping property="DateCreated"				csProperty="ProfileSystem.date_created" />
+              <PropertyMapping property="DateModified"			csProperty="ProfileSystem.date_last_changed" />
+              <PropertyMapping property="LastDatePasswordChanged"	csProperty="ProfileSystem.date_last_password_changed" />
+              <PropertyMapping property="ShouldChangePassword"	csProperty="ProfileSystem.change_password" />
+              <PropertyMapping property="AccountStatus"			csProperty="AccountInfo.account_status" />
+              <PropertyMapping property="Password"				csProperty="GeneralInfo.user_security_password" />
+              <PropertyMapping property="Email"					csProperty="GeneralInfo.email_address" />
+              <PropertyMapping property="FirstName"				csProperty="GeneralInfo.first_name" />
+              <PropertyMapping property="LastName"				csProperty="GeneralInfo.last_name" />
+              <PropertyMapping property="PreferredCreditCard"				csProperty="GeneralInfo.preferred_credit_card" />
+              <PropertyMapping property="PreferredShippingMethod"		csProperty="GeneralInfo.preferred_shipping_method" />
+              <PropertyMapping property="DefaultShopperList"        csProperty="GeneralInfo.default_shopper_list" />
+              <PropertyMapping property="LiveID" csProperty="GeneralInfo.user_live_id" />
+            </PropertyMappings>
+
+          </EntityMapping>
+        </EntityMappings>
+
+        <Properties>
+        </Properties>
+
+        <Relationships>
+          <Relationship name="Addresses" type="Relationship" modelName="Address" isMultipleItems="true">
+            <DisplayName value="Addresses">
+              <LanguageSpecific value="fr: Addresses" language="fr-CA"/>
+            </DisplayName>
+
+            <Description value="User's Addresses">
+              <LanguageSpecific value="fr: User's Addresses" language="fr-CA"/>
+            </Description>
+          </Relationship>
+
+          <Relationship name="CreditCards" type="Relationship" modelName="CreditCard" isMultipleItems="true" >
+            <DisplayName value="Credit Cards">
+              <LanguageSpecific value="fr: Credit Cards" language="fr-CA"/>
+            </DisplayName>
+
+            <Description value="User's Credit Cards">
+              <LanguageSpecific value="fr: User's Credit Cards" language="fr-CA"/>
+            </Description>
+          </Relationship>
+
+          <Relationship name="OrderHistory" type="Relationship" modelName="Basket" isMultipleItems="true" >
+            <DisplayName value="Order History">
+              <LanguageSpecific value="fr: Order History" language="fr-CA"/>
+            </DisplayName>
+
+            <Description value="User's Order History">
+              <LanguageSpecific value="fr: User's Order History" language="fr-CA"/>
+            </Description>
+          </Relationship>
+        </Relationships>
+      </CommerceEntity>
+			<!-- UserProfile End -->
+
+      <!-- Address Start -->
+      <CommerceEntity
+				name="Address">
+
+        <DisplayName value="Address">
+          <LanguageSpecific value="fr: Address" language="fr-CA"/>
+        </DisplayName>
+
+        <Description value="User Address">
+          <LanguageSpecific value="fr: User Address" language="fr-CA"/>
+        </Description>
+
+        <EntityMappings>
+          <EntityMapping
+						csType="Microsoft.CommerceServer.Runtime.Orders.OrderAddress"
+						csAssembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+						csArea="Orders">
+
+            <PropertyMappings>
+              <PropertyMapping property="Id"				        csProperty="OrderAddressId"/>
+              <PropertyMapping property="AddressName"       csProperty="Name"/>
+              <PropertyMapping property="CountryRegionCode" csProperty="CountryCode"/>
+              <PropertyMapping property="CountryRegionName" csProperty="CountryName"/>
+              <PropertyMapping property="Telephone"         csProperty="DaytimePhoneNumber"/>
+              <PropertyMapping property="StateProvinceCode" csProperty="RegionCode"/>
+              <PropertyMapping property="StateProvinceName" csProperty="RegionName"/>
+              <PropertyMapping property="ZipPostalCode"     csProperty="PostalCode"/>
+              <!--Weakly typed properties-->
+              <PropertyMapping property="TestField"         csProperty="TestField"/>
+            </PropertyMappings>
+          </EntityMapping>
+
+          <EntityMapping
+								csType="Microsoft.CommerceServer.Runtime.Profiles.Profile"
+								csAssembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+								csDefinitionName="Address"
+								csArea="Profiles">
+
+            <PropertyMappings>
+              <PropertyMapping property="AdapterLastChangedDate"  csProperty="ProfileSystem.csadapter_date_last_changed" />
+              <PropertyMapping property="AddressName"		          csProperty="GeneralInfo.address_name" />
+              <PropertyMapping property="AddressType"		          csProperty="GeneralInfo.address_type" />
+              <PropertyMapping property="City"			              csProperty="GeneralInfo.city" />
+              <PropertyMapping property="CountryRegionCode"		    csProperty="GeneralInfo.country_code" />
+              <PropertyMapping property="CountryRegionName"		    csProperty="GeneralInfo.country_name" />
+              <PropertyMapping property="DateCreated"		          csProperty="ProfileSystem.date_created" />
+              <PropertyMapping property="DateModified"	          csProperty="ProfileSystem.date_last_changed" />
+              <PropertyMapping property="Description"	            csProperty="GeneralInfo.description" />
+              <PropertyMapping property="FirstName"		            csProperty="GeneralInfo.first_name" />
+              <PropertyMapping property="Id"				              csProperty="GeneralInfo.address_id" />
+              <PropertyMapping property="LastName"		            csProperty="GeneralInfo.last_name" />
+              <PropertyMapping property="Line1"			              csProperty="GeneralInfo.address_line1" />
+              <PropertyMapping property="Line2"			              csProperty="GeneralInfo.address_line2" />
+              <PropertyMapping property="LocaleId"			          csProperty="GeneralInfo.locale" />
+              <PropertyMapping property="ModifiedBy"			        csProperty="ProfileSystem.user_id_changed_by" />
+              <PropertyMapping property="StateProvinceCode"			  csProperty="GeneralInfo.region_code" />
+              <PropertyMapping property="StateProvinceName"			  csProperty="GeneralInfo.region_name" />
+              <PropertyMapping property="Telephone"	              csProperty="GeneralInfo.tel_number" />
+              <PropertyMapping property="TelephoneExtension"	    csProperty="GeneralInfo.tel_extension" />
+              <PropertyMapping property="ZipPostalCode"		        csProperty="GeneralInfo.postal_code" />
+            </PropertyMappings>
+          </EntityMapping>
+        </EntityMappings>
+
+        <Properties>
+          <Property name="City" dataType="String">
+            <DisplayName value="City">
+              <LanguageSpecific value="fr: City" language="fr-CA"/>
+            </DisplayName>
+
+            <Description value="City Name">
+              <LanguageSpecific value="fr: City Name" language="fr-CA"/>
+            </Description>
+
+            <Constraints>
+              <RequiredProperty>
+                <Message value="City is required">
+                  <LanguageSpecific value="fr: City is required" language="fr-CA"/>
+                </Message>
+              </RequiredProperty>
+
+              <Range minValue="0" minBoundaryType="Include" maxValue="64" maxBoundaryType="Include">
+                <Message value="City length must be within the defined range.">
+                  <LanguageSpecific value="fr: City length must be within the defined range." language="fr-CA"/>
+                </Message>
+              </Range>
+            </Constraints>
+          </Property>
+
+          <Property name="Telephone" dataType="String" >
+            <DisplayName value="Telephone number">
+              <LanguageSpecific value="fr: Telephone number" language="fr-CA"/>
+            </DisplayName>
+
+            <Description value="Day time phone number">
+              <LanguageSpecific value="fr: Telephone number" language="fr-CA"/>
+            </Description>
+
+            <Constraints>
+              <RegularExpression>
+                <Message value="Telephone must be in the following format: (614)555-1212.">
+                  <LanguageSpecific value="fr: Telephone must be in the following format: (614)555-1212." language="fr-CA"/>
+                </Message>
+                <Pattern value="^([\(]{1}[0-9]{3}[\)]{1}[\.| |\-]{0,1}|^[0-9]{3}[\.|\-| ]?)?[0-9]{3}(\.|\-| )?[0-9]{4}$" />
+              </RegularExpression>
+            </Constraints>
+          </Property>
+
+          <Property name="TestField" dataType="String" />
+        </Properties>
+      </CommerceEntity>
+      <!-- Address End -->
+
+			<!-- CreditCard Start -->
+      <CommerceEntity
+					  name="CreditCard">
+
+        <DisplayName value="CreditCard">
+          <LanguageSpecific value="fr: CreditCard" language="fr-CA"/>
+        </DisplayName>
+
+        <Description value="User Credit Card">
+          <LanguageSpecific value="fr: User Credit Card" language="fr-CA"/>
+        </Description>
+
+        <EntityMappings>
+
+          <EntityMapping
+           csType="Microsoft.CommerceServer.Runtime.Orders.CreditCardPayment"
+           csAssembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+           csArea="Orders">
+
+            <PropertyMappings>
+              <PropertyMapping property="Id"				csProperty="PaymentId"/>
+              <PropertyMapping property="CustomerName"	csProperty="CustomerNameOnPayment"/>
+            </PropertyMappings>
+          </EntityMapping>
+          
+          <EntityMapping
+								csType="Microsoft.CommerceServer.Runtime.Profiles.Profile"
+								csAssembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+								csDefinitionName="CreditCard"
+								csArea="Profiles">
+
+            <PropertyMappings>
+              <PropertyMapping property="AdapterLastChangedDate"  csProperty="ProfileSystem.csadapter_date_last_changed" />
+              <PropertyMapping property="BillingAddressId"        csProperty="GeneralInfo.billing_address" />
+              <PropertyMapping property="CreditCardIdentifier"          csProperty="GeneralInfo.last_4_digits" />
+              <PropertyMapping property="CreditCardNumber"        csProperty="GeneralInfo.cc_number" />
+              <PropertyMapping property="DateCreated"		          csProperty="ProfileSystem.date_created" />
+              <PropertyMapping property="DateModified"	          csProperty="ProfileSystem.date_last_changed" />
+              <PropertyMapping property="ExpirationMonth"	        csProperty="GeneralInfo.expiration_month" />
+              <PropertyMapping property="ExpirationYear"	        csProperty="GeneralInfo.expiration_year" />
+              <PropertyMapping property="Id"				              csProperty="GeneralInfo.id" />
+              <PropertyMapping property="KeyIndex"				        csProperty="ProfileSystem.KeyIndex" />
+              <PropertyMapping property="ModifiedBy"			        csProperty="ProfileSystem.user_id_changed_by" />
+            </PropertyMappings>
+          </EntityMapping>
+        </EntityMappings>
+
+        <Properties>
+          <Property name="CreditCardNumber" dataType="String">
+            <DisplayName value="Credit Card Number">
+              <LanguageSpecific value="fr: Credit Card Number" language="fr-CA"/>
+            </DisplayName>
+
+            <Description value="Credit Card Number">
+              <LanguageSpecific value="fr: Credit Card Number" language="fr-CA"/>
+            </Description>
+
+            <Constraints>
+              <RequiredProperty>
+                <Message value="Credit Card Number is required">
+                  <LanguageSpecific value="fr: Credit Card Number is required" language="fr-CA"/>
+                </Message>
+              </RequiredProperty>
+
+              <Range minValue="0" minBoundaryType="Include" maxValue="40" maxBoundaryType="Include">
+                <Message value="Credit Card Number length must be within the defined range.">
+                  <LanguageSpecific value="fr: Credit Card Number length must be within the defined range." language="fr-CA"/>
+                </Message>
+              </Range>
+            </Constraints>
+          </Property>
+          <Property name="BillingAddressId" dataType="String" />
+        </Properties>
+      </CommerceEntity>
+			<!-- CreditCard End -->
+
+			<!-- TargetingContext Start -->
+      <CommerceEntity name="TargetingContext">
+        <DisplayName value="TargetingContext">
+          <LanguageSpecific value="fr: TargetingContext" language="fr-CA"/>
+        </DisplayName>
+        <Description value="Targeting Context">
+          <LanguageSpecific value="fr: Targeting Context" language="fr-CA"/>
+        </Description>
+        <EntityMappings>
+          <EntityMapping csType="Microsoft.CommerceServer.Runtime.Profiles.Profile"
+								   csAssembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+								   csDefinitionName="TargetingContext"
+								   csArea="Profiles">
+            <PropertyMappings>
+              <PropertyMapping property="Id" csProperty="unique_id"/>
+              <PropertyMapping property="PageGroup" csProperty="pagegroup"/>
+              <PropertyMapping property="Channel" csProperty="channel"/>
+            </PropertyMappings>
+          </EntityMapping>
+        </EntityMappings>
+        <Properties>
+          <Property name="Id" dataType="String" />
+          <Property name="PageGroup" dataType="String" />
+          <Property name="Channel" dataType="String" />
+        </Properties>
+      </CommerceEntity>
+			<!-- TargetingContext End -->
+
+			<!-- SiteTerm Start -->
+      <CommerceEntity
+					  name="SiteTerm">
+
+        <EntityMappings>
+          <EntityMapping
+								  csType="Microsoft.CommerceServer.Runtime.Profiles.SiteTerm"
+								  csAssembly="Microsoft.CommerceServer.Runtime">
+
+            <PropertyMappings>
+              <PropertyMapping property="Id" csProperty="Name"/>
+            </PropertyMappings>
+          </EntityMapping>
+        </EntityMappings>
+
+        <Properties>
+          <Property name="Id"			 dataType="String"/>
+        </Properties>
+
+        <Relationships>
+          <Relationship name="Elements" modelName="SiteTermElement" type="Relationship" isMultipleItems="true" />
+        </Relationships>
+      </CommerceEntity>
+			<!-- SiteTerm End -->
+
+
+			<!-- SiteTermElement Start -->
+      <CommerceEntity
+					  name="SiteTermElement">
+
+        <EntityMappings>
+          <EntityMapping
+								  csType="Microsoft.CommerceServer.Runtime.Profiles.SiteTermElement"
+								  csAssembly="Microsoft.CommerceServer.Runtime">
+
+            <PropertyMappings>
+              <PropertyMapping property="Id" csProperty="Value"/>
+              <PropertyMapping property="DisplayName" csProperty="Name"/>
+            </PropertyMappings>
+          </EntityMapping>
+        </EntityMappings>
+
+        <Properties>
+          <Property name="Id"			 dataType="String"/>
+          <Property name="DisplayName" dataType="String"/>
+        </Properties>
+      </CommerceEntity>
+			<!-- SiteTerm End -->
+
+
+      <CommerceEntity
+        name="Basket">
+
+        <DisplayName value="Basket">
+          <LanguageSpecific language="en" value="Basket"/>
+          <LanguageSpecific language="de" value="Warenkorb"/>
+          <LanguageSpecific language="fr" value="Panier" />
+          <LanguageSpecific language="ja" value="バスケット" />
+        </DisplayName>
+
+        <EntityMappings>
+          <EntityMapping
+						csType="Microsoft.CommerceServer.Runtime.Orders.OrderForm"
+						csAssembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+
+            <PropertyMappings>
+              <!-- Properties that have different names in the Commerce Foundatio and Commerce Server must be listed in the mappings -->
+              <PropertyMapping property="Id"				              csProperty="OrderGroupId" />
+              <PropertyMapping property="DateCreated"		          csProperty="Created" />
+              <PropertyMapping property="DateModified"	          csProperty="LastModified" />
+              
+              <!-- Properties comming from the OrderGroup must be listed in the mappings even if the names are the same-->
+              <PropertyMapping property="BillingCurrency"         csProperty="BillingCurrency"/>
+              <PropertyMapping property="OrderNumber"             csProperty="TrackingNumber"/>
+              <PropertyMapping property="UserId"                  csProperty="SoldToId"/>
+
+              <!-- Weakly typed properties must be listed in the mappings even if the names are the same -->
+              <PropertyMapping property="BasketLevelDiscountsTotal" csProperty="BasketLevelDiscountsTotal"/>
+              <PropertyMapping property="BasketType"              csProperty="BasketType"/>
+              <PropertyMapping property="DiscountsTotal"          csProperty="DiscountsTotal"/>
+              <PropertyMapping property="LineItemDiscountsTotal"  csProperty="LineItemDiscountsTotal"/>
+              <PropertyMapping property="ShippingDiscountsTotal"  csProperty="ShippingDiscountsTotal"/>
+              <PropertyMapping property="BasketErrors"            csProperty="_Basket_Errors"/>
+              <PropertyMapping property="PurchaseErrors"          csProperty="_Purchase_Errors"/>
+            </PropertyMappings>
+          </EntityMapping>
+        </EntityMappings>
+
+        <Properties>
+          <!-- Properties comming from the OrderGroup must be listed -->
+          <Property name="BillingCurrency" dataType="String" isStronglyTyped="true" >
+            <DisplayName value="Billing Currency">
+              <LanguageSpecific language="en" value="Billing Currency"/>
+            </DisplayName>
+          </Property>
+          <Property name="OrderNumber" dataType="String" isStronglyTyped="true" >
+            <DisplayName value="Order Number">
+              <LanguageSpecific language="en" value="Order Number"/>
+            </DisplayName>
+            <Constraints>
+              <Range minValue="0" minBoundaryType="Include" maxValue="32"  maxBoundaryType="Include" />
+            </Constraints>
+          </Property>
+          <Property name="UserId" dataType="String" isStronglyTyped="true" >
+            <DisplayName value="User ID">
+              <LanguageSpecific language="en" value="User ID"/>
+            </DisplayName>
+          </Property>
+
+          <!-- Weakly typed properties -->
+          <Property name="BasketLevelDiscountsTotal" dataType="Decimal" />
+          <Property name="BasketType" dataType="Integer">
+            <EnumeratedValues>
+              <EnumerationEntry value="0">
+                <DisplayName value="Cart" />
+              </EnumerationEntry>
+              <EnumerationEntry value="1">
+                <DisplayName value="Order" />
+              </EnumerationEntry>
+            </EnumeratedValues>
+          </Property>
+          <Property name="DiscountsTotal" dataType="Decimal" />
+          <Property name="LineItemDiscountsTotal" dataType="Decimal" />
+          <Property name="ShippingDiscountsTotal" dataType="Decimal" />
+          <Property name="BasketErrors" dataType="Array" />
+          <Property name="PurchaseErrors" dataType="Array" />
+        </Properties>
+      </CommerceEntity>
+
+      <CommerceEntity name="ShopperList">
+
+        <DisplayName value="ShopperList">
+          <LanguageSpecific language="en" value="ShopperList"/>
+        </DisplayName>
+
+        <EntityMappings>
+          <EntityMapping
+						csType="Microsoft.CommerceServer.Runtime.Orders.OrderForm"
+						csAssembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+
+            <PropertyMappings>
+              <!-- Properties that have different names in the Commerce Foundation and Commerce Server must be listed in the mappings -->
+              <PropertyMapping property="Id"				              csProperty="OrderGroupId" />
+              <PropertyMapping property="DateCreated"		          csProperty="Created" />
+              <PropertyMapping property="DateModified"	          csProperty="LastModified" />
+               
+              <!-- Properties comming from the OrderGroup must be listed in the mappings even if the names are the same-->
+              <PropertyMapping property="BillingCurrency"         csProperty="BillingCurrency"/>
+              <PropertyMapping property="UserId"                  csProperty="SoldToId"/>
+
+              <!-- Weakly typed properties must be listed in the mappings even if the names are the same -->
+              <PropertyMapping property="BasketErrors"            csProperty="_Basket_Errors"/>
+
+              <PropertyMapping property="TestProperty1"           csProperty="TestProperty1"/>
+              <PropertyMapping property="ListLastModified"        csProperty="ListLastModified"/>
+            </PropertyMappings>
+          </EntityMapping>
+        </EntityMappings>
+
+        <Properties>
+          <!-- Properties comming from the OrderGroup must be listed -->
+          <Property name="BillingCurrency" dataType="String" isStronglyTyped="true" >
+            <DisplayName value="Billing Currency">
+              <LanguageSpecific language="en" value="Billing Currency"/>
+            </DisplayName>
+          </Property>
+          <Property name="UserId" dataType="String" isStronglyTyped="true" >
+            <DisplayName value="User ID">
+              <LanguageSpecific language="en" value="User ID"/>
+            </DisplayName>
+          </Property>
+
+          <!-- Weakly typed properties -->
+          <Property name="BasketErrors" dataType="Array" />
+          <Property name="TestProperty1" dataType="String" />
+          <Property name="ListLastModified" dataType="DateTime" />          
+        </Properties>
+      </CommerceEntity>
+      
+      <CommerceEntity
+				name="Discount">
+
+        <EntityMappings>
+          <EntityMapping
+						csType="Microsoft.CommerceServer.Runtime.Orders.DiscountApplicationRecord"
+						csAssembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+
+            <PropertyMappings>
+              <PropertyMapping property="DisplayMessage" csProperty="BasketDisplayMessage"/>
+              <PropertyMapping property="Amount" csProperty="DiscountAmount"/>
+              <PropertyMapping property="Name" csProperty="DiscountName"/>
+              <PropertyMapping property="Id" csProperty="DiscountId"/>
+              <PropertyMapping property="Value" csProperty="DiscountValue"/>
+              <PropertyMapping property="DiscountType" csProperty="TypeOfDiscount"/>
+            </PropertyMappings>
+          </EntityMapping>
+        </EntityMappings>
+
+        <Properties>
+          <Property name="DiscountType" dataType="Integer" isStronglyTyped="true">
+            <EnumeratedValues>
+              <!-- Actual entries comes directly from the Orders system -->
+            </EnumeratedValues>
+          </Property>
+        </Properties>
+      </CommerceEntity>
+
+      <CommerceEntity
+				name="LineItem">
+
+        <EntityMappings>
+          <EntityMapping
+						csType="Microsoft.CommerceServer.Runtime.Orders.LineItem"
+						csAssembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+
+            <PropertyMappings>
+              <PropertyMapping property="Id" csProperty="LineItemId"/>
+              <PropertyMapping property="DateCreated" csProperty="Created"/>
+              <PropertyMapping property="DateModified" csProperty="LastModified"/>
+              <PropertyMapping property="BasketLevelDiscountAmount" csProperty="OrderLevelDiscountAmount"/>
+              <PropertyMapping property="CatalogName" csProperty="ProductCatalog"/>
+              <PropertyMapping property="ItemLevelDiscountAmount" csProperty="LineItemDiscountAmount"/>
+              <PropertyMapping property="VariantId" csProperty="ProductVariantId"/>
+              <PropertyMapping property="Total" csProperty="ExtendedPrice"/>
+
+              <!--Weakly typed properties-->
+              <PropertyMapping property="ItemPriority" csProperty="ItemPriority"/>
+              <PropertyMapping property="GiftMessage" csProperty="GiftMessage"/>
+              <PropertyMapping property="GiftWrap" csProperty="GiftWrap"/>
+
+              <PropertyMapping property="_product_Image_FileName" csProperty="_product_Image_FileName" />
+              <PropertyMapping property="_product_Description" csProperty="_product_Description" />
+              <PropertyMapping property="_product_DefinitionName" csProperty="_product_DefinitionName" />
+              <PropertyMapping property="_product_i_ClassType" csProperty="_product_i_ClassType" />
+
+              <PropertyMapping property="_product_ProductSize" csProperty="_product_ProductSize" />
+              <PropertyMapping property="_product_ProductColor" csProperty="_product_ProductColor" />
+            </PropertyMappings>
+          </EntityMapping>
+        </EntityMappings>
+
+        <Properties>
+          <!--Weakly typed properties-->
+          <Property name="ItemPriority" dataType="Integer" />
+          <Property name="GiftMessage" dataType="String" />
+          <Property name="GiftWrap" dataType="Boolean" />
+          <Property name="_product_Image_FileName" dataType="String" />
+          <Property name="_product_Description" dataType="String" />
+          <Property name="_product_DefinitionName" dataType="String" />
+          <Property name="_product_i_ClassType" dataType="String" />
+          <Property name="_product_ProductSize" dataType="String" />
+          <Property name="_product_ProductColor" dataType="String" />
+        </Properties>
+      </CommerceEntity>
+
+      <CommerceEntity
+				name="PurchaseOrder">
+
+        <EntityMappings>
+          <EntityMapping
+						csType="Microsoft.CommerceServer.Runtime.Orders.PurchaseOrderPayment"
+						csAssembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+
+            <PropertyMappings>
+              <PropertyMapping property="Id" csProperty="PaymentId"/>
+              <PropertyMapping property="CustomerName"	csProperty="CustomerNameOnPayment"/>
+              <PropertyMapping property="PurchaseOrderNumber" csProperty="PurchaseOrderPaymentNumber"/>
+            </PropertyMappings>
+          </EntityMapping>
+        </EntityMappings>
+      </CommerceEntity>
+
+      <CommerceEntity
+				name="CashCard">
+
+        <EntityMappings>
+          <EntityMapping
+						csType="Microsoft.CommerceServer.Runtime.Orders.CashCardPayment"
+						csAssembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+
+            <PropertyMappings>
+              <PropertyMapping property="Id"				    csProperty="PaymentId"/>
+              <PropertyMapping property="CustomerName"	csProperty="CustomerNameOnPayment"/>
+            </PropertyMappings>
+          </EntityMapping>
+        </EntityMappings>
+      </CommerceEntity>
+
+      <CommerceEntity
+				name="GiftCertificate">
+
+        <EntityMappings>
+          <EntityMapping
+						csType="Microsoft.CommerceServer.Runtime.Orders.GiftCertificatePayment"
+						csAssembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+
+            <PropertyMappings>
+              <PropertyMapping property="Id"				    csProperty="PaymentId"/>
+              <PropertyMapping property="CustomerName"	csProperty="CustomerNameOnPayment"/>
+            </PropertyMappings>
+          </EntityMapping>
+        </EntityMappings>
+      </CommerceEntity>
+
+      <CommerceEntity
+				name="RequestedPromoCode">
+
+        <EntityMappings>
+          <EntityMapping
+						csType="Microsoft.CommerceServer.Runtime.Orders.PromoCodeRecord"
+						csAssembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+
+            <PropertyMappings>
+              <PropertyMapping property="Applied" csProperty="PromoApplied"/>
+              <PropertyMapping property="Code" csProperty="PromoCode"/>
+              <PropertyMapping property="DefinitionId" csProperty="PromoCodeDefinitionId"/>
+              <PropertyMapping property="LookupDate" csProperty="PromoCodeLookupDate"/>
+              <PropertyMapping property="Reserved" csProperty="PromoCodeReserved"/>
+              <PropertyMapping property="Status" csProperty="PromoCodeStatus"/>
+            </PropertyMappings>
+          </EntityMapping>
+        </EntityMappings>
+      </CommerceEntity>
+
+      <CommerceEntity
+				name="Shipment">
+
+        <EntityMappings>
+          <EntityMapping
+						csType="Microsoft.CommerceServer.Runtime.Orders.Shipment"
+						csAssembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+
+            <PropertyMappings>
+              <PropertyMapping property="Id" csProperty="ShipmentId"/>
+              <PropertyMapping property="DiscountAmount" csProperty="ShippingDiscountAmount"/>
+              <PropertyMapping property="ShippingAddressId" csProperty="ShippingAddressId"/>
+              <PropertyMapping property="StatusCode" csProperty="Status"/>
+              <PropertyMapping property="Total" csProperty="ShipmentTotal"/>
+              <PropertyMapping property="TrackingNumber" csProperty="ShipmentTrackingNumber"/>
+            </PropertyMappings>
+          </EntityMapping>
+        </EntityMappings>
+      </CommerceEntity>
+
+      <CommerceEntity
+				name="Payment">
+
+        <Properties>
+          <Property name="Id" dataType="String">
+            <DisplayName value="Id"/>
+            <Description value="Unique ID of the payment." />
+          </Property>
+          <Property name="Amount" dataType="Decimal">
+            <DisplayName value="Amount"/>
+            <Description value="The payment amount." />
+          </Property>
+          <Property name="Status" dataType="String">
+            <DisplayName value="Status"/>
+            <Description value="The payment status." />
+          </Property>
+        </Properties>
+      </CommerceEntity>
+
+      <CommerceEntity
+				name="PaymentMethod">
+
+        <Properties>
+          <Property name="Id" dataType="String">
+            <DisplayName value="Id"/>
+            <Description value="Unique ID of the payment method." />
+          </Property>
+          <Property name="DisplayName" dataType="String">
+            <DisplayName value="Display Name"/>
+            <Description value="The payment method display name." />
+          </Property>
+          <Property name="Description" dataType="String">
+            <DisplayName value="Description"/>
+            <Description value="The payment method description." />
+          </Property>
+          <Property name="PaymentType" dataType="Integer">
+            <DisplayName value="Payment Type"/>
+            <Description value="The type of the payment method." />
+            <EnumeratedValues>
+              <EnumerationEntry value ="0">
+                <DisplayName value="None" />
+              </EnumerationEntry>
+              <EnumerationEntry value ="1">
+                <DisplayName value="CreditCard" />
+              </EnumerationEntry>
+              <EnumerationEntry value ="2">
+                <DisplayName value="GiftCertificate" />
+              </EnumerationEntry>
+              <EnumerationEntry value ="3">
+                <DisplayName value="PurchaseOrder" />
+              </EnumerationEntry>
+              <EnumerationEntry value ="4">
+                <DisplayName value="CashCard" />
+              </EnumerationEntry>
+              <EnumerationEntry value ="5">
+                <DisplayName value="Custom" />
+              </EnumerationEntry>
+              <EnumerationEntry value ="6">
+                <DisplayName value="Custom1" />
+              </EnumerationEntry>
+              <EnumerationEntry value ="7">
+                <DisplayName value="Custom2" />
+              </EnumerationEntry>
+              <EnumerationEntry value ="8">
+                <DisplayName value="Custom3" />
+              </EnumerationEntry>
+              <EnumerationEntry value ="9">
+                <DisplayName value="Custom4" />
+              </EnumerationEntry>
+              <EnumerationEntry value ="10">
+                <DisplayName value="Custom5" />
+              </EnumerationEntry>
+            </EnumeratedValues>
+          </Property>
+        </Properties>
+      </CommerceEntity>
+
+      <CommerceEntity
+				name="ShippingMethod">
+
+        <Properties>
+          <Property name="Id" dataType="String">
+            <DisplayName value="Id"/>
+            <Description value="Unique ID of the shipping method." />
+          </Property>
+          <Property name="DisplayName" dataType="String">
+            <DisplayName value="Display Name"/>
+            <Description value="The shipping method display name." />
+          </Property>
+          <Property name="Description" dataType="String">
+            <DisplayName value="Description"/>
+            <Description value="The shipping method description." />
+          </Property>
+        </Properties>
+      </CommerceEntity>
+
+      <CommerceEntity
+				name="HierarchicalCatalogEntity">
+      </CommerceEntity>
+
+      <CommerceEntity
+			  name="DiscountDefinition">
+        <Properties>
+          <Property name="Id" dataType="String"/>
+          <Property name="ParentId" dataType="String"/>
+          <Property name="DateModified" dataType="DateTime"/>
+          <Property name="Name" dataType="String"/>
+          <Property name="BasketDisplay" dataType="String"/>
+          <Property name="StartDate" dataType="DateTime"/>
+          <Property name="EndDate" dataType="DateTime"/>
+          <Property name="OfferType" dataType="String"/>
+          <Property name="Value" dataType="Decimal"/>
+          <Property name="ValueType" dataType="Integer">
+            <EnumeratedValues>
+              <!-- Actual entries comes directly from the Orders system -->
+            </EnumeratedValues>
+          </Property>
+        </Properties>
+      </CommerceEntity>
+      
+      <!-- VEClientToken -->
+      <CommerceEntity
+        name="VEClientToken">
+
+        <Properties>
+          <Property name="ClientToken" dataType="String">
+            <DisplayName value="Virtual Earth Platform Client Token"/>
+            <Description value="The client token retrieved from Virtual Earth web service." />
+          </Property>
+        </Properties>
+      </CommerceEntity>
+
+      <!-- VENearbyStore -->
+      <CommerceEntity
+        name="VENearbyStore">
+
+        <Properties>
+          <Property name="EntityId" dataType="String">
+            <DisplayName value="Entity Id"/>
+            <Description value="The MapPoint entity id of the store." />
+          </Property>
+          <Property name="Name" dataType="String">
+            <DisplayName value="Store Name"/>
+            <Description value="The name of the store." />
+          </Property>
+          <Property name="DisplayName" dataType="String">
+            <DisplayName value="Store Display Name"/>
+            <Description value="The display name of the store." />
+          </Property>
+          <Property name="AddressLine" dataType="String">
+            <DisplayName value="Store Address Line"/>
+            <Description value="The address line of the store." />
+          </Property>
+          <Property name="City" dataType="String">
+            <DisplayName value="City"/>
+            <Description value="The city of the store." />
+          </Property>
+          <Property name="Subdivision" dataType="String">
+            <DisplayName value="Subdivision"/>
+            <Description value="The subdivision of the store." />
+          </Property>
+          <Property name="PostalCode" dataType="String">
+            <DisplayName value="Postal Code"/>
+            <Description value="The postal code of the store." />
+          </Property>
+          <Property name="Country" dataType="String">
+            <DisplayName value="Country"/>
+            <Description value="The country of the store." />
+          </Property>
+          <Property name="Telephone" dataType="String">
+            <DisplayName value="Telephone number"/>
+            <Description value="The telephone number of the store." />
+          </Property>
+          <Property name="Latitude" dataType="Double">
+            <DisplayName value="Latitude"/>
+            <Description value="The latitude of the store." />
+          </Property>
+          <Property name="Longitude" dataType="Double">
+            <DisplayName value="Longitude"/>
+            <Description value="The longitude of the store." />
+          </Property>
+        </Properties>
+      </CommerceEntity>
+      
+		</CommerceEntities>
+		<!-- Variant End -->
+
+		<!-- RelationshipTypes Start -->
+		<RelationshipTypes>
+			<RelationshipType name="Relationship">
+
+				<DisplayName value="Relationship">
+					<LanguageSpecific value="fr: Relationship" language="fr-CA"/>
+				</DisplayName>
+
+				<Description value="Basic Relationship Type">
+					<LanguageSpecific value="fr: Basic Relationship Type" language="fr-CA"/>
+				</Description>
+			</RelationshipType>
+
+			<RelationshipType name="CatalogRelationship">
+
+				<DisplayName value="Catalog Relationship">
+					<LanguageSpecific value="fr: Relationship" language="fr-CA"/>
+				</DisplayName>
+
+				<Description value="Catalog Relationship Type">
+					<LanguageSpecific value="fr: Catalog Relationship Type" language="fr-CA"/>
+				</Description>
+
+				<Properties>
+					<Property name="Quantity" dataType="Integer">
+						<DisplayName value="Quantity">
+							<LanguageSpecific value="fr: Quantity" language="fr-CA"/>
+						</DisplayName>
+
+						<Description value="Number of the related items">
+							<LanguageSpecific value="fr: Number of the related items" language="fr-CA"/>
+						</Description>
+
+						<Constraints>
+							<Range minValue="1" minBoundaryType="Include" maxValue="100" maxBoundaryType="Include">
+								<Message value="Quantity must be within the defined range.">
+									<LanguageSpecific value="fr: Quantity must be within the defined range." language="fr-CA"/>
+								</Message>
+							</Range>
+						</Constraints>
+					</Property>
+
+					<Property name="Enabled" dataType="Boolean">
+						<DisplayName value="Enabled">
+							<LanguageSpecific value="fr: Enabled" language="fr-CA"/>
+						</DisplayName>
+
+						<Description value="Is the relationship enabled?">
+							<LanguageSpecific value="fr: Is the relationship enabled?" language="fr-CA"/>
+						</Description>
+					</Property>
+				</Properties>
+			</RelationshipType>
+		</RelationshipTypes>
+		<!-- RelationshipTypes End -->
+
+
+	</DefaultChannel>
+
+	<Channels>
+	</Channels>
+</MetadataDefinitions>
