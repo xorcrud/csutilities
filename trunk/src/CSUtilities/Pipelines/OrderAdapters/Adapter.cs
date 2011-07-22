@@ -30,16 +30,32 @@ namespace CSUtilities.Pipelines.OrderAdapters
             get { return _inner; }
         }
 
+        internal static bool TryGetValue<TType>(IDictionary entity, string name, out TType value)
+        {
+            value = default(TType);
+
+            if (entity != null)
+            {
+                object objectValue = entity[name];
+
+                if (objectValue != null)
+                {
+                    if (objectValue is TType)
+                        value = (TType) objectValue;
+                }
+            }
+
+            return false;
+        }
+
         internal static TType GetValue<TType>(IDictionary entity, string name)
         {
             if (entity == null) throw new ArgumentNullException("entity");
 
-            object value = entity[name];
+            TType value;
+            TryGetValue(entity, name, out value);
 
-            if (value is TType)
-                return (TType)value;
-
-            return default(TType);            
+            return value;
         }
     }
 }

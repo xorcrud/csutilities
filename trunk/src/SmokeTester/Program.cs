@@ -12,8 +12,6 @@ namespace SmokeTester
 
             Console.WriteLine();
             Console.WriteLine();
-
-            Console.WriteLine(MetadataDefinitions.CustomEntity.EntityName);
         }
     }
 }

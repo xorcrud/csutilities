@@ -1,8 +1,9 @@
 using System;
 using System.Runtime.InteropServices;
+using CSUtilities.Pipelines;
 using CSUtilities.Pipelines.OrderAdapters;
 
-namespace CSUtilities.Pipelines
+namespace CSUtilities.Samples.Pipelines
 {
     [Guid("34104807-4B22-40A4-89AA-4686D092BE29")]
     [ComVisible(true)]
