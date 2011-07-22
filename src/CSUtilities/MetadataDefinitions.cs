@@ -5,16 +5,6 @@ namespace CSUtilities
     /// </summary>
     public partial class MetadataDefinitions
     {
-        public class CustomEntity
-        {
-            public const string EntityName = "CustomEntity";
-
-            public class Properties
-            {
-                public const string SomeProperty = "SomeProperty";
-            }
-        }
-
         public partial class Address
         {
             public partial class Properties
@@ -32,19 +22,37 @@ namespace CSUtilities
                     addProperty(Line2);
                 }
             }
+        }    
+
+        public partial class Shipment
+        {
+            public partial class Properties
+            {
+                public const string ShippingMethodName = "ShippingMethodName";
+                public const string ShipmentTotal = "ShipmentTotal";
+                public const string ShippingAddressId = "ShippingAddressId";
+                public const string ShippingMethodId = "ShippingMethodId";
+                public const string Status = "Status";
+                public const string ShipmentTrackingNumber = "ShipmentTrackingNumber";
+            }
         }
 
-        public partial class Product
+        public partial class Payment
+        {
+            public partial class Properties
+            {
+                public const string PaymentMethodName = "PaymentMethodName";
+                public const string BillingAddressId = "BillingAddressId";
+            }
+        }
+
+        public partial class Basket
         {
             public partial class Relationships
             {
-                public const string OtherRelationship = "OtherRelationship";
-
-                static partial void AddToAll(System.Action<string> addRelationship)
-                {
-                    addRelationship(OtherRelationship);
-                }
+                public const string Payments = "Payments";
+                public const string Shipments = "Shipments";
             }
-        }        
+        }
     }
 }

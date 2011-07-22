@@ -19,7 +19,7 @@ namespace CSUtilities.Services
             catch
             {
                 Exception actualException;
-                if (ActualFaultExceptionHandlerHack.TryGetActualException(out actualException))
+                if (ActualFaultExceptionHandler.TryGetActualException(out actualException))
                     throw actualException;
 
                 throw;

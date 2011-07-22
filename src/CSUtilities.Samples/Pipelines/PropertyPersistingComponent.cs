@@ -1,7 +1,8 @@
 using System;
+using CSUtilities.Pipelines;
 using CSUtilities.Pipelines.OrderAdapters;
 
-namespace CSUtilities.Pipelines
+namespace CSUtilities.Samples.Pipelines
 {
     public class PropertyPersistingComponent : OrderPipelineComponentBase
     {

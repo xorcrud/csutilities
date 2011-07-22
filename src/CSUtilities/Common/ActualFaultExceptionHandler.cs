@@ -4,7 +4,7 @@ using Microsoft.Commerce.Common;
 
 namespace CSUtilities.Common
 {
-    public class ActualFaultExceptionHandlerHack : IExceptionHandler
+    public class ActualFaultExceptionHandler : IExceptionHandler
     {
         private const string ContextKey = "875CBF75-DDB5-4F87-B773-A4888211BF93";
 

@@ -26,7 +26,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <RegisterForComInterop>true</RegisterForComInterop>
+    <RegisterForComInterop>false</RegisterForComInterop>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -68,9 +68,14 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>..\..\lib\Microsoft.CommerceServer.Interop.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files\Microsoft Commerce Server 2007\Assemblies\Microsoft.CommerceServer.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Xml.Linq" />
@@ -79,7 +84,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\ActualFaultExceptionHandlerHack.cs" />
+    <Compile Include="Common\ActualFaultExceptionHandler.cs" />
+    <Compile Include="Providers\Components\CustomPaymentsProcessor.cs" />
+    <Compile Include="Providers\Components\CustomShipmentsProcessor.cs" />
     <Compile Include="Infrastructure\IServiceContainer.cs" />
     <Compile Include="Infrastructure\ServiceContainerAdapter.cs" />
     <Compile Include="MetadataDefinitions.generated.cs">
@@ -106,8 +113,6 @@
     <Compile Include="Pipelines\OrderAdapters\PaymentAdapter.cs" />
     <Compile Include="Pipelines\OrderAdapters\PurchaseOrderPaymentAdapter.cs" />
     <Compile Include="Pipelines\OrderAdapters\ShipmentAdapter.cs" />
-    <Compile Include="Pipelines\PropertyPersistingComponent.cs" />
-    <Compile Include="Pipelines\TestingPipelineComponent.cs" />
     <Compile Include="Pipelines\OrderPipelineComponentBase.cs" />
     <Compile Include="Pipelines\PipelineExecutionResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,6 +131,8 @@
       <DependentUpon>Exceptions.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\ActualExceptionThrowingOperationService.cs" />
+    <Compile Include="Providers\Translators\CustomShippingSupportingLineItemTranslator.cs" />
+    <Compile Include="Providers\Translators\ExternalEntitySupportingShipmentTranslator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -146,6 +153,7 @@
       <LastGenOutput>OrderPipelineMappings.generated.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
