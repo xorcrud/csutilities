@@ -72,6 +72,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Program Files\Microsoft Commerce Server 2007\Assemblies\Microsoft.CommerceServer.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CommerceServer.Shared, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files\Microsoft Commerce Server 2007\Assemblies\Microsoft.CommerceServer.Shared.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -84,7 +88,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\ActualFaultExceptionHandler.cs" />
+    <Compile Include="Debugging\ActualFault\ActualFaultExceptionHandler.cs" />
+    <Compile Include="Debugging\CommerceEntityWriter.cs" />
+    <Compile Include="Debugging\LineItemPropertiesWriter.cs" />
+    <Compile Include="Debugging\OrderGroupErrorWriter.cs" />
+    <Compile Include="Extensions\CommerceResourceCollectionExtensions.cs" />
+    <Compile Include="Extensions\QueryExtensions.cs" />
     <Compile Include="Providers\Components\CustomPaymentsProcessor.cs" />
     <Compile Include="Providers\Components\CustomShipmentsProcessor.cs" />
     <Compile Include="Infrastructure\IServiceContainer.cs" />
@@ -130,7 +139,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Exceptions.resx</DependentUpon>
     </Compile>
-    <Compile Include="Services\ActualExceptionThrowingOperationService.cs" />
+    <Compile Include="Debugging\ActualFault\ActualExceptionThrowingOperationService.cs" />
     <Compile Include="Providers\Translators\CustomShippingSupportingLineItemTranslator.cs" />
     <Compile Include="Providers\Translators\ExternalEntitySupportingShipmentTranslator.cs" />
   </ItemGroup>
@@ -144,6 +153,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Debugging\Debugging.Extensions.cs" />
     <None Include="MetadataDefinitions.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>MetadataDefinitions.generated.cs</LastGenOutput>

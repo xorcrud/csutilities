@@ -86,7 +86,7 @@ namespace CSUtilities.Providers.Components
             }
         }
 
-        protected virtual Payment GetPaymentFromCachedOrderGroup(string paymentId)
+        protected new virtual Payment GetPaymentFromCachedOrderGroup(string paymentId)
         {
             OrderForm orderForm = CachedOrderGroup.GetDefaultOrderForm();
 
