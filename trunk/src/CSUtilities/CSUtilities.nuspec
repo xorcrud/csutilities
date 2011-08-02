@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>CSUtilities</id>
+    <version>$version$</version>
+    <authors>Brian Holmgård Kristensen</authors>
+    <owners></owners>
+    <projectUrl>http://code.google.com/p/csutilities</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The purpose of CSUtilities is to provide a number of artifacts/utilities that can assist and ease your everyday work with Microsoft Commerce Server 2007/2009. </description>
+    <tags>Commerce Server CS2009 CS2007 CSUtilities</tags>
+  </metadata>
+</package>
