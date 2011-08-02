@@ -63,7 +63,7 @@ namespace CSUtilities.Providers.Components
 
         protected override void DeleteRelatedItem(CommerceDeleteRelatedItem deleteRelatedItemOperation)
         {
-            string shipmentId = GetSearchModelId(deleteRelatedItemOperation, "Shipment", true);
+            string shipmentId = GetSearchModelId(deleteRelatedItemOperation, MetadataDefinitions.Shipment.EntityName, true);
 
             if (!String.IsNullOrEmpty(shipmentId))
             {
