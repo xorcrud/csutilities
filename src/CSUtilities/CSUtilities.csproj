@@ -92,8 +92,8 @@
     <Compile Include="Debugging\CommerceEntityWriter.cs" />
     <Compile Include="Debugging\LineItemPropertiesWriter.cs" />
     <Compile Include="Debugging\OrderGroupErrorWriter.cs" />
+    <Compile Include="Extensions\Commerce.Extensions.cs" />
     <Compile Include="Extensions\CommerceResourceCollectionExtensions.cs" />
-    <Compile Include="Extensions\QueryExtensions.cs" />
     <Compile Include="Providers\Components\CustomPaymentsProcessor.cs" />
     <Compile Include="Providers\Components\CustomShipmentsProcessor.cs" />
     <Compile Include="Infrastructure\IServiceContainer.cs" />

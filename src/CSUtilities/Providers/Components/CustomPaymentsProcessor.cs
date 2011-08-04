@@ -71,7 +71,7 @@ namespace CSUtilities.Providers.Components
         {
             OrderForm orderForm = CachedOrderGroup.GetDefaultOrderForm();
 
-            CommerceEntity model = updateRelatedItemOperation.GetModel(MetadataDefinitions.Payment.EntityName);
+            CommerceEntity model = updateRelatedItemOperation.GetModel(updateRelatedItemOperation.Model.ModelName);
             string paymentId = GetSearchModelId(updateRelatedItemOperation, MetadataDefinitions.Payment.EntityName, true);
 
             if (!String.IsNullOrEmpty(paymentId))

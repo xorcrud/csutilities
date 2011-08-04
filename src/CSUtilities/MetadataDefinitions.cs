@@ -50,6 +50,8 @@ namespace CSUtilities
         {
             public partial class Relationships
             {
+                public const string Discounts = "Discounts";
+                public const string Addresses = "Addresses";
                 public const string LineItems = "LineItems";
                 public const string Payments = "Payments";
                 public const string Shipments = "Shipments";
