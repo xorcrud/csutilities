@@ -108,6 +108,8 @@ namespace CSUtilities.Providers.Components
 
         protected virtual void UpdateShippingLineItemsAssociation(Shipment shipment, OrderForm orderForm)
         {
+            shipment.LineItemIndexes.Clear();
+
             foreach (LineItem lineItem in
                 orderForm.LineItems
                     .OfType<LineItem>()

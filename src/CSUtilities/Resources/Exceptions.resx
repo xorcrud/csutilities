@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AttributeExtensions_NonAttribute" xml:space="preserve">
+    <value>Type '{0}' must be derived from System.Attribute or System.Attribute itself.</value>
+  </data>
+  <data name="Entity_WrongModel" xml:space="preserve">
+    <value>The model name '{0}' of the CommerceEntity didn't match the expected model name '{1}' for the current mapper.</value>
+  </data>
+  <data name="EnumHelper_NotAnEnum" xml:space="preserve">
+    <value>Type {0} is not an enum.</value>
+  </data>
+  <data name="EnumHelper_ValueNotDefined" xml:space="preserve">
+    <value>Value "{0}" is not defined within type {1}.</value>
+  </data>
   <data name="FullTextSearchEndLoggingComponentWronglyRegistred" xml:space="preserve">
     <value>The EndLogging component is not registred within a FullTextSearch query context.
 
@@ -138,6 +150,9 @@ SOLUTION:
    &lt;Component name="End Full Text Search Logging" type="CSUtilities.Providers.Components.FullTextSearch.EndLogging, CSUtilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06dc92500529a411"&gt;
 
 3) You are done. Test by executing a new FullTextSearch query.</value>
+  </data>
+  <data name="Mapping_ModelNotFound" xml:space="preserve">
+    <value>The ModelMappingAttribute wasn't found on the object beeing mapped! or the ModelName is empty</value>
   </data>
   <data name="NoFullTextSearchBeginLoggingComponentRegistred" xml:space="preserve">
     <value>No BeginLogging component registred. 

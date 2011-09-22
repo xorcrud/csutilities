@@ -94,6 +94,26 @@
     <Compile Include="Debugging\OrderGroupErrorWriter.cs" />
     <Compile Include="Extensions\Commerce.Extensions.cs" />
     <Compile Include="Extensions\CommerceResourceCollectionExtensions.cs" />
+    <Compile Include="Infrastructure\Utilities\Attribute.Extensions.cs" />
+    <Compile Include="Infrastructure\Utilities\DataHelper.cs" />
+    <Compile Include="Infrastructure\Utilities\DictionaryIdentityMap.cs" />
+    <Compile Include="Infrastructure\Utilities\IIdentityMap.cs" />
+    <Compile Include="Infrastructure\Utilities\ClassMapper.cs" />
+    <Compile Include="Infrastructure\Utilities\MemberCaches.cs" />
+    <Compile Include="Infrastructure\Utilities\ReflectionHelper.cs" />
+    <Compile Include="Infrastructure\Utilities\StaticReflection.cs" />
+    <Compile Include="Mappers\BaseMapping.cs" />
+    <Compile Include="Mappers\Converters\Converter.cs" />
+    <Compile Include="Mappers\Converters\ConverterLazyRegistry.cs" />
+    <Compile Include="Mappers\Converters\IConverter.cs" />
+    <Compile Include="Mappers\Mapper.cs" />
+    <Compile Include="Mappers\Mapping.cs" />
+    <Compile Include="Mappers\Attributes\MappingAttribute.cs" />
+    <Compile Include="Mappers\Exceptions\MappingException.cs" />
+    <Compile Include="Mappers\MappingType.cs" />
+    <Compile Include="Mappers\Attributes\ModelMappingAttribute.cs" />
+    <Compile Include="Mappers\Exceptions\ModelMappingNotFoundException.cs" />
+    <Compile Include="Mappers\PropertyMapper.cs" />
     <Compile Include="Providers\Components\CustomPaymentsProcessor.cs" />
     <Compile Include="Providers\Components\CustomShipmentsProcessor.cs" />
     <Compile Include="Infrastructure\IServiceContainer.cs" />
@@ -134,6 +154,7 @@
     <Compile Include="Providers\Components\FullTextSearch\LoggingResult.cs" />
     <Compile Include="Providers\Components\FullTextSearch\LoggingShared.cs" />
     <Compile Include="Providers\Components\FullTextSearch\SkipLoggingRelatedOperation.cs" />
+    <Compile Include="Relationship.cs" />
     <Compile Include="Resources\Exceptions.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -142,6 +163,7 @@
     <Compile Include="Debugging\ActualFault\ActualExceptionThrowingOperationService.cs" />
     <Compile Include="Providers\Translators\CustomShippingSupportingLineItemTranslator.cs" />
     <Compile Include="Providers\Translators\ExternalEntitySupportingShipmentTranslator.cs" />
+    <Compile Include="Mappers\Exceptions\WrongModelException.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -150,6 +172,7 @@
     <EmbeddedResource Include="Resources\Exceptions.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Exceptions.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

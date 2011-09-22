@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using CSUtilities.Mappers.Exceptions;
 using Microsoft.Commerce.Common;
 using Microsoft.Commerce.Common.MessageBuilders;
 using Microsoft.Commerce.Contracts;
@@ -10,11 +11,31 @@ namespace CSUtilities.Extensions
 {
 	public static class CommerceExtensions
 	{
+        /// <summary>
+        /// Converts Guid to a string recognized by Commerce Server.
+        /// </summary>
+        /// <returns>String representation of the Guid.</returns>
 		public static string ToCommerceId(this Guid guid)
 		{
 			return guid.ToString("B");
 		}
 
+        /// <summary>
+        /// Validates the ModelName of a given Entity.
+        /// </summary>
+        /// <param name="from">The Entity to validate.</param>
+        /// <param name="modelName">The expected ModelName.</param>
+        public static void AssertModel(this CommerceEntity from, string modelName)
+        {
+            if (from == null) throw new ArgumentNullException("from");
+
+            if (!from.ModelName.Equals(modelName, StringComparison.OrdinalIgnoreCase))
+                throw new WrongModelException(from, modelName);
+        }
+
+        /// <summary>
+        /// Creates a CommerceRequestContext object, associates this to the IOperationServiceAgent and issues a request.
+        /// </summary>
 	    public static CommerceResponse ProcessRequestWithContext(this IOperationServiceAgent agent, CommerceRequest request)
 	    {
 	        if (agent == null) throw new ArgumentNullException("agent");
@@ -32,11 +53,12 @@ namespace CSUtilities.Extensions
 	        return agent.ProcessRequest(requestContext, request);
 	    }
 
-        /// <summary>
-        /// Includes Addresses, LineItems, Shipments, Payments and Discounts
-        /// </summary>
-        /// <param name="basketQuery">The Query object for which relationships are being added to.</param>
-        public static void IncludeBasketRelationships(this CommerceQuery<CommerceEntity> basketQuery)
+	    /// <summary>
+	    /// Includes Addresses, LineItems, Shipments, Payments and Discounts
+	    /// </summary>
+	    /// <param name="basketQuery">The Query object for which relationships are being added to.</param>
+	    /// <param name="customRelationships">Name of any custom relationsships to be added in the basket query.</param>
+	    public static void IncludeBasketRelationships(this CommerceQuery<CommerceEntity> basketQuery, params Relationship[] customRelationships)
         {
             if (basketQuery == null) throw new ArgumentNullException("basketQuery");
 
@@ -46,14 +68,31 @@ namespace CSUtilities.Extensions
             if (!String.Equals(basketQuery.Model.ModelName, MetadataDefinitions.Basket.EntityName, StringComparison.OrdinalIgnoreCase))
                 throw new InvalidOperationException(String.Format("This method can only be used on a 'Basket' model. Current model: '{0}'", basketQuery.Model.ModelName));
 
-            basketQuery.RelatedOperations.Add(new CommerceQueryRelatedItem<CommerceEntity>(MetadataDefinitions.Basket.Relationships.Addresses, MetadataDefinitions.Address.EntityName));
-            basketQuery.RelatedOperations.Add(new CommerceQueryRelatedItem<CommerceEntity>(MetadataDefinitions.Basket.Relationships.LineItems, MetadataDefinitions.LineItem.EntityName));
-            basketQuery.RelatedOperations.Add(new CommerceQueryRelatedItem<CommerceEntity>(MetadataDefinitions.Basket.Relationships.Payments, MetadataDefinitions.Payment.EntityName));
-            basketQuery.RelatedOperations.Add(new CommerceQueryRelatedItem<CommerceEntity>(MetadataDefinitions.Basket.Relationships.Shipments, MetadataDefinitions.Shipment.EntityName));
-            basketQuery.RelatedOperations.Add(new CommerceQueryRelatedItem<CommerceEntity>(MetadataDefinitions.Basket.Relationships.Discounts, MetadataDefinitions.Discount.EntityName));
+            var relationships = new List<Relationship>
+            {
+                new Relationship(MetadataDefinitions.Basket.Relationships.Addresses, MetadataDefinitions.Address.EntityName),
+                new Relationship(MetadataDefinitions.Basket.Relationships.LineItems, MetadataDefinitions.LineItem.EntityName),
+                new Relationship(MetadataDefinitions.Basket.Relationships.Payments, MetadataDefinitions.Payment.EntityName),
+                new Relationship(MetadataDefinitions.Basket.Relationships.Shipments, MetadataDefinitions.Shipment.EntityName),
+                new Relationship(MetadataDefinitions.Basket.Relationships.Discounts, MetadataDefinitions.Discount.EntityName)
+            };
+
+            if (customRelationships != null)
+                relationships.AddRange(customRelationships);
+
+	        foreach (var relationship in relationships)
+	        {
+	            basketQuery.RelatedOperations.Add(
+	                new CommerceQueryRelatedItem<CommerceEntity>(relationship.Name, relationship.Model));
+	        }
         }
 
-        public static CommerceRequest ToRequestWithBasketReturnModel(this CommerceUpdate<CommerceEntity, CommerceModelSearch<CommerceEntity>, CommerceBasketUpdateOptionsBuilder> updateQuery)
+        /// <summary>
+        /// Puts a ReturnModel to the Basket Update Query that returns the updated Basket (full model with all properties and default relationships (Addresses, LineItems, Shipments, Discounts and Payments)) as part of the response.
+        /// </summary>
+        /// <param name="updateQuery">The Basket Update Query that gets the ReturnModel query added.</param>
+        /// <param name="customRelationships">Any custom relationships that should be returned with the updated basket.</param>
+        public static CommerceRequest ToRequestWithBasketReturnModel(this CommerceUpdate<CommerceEntity, CommerceModelSearch<CommerceEntity>, CommerceBasketUpdateOptionsBuilder> updateQuery, params Relationship[] customRelationships)
         {
             if (updateQuery == null) throw new ArgumentNullException("updateQuery");
 
@@ -64,29 +103,25 @@ namespace CSUtilities.Extensions
 
             updateOperation.Options.ReturnModel = new CommerceEntity(MetadataDefinitions.Basket.EntityName);
 
-            updateOperation.Options.ReturnModelQueries.Add(new CommerceQueryRelatedItem
+            var relationships = new List<Relationship>
             {
-                RelationshipName = MetadataDefinitions.Basket.Relationships.Addresses,
-                Model = new CommerceEntity(MetadataDefinitions.Address.EntityName)                                                                   
-            });
+                new Relationship(MetadataDefinitions.Basket.Relationships.Addresses, MetadataDefinitions.Address.EntityName),
+                new Relationship(MetadataDefinitions.Basket.Relationships.LineItems, MetadataDefinitions.LineItem.EntityName),
+                new Relationship(MetadataDefinitions.Basket.Relationships.Shipments, MetadataDefinitions.Shipment.EntityName),
+                new Relationship(MetadataDefinitions.Basket.Relationships.Discounts, MetadataDefinitions.Discount.EntityName)
+            };
 
-            updateOperation.Options.ReturnModelQueries.Add(new CommerceQueryRelatedItem
-            {
-                RelationshipName = MetadataDefinitions.Basket.Relationships.LineItems,
-                Model = new CommerceEntity(MetadataDefinitions.LineItem.EntityName)
-            });
+            if (customRelationships != null)
+                relationships.AddRange(customRelationships);
 
-            updateOperation.Options.ReturnModelQueries.Add(new CommerceQueryRelatedItem
+            foreach (var relationship in relationships)
             {
-                RelationshipName = MetadataDefinitions.Basket.Relationships.Shipments,
-                Model = new CommerceEntity(MetadataDefinitions.Shipment.EntityName)
-            });
-
-            updateOperation.Options.ReturnModelQueries.Add(new CommerceQueryRelatedItem
-            {
-                RelationshipName = MetadataDefinitions.Basket.Relationships.Discounts,
-                Model = new CommerceEntity(MetadataDefinitions.Discount.EntityName)
-            });
+                updateOperation.Options.ReturnModelQueries.Add(new CommerceQueryRelatedItem
+                {
+                    RelationshipName = relationship.Name,
+                    Model = new CommerceEntity(relationship.Model)
+                });
+            }
 
             updateOperation.Options.ReturnModelQueries.Add(new CommerceQueryRelatedItem
             {
