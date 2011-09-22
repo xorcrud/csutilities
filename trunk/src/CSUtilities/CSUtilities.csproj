@@ -177,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Debugging\Debugging.Extensions.cs" />
+    <None Include="CSUtilities.nuspec" />
     <None Include="MetadataDefinitions.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>MetadataDefinitions.generated.cs</LastGenOutput>
