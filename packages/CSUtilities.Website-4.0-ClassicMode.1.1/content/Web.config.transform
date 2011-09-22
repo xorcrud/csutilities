@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections>
+    <sectionGroup name="CommerceServer">
+      <section name="application" type="Microsoft.CommerceServer.Runtime.Configuration.CommerceApplicationSectionHandler, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+      <section name="authentication" type="Microsoft.CommerceServer.Runtime.Configuration.CommerceAuthenticationSectionHandler, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+      <section name="pipelines" type="Microsoft.CommerceServer.Runtime.Configuration.CommercePipelineSectionHandler, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+      <section name="caches" type="Microsoft.CommerceServer.Runtime.Configuration.CommerceCacheSectionHandler, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+      <section name="messageManager" type="Microsoft.CommerceServer.Runtime.Configuration.CommerceMessageManagerSectionHandler, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+      <section name="catalog" type="Microsoft.CommerceServer.Runtime.Configuration.CommerceCatalogSectionHandler, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+      <section name="orders" type="Microsoft.CommerceServer.Runtime.Configuration.CommerceOrdersSectionHandler, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+      <section name="profiles" type="Microsoft.CommerceServer.Runtime.Configuration.CommerceProfilesSectionHandler, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+      <section name="contentSelection" type="Microsoft.CommerceServer.Runtime.Configuration.CommerceContentSelectionSectionHandler, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+      <section name="commerceEvent" type="Microsoft.CommerceServer.Runtime.Configuration.EventLoggerConfigurationHandler, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+      <section name="expressions" type="Microsoft.CommerceServer.Runtime.Configuration.CommerceExpressionSectionHandler, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    </sectionGroup>
+    <section name="ServiceConfiguration" type="Microsoft.Commerce.Application.Common.Configuration.ServiceConfiguration, Microsoft.Commerce.Application.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <section name="GlobalServiceConfiguration" type="Microsoft.Commerce.Common.ObjectBuilder.GlobalServiceConfiguration, Microsoft.Commerce.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <section name="commerceExceptionHandling" type="Microsoft.Commerce.Common.ExceptionHandlingConfigurationSection, Microsoft.Commerce.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+  </configSections>
+  <ServiceConfiguration configSource="ChannelConfiguration.config"></ServiceConfiguration>
+  <GlobalServiceConfiguration enableTracing="false">
+    <Services>
+      <Service contract="Microsoft.Commerce.Contracts.IOperationService, Microsoft.Commerce.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" implementation="Microsoft.Commerce.Broker.OperationService, Microsoft.Commerce.Broker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    </Services>
+  </GlobalServiceConfiguration>
+  <commerceExceptionHandling defaultPolicyName="Default">
+    <exceptionPolicy name="Default">
+      <exceptionHandler name="TextLoggingExceptionHandler" type="Microsoft.Commerce.Common.TextLoggingExceptionHandler, Microsoft.Commerce.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" initializeData="Microsoft.Commerce.Exceptions" />
+    </exceptionPolicy>
+  </commerceExceptionHandling>
+  <CommerceServer>
+    <!--  APPLICATION
+            Set the siteName to be the name of the site as it has been registered in the Administration
+            database.  The Site Packager will update this attribute automatically when unpacking
+            a site.  Set debugLevel to "Checked", "Debug", or "Production".  Because the "Checked" and
+            "Debug" settings cause the application to run slower than normal, you should only use these
+            values when debugging the application.
+        -->
+    <application siteName="CommerceServerTraining" debugLevel="Checked" />
+    <!--  PIPELINES
+            Configure the pipelines you wish to use in your application. -->
+    <pipelines>
+      <!--  PIPELINE CONFIGURATION
+            Set the name of the pipeline to whatever string you wish to use when referencing the
+            pipeline in your application.  The path should be set to a the relative path of the pipeline
+            configuration file (.PCF) that corresponds to the pipeline you wish to execute when
+            referencing the pipeline in your application.  Set transacted to false to disable COM+
+            Transactions when executing your pipeline.  The type should be set to either "OrderPipeline"
+            or "CSFPipeline" depending on if you intend to use the pipeline for processing Orders or
+            displaying advertisements.  Set loggingEnabled to true to enable pipeline logging.  The log
+            will be created in the "pipelines\log" directory of your application.  Note that this
+            causes the application to run slower than normal so it should only be enabled during
+            debugging.
+
+            Sample pipeline configuration sections have been provided below.
+            -->
+      <pipeline name="basket" path="pipelines\basket.pcf" transacted="false" type="OrderPipeline" loggingEnabled="false" />
+      <pipeline name="checkout" path="pipelines\checkout.pcf" transacted="true" type="OrderPipeline" loggingEnabled="false" />
+      <pipeline name="empty" path="pipelines\empty.pcf" transacted="false" type="OrderPipeline" loggingEnabled="false" />
+      <pipeline name="product" path="pipelines\product.pcf" transacted="false" type="OrderPipeline" loggingEnabled="false" />
+      <pipeline name="total" path="pipelines\total.pcf" transacted="false" type="OrderPipeline" loggingEnabled="false" />
+      <pipeline name="creditcardprocessor" path="pipelines\CreditCard.pcf" transacted="false" type="OrderPipeline" loggingEnabled="false" />
+      <pipeline name="advertising" path="pipelines\advertising.pcf" transacted="false" type="CSFPipeline" loggingEnabled="false" />
+      <pipeline name="discounts" path="pipelines\discounts.pcf" transacted="false" type="CSFPipeline" loggingEnabled="false" />
+      <pipeline name="recordevent" path="pipelines\recordevent.pcf" transacted="false" type="CSFPipeline" loggingEnabled="false" />
+      <!-- END SAMPLE PIPELINE CONFIGURATION SECTIONS -->
+    </pipelines>
+    <!-- Sample Catalog section 
+        CatalogSets information can be specified using the catalogSets element
+		The defaultAuthenticated attribute is used to specify the default catalogSet for authenticated users.This attribute is optional.
+		If not specified the catalogSet 'Registered User Default CatalogSet' will be used.
+		The defaultAnonymous attribute is used to specify the default catalogSet for anonymous users.
+		If not specified the catalogSet 'Anonymous User Default CatalogSet' will be used.
+		
+		The joinTable information can be specified using the joinTable element.All attributes are required.
+		The targetTableName attribute is used to specify the name of the external table.
+		The targetJoinKey attribute is used to specify the name of the column in the target table.
+		The sourceJoinKey attribute is used to specify the name of the column in the catalog system table.
+		The joinType attribute is used to specify the type of join. The valid values are InnerJoin, OuterJoinFull, OuterJoinLeft, OuterJoinRight and NoJoin.
+		
+		Caching in the catalog system can be implemented using the cache element.
+        The cache element is optional and if not present caching is disabled.
+        The enable attribute is an optional boolean attribute with a default value of false. Setting it to true will cache varios datasets
+        in the catalog system. The time interval for each of these dataset types is controlled by the corresponding timeout attribute.
+        If caching is enabled but the timeOut attribute is missing then the dataset will be cached for 5 minutes on the server.
+        The schemaTimeout attribute is used to control the time for which the datasets pertaining to the catalog schema will be cached. The timeout value should be
+        specified in minutes.
+        The itemInformationCacheTimeout attribute is used to control the time for which the Item.Information datasets will be cached. The timeout value should be
+        specified in minutes.
+        The itemHierarchyCacheTimeout attribute is used to control the time for which the parent and child hierarchy information datasets will be cached. The timeout value should be
+        specified in minutes.
+        The itemRelationshipsCacheTimeout attribute is used to control the time for which the product and category relationships datasets will be cached. The timeout value should be
+        specified in minutes.
+        The itemAssociationsCacheTimeout attribute is used to control the time for which the inventory product catalog associations datasets will be cached. The timeout value should be
+        specified in minutes.
+        The catalogCollectionCacheTimeout attribute is used to control the time for which the catalogs, catalog sets and inventory catalogs collection datasets will be cached. The timeout value should be
+        specified in minutes. 
+        The number of kilobytes available to the cache can be controlled by the EffectivePrivateBytesLimit attribute available in the cache element defined by ASP.NET.
+        -->
+    <catalog>
+      <!--<catalogSets defaultAuthenticated="defalutAuthenticated catalogset" defaultAnonymous="defaultAnonymous catalogset">
+      </catalogSets>-->
+      <!--<joinTable
+				targetTableName="Target TableName"
+				targetJoinKey="targetJoinKey"
+				sourceJoinKey="sourceJoinKey"
+				joinType="InnerJoin">
+      </joinTable>-->
+      <cache enable="false" schemaTimeout="10" itemInformationCacheTimeout="10" itemHierarchyCacheTimeout="10" itemRelationshipsCacheTimeout="10" itemAssociationsCacheTimeout="10" catalogCollectionCacheTimeout="10" />
+    </catalog>
+    <!-- EXPRESSIONS schema='Auto|Marketing|Profiles'
+            The schema attribute controls which version of database schema the CommerceExpressionModule uses when
+            creating its ExpressionEvaluator instance.  The valid values for the 'schema' attribute are:
+            'Auto', 'Marketing', or 'Profiles'.  The 'Marketing' value implies that the expressions are
+            loaded from the new Marketing System database schema (mktg_expression table) in which expressions
+            are tightly integrated with Campaigns.  In this case, the expressions are loaded from the database
+            referenced in the Campaigns site resource.  The 'Profiles' value is for compatibility purposes and
+            causes expressions to be loaded from the CS02 compatible schema (ES_ExprInfo table) in the
+            Profiles (also known as 'Biz Data Store') site database.  In 'Auto' mode (the default), the system
+            will check for the existence of the mktg_expression table in the Campaigns site database.  If that
+            table exists and the configured Campaigns connection string is a valid SQLOLEDB connection string, then
+            Marketing mode is used, otherwise Profiles mode is used.
+        -->
+    <expressions schema="Auto" />
+    <!-- CACHES
+            Configure the caches you wish to use in your application
+        -->
+    <caches>
+      <!--  CACHE CONFIGURATION
+            Set the name of the cache to whatever string you wish to use when referencing the cache.
+            Note that certain caches must have specific names when using the default Advertising,
+            Discounting, ShippingMethodRouter and PaymentMethodRouter pipeline components.  
+						These names are Advertising, Discount, ShippingManagerCache and PaymentMethodCache 
+            respectively.  The refreshInterval should be set to a time value (in seconds) that 
+						determines how long the cache remains in memory before being refreshed.
+            The retryInterval should be set to a time value (in seconds) that determines how long the
+            Cache Manager waits before attempting to call the cache loader in the event of a failure
+            when calling the cache loader.  Set maxSize to be the maximum number of entries to
+            store in the cache.
+
+            Sample cache configuration sections have been provided below.
+            -->
+      <cache name="Advertising" type="Advertising" refreshInterval="900" retryInterval="30" />
+      <cache name="Discounts" type="Discounts" refreshInterval="0" retryInterval="30" />
+      <cache name="ShippingManagerCache" type="Shipping" loaderProgId="Commerce.ShippingMethodCache" refreshInterval="0" retryInterval="30" />
+      <cache name="PaymentMethodCache" type="Payment" />
+      <cache name="OrdersConfigurationCache" type="OrdersConfiguration" />
+    </caches>
+    <!--  MESSAGE MANAGER
+        Configure the resources to extract from satellite assemblies into the MessageManager
+        used by components in the Order Processing Pipelines.-->
+    <messageManager>
+      <!--  CULTURES
+                Set the default attribute to be the RFC 1766 identifier of the default culture used
+                by the application.  The baseName attribute specifies the root name of the resources
+                used in your application.  For example, when using a satellite assembly named
+                "MyResources.en-US.resources", the root name is "MyResources."  The assembly attribute
+                is used to specify the name of the assembly containing the default resources - either
+                the executing application or the name of a satellite assembly.-->
+      <cultures default="en-US" baseName="CommerceMessageManager" assembly="CommerceMessageManager">
+        <!-- CULTURE Set the id to be the RFC 1766 identifier of each culture used by the application. -->
+        <culture id="en-US" />
+        <culture id="fr-fr" />
+        <culture id="ja-JP" />
+        <culture id="de-DE" />
+      </cultures>
+      <!-- RESOURCES
+                This configures the individual resource names to be extracted from each satellite
+                assembly and placed in the MessageManager.  Set the id to the resource identifier for
+                each resource you wish to use.
+      -->
+      <resources>
+        <resource id="pur_badsku" />
+        <resource id="pur_badplacedprice" />
+        <resource id="pur_discount_changed" />
+        <resource id="pur_discount_removed" />
+        <resource id="pur_noitems" />
+        <resource id="pur_badshipping" />
+        <resource id="pur_badhandling" />
+        <resource id="pur_badtax" />
+        <resource id="pur_badcc" />
+        <resource id="pur_badpayment" />
+        <resource id="pur_badverify" />
+        <resource id="pur_out_of_stock" />
+        <resource id="unknown_shipping_method" />
+      </resources>
+    </messageManager>
+    <orders honorStatus="true" newOrderStatus="NewOrder" sqlCommandTimeoutSeconds="60" sqlLongRunningCommandTimeoutSeconds="28800">
+      <addressMap>
+        <profileDefinition name="Address" />
+        <property from="GeneralInfo.address_id" to="OrderAddressId" />
+        <property from="GeneralInfo.first_name" to="FirstName" />
+        <property from="GeneralInfo.last_name" to="LastName" />
+        <property from="GeneralInfo.address_line1" to="Line1" />
+        <property from="GeneralInfo.address_line2" to="Line2" />
+        <property from="GeneralInfo.city" to="City" />
+        <property from="GeneralInfo.region_code" to="RegionCode" />
+        <property from="GeneralInfo.postal_code" to="PostalCode" />
+        <property from="GeneralInfo.country_name" to="CountryName" />
+        <property from="GeneralInfo.region_name" to="State" />
+        <property from="GeneralInfo.tel_number" to="DaytimePhoneNumber" />
+      </addressMap>
+      <Types>
+        <Type Key="Basket" UserTypeName="Basket" AssemblyType="GAC" NameSpace="Microsoft.CommerceServer.Runtime.Orders" Assembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+        <Type Key="PurchaseOrder" UserTypeName="PurchaseOrder" AssemblyType="GAC" NameSpace="Microsoft.CommerceServer.Runtime.Orders" Assembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+        <Type Key="OrderTemplate" UserTypeName="OrderTemplate" AssemblyType="GAC" NameSpace="Microsoft.CommerceServer.Runtime.Orders" Assembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+        <Type Key="OrderForm" UserTypeName="OrderForm" AssemblyType="GAC" NameSpace="Microsoft.CommerceServer.Runtime.Orders" Assembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+        <Type Key="LineItem" UserTypeName="LineItem" AssemblyType="GAC" NameSpace="Microsoft.CommerceServer.Runtime.Orders" Assembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+        <Type Key="Shipment" UserTypeName="Shipment" AssemblyType="GAC" NameSpace="Microsoft.CommerceServer.Runtime.Orders" Assembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+        <Type Key="Payment" UserTypeName="Payment" AssemblyType="GAC" NameSpace="Microsoft.CommerceServer.Runtime.Orders" Assembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+        <Type Key="CreditCardPayment" UserTypeName="CreditCardPayment" AssemblyType="GAC" NameSpace="Microsoft.CommerceServer.Runtime.Orders" Assembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+        <Type Key="GiftCertificatePayment" UserTypeName="GiftCertificatePayment" AssemblyType="GAC" NameSpace="Microsoft.CommerceServer.Runtime.Orders" Assembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+        <Type Key="PurchaseOrderPayment" UserTypeName="PurchaseOrderPayment" AssemblyType="GAC" NameSpace="Microsoft.CommerceServer.Runtime.Orders" Assembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+        <Type Key="CashCardPayment" UserTypeName="CashCardPayment" AssemblyType="GAC" NameSpace="Microsoft.CommerceServer.Runtime.Orders" Assembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+        <Type Key="OrderAddress" UserTypeName="OrderAddress" AssemblyType="GAC" NameSpace="Microsoft.CommerceServer.Runtime.Orders" Assembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+        <Type Key="DiscountApplicationRecord" UserTypeName="DiscountApplicationRecord" AssemblyType="GAC" NameSpace="Microsoft.CommerceServer.Runtime.Orders" Assembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+        <Type Key="ShippingDiscountRecord" UserTypeName="ShippingDiscountRecord" AssemblyType="GAC" NameSpace="Microsoft.CommerceServer.Runtime.Orders" Assembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+        <Type Key="PromoCodeRecord" UserTypeName="PromoCodeRecord" AssemblyType="GAC" NameSpace="Microsoft.CommerceServer.Runtime.Orders" Assembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+      </Types>
+      <Limits OrderFormsPerOrderGroup="5" PromoCodeRecordsPerOrderForm="10" PromoCodesPerOrderForm="10" LineItemsPerOrderForm="40" OrderTemplatesPerUser="10" PaymentsPerOrderForm="10" ShipmentsPerOrderForm="40" BasketsPerUser="15" OrderAddressesPerOrderGroup="10" />
+      <MappingFiles PipelineMappingFilename="OrderPipelineMappings.xml" StorageMappingFilename="OrderObjectMappings.xml" />
+    </orders>
+    <!-- PROFILES
+                This configures the runtime to recognize two specific profiles, the Organization and
+                User profiles, in order to make the CommerceContext class aware of any changes made
+                to the default settings of these profiles.  It is used to determine where the
+                CommerceContext.GetCatalogsForUser() method looks for Catalog Sets associated with
+                the current user.  It is also used by the CommerceContext.UserProfile property
+                to determine how to load user profiles on demand. These configuration settings are
+                only required if you make changes to the default UserObject or Organization profiles.
+        -->
+    <!-- NEW ATTRIBUTES
+                The last 3 attributes of the userProfile node are new for this version of Commerce Server.
+                The keys are all optional; if no value is specified, the values shown below are used as defaults.
+                userIdSource can have two values: ASP.NET or UPM (case insensitive). any other value will 
+                cause a ConfigurationErrorsException to be thrown.
+                These new keys come into play when the CommerceContext.Current.UserID property is queried 
+                for the first time.	If ASP.NET is specified, the CommerceContext.Current.UserID key will 
+                be populated by looking up the profile specified in the profileDefinition attribute 
+                (UserObject by default). The lookup is done by searching for a profile object whose userIdKey 
+                property is equal to HttpContext.Current.User.Identity.Name. The result of the search is 
+                stored in CommerceContext.Current.UserProfile. The profile search is done only if the 
+                CommerceContext.Current.UserProfile object is null. If this property is not null, it's contents 
+                are used to get the user ID. After getting the user profile, the userIdTarget key of 
+                the profile is looked up to determine the value of UserID.
+                The CommerceContext.Current.UserID property can return null if the profile search 
+                returns null or if the userIdTarget key does not exist.		
+    -->
+    <!--
+        <profiles>
+            <userProfile
+                profileDefinition="UserObject"
+                userIdProperty="GeneralInfo.email_address"
+                organizationIdProperty="AccountInfo.org_id"
+                catalogSetIdProperty="AccountInfo.user_catalog_set"
+                
+                userIdSource = "ASP.NET" 
+                userIdKey = "GeneralInfo.email_address"
+                userIdTarget = "GeneralInfo.user_id"
+            />
+            <organizationProfile
+                profileDefintion="Organization"
+                organizationIdProperty="GeneralInfo.org_id"
+                catalogSetIdProperty="GeneralInfo.org_catalog_set"
+            />
+      <encryption>
+        <keys keyIndex="1">
+          <add type="publicKey" value="" />
+          <add type="privateKey1" value="" />
+          <add type="privateKey2" value="" />
+        </keys>
+      </encryption>
+        </profiles>
+    -->
+    <!-- 
+			The Content Selection section is used to configure the Commerce Server runtime for Targeting. 
+			Both advertisements and Discounts can be targeted. 
+			For each of these, the corresponding caches ('cacheName' attribute) and pipelines 
+			('selectionPipeline' and 'eventPipeline' attributes) should be configured correctly in the correponding 
+			sections ('caches' and 'pipelines') of the web.config. Also note that the redirectUrl attribute if configured
+			should be a valid relative url in the site. For more details please consult the Commerce Server Documentation 
+			related to the 'contentSelection' tag of the web.config.
+		-->
+    <!-- CONTENTSELECTION 
+		<contentSelection>
+			<add name="Advertising" cacheName="Advertising" selectionPipeline="advertising" eventPipeline="recordevent" redirectUrl="./redir.aspx"/>
+			<add name="Discounts" cacheName="Discounts" selectionPipeline="discounts" eventPipeline="recordevent" redirectUrl="./redir.aspx" preloadCache="true"/>
+		</contentSelection>
+		-->
+    <!-- COMMERCEEVENT
+             This configures the Commerce Events that will be available for logging data to the IIS 
+             web server log.  The default events supported are AddItemToBasket, RemoveItemFromBasket,
+             and SubmitOrder.
+    -->
+    <commerceEvent>
+      <add className="Microsoft.CommerceServer.Runtime.AddItemToBasketEvent" id="AddItemToBasket" />
+      <add className="Microsoft.CommerceServer.Runtime.RemoveItemFromBasketEvent" id="RemoveItemFromBasket" />
+      <add className="Microsoft.CommerceServer.Runtime.SubmitOrderEvent" id="SubmitOrder" loggingEnabled="true" />
+    </commerceEvent>
+  </CommerceServer>
+  <system.diagnostics>
+    <sources>
+      <source name="Microsoft.Commerce.Trace.Presentation" switchName="CommerceFoundationTraceSwitch">
+        <listeners>
+          <add name="CommerceFoundationXmlTraceListener" />
+          <add name="CommerceFoundationEtwTraceListener" />
+        </listeners>
+      </source>
+      <source name="Microsoft.Commerce.Trace.Broker" switchName="CommerceFoundationTraceSwitch">
+        <listeners>
+          <add name="CommerceFoundationXmlTraceListener" />
+          <add name="CommerceFoundationEtwTraceListener" />
+        </listeners>
+      </source>
+      <source name="Microsoft.Commerce.Trace.Provider" switchName="CommerceFoundationTraceSwitch">
+        <listeners>
+          <add name="CommerceFoundationXmlTraceListener" />
+          <add name="CommerceFoundationEtwTraceListener" />
+        </listeners>
+      </source>
+      <source name="Microsoft.Commerce.Trace.CommerceServer" switchName="CommerceFoundationTraceSwitch">
+        <listeners>
+          <add name="CommerceFoundationXmlTraceListener" />
+          <add name="CommerceFoundationEtwTraceListener" />
+        </listeners>
+      </source>
+      <source name="Microsoft.Commerce.Trace.Custom" switchName="CommerceFoundationTraceSwitch">
+        <listeners>
+          <add name="CommerceFoundationXmlTraceListener" />
+          <add name="CommerceFoundationEtwTraceListener" />
+        </listeners>
+      </source>
+      <source name="Microsoft.Commerce.Trace.Messages" switchName="CommerceFoundationMessagesSwitch">
+        <listeners>
+          <add name="CommerceFoundationMessagesListener" traceOutputOptions="Timestamp" type="System.Diagnostics.XmlWriterTraceListener" initializeData="C:\logs\CommerceFoundationMessagesLog.xml">
+            <filter type="System.Diagnostics.EventTypeFilter" initializeData="Verbose" />
+          </add>
+        </listeners>
+      </source>
+      <source name="Microsoft.Commerce.Exceptions" switchValue="Error">
+        <listeners>
+          <add name="EventLogExceptionsListener" type="System.Diagnostics.EventLogTraceListener" traceOutputOptions="None" initializeData="Commerce Catalog Samples">
+            <filter type="System.Diagnostics.EventTypeFilter" initializeData="Error" />
+          </add>
+        </listeners>
+      </source>
+    </sources>
+    <!-- Possible values for the switches are defined by the SourceLevels Enumeration 
+			Off					Does not allow any events through.
+			Critical			Allows only Critical events through.
+			Error				Allows Critical and Error events through.
+			Warning				Allows Critical, Error, and Warning events through.
+			Information			Allows Critical, Error, Warning, and Information events through.
+			Verbose				Allows Critical, Error, Warning, Information, and Verbose events through.
+			ActivityTracing		Allows the Stop, Start, Suspend, Transfer, and Resume events through.
+			All					Allows all events through.
+		-->
+    <switches>
+      <add name="CommerceFoundationTraceSwitch" value="Off" />
+      <add name="CommerceFoundationMessagesSwitch" value="Off" />
+    </switches>
+    <sharedListeners>
+      <add name="ServiceModelMessageLoggingListener" traceOutputOptions="Timestamp" type="System.Diagnostics.XmlWriterTraceListener" initializeData="ServiceModel.svclog"></add>
+      <add name="CommerceFoundationXmlTraceListener" traceOutputOptions="Timestamp" type="System.Diagnostics.XmlWriterTraceListener" initializeData="C:\logs\CommerceFoundationTraceLog.xml">
+        <filter type="System.Diagnostics.EventTypeFilter" initializeData="All" />
+      </add>
+      <add name="CommerceFoundationEtwTraceListener" type="Microsoft.Commerce.Common.EtwTraceListener, Microsoft.Commerce.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+        <filter type="System.Diagnostics.EventTypeFilter" initializeData="All" />
+      </add>
+    </sharedListeners>
+    <trace autoflush="true" />
+  </system.diagnostics>
+  <system.web>
+    <httpModules>
+      <add name="CommerceApplication" type="Microsoft.CommerceServer.Runtime.CommerceApplicationModule, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+      <add name="CommerceOrder" type="Microsoft.CommerceServer.Runtime.Orders.CommerceOrderModule, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+      <add name="CommerceCatalog" type="Microsoft.CommerceServer.Runtime.Catalog.CommerceCatalogModule, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+      <add name="CommerceProfile" type="Microsoft.CommerceServer.Runtime.Profiles.CommerceProfileModule, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+      <add name="CommerceExpressionEvaluator" type="Microsoft.CommerceServer.Runtime.Targeting.CommerceExpressionModule, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+      <add name="CommerceCache" type="Microsoft.CommerceServer.Runtime.Caching.CommerceCacheModule, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+      <add name="CommerceContentSelection" type="Microsoft.CommerceServer.Runtime.Targeting.CommerceContentSelectionModule, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+    </httpModules>
+    <httpHandlers>
+      <add verb="*" path="SiteCacheRefresh.axd" type="Microsoft.CommerceServer.Runtime.SiteCacheRefresh, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35 "/>
+      <add verb="*" path="/MetadataDefinitions.xml" type="System.Web.HttpForbiddenHandler" />
+      <add verb="*" path="/OrderObjectMappings.xml" type="System.Web.HttpForbiddenHandler" />
+      <add verb="*" path="/OrderPipelineMappings.xml" type="System.Web.HttpForbiddenHandler" />
+    </httpHandlers>
+    <compilation debug="true" targetFramework="4.0">
+      <assemblies>
+        <add assembly="Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+        <add assembly="Microsoft.CommerceServer.Catalog, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+        <add assembly="Microsoft.CommerceServer.CrossTierTypes, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+        <add assembly="Microsoft.Commerce.Application.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+        <add assembly="Microsoft.Commerce.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+      </assemblies>
+    </compilation>
+  </system.web>
+  <!-- If using Integrated Mode in IIS remove the comments below and comment out httpModules and httpHandlers sections inside <system.Web> element -->
+  <!--<system.webServer>
+    <modules>
+      <add name="CommerceApplication" type="Microsoft.CommerceServer.Runtime.CommerceApplicationModule, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" preCondition="managedHandler" />
+      <add name="CommerceOrder" type="Microsoft.CommerceServer.Runtime.Orders.CommerceOrderModule, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" preCondition="managedHandler" />
+      <add name="CommerceCatalog" type="Microsoft.CommerceServer.Runtime.Catalog.CommerceCatalogModule, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" preCondition="managedHandler" />
+      <add name="CommerceProfile" type="Microsoft.CommerceServer.Runtime.Profiles.CommerceProfileModule, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" preCondition="managedHandler" />
+      <add name="CommerceExpressionEvaluator" type="Microsoft.CommerceServer.Runtime.Targeting.CommerceExpressionModule, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" preCondition="managedHandler" />
+      <add name="CommerceCache" type="Microsoft.CommerceServer.Runtime.Caching.CommerceCacheModule, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" preCondition="managedHandler" />
+      <add name="CommerceContentSelection" type="Microsoft.CommerceServer.Runtime.Targeting.CommerceContentSelectionModule, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" preCondition="managedHandler" />
+    </modules>
+    <handlers>
+      <add name="CommerceSiteCacheRefresh" path="SiteCacheRefresh.axd" verb="*" type="Microsoft.CommerceServer.Runtime.SiteCacheRefresh, Microsoft.CommerceServer.Runtime, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" preCondition="integratedMode,runtimeVersionv2.0" />
+      <add name="CommerceMetadataDefinitions" path="/MetadataDefinitions.xml" verb="*" type="System.Web.HttpForbiddenHandler" />
+      <add name="CommerceOrderObjectMappings" path="/OrderObjectMappings.xml" verb="*" type="System.Web.HttpForbiddenHandler" />
+      <add name="CommerceOrderPipelineMappings" path="/OrderPipelineMappings.xml" verb="*" type="System.Web.HttpForbiddenHandler" />
+    </handlers>
+  </system.webServer>-->
+  <location path="SiteCacheRefresh.axd">
+    <system.web>
+      <authorization>
+        <allow roles="BUILTIN\Administrators" />
+        <deny users="?" />
+      </authorization>
+    </system.web>
+  </location>
+</configuration>
