@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+	<assembly>
+		<name>Microsoft.CommerceServer.Shared</name>
+	</assembly>
+	<members>
+		<member name="T:Microsoft.CommerceServer.Runtime.CommerceModuleDependencyException">
+			<summary>An exception that is thrown when a required module has not been configured.</summary>
+		</member>
+		<member name="M:Microsoft.CommerceServer.Runtime.CommerceModuleDependencyException.#ctor">
+			<summary>Initializes a new instance of the <see cref="T:Microsoft.CommerceServer.Runtime.CommerceModuleDependencyException"></see> class.</summary>
+		</member>
+		<member name="M:Microsoft.CommerceServer.Runtime.CommerceModuleDependencyException.#ctor(System.String)">
+			<summary>Initializes a new instance of the <see cref="T:Microsoft.CommerceServer.Runtime.CommerceModuleDependencyException"></see> class with the specified error message.</summary>
+			<param name="msg">The error message that explains the reason for the exception. </param>
+		</member>
+		<member name="M:Microsoft.CommerceServer.Runtime.CommerceModuleDependencyException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+			<summary>Initializes a new instance of the <see cref="T:Microsoft.CommerceServer.Runtime.CommerceModuleDependencyException"></see> class with the specified serialization and streaming context info.</summary>
+			<param name="info">A <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> containing serialization information.</param>
+			<param name="context">A <see cref="T:System.Runtime.Serialization.StreamingContext"></see> containing streaming context information.</param>
+		</member>
+		<member name="M:Microsoft.CommerceServer.Runtime.CommerceModuleDependencyException.#ctor(System.String,System.Exception)">
+			<summary>Initializes a new instance of the <see cref="T:Microsoft.CommerceServer.Runtime.CommerceModuleDependencyException"></see> class with the specified error message and inner exception.</summary>
+			<param name="msg">The error message that explains the reason for the exception.</param>
+			<param name="inner">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+		</member>
+		<member name="M:Microsoft.CommerceServer.Runtime.CommerceModuleDependencyException.#ctor(System.String,System.String)">
+			<summary>Initializes a new instance of the <see cref="T:Microsoft.CommerceServer.Runtime.CommerceModuleDependencyException"></see> class with the specified module names.</summary>
+			<param name="missingModule">The missing module.</param>
+			<param name="dependentModule">The dependent module.</param>
+		</member>
+		<member name="M:Microsoft.CommerceServer.Runtime.CommerceModuleDependencyException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+			<summary>Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> with data needed to serialize the <see cref="T:Microsoft.CommerceServer.Runtime.CommerceDebugException"></see>.</summary>
+			<param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> to populate with data.</param>
+			<param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"></see> object containing information about the serialized data's source and destination.</param>
+		</member>
+		<member name="T:Microsoft.CommerceServer.Runtime.CommerceResourceDependencyException">
+			<summary>An exception that is thrown when a resource does not exist in the Commerce Server administration database.</summary>
+		</member>
+		<member name="M:Microsoft.CommerceServer.Runtime.CommerceResourceDependencyException.#ctor">
+			<summary>Initializes a new instance of the <see cref="T:Microsoft.CommerceServer.Runtime.CommerceResourceDependencyException"></see> class.</summary>
+		</member>
+		<member name="M:Microsoft.CommerceServer.Runtime.CommerceResourceDependencyException.#ctor(System.String)">
+			<summary>Initializes a new instance of the <see cref="T:Microsoft.CommerceServer.Runtime.CommerceResourceDependencyException"></see> class with the specified error message.</summary>
+			<param name="msg">The error message that explains the reason for the exception. </param>
+		</member>
+		<member name="M:Microsoft.CommerceServer.Runtime.CommerceResourceDependencyException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+			<summary>Initializes a new instance of the <see cref="T:Microsoft.CommerceServer.Runtime.CommerceResourceDependencyException"></see> class with the specified serialization info and streaming context.</summary>
+			<param name="info">A <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> containing serialization information.</param>
+			<param name="context">A <see cref="T:System.Runtime.Serialization.StreamingContext"></see> containing streaming context information.</param>
+		</member>
+		<member name="M:Microsoft.CommerceServer.Runtime.CommerceResourceDependencyException.#ctor(System.String,System.Exception)">
+			<summary>Initializes a new instance of the <see cref="T:Microsoft.CommerceServer.Runtime.CommerceResourceDependencyException"></see> class with the specified error message and inner exception.</summary>
+			<param name="msg">The error message that explains the reason for the exception.</param>
+			<param name="inner">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+		</member>
+		<member name="M:Microsoft.CommerceServer.Runtime.CommerceResourceDependencyException.#ctor(System.String,System.String)">
+			<summary>Initializes a new instance of the <see cref="T:Microsoft.CommerceServer.Runtime.CommerceResourceDependencyException"></see> class with the specified resource message and inner module.</summary>
+			<param name="moduleName">The string specifying the name of the module.</param>
+			<param name="resourceName">The string specifying the name of the resource.</param>
+		</member>
+		<member name="M:Microsoft.CommerceServer.Runtime.CommerceResourceDependencyException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+			<summary>Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> with data needed to serialize the <see cref="T:Microsoft.CommerceServer.Runtime.CommerceDebugException"></see>.</summary>
+			<param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> to populate with data.</param>
+			<param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"></see> object containing information about the serialized data's source and destination.</param>
+		</member>
+		<member name="T:Microsoft.CommerceServer.Runtime.NonAuthenticatedIdentity">
+			<summary>This class provides an IIdentity that is not considered authenticated. This allows a site to recognize a user without treating the user as authenticated. </summary>
+		</member>
+		<member name="M:Microsoft.CommerceServer.Runtime.NonAuthenticatedIdentity.#ctor(System.String)">
+			<summary>Initializes a new instance of the <see cref="T:Microsoft.CommerceServer.Runtime.NonAuthenticatedIdentity"></see> class representing the user with the specified name. </summary>
+			<param name="name">The name of the user on whose behalf the code is running.</param>
+		</member>
+		<member name="M:Microsoft.CommerceServer.Runtime.NonAuthenticatedIdentity.#ctor(System.String,System.String)">
+			<summary>Initializes a new instance of the <see cref="T:Microsoft.CommerceServer.Runtime.NonAuthenticatedIdentity"></see> class representing the user with the specified name and authentication type. </summary>
+			<param name="name">The name of the user on whose behalf the code is running.</param>
+			<param name="type">The type of authentication used to identify the user.</param>
+		</member>
+		<member name="P:Microsoft.CommerceServer.Runtime.NonAuthenticatedIdentity.IsAuthenticated">
+			<summary>Gets a value indicating whether the user has been authenticated. </summary>
+			<returns>false in all cases.</returns>
+		</member>
+		<member name="N:Microsoft.CommerceServer.Runtime.Configuration">
+			<summary>The Microsoft.CommerceServer.Runtime.Configuration namespace contains the configuration section handlers for the Commerce Server .NET Application Framework.</summary>
+		</member>
+		<member name="T:Microsoft.CommerceServer.Runtime.Configuration.CommerceResource">
+			<summary>CommerceResource represents the collection of configuration properties for a site resource.</summary>
+		</member>
+		<member name="M:Microsoft.CommerceServer.Runtime.Configuration.CommerceResource.GetEnumerator">
+			<summary>Retrieves an enumerator that can iterate through the property names of all the resource properties in the resource.</summary>
+			<returns>An IEnumerator that can iterate through the property names.</returns>
+		</member>
+		<member name="P:Microsoft.CommerceServer.Runtime.Configuration.CommerceResource.Item(System.String)">
+			<summary>Gets a resource property from the <see cref="T:Microsoft.CommerceServer.Runtime.Configuration.CommerceResource"></see> based upon the property name.</summary>
+			<returns>The value of the propertyName parameter.</returns>
+			<param name="propertyName">The name of the property whose value is retrieved.</param>
+		</member>
+		<member name="P:Microsoft.CommerceServer.Runtime.Configuration.CommerceResource.MajorVerion">
+			<summary>(Obsolete) Gets a value representing the MajorVersion of the resource. </summary>
+			<returns>A value that represents the version number of the resource.</returns>
+		</member>
+		<member name="P:Microsoft.CommerceServer.Runtime.Configuration.CommerceResource.MajorVersion">
+			<summary>Gets a value representing the major version number of the resource. </summary>
+			<returns>A value that represents the major version number of the resource. </returns>
+		</member>
+		<member name="P:Microsoft.CommerceServer.Runtime.Configuration.CommerceResource.MinorVersion">
+			<summary>Gets a value representing the minor version number of the resource. </summary>
+			<returns>A value that represents the minor version number of the resource. </returns>
+		</member>
+		<member name="P:Microsoft.CommerceServer.Runtime.Configuration.CommerceResource.Name">
+			<summary>Gets the name of the resource.</summary>
+			<returns>A value that represents the name of the resource. </returns>
+		</member>
+		<member name="P:Microsoft.CommerceServer.Runtime.Configuration.CommerceResource.Revision">
+			<summary>Gets a value representing the revision number of the resource.</summary>
+			<returns>A value representing the revision number of the resource.</returns>
+		</member>
+		<member name="T:Microsoft.CommerceServer.Runtime.Configuration.CommerceResourceCollection">
+			<summary>Represents the collection of site resources for a given site.</summary>
+		</member>
+		<member name="M:Microsoft.CommerceServer.Runtime.Configuration.CommerceResourceCollection.#ctor(System.String)">
+			<summary>Initializes a new instance of the <see cref="T:Microsoft.CommerceServer.Runtime.Configuration.CommerceResourceCollection"></see> class. </summary>
+			<param name="siteName">The name of the site to read resource configuration information. May not be null.</param>
+		</member>
+		<member name="M:Microsoft.CommerceServer.Runtime.Configuration.CommerceResourceCollection.CopyTo(Microsoft.CommerceServer.Runtime.Configuration.CommerceResource[],System.Int32)">
+			<summary>Copies all of the elements in the current instance to a compatible one-dimensional <see cref="T:Microsoft.CommerceServer.Runtime.Configuration.CommerceResourceCollection"></see> array, starting at the specified index in the array.</summary>
+			<param name="array">The one-dimensional Array that is the destination of the elements copied from the current instance. The Array must have zero-based indexing and one-dimensional. </param>
+			<param name="index">The zero-based index in the destination array at which storing begins. </param>
+		</member>
+		<member name="M:Microsoft.CommerceServer.Runtime.Configuration.CommerceResourceCollection.GetEnumerator">
+			<summary>Retrieves an enumerator that can iterate through the current collection.</summary>
+			<returns>An IEnumerator that can iterate through the collection.</returns>
+		</member>
+		<member name="M:Microsoft.CommerceServer.Runtime.Configuration.CommerceResourceCollection.System.Collections.ICollection.CopyTo(System.Array,System.Int32)">
+			<summary>Copies all the elements in the current instance to a compatible one-dimensional array, starting at the specified index of the target array. </summary>
+			<param name="array">The one-dimensional Array that is the destination of the elements copied from the current instance. The Array must have zero-based indexing and one-dimensional. </param>
+			<param name="index">The zero-based index in the destination array at which storing begins. </param>
+		</member>
+		<member name="P:Microsoft.CommerceServer.Runtime.Configuration.CommerceResourceCollection.Count">
+			<summary>Gets the count of the number of elements in the CommerceResourceCollection collection.</summary>
+			<returns>The number of site resources contained in the collection. </returns>
+		</member>
+		<member name="P:Microsoft.CommerceServer.Runtime.Configuration.CommerceResourceCollection.IsSynchronized">
+			<summary>Gets a value indicating whether access to the current CommerceResourceCollection is synchronized (thread-safe).</summary>
+			<returns>false in all cases. </returns>
+		</member>
+		<member name="P:Microsoft.CommerceServer.Runtime.Configuration.CommerceResourceCollection.Item(System.String)">
+			<summary>Gets a <see cref="T:Microsoft.CommerceServer.Runtime.Configuration.CommerceResource"></see> from the collection, based upon the resource name.</summary>
+			<returns>The <see cref="T:Microsoft.CommerceServer.Runtime.Configuration.CommerceResource"></see> object in the <see cref="T:Microsoft.CommerceServer.Runtime.Configuration.CommerceResourceCollection"></see> collection with the specified name. </returns>
+			<param name="resourceName">The name of the resource to retrieve. </param>
+		</member>
+		<member name="P:Microsoft.CommerceServer.Runtime.Configuration.CommerceResourceCollection.SiteName">
+			<summary>Gets the name of the Commerce Site for which this collection was created.</summary>
+			<returns>The name of the Commerce Site for which this collection was created. </returns>
+		</member>
+		<member name="P:Microsoft.CommerceServer.Runtime.Configuration.CommerceResourceCollection.SyncRoot">
+			<summary>Gets an object that can be used for synchronized access to the CommerceResourceCollection.</summary>
+			<returns>An object that can be used for synchronized access to the CommerceResourceCollection. </returns>
+		</member>
+	</members>
+</doc>
